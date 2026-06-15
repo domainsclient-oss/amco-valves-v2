@@ -7,7 +7,7 @@ export interface SheetRow {
   "Full Name": string;
   "Email Address": string;
   "Phone Number": string;
-  "Message": string;
+  "Your Message": string;
 }
 
 export async function appendToLeadsSheet(data: SheetRow) {
@@ -38,12 +38,12 @@ export async function appendToLeadsSheet(data: SheetRow) {
     }
 
     // Append the row. The keys in the data object must match the column headers in row 1 of the sheet.
-    // Important: Row 1 of your sheet MUST have: Full Name | Email Address | Phone Number | Message
+    // Row 1 of your sheet MUST have: Full Name | Email Address | Phone Number | Your Message
     await sheet.addRow({
       "Full Name": data["Full Name"],
       "Email Address": data["Email Address"],
       "Phone Number": data["Phone Number"],
-      "Message": data["Message"]
+      "Your Message": data["Your Message"]
     });
 
     return { success: true };

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -59,12 +58,12 @@ export function ContactUs() {
       status: "New",
     };
 
-    // 2. Data for Google Sheets
+    // 2. Data for Google Sheets with strictly mapped headers
     const googleSheetPayload = {
       "Full Name": name,
       "Email Address": email,
       "Phone Number": phone,
-      "Message": messageContent,
+      "Your Message": messageContent,
     };
 
     try {
@@ -73,7 +72,7 @@ export function ContactUs() {
         await signInAnonymously(auth);
       }
 
-      // Start Firestore Submission
+      // Start Firestore Submission (non-blocking)
       const firestorePromise = addDoc(collection(db, "contactSubmissions"), submissionData)
         .catch(async (error) => {
           const permissionError = new FirestorePermissionError({
@@ -89,7 +88,8 @@ export function ContactUs() {
 
       if (!sheetResult.success) {
         console.warn("Google Sheets sync failed:", sheetResult.error);
-        // We still consider the submission successful if Firestore worked, but notify via console
+        // We still consider the submission successful if Firestore worked for redundancy,
+        // but the user would see a toast if both fail.
       }
 
       await firestorePromise;
