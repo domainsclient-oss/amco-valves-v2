@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -31,7 +32,7 @@ export function ContactUs() {
     const phone = formData.get("phone") as string;
     const messageContent = formData.get("message") as string;
     
-    // Structured for "Trigger Email" Firebase Extension
+    // 1. Data for Firestore (Internal tracking and redundancy)
     const submissionData = {
       to: targetEmail,
       message: {
@@ -57,13 +58,24 @@ export function ContactUs() {
       status: "New",
     };
 
+    // 2. Data for Google Sheets
+    // Note: Replace the URL below with your Google Apps Script Web App URL
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec"; 
+    
+    const googleSheetPayload = {
+      "Full Name": name,
+      "Email Address": email,
+      "Phone Number": phone,
+      "Message": messageContent,
+      "tabName": "Leads"
+    };
+
     try {
       if (!user) {
         await signInAnonymously(auth);
       }
 
-      // We do not await this to allow for optimistic UI updates, 
-      // but we handle errors via .catch() for the permission emitter.
+      // Firestore Submission
       addDoc(collection(db, "contactSubmissions"), submissionData)
         .catch(async (error) => {
           const permissionError = new FirestorePermissionError({
@@ -73,6 +85,17 @@ export function ContactUs() {
           });
           errorEmitter.emit('permission-error', permissionError);
         });
+
+      // Google Sheets Submission
+      // Using 'no-cors' mode is recommended for Google Apps Script POST requests from the browser
+      fetch(GOOGLE_SHEET_WEBAPP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(googleSheetPayload),
+      }).catch(err => console.log("Google Sheets sync failed, but data was saved to database."));
 
       toast({
         title: "Inquiry Sent",
