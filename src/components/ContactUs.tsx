@@ -12,6 +12,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
+import { appendToLeadsSheet } from "@/app/actions/google-sheets";
 
 export function ContactUs() {
   const { toast } = useToast();
@@ -32,7 +33,7 @@ export function ContactUs() {
     const phone = formData.get("phone") as string;
     const messageContent = formData.get("message") as string;
     
-    // 1. Data for Firestore (Internal tracking and redundancy)
+    // 1. Data for Firestore (Internal backup and tracking)
     const submissionData = {
       to: targetEmail,
       message: {
@@ -59,24 +60,21 @@ export function ContactUs() {
     };
 
     // 2. Data for Google Sheets
-    // Note: Replace the URL below with your Google Apps Script Web App URL
-    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec"; 
-    
     const googleSheetPayload = {
       "Full Name": name,
       "Email Address": email,
       "Phone Number": phone,
       "Message": messageContent,
-      "tabName": "Leads"
     };
 
     try {
+      // Ensure user is signed in for Firestore intake
       if (!user) {
         await signInAnonymously(auth);
       }
 
-      // Firestore Submission
-      addDoc(collection(db, "contactSubmissions"), submissionData)
+      // Start Firestore Submission
+      const firestorePromise = addDoc(collection(db, "contactSubmissions"), submissionData)
         .catch(async (error) => {
           const permissionError = new FirestorePermissionError({
             path: "contactSubmissions",
@@ -86,16 +84,15 @@ export function ContactUs() {
           errorEmitter.emit('permission-error', permissionError);
         });
 
-      // Google Sheets Submission
-      // Using 'no-cors' mode is recommended for Google Apps Script POST requests from the browser
-      fetch(GOOGLE_SHEET_WEBAPP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(googleSheetPayload),
-      }).catch(err => console.log("Google Sheets sync failed, but data was saved to database."));
+      // Start Google Sheets Submission via Server Action
+      const sheetResult = await appendToLeadsSheet(googleSheetPayload);
+
+      if (!sheetResult.success) {
+        console.warn("Google Sheets sync failed:", sheetResult.error);
+        // We still consider the submission successful if Firestore worked, but notify via console
+      }
+
+      await firestorePromise;
 
       toast({
         title: "Inquiry Sent",
@@ -119,7 +116,7 @@ export function ContactUs() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <h2 className="text-primary font-bold text-sm uppercase tracking-widest mb-3">Get In Touch</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6">Contact</h3>
+            <h3 className="text-3xl md:text-[52px] font-bold text-primary mb-6">Contact</h3>
             <p className="text-lg text-foreground/70 mb-12">
               Have questions about our products or need a custom quote? Our technical support team is ready to assist you.
             </p>
@@ -127,7 +124,7 @@ export function ContactUs() {
             <div className="space-y-8">
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <MapPin className="size-9 md:size-6" />
+                  <MapPin className="size-6" />
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Factory</h4>
@@ -136,7 +133,7 @@ export function ContactUs() {
               </div>
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <MapPin className="size-9 md:size-6" />
+                  <MapPin className="size-6" />
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Ware house</h4>
@@ -145,7 +142,7 @@ export function ContactUs() {
               </div>
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <Phone className="size-9 md:size-6" />
+                  <Phone className="size-6" />
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Mobile</h4>
@@ -154,7 +151,7 @@ export function ContactUs() {
               </div>
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <Mail className="size-9 md:size-6" />
+                  <Mail className="size-6" />
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Email</h4>
@@ -188,13 +185,13 @@ export function ContactUs() {
               <Button type="submit" className="w-full h-14 text-lg font-bold" variant="secondary" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="mr-2 animate-spin size-8" />
+                    <Loader2 className="mr-2 animate-spin size-5" />
                     Sending...
                   </>
                 ) : (
                   <>
                     Send Message
-                    <Send className="ml-2 size-8 md:size-5" />
+                    <Send className="ml-2 size-5" />
                   </>
                 )}
               </Button>
