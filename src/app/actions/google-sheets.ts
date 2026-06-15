@@ -17,14 +17,15 @@ export interface SheetRow {
 export async function appendToLeadsSheet(data: SheetRow) {
   try {
     const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
-    // Vercel often escapes newlines in env vars. This regex ensures they are interpreted correctly as real newlines.
-    const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    // Vercel and other cloud providers often escape newlines. This regex ensures they are interpreted correctly.
+    const rawPrivateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY;
+    const privateKey = rawPrivateKey ? rawPrivateKey.replace(/\\n/g, '\n') : undefined;
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     const tabName = process.env.GOOGLE_SHEET_TAB_NAME || 'Leads';
 
     if (!clientEmail || !privateKey || !spreadsheetId) {
       console.error('GOOGLE SHEETS: Missing environment variables.');
-      throw new Error('Server configuration error. Please check environment variables.');
+      throw new Error('Server configuration error. Please ensure all GOOGLE_SHEETS environment variables are set in Vercel.');
     }
 
     const serviceAccountAuth = new JWT({
@@ -39,20 +40,33 @@ export async function appendToLeadsSheet(data: SheetRow) {
     const sheet = doc.sheetsByTitle[tabName];
     if (!sheet) {
       const availableTabs = doc.sheetsByIndex.map(s => s.title).join(', ');
-      throw new Error(`Tab "${tabName}" not found. Available tabs are: ${availableTabs}`);
+      throw new Error(`Tab "${tabName}" not found in spreadsheet. Available tabs: ${availableTabs}`);
     }
+
+    /**
+     * SANITIZATION LOGIC:
+     * Google Sheets treats strings starting with '+' or '=' as formulas.
+     * To store phone numbers correctly, we prefix them with a single quote (').
+     * This quote is invisible in the sheet but forces the cell to stay as text.
+     */
+    const sanitizeForSheet = (val: string) => {
+      const stringVal = String(val || '').trim();
+      if (stringVal.startsWith('+') || stringVal.startsWith('=')) {
+        return `'${stringVal}`;
+      }
+      return stringVal;
+    };
 
     // Row 1 of your sheet MUST have these exact headers: Full Name | Email Address | Phone Number | Your Message
     await sheet.addRow({
       "Full Name": data["Full Name"],
       "Email Address": data["Email Address"],
-      "Phone Number": data["Phone Number"],
+      "Phone Number": sanitizeForSheet(data["Phone Number"]),
       "Your Message": data["Your Message"]
     });
 
     return { success: true };
   } catch (error: any) {
-    // Log complete error for server-side debugging (visible in Vercel logs)
     console.error('GOOGLE SHEETS API ERROR:', error.message);
     return { success: false, error: error.message };
   }
