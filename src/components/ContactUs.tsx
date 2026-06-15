@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,10 +12,12 @@ import { signInAnonymously } from "firebase/auth";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError } from "@/firebase/errors";
 import { appendToLeadsSheet } from "@/app/actions/google-sheets";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function ContactUs() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastError, setLastError] = useState<string | null>(null);
   const db = useFirestore();
   const auth = useAuth();
   const { user } = useUser();
@@ -23,7 +25,9 @@ export function ContactUs() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
+    
     setIsSubmitting(true);
+    setLastError(null);
     
     const targetEmail = "contact@amcovalves.com";
     const formData = new FormData(e.target as HTMLFormElement);
@@ -32,33 +36,12 @@ export function ContactUs() {
     const phone = formData.get("phone") as string;
     const messageContent = formData.get("message") as string;
     
-    // 1. Data for Firestore (Internal backup and tracking)
     const submissionData = {
-      to: targetEmail,
-      message: {
-        subject: `New Inquiry from ${name}`,
-        html: `
-          <h3>New Website Inquiry</h3>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Message:</strong></p>
-          <p>${messageContent}</p>
-          <br>
-          <p><em>Submitted via AMCO Valves Contact Form</em></p>
-        `,
-      },
-      metadata: {
-        name,
-        email,
-        phone,
-        message: messageContent,
-      },
+      metadata: { name, email, phone, message: messageContent },
       submittedAt: serverTimestamp(),
       status: "New",
     };
 
-    // 2. Data for Google Sheets with strictly mapped headers
     const googleSheetPayload = {
       "Full Name": name,
       "Email Address": email,
@@ -67,43 +50,39 @@ export function ContactUs() {
     };
 
     try {
-      // Ensure user is signed in for Firestore intake
+      // 1. Ensure Auth for Firestore
       if (!user) {
         await signInAnonymously(auth);
       }
 
-      // Start Firestore Submission (non-blocking)
+      // 2. Submit to Firestore (Internal backup)
       const firestorePromise = addDoc(collection(db, "contactSubmissions"), submissionData)
-        .catch(async (error) => {
-          const permissionError = new FirestorePermissionError({
-            path: "contactSubmissions",
-            operation: "create",
-            requestResourceData: submissionData,
-          });
-          errorEmitter.emit('permission-error', permissionError);
+        .catch((error) => {
+          console.error("Firestore backup failed:", error);
         });
 
-      // Start Google Sheets Submission via Server Action
+      // 3. Submit to Google Sheets (Primary target)
       const sheetResult = await appendToLeadsSheet(googleSheetPayload);
 
       if (!sheetResult.success) {
-        console.warn("Google Sheets sync failed:", sheetResult.error);
-        // We still consider the submission successful if Firestore worked for redundancy,
-        // but the user would see a toast if both fail.
+        throw new Error(sheetResult.error || "Failed to store data in Google Sheets.");
       }
 
       await firestorePromise;
 
       toast({
-        title: "Inquiry Sent",
-        description: `Thank you for reaching out. We will get back to you at ${email} soon.`,
+        title: "Inquiry Sent Successfully",
+        description: `Your message has been recorded. We will contact you at ${email} shortly.`,
       });
+      
       (e.target as HTMLFormElement).reset();
     } catch (error: any) {
+      console.error("Form Submission Error:", error);
+      setLastError(error.message || "An unexpected error occurred.");
       toast({
         variant: "destructive",
-        title: "Submission Error",
-        description: "We couldn't process your inquiry. Please check your connection.",
+        title: "Submission Failed",
+        description: "Please check your connection and try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -133,15 +112,6 @@ export function ContactUs() {
               </div>
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <MapPin className="size-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary mb-1">Ware house</h4>
-                  <p className="text-foreground/60 text-sm">104-A East Mada church street, Royapuram, Chennai, 600013</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
                   <Phone className="size-6" />
                 </div>
                 <div>
@@ -164,6 +134,16 @@ export function ContactUs() {
           <div className="relative">
             <div className="absolute inset-0 bg-primary/5 rounded-3xl -rotate-2" />
             <form onSubmit={handleSubmit} className="relative bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-border space-y-6">
+              {lastError && (
+                <Alert variant="destructive" className="bg-destructive/5">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertTitle>Submission Issue</AlertTitle>
+                  <AlertDescription className="text-xs">
+                    {lastError}. Please ensure the spreadsheet is shared with the service account.
+                  </AlertDescription>
+                </Alert>
+              )}
+              
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-primary">Full Name</label>
