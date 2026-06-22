@@ -243,7 +243,7 @@ export default function TwoPieceScrewedBallValvePage() {
                 <div className="grid grid-cols-1 gap-8">
                   <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl">
                     <Image
-                      src="/2pc-screwed-1.webp"
+                      src="/products/2pc-screwed-1.webp"
                       alt="2PC Design Screwed Valve View 1"
                       fill
                       className="object-contain p-6"
@@ -251,7 +251,7 @@ export default function TwoPieceScrewedBallValvePage() {
                   </div>
                   <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl">
                     <Image
-                      src="/2pc-screwed-2.webp"
+                      src="/products/2pc-screwed-2.webp"
                       alt="2PC Design Screwed Valve View 2"
                       fill
                       className="object-contain p-6"
