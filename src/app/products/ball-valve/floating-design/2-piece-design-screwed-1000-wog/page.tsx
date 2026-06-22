@@ -8,13 +8,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function TwoPieceScrewedBallValvePage() {
   const slug = "ball-valve/floating-design/2-piece-design-screwed-1000-wog";
   const product = productSpecsRegistry[slug];
-  const productImage = PlaceHolderImages.find(img => img.id === "product-2") || PlaceHolderImages[0];
 
   if (!product) return null;
 
@@ -106,10 +104,10 @@ export default function TwoPieceScrewedBallValvePage() {
         <div className="container mx-auto">
           {/* Top Section: Overview */}
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
+            {/* Left Column: Image - UPDATED TO USE LOCAL FILE */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="/products/2pc-screwed-1.webp"
                 alt="2 Piece Screwed Ball Valve"
                 fill
                 className="object-contain p-8 md:p-12"
@@ -147,7 +145,7 @@ export default function TwoPieceScrewedBallValvePage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section - Moved here between overview and tables */}
+          {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               Visual Showcase
@@ -222,7 +220,7 @@ export default function TwoPieceScrewedBallValvePage() {
               </div>
             </div>
 
-            {/* Dimension Table Section - 1000 PSI - Now Full Width */}
+            {/* Dimension Table Section - 1000 PSI */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
