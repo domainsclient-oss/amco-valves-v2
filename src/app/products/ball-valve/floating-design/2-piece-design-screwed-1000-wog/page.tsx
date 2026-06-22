@@ -104,6 +104,7 @@ export default function TwoPieceScrewedBallValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
+          {/* Top Section: Overview */}
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
@@ -142,6 +143,31 @@ export default function TwoPieceScrewedBallValvePage() {
                 >
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Section - Moved here between overview and tables */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              Visual Showcase
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/2pc-screwed-1.webp"
+                  alt="2PC Design Screwed Valve View 1"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/2pc-screwed-2.webp"
+                  alt="2PC Design Screwed Valve View 2"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
             </div>
           </div>
@@ -196,68 +222,41 @@ export default function TwoPieceScrewedBallValvePage() {
               </div>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Dimension Table Section - 1000 PSI */}
-              <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-                <div className="overflow-x-auto">
-                  <Table className="border-collapse w-full">
-                    <TableHeader>
-                      <TableRow className="bg-white border-b border-neutral-300">
-                        <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">2PC DESIGN SCREWED 1000 PSI</TableHead>
+            {/* Dimension Table Section - 1000 PSI - Now Full Width */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">2PC DESIGN SCREWED 1000 PSI</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-2"></TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary py-2 uppercase">FULL BORE</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">LEVER LENGTH</TableHead>
+                      <TableHead className="text-center font-bold text-primary text-xs uppercase">HEIGHT</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table1000PSI.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.l}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.h}</TableCell>
                       </TableRow>
-                      <TableRow className="bg-white border-b border-neutral-300">
-                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-2"></TableHead>
-                        <TableHead colSpan={3} className="text-center font-bold text-primary py-2 uppercase">FULL BORE</TableHead>
-                      </TableRow>
-                      <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">FACE TO FACE</TableHead>
-                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">LEVER LENGTH</TableHead>
-                        <TableHead className="text-center font-bold text-primary text-xs uppercase">HEIGHT</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {table1000PSI.map((row, idx) => (
-                        <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.l}</TableCell>
-                          <TableCell className="text-center text-foreground/80">{row.h}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                  <p className="text-sm text-foreground/50 font-medium italic text-right">
-                    All dimensions are in mm
-                  </p>
-                </div>
+                    ))}
+                  </TableBody>
+                </Table>
               </div>
-
-              {/* Visual Showcase - Side Images */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-                  Visual Showcase
-                </div>
-                <div className="grid grid-cols-1 gap-8">
-                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl">
-                    <Image
-                      src="/products/2pc-screwed-1.webp"
-                      alt="2PC Design Screwed Valve View 1"
-                      fill
-                      className="object-contain p-6"
-                    />
-                  </div>
-                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl">
-                    <Image
-                      src="/products/2pc-screwed-2.webp"
-                      alt="2PC Design Screwed Valve View 2"
-                      fill
-                      className="object-contain p-6"
-                    />
-                  </div>
-                </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
