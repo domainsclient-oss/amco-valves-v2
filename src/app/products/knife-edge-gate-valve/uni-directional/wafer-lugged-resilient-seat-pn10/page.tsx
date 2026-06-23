@@ -6,7 +6,6 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function ProductDetailPage() {
@@ -14,7 +13,11 @@ export default function ProductDetailPage() {
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
-    { label: "Material of construction(Bill of material)", value: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS" },
+    { 
+      label: "Material of construction", 
+      subLabel: "(Bill of material)",
+      value: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS" 
+    },
     { label: "Seat", value: "PTFE / EPDM / VITON" },
     { label: "End connection", value: "Wafer Lugged to suit ANSI flanges" },
     { label: "Pressure rating", value: "PN10#" },
@@ -23,18 +26,13 @@ export default function ProductDetailPage() {
     { label: "Testing Standard", value: "MSS SP 81" },
   ];
 
-  // Starting table from DN50 as per the new size range in the screenshot
-  const dimensionData = [
-    { size: "DN50", l: "127.5", ob: "38", l1: "190", h: "82", threading: "2\"", socketweld: "61.1", torque: "34", weight: "4.20" },
-  ];
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
       ["Model", "Wafer Lugged Resilient seat PN10#"],
-      ...specs.map(spec => [spec.label, spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
     ];
     
     const csvContent = [
@@ -75,7 +73,7 @@ export default function ProductDetailPage() {
       {/* Main Content */}
       <section className="py-12 md:py-20" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto px-6 md:px-[63px]">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -93,14 +91,12 @@ export default function ProductDetailPage() {
                 {specs.map((spec, i) => (
                   <div key={i} className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 border-b border-border pb-4 last:border-none">
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
-                      {spec.label.includes("(") ? (
+                      {spec.label}
+                      {spec.subLabel && (
                         <>
-                          {spec.label.split("(")[0]}
                           <br />
-                          ({spec.label.split("(")[1]}
+                          <span className="text-[10px] md:text-xs opacity-70">{spec.subLabel}</span>
                         </>
-                      ) : (
-                        spec.label
                       )} :
                     </span>
                     <span className="text-foreground/70 text-sm md:text-base leading-relaxed">
@@ -122,55 +118,6 @@ export default function ProductDetailPage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
-            </div>
-          </div>
-
-          {/* Dimension Table Section */}
-          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-            <div className="bg-[#09193e] p-6 md:p-8 text-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest">DIMENSIONS (mm)</h2>
-            </div>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader className="bg-neutral-100">
-                  <TableRow className="border-b border-neutral-200">
-                    <TableHead className="font-bold text-primary text-center uppercase py-6">SIZE</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">L</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">ØB</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">L1</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">H</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">THREADING BSP/NPT (F)</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">SOCKETWELD BORE ØA</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">TORQUE (Nm)</TableHead>
-                    <TableHead className="font-bold text-primary text-center uppercase">WEIGHT Kg.</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {dimensionData.map((row, idx) => (
-                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                      <TableCell className="font-bold text-primary text-center py-5">{row.size}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.l}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.ob}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.l1}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.h}</TableCell>
-                      <TableCell className="text-center text-foreground/80 font-medium">{row.threading}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.socketweld}</TableCell>
-                      <TableCell className="text-center text-foreground/80">{row.torque}</TableCell>
-                      <TableCell className="text-center text-foreground/80 font-semibold">{row.weight}</TableCell>
-                    </TableRow>
-                  ))}
-                  <TableRow className="bg-neutral-50/50">
-                    <TableCell colSpan={9} className="text-center py-8 text-foreground/50 font-medium">
-                      Detailed dimensions for larger sizes available upon request.
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
-            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-              <p className="text-sm text-foreground/50 font-medium italic text-right">
-                All dimensions are in mm
-              </p>
             </div>
           </div>
         </div>
