@@ -16,7 +16,7 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
   const specs = [
     { label: "Size", value: "DN15 - DN300" },
     { label: "Material of construction", value: "WCB / CF8 / CF8M / CF3 / CF3M" },
-    { label: "End connection", value: "FLANGED / BW" },
+    { label: "End connection", value: "FLANGED" },
     { label: "Pressure rating", value: "150# / 300# / 600#" },
     { label: "Mode of operation", value: "Lever, Gear, Actuator" },
     { label: "Manufacturing Standard", value: "ISO 17292 / API 6D / API 608" },
@@ -158,20 +158,18 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={6} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">2PC FLANGED END 150#</TableHead>
-                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 300#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">2PC FLANGED END 150#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 300#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (FL)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (BW)</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Outer Dia</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Hole Dia x No. of Holes</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">PCD</TableHead>
                       
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (FL)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (BW)</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Outer Dia</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Hole Dia x No. of Holes</TableHead>
                       <TableHead className="text-center font-bold text-primary text-xs py-4 leading-tight uppercase">PCD</TableHead>
@@ -182,14 +180,12 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150fl}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.pcd150}</TableCell>
                         
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300fl}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d300}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
                         <TableCell className="text-center text-foreground/80">{row.pcd300}</TableCell>
@@ -211,12 +207,11 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 600#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 600#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">FACE TO FACE (FL)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">FACE TO FACE (BW)</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">OUTER DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">HOLE DIA X NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary text-xs py-4 leading-tight uppercase">PCD</TableHead>
@@ -227,7 +222,6 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h}</TableCell>
                         <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
