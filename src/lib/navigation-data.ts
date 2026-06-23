@@ -30,7 +30,7 @@ export const productNavigationData: MegaMenuCategory[] = [
       {
         name: "Bi Directional",
         products: [
-          { name: "Wafer Lugged Resilient seat PN10#", href: "#products" },
+          { name: "Wafer Lugged Resilient seat PN10#", href: "/products/knife-edge-gate-valve/bi-directional/wafer-lugged-resilient-seat-pn10" },
           { name: "Flanged Resilient seat PN10#", href: "#products" }
         ]
       }
