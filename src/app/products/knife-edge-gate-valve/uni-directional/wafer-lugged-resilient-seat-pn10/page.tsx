@@ -13,24 +13,18 @@ export default function ProductDetailPage() {
   const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
 
   const specs = [
-    { label: "Size", value: "DN 8 to DN 50 (Custom sizes available)" },
-    { label: "Material of construction", value: "Cast Iron / WCB / SS 304 / SS 316 (Bill of material provided on request)" },
-    { label: "End connection", value: "Wafer Lugged" },
-    { label: "Pressure rating", value: "PN10" },
-    { label: "Mode of operation", value: "Manual Handwheel / Pneumatic / Electric Actuator" },
-    { label: "Manufacturing Standard", value: "MSS SP-81" },
-    { label: "Testing Standard", value: "API 598" },
-    { label: "Approvals", value: "ISO 9001:2015, IBR, CE (On Request)" },
+    { label: "Size", value: "DN50 - DN1000" },
+    { label: "Material of construction(Bill of material)", value: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS" },
+    { label: "Seat", value: "PTFE / EPDM / VITON" },
+    { label: "End connection", value: "Wafer Lugged to suit ANSI flanges" },
+    { label: "Pressure rating", value: "PN10#" },
+    { label: "Mode of operation", value: "Wheel, Gear, Actuator" },
+    { label: "Manufacturing Standard", value: "MSS SP 81" },
+    { label: "Testing Standard", value: "MSS SP 81" },
   ];
 
+  // Starting table from DN50 as per the new size range in the screenshot
   const dimensionData = [
-    { size: "DN 8", l: "67", ob: "10", l1: "131", h: "44", threading: "1/4\"", socketweld: "14.1", torque: "6.5", weight: "0.65" },
-    { size: "DN10", l: "67", ob: "10", l1: "131", h: "44", threading: "3/8\"", socketweld: "17.5", torque: "6.5", weight: "0.65" },
-    { size: "DN15", l: "67", ob: "10", l1: "131", h: "44", threading: "1/2\"", socketweld: "21.7", torque: "6.5", weight: "0.65" },
-    { size: "DN20", l: "73", ob: "13", l1: "131", h: "47", threading: "3/4\"", socketweld: "27", torque: "6.5", weight: "0.90" },
-    { size: "DN25", l: "95.5", ob: "19", l1: "155", h: "62", threading: "1\"", socketweld: "33.8", torque: "9", weight: "1.60" },
-    { size: "DN32", l: "102", ob: "25", l1: "155", h: "66", threading: "1 1/4\"", socketweld: "42.5", torque: "16", weight: "2.30" },
-    { size: "DN40", l: "115.5", ob: "32", l1: "190", h: "80", threading: "1 1/2\"", socketweld: "48.6", torque: "23", weight: "3.20" },
     { size: "DN50", l: "127.5", ob: "38", l1: "190", h: "82", threading: "2\"", socketweld: "61.1", torque: "34", weight: "4.20" },
   ];
 
@@ -157,6 +151,11 @@ export default function ProductDetailPage() {
                       <TableCell className="text-center text-foreground/80 font-semibold">{row.weight}</TableCell>
                     </TableRow>
                   ))}
+                  <TableRow className="bg-neutral-50/50">
+                    <TableCell colSpan={9} className="text-center py-8 text-foreground/50 font-medium">
+                      Detailed dimensions for larger sizes available upon request.
+                    </TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </div>
