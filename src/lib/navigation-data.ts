@@ -21,7 +21,7 @@ export const productNavigationData: MegaMenuCategory[] = [
         name: "Uni Directional",
         products: [
           { name: "Wafer Lugged Resilient seat PN10#", href: "/products/knife-edge-gate-valve/uni-directional/wafer-lugged-resilient-seat-pn10" },
-          { name: "Wafer Lugged Metal seat PN10#", href: "#products" },
+          { name: "Wafer Lugged Metal seat PN10#", href: "/products/knife-edge-gate-valve/uni-directional/wafer-lugged-metal-seat-pn10" },
           { name: "Flanged Resilient seat PN10#", href: "#products" },
           { name: "Flanged Metal seat PN10#", href: "#products" }
         ]
