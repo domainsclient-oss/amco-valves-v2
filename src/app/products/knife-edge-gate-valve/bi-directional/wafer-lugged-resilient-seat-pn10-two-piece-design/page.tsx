@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -33,7 +32,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Bi Directional"],
-      ["Model", "Wafer Lugged Resilient seat PN10# - Two piece design"],
+      ["Model", "2 piece design Wafer Lugged Resilient seat PN10#"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
     ];
     
@@ -68,7 +67,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
             <span className="text-primary">Knife Edge Gate Valve</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider">Bi Directional</p>
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">Wafer Lugged Resilient seat PN10# - Two piece design</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">2 piece design Wafer Lugged Resilient seat PN10#</h1>
         </div>
       </div>
 
@@ -80,7 +79,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Bi-Directional Wafer Two Piece Knife Edge Gate Valve"
+                alt="2 piece design Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
