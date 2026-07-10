@@ -101,7 +101,7 @@ export const productNavigationData: MegaMenuCategory[] = [
         products: [
           { name: "Wafer type Resilient seat PN16#", href: "/products/dual-plate-check-valve/wafer-type-resilient-seat-pn16" },
           { name: "Lugged type Resilient seat PN16#", href: "/products/dual-plate-check-valve/lugged-type-resilient-seat-pn16" },
-          { name: "Flanged type Resilient PN16#", href: "#products" },
+          { name: "Flanged type Resilient seat PN16#", href: "/products/dual-plate-check-valve/flanged-type-resilient-seat-pn16" },
           { name: "Wafer type Retainerless Metal seat 150#, 300#", href: "#products" },
           { name: "Lugged type Retainerless Metal seat 150#, 300#", href: "#products" },
           { name: "Flanged type Retainerless Metal 150#, 300#", href: "#products" }
