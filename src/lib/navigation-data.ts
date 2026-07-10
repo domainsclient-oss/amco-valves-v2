@@ -115,7 +115,7 @@ export const productNavigationData: MegaMenuCategory[] = [
       {
         name: "Valve Range",
         products: [
-          { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "#products" },
+          { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
           { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "#products" },
           { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#Screwed / Socket weld / Butt weld", href: "#products" },
           { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "#products" },
