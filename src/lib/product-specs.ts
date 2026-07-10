@@ -354,4 +354,17 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 602",
     testingStandard: "API 598",
   },
+  "ibr-valves/small-bore-forged-lift-check-valve": {
+    title: "Small Bore Forged IBR & Non IBR Lift check Valve",
+    subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
+    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+    subCategory: "Small Bore Forged",
+    size: "DN15 - DN50",
+    material: "A105 / F304/L / F316/L / F11 / F22",
+    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
+    modeOfOperation: "Automatic",
+    manufacturingStandard: "API 602",
+    testingStandard: "API 598",
+  },
 };
