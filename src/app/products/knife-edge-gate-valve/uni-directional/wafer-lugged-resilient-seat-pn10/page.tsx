@@ -203,7 +203,7 @@ export default function WaferLuggedResilientSeatPage() {
 
           <div className="space-y-12">
             {/* Table 1: General Dimensions */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-5xl mx-auto">
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
                   <TableHeader>
@@ -280,7 +280,7 @@ export default function WaferLuggedResilientSeatPage() {
             </div>
 
             {/* Table 3: To Suit PN16# Flanges */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-3xl mx-auto">
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
                   <TableHeader>
