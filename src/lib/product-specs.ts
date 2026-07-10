@@ -224,4 +224,20 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
   },
+
+  // Gate Valve for Fire Fighting
+  "gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16": {
+    title: "Fire Fighting Range",
+    subTitle: "Double Flanged Soft seated Gate Valve for fire fighting application",
+    category: "Gate valve for fire fighting",
+    subCategory: "Fire Fighting Range",
+    size: "DN50 - DN400",
+    material: "DI",
+    seat: "PTFE",
+    endConnection: "Flanged ANSI 150#",
+    pressureRating: "PN16",
+    modeOfOperation: "Bare shaft, Wheel, Gear box, Actuator",
+    manufacturingStandard: "API 600",
+    testingStandard: "API 598",
+  },
 };

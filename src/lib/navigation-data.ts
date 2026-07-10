@@ -88,7 +88,7 @@ export const productNavigationData: MegaMenuCategory[] = [
       {
         name: "Fire Fighting Range",
         products: [
-          { name: "Soft seated (PTFE) Double Flanged PN16# Wheel, Bare Shaft and Motor Operated", href: "#products" }
+          { name: "Soft seated (PTFE) Double Flanged PN16# Wheel, Bare Shaft and Motor Operated", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
         ]
       }
     ]
