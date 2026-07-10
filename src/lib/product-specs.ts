@@ -329,8 +329,21 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // IBR & Non IBR Valves
   "ibr-valves/small-bore-forged-gate-valve": {
-    title: "1. Small Bore Forged IBR & Non IBR Gate Valve",
+    title: "Small Bore Forged IBR & Non IBR Gate Valve",
     subTitle: "Small Bore Forged IBR & Non IBR Gate Valve",
+    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+    subCategory: "Small Bore Forged",
+    size: "DN15 - DN50",
+    material: "A105 / F304/L / F316/L / F11 / F22",
+    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
+    modeOfOperation: "Wheel",
+    manufacturingStandard: "API 602",
+    testingStandard: "API 598",
+  },
+  "ibr-valves/small-bore-forged-globe-valve": {
+    title: "Small Bore Forged IBR & Non IBR Globe Valve",
+    subTitle: "Small Bore Forged IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
     subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
