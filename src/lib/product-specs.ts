@@ -312,4 +312,18 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 594",
     testingStandard: "API 598",
   },
+  "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
+    title: "Check Valve Range",
+    subTitle: "Flanged type Retainerless Metal",
+    category: "Dual plate check valve",
+    subCategory: "Check Valve Range",
+    size: "DN50 - DN800",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
+    seat: "Welded / Integral",
+    endConnection: "Flanged to suit ANSI flanges",
+    pressureRating: "150# / 300#",
+    modeOfOperation: "Automatic",
+    manufacturingStandard: "API 594",
+    testingStandard: "API 598",
+  },
 };
