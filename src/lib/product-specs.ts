@@ -393,4 +393,17 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 623",
     testingStandard: "API 598",
   },
+  "ibr-valves/large-bore-cast-swing-check-valve": {
+    title: "Large Bore Cast IBR & Non IBR Swing check Valve",
+    subTitle: "Large Bore Cast IBR & Non IBR Swing check Valve",
+    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+    subCategory: "Large Bore Cast",
+    size: "DN50 - DN600",
+    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
+    endConnection: "Flanged / Butt weld",
+    pressureRating: "150#, 300#, 600#",
+    modeOfOperation: "Automatic",
+    manufacturingStandard: "API 600",
+    testingStandard: "API 598",
+  },
 };
