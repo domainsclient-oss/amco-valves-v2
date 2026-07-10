@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function BiDirectionalWaferTwoPiecePage() {
@@ -25,6 +27,50 @@ export default function BiDirectionalWaferTwoPiecePage() {
     { label: "Mode of operation", value: "Wheel, Gear, Actuator" },
     { label: "Manufacturing Standard", value: "MSS SP 81" },
     { label: "Testing Standard", value: "MSS SP 81" },
+  ];
+
+  const generalDimensions = [
+    { size: "DN50", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN65", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN80", f: "57", bore: "82", h: "410", wheel: "225" },
+    { size: "DN100", f: "58", bore: "102", h: "455", wheel: "300" },
+    { size: "DN125", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN150", f: "63", bore: "152", h: "530", wheel: "300" },
+    { size: "DN200", f: "78", bore: "200", h: "640", wheel: "300" },
+    { size: "DN250", f: "78", bore: "250", h: "740", wheel: "300" },
+    { size: "DN300", f: "84", bore: "300", h: "830", wheel: "300" },
+    { size: "DN350", f: "84", bore: "334", h: "930", wheel: "450" },
+    { size: "DN400", f: "97", bore: "380", h: "1080", wheel: "450" },
+    { size: "DN450", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN500", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN600", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN750", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN800", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN900", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
+  ];
+
+  const flangeSuitability = [
+    { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
+    { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
+    { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
+    { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
+    { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
+    { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
+    { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
+    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
+    { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
+    { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
+    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
+    { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
+    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
+    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
+    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
+    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
+    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
+    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
   const handleDownloadCSV = () => {
@@ -57,8 +103,8 @@ export default function BiDirectionalWaferTwoPiecePage() {
       <Navbar />
       
       {/* Breadcrumbs */}
-      <div className="bg-neutral-50 pt-32 pb-8">
-        <div className="container mx-auto px-6 md:px-[63px]">
+      <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
+        <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
@@ -72,9 +118,9 @@ export default function BiDirectionalWaferTwoPiecePage() {
       </div>
 
       {/* Main Content */}
-      <section className="py-12 md:py-20" style={{ backgroundColor: '#f3f3f3bd' }}>
-        <div className="container mx-auto px-6 md:px-[63px]">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+      <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -96,7 +142,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs opacity-70 uppercase font-normal">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
@@ -118,6 +164,85 @@ export default function BiDirectionalWaferTwoPiecePage() {
                 >
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            {/* Table 1: General Dimensions */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">WAFER LUGGED BI-DIRECTIONAL TWO PIECE DESIGN RESILIENT SEAT KGV</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (LINED)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HEIGHT (CENTER TO TOP)</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">WHEEL DIA</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {generalDimensions.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Table 2: Flange Suitability (150# & PN10#) */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">SIZE</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangeSuitability.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.nPN10}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
