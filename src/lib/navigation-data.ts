@@ -159,5 +159,18 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       }
     ]
+  },
+  {
+    title: "Strainer",
+    subCategories: [
+      {
+        name: "Strainer Range",
+        products: [
+          { name: "Y Strainer - Screwed", href: "/products/strainer/y-strainer-screwed" },
+          { name: "Y Strainer - Flanged", href: "/products/strainer/y-strainer-flanged" },
+          { name: "Basket Strainer - Flanged", href: "/products/strainer/basket-strainer-flanged" }
+        ]
+      }
+    ]
   }
 ];

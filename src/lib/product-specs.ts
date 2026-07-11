@@ -7,13 +7,14 @@ export interface ProductSpecs {
   material: string;
   endConnection: string;
   pressureRating: string;
-  modeOfOperation: string;
+  modeOfOperation?: string;
   manufacturingStandard: string;
   testingStandard: string;
   seatLiner?: string;
   seat?: string;
   lining?: string;
   diaphragm?: string;
+  mesh?: string;
 }
 
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
@@ -480,5 +481,46 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Wheel",
     manufacturingStandard: "BS 5156",
     testingStandard: "API 6755 Part I",
+  },
+
+  // Strainer
+  "strainer/y-strainer-screwed": {
+    title: "Strainer",
+    subTitle: "Y Strainer - Screwed",
+    category: "Strainer",
+    subCategory: "Y Strainer - Screwed",
+    size: "DN15 - DN50",
+    material: "CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
+    mesh: "All sizes available",
+    endConnection: "Screwed",
+    pressureRating: "PN40",
+    manufacturingStandard: "ASME B16.34",
+    testingStandard: "API 598",
+  },
+  "strainer/y-strainer-flanged": {
+    title: "Strainer",
+    subTitle: "Y Strainer - Flanged",
+    category: "Strainer",
+    subCategory: "Y Strainer - Flanged",
+    size: "DN25 - DN400",
+    material: "CI / DI / CS / SS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
+    mesh: "All sizes available",
+    endConnection: "Flanged to ANSI 150# / 300#",
+    pressureRating: "PN10 / PN16 / 150# / 300#",
+    manufacturingStandard: "ASME B16.34",
+    testingStandard: "API 598",
+  },
+  "strainer/basket-strainer-flanged": {
+    title: "Strainer",
+    subTitle: "Basket Strainer - Flanged",
+    category: "Strainer",
+    subCategory: "Basket Strainer - Flanged",
+    size: "DN50 - DN600",
+    material: "CS / SS / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
+    mesh: "All sizes available",
+    endConnection: "Flanged ANSI 150# / 300# / 600#",
+    pressureRating: "150# / 300# / 600#",
+    manufacturingStandard: "ASME B16.34",
+    testingStandard: "API 598",
   },
 };
