@@ -124,8 +124,7 @@ export function Navbar() {
         onMouseEnter={() => setIsMegaMenuOpen(true)}
         onMouseLeave={() => setIsMegaMenuOpen(false)}
       >
-        <div className="bg-white shadow-2xl border-t border-border">
-          {/* Added horizontal padding to prevent sticking to screen edges */}
+        <div className="bg-white shadow-2xl border-t border-border overflow-y-auto max-h-[calc(100vh-100px)] scrollbar-thin scrollbar-thumb-secondary/20">
           <div className="max-w-[1440px] mx-auto p-8 lg:p-10 px-12 md:px-24">
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
               {productNavigationData.map((category) => (
