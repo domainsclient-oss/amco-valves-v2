@@ -95,6 +95,22 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
+    title: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+    subCategories: [
+      {
+        name: "Valve Range",
+        products: [
+          { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
+          { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
+          { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
+          { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
+          { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
+          { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
+        ]
+      }
+    ]
+  },
+  {
     title: "Gate Valve for Fire Fighting",
     subCategories: [
       {
@@ -117,22 +133,6 @@ export const productNavigationData: MegaMenuCategory[] = [
           { name: "Wafer type Retainerless Metal seat 150#, 300#", href: "/products/dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300" },
           { name: "Lugged type Retainerless Metal seat 150#, 300#", href: "/products/dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300" },
           { name: "Flanged type Retainerless Metal 150#, 300#", href: "/products/dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300" }
-        ]
-      }
-    ]
-  },
-  {
-    title: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategories: [
-      {
-        name: "Valve Range",
-        products: [
-          { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
-          { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
-          { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
-          { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
-          { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
-          { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
         ]
       }
     ]
