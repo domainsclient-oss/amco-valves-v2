@@ -12,6 +12,8 @@ export interface ProductSpecs {
   testingStandard: string;
   seatLiner?: string;
   seat?: string;
+  lining?: string;
+  diaphragm?: string;
 }
 
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
@@ -461,5 +463,22 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "Manufacturer / API 609",
     testingStandard: "API 598",
+  },
+
+  // Diaphragm Valve
+  "diaphragm-valve/unlined-and-lined": {
+    title: "Diaphragm Valve - Unlined and Lined",
+    subTitle: "Diaphragm Valve - Unlined and Lined",
+    category: "Diaphragm Valve",
+    subCategory: "Unlined and Lined",
+    size: "DN15 - DN150",
+    material: "CI / DI / CS / SS",
+    lining: "Unlined / Natural Rubber Lined / Ebonite Lined",
+    diaphragm: "EPDM / Neoprene",
+    endConnection: "Flanged ANSI 150#",
+    pressureRating: "PN16",
+    modeOfOperation: "Wheel",
+    manufacturingStandard: "BS 5156",
+    testingStandard: "API 6755 Part I",
   },
 };

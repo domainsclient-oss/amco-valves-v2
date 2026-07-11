@@ -148,5 +148,16 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       }
     ]
+  },
+  {
+    title: "Diaphragm Valve - Unlined and Lined",
+    subCategories: [
+      {
+        name: "Valve Range",
+        products: [
+          { name: "Diaphragm Valve - Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
+        ]
+      }
+    ]
   }
 ];
