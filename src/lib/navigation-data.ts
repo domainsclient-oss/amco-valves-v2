@@ -136,5 +136,17 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       }
     ]
+  },
+  {
+    title: "Damper valve",
+    subCategories: [
+      {
+        name: "Damper Valve Range",
+        products: [
+          { name: "Wafer type Damper valve - seatless design", href: "/products/damper-valve/wafer-type-seatless-design" },
+          { name: "Flanged type Damper valve - seatless design", href: "/products/damper-valve/flanged-type-seatless-design" }
+        ]
+      }
+    ]
   }
 ];

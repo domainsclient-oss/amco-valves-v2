@@ -434,4 +434,32 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 600",
     testingStandard: "API 598",
   },
+
+  // Damper Valve
+  "damper-valve/wafer-type-seatless-design": {
+    title: "Damper valve",
+    subTitle: "Wafer type Damper valve - seatless design",
+    category: "Damper valve",
+    subCategory: "Wafer type",
+    size: "DN50 - DN1000",
+    material: "CS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
+    endConnection: "Wafer to suit ANSI / ND Flanges",
+    pressureRating: "0.5 bar (max)",
+    modeOfOperation: "Lever, Gear, Actuator",
+    manufacturingStandard: "Manufacturer / API 609",
+    testingStandard: "API 598",
+  },
+  "damper-valve/flanged-type-seatless-design": {
+    title: "Damper valve",
+    subTitle: "Flanged type Damper valve - seatless design",
+    category: "Damper valve",
+    subCategory: "Flanged type",
+    size: "DN50 - DN1000",
+    material: "CS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
+    endConnection: "Flanged to suit ANSI / ND Flanges",
+    pressureRating: "0.5 bar (max)",
+    modeOfOperation: "Lever, Gear, Actuator",
+    manufacturingStandard: "Manufacturer / API 609",
+    testingStandard: "API 598",
+  },
 };
