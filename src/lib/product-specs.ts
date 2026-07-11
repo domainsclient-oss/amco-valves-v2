@@ -15,6 +15,34 @@ export interface ProductSpecs {
 }
 
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
+  // Piston Valve
+  "piston-valve/small-bore-non-ibr-ibr": {
+    title: "Piston Valve - Seatless & Glandless",
+    subTitle: "Small bore Non IBR & IBR Piston Valve",
+    category: "Piston Valve - Seatless & Glandless",
+    subCategory: "Small bore",
+    size: "DN15 - DN50",
+    material: "A105 / F304/L / F316/L",
+    endConnection: "Screwed / Socket weld",
+    pressureRating: "800#",
+    modeOfOperation: "Wheel",
+    manufacturingStandard: "API 602",
+    testingStandard: "API 598",
+  },
+  "piston-valve/large-bore-non-ibr-ibr": {
+    title: "Piston Valve - Seatless & Glandless",
+    subTitle: "Large bore Non IBR & IBR Piston Valve",
+    category: "Piston Valve - Seatless & Glandless",
+    subCategory: "Large bore",
+    size: "DN25 - DN200",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M",
+    endConnection: "Flanged ANSI 150# / 300#",
+    pressureRating: "150# / 300#",
+    modeOfOperation: "Wheel",
+    manufacturingStandard: "API 602",
+    testingStandard: "API 598",
+  },
+
   // Ball Valve - Floating Design
   "ball-valve/floating-design/2-piece-design-screwed-1000-wog": {
     title: "Floating Design",

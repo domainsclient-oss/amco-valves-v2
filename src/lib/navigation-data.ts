@@ -83,6 +83,18 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
+    title: "Piston Valve - Seatless & Glandless",
+    subCategories: [
+      {
+        name: "Piston Valve Range",
+        products: [
+          { name: "Small bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/small-bore-non-ibr-ibr" },
+          { name: "Large bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/large-bore-non-ibr-ibr" }
+        ]
+      }
+    ]
+  },
+  {
     title: "Gate Valve for Fire Fighting",
     subCategories: [
       {
