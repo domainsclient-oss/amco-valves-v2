@@ -84,6 +84,27 @@ export default function FlangedDamperValvePage() {
     { size: "SERIES B FLANGE", o150: "1175", h150: "29 X 44", p150: "1120.8", o300: "1275", h300: "44 X 40", p300: "1190.6" },
   ];
 
+  const flangePN10_16Data = [
+    { size: "DN50", o10: "165", h10: "18 X 4", p10: "125", o16: "165", h16: "18 X 4", p16: "125" },
+    { size: "DN65", o10: "185", h10: "18 X 4", p10: "145", o16: "185", h16: "18 X 4", p16: "145" },
+    { size: "DN80", o10: "200", h10: "18 X 8", p10: "160", o16: "200", h16: "18 X 8", p16: "160" },
+    { size: "DN100", o10: "220", h10: "18 X 8", p10: "180", o16: "220", h16: "18 X 8", p16: "180" },
+    { size: "DN125", o10: "250", h10: "18 X 8", p10: "210", o16: "250", h16: "18 X 8", p16: "210" },
+    { size: "DN150", o10: "285", h10: "22 X 8", p10: "240", o16: "285", h16: "22 X 8", p16: "240" },
+    { size: "DN200", o10: "340", h10: "22 X 8", p10: "295", o16: "340", h16: "22 X 12", p16: "295" },
+    { size: "DN250", o10: "395", h10: "22 X 12", p10: "350", o16: "405", h16: "26 X 12", p16: "355" },
+    { size: "DN300", o10: "445", h10: "22 X 12", p10: "400", o16: "460", h16: "26 X 12", p16: "410" },
+    { size: "DN350", o10: "505", h10: "22 X 16", p10: "460", o16: "520", h16: "26 X 16", p16: "470" },
+    { size: "DN400", o10: "565", h10: "26 X 16", p10: "515", o16: "580", h16: "30 X 16", p16: "525" },
+    { size: "DN450", o10: "615", h10: "26 X 20", p10: "565", o16: "640", h16: "30 X 20", p16: "585" },
+    { size: "DN500", o10: "670", h10: "26 X 20", p10: "620", o16: "715", h16: "33 X 20", p16: "650" },
+    { size: "DN600", o10: "780", h10: "30 X 20", p10: "725", o16: "840", h16: "36 X 20", p16: "770" },
+    { size: "DN700", o10: "895", h10: "30 X 24", p10: "840", o16: "895", h16: "36 X 24", p16: "840" },
+    { size: "DN800", o10: "1015", h10: "33 X 24", p10: "950", o16: "1015", h16: "39 X 24", p16: "950" },
+    { size: "DN900", o10: "1115", h10: "33 X 24", p10: "1050", o16: "1115", h16: "36 X 28", p16: "1050" },
+    { size: "DN1000", o10: "1230", h10: "36 X 28", p10: "1160", o16: "1230", h16: "42 X 28", p16: "1170" },
+  ];
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
@@ -95,9 +116,13 @@ export default function FlangedDamperValvePage() {
       ["Size", "Face To Face", "Center To Top", "Center To Bottom"],
       ...dimensionData.map(row => [row.size, row.ftf, row.top, row.bottom]),
       [""],
-      ["Flange Suitability Table"],
+      ["Flange Suitability Table (150# & 300#)"],
       ["Size", "Outer Dia (150#)", "Hole Pattern (150#)", "PCD (150#)", "Outer Dia (300#)", "Hole Pattern (300#)", "PCD (300#)"],
-      ...flangeSuitabilityData.map(row => row.isHeader ? [row.size] : [row.size, row.o150, row.h150, row.p150, row.o300, row.h300, row.p300])
+      ...flangeSuitabilityData.map(row => row.isHeader ? [row.size] : [row.size, row.o150, row.h150, row.p150, row.o300, row.h300, row.p300]),
+      [""],
+      ["Flange Suitability Table (PN10 & PN16)"],
+      ["Size", "Outer Dia (PN10)", "Hole Pattern (PN10)", "PCD (PN10)", "Outer Dia (PN16)", "Hole Pattern (PN16)", "PCD (PN16)"],
+      ...flangePN10_16Data.map(row => [row.size, row.o10, row.h10, row.p10, row.o16, row.h16, row.p16])
     ];
     
     const csvContent = [
@@ -223,7 +248,7 @@ export default function FlangedDamperValvePage() {
               </div>
             </div>
 
-            {/* Table 2: Flange Suitability */}
+            {/* Table 2: Flange Suitability (150# & 300#) */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-7xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
@@ -272,6 +297,55 @@ export default function FlangedDamperValvePage() {
                         </TableRow>
                       );
                     })}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Table 3: Flange Suitability (PN10 & PN16) */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-7xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={4} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-lg">
+                        FLANGED PN10 FLANGES
+                      </TableHead>
+                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        FLANGED PN16 FLANGES
+                      </TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase">PCD</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangePN10_16Data.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p10}</TableCell>
+                        
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o16}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h16}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.p16}</TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </div>
