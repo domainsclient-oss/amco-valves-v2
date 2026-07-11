@@ -15,6 +15,7 @@ export interface ProductSpecs {
   lining?: string;
   diaphragm?: string;
   mesh?: string;
+  oRings?: string;
 }
 
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
@@ -521,6 +522,45 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "Flanged ANSI 150# / 300# / 600#",
     pressureRating: "150# / 300# / 600#",
     manufacturingStandard: "ASME B16.34",
+    testingStandard: "API 598",
+  },
+
+  // Wafer check valve
+  "wafer-check-valve/resilient-seat": {
+    title: "Wafer check valve",
+    subTitle: "Wafer type check valve Resilient seat",
+    category: "Wafer check valve",
+    subCategory: "Resilient seat",
+    size: "DN25 - DN1000",
+    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
+    oRings: "BUNA N / EPDM / VITON / SILICON / PTFE",
+    endConnection: "Wafer to suit ANSI flanges",
+    pressureRating: "PN16",
+    manufacturingStandard: "API 594",
+    testingStandard: "API 598",
+  },
+  "wafer-check-valve/metal-seat": {
+    title: "Wafer check valve",
+    subTitle: "Wafer type check valve Metal seat",
+    category: "Wafer check valve",
+    subCategory: "Metal seat",
+    size: "DN25 - DN1000",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
+    endConnection: "Serrated Wafer to suit ANSI flanges",
+    pressureRating: "PN16",
+    manufacturingStandard: "API 594",
+    testingStandard: "API 598",
+  },
+  "wafer-check-valve/resilient-seat-spring-type": {
+    title: "Wafer check valve",
+    subTitle: "Wafer type check valve Resilient seat - Spring type",
+    category: "Wafer check valve",
+    subCategory: "Spring type",
+    size: "DN25 - DN1000",
+    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
+    endConnection: "Serrated Wafer to suit ANSI flanges",
+    pressureRating: "PN16",
+    manufacturingStandard: "API 594",
     testingStandard: "API 598",
   },
 };

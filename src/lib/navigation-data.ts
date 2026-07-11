@@ -172,5 +172,18 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       }
     ]
+  },
+  {
+    title: "Wafer check valve",
+    subCategories: [
+      {
+        name: "Wafer Check Range",
+        products: [
+          { name: "Wafer type check valve Resilient seat", href: "/products/wafer-check-valve/resilient-seat" },
+          { name: "Wafer type check valve Metal seat", href: "/products/wafer-check-valve/metal-seat" },
+          { name: "Wafer type check valve Resilient seat - Spring type", href: "/products/wafer-check-valve/resilient-seat-spring-type" }
+        ]
+      }
+    ]
   }
 ];
