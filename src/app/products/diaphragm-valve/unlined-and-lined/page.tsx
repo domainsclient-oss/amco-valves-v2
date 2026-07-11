@@ -6,6 +6,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -33,13 +34,31 @@ export default function DiaphragmValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const dimensionData = [
+    { size: "DN15", ftfU: "108", ftfL: "114", outer: "90", hole: "Ø 16 X 4", pcd: "60.3" },
+    { size: "DN20", ftfU: "117", ftfL: "123", outer: "100", hole: "Ø 16 X 4", pcd: "69.9" },
+    { size: "DN25", ftfU: "127", ftfL: "133", outer: "110", hole: "Ø 16 X 4", pcd: "79.4" },
+    { size: "DN32", ftfU: "146", ftfL: "152", outer: "115", hole: "Ø 16 X 4", pcd: "88.9" },
+    { size: "DN40", ftfU: "159", ftfL: "165", outer: "125", hole: "Ø 16 X 4", pcd: "98.4" },
+    { size: "DN50", ftfU: "190", ftfL: "196", outer: "150", hole: "Ø 19 X 4", pcd: "120.7" },
+    { size: "DN65", ftfU: "216", ftfL: "222", outer: "180", hole: "Ø 19 X 4", pcd: "139.7" },
+    { size: "DN80", ftfU: "254", ftfL: "260", outer: "190", hole: "Ø 19 X 4", pcd: "152.4" },
+    { size: "DN100", ftfU: "305", ftfL: "313", outer: "230", hole: "Ø 19 X 8", pcd: "190.5" },
+    { size: "DN125", ftfU: "356", ftfL: "364", outer: "255", hole: "Ø 22.2 X 8", pcd: "215.9" },
+    { size: "DN150", ftfU: "406", ftfL: "414", outer: "280", hole: "Ø 22.2 X 8", pcd: "241.3" },
+  ];
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
       ["Sub Category", product.subCategory],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["Dimension Table (150#)"],
+      ["Size", "Face to Face (Unlined)", "Face to Face (Lined)", "Outer Dia", "Hole pattern", "PCD"],
+      ...dimensionData.map(row => [row.size, row.ftfU, row.ftfL, row.outer, row.hole, row.pcd])
     ];
     
     const csvContent = [
@@ -80,7 +99,7 @@ export default function DiaphragmValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -125,6 +144,46 @@ export default function DiaphragmValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      DIAPHRAGM VALVE FLANGED 150#
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (UNLINED)</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (LINED)</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftfU}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftfL}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.outer}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
