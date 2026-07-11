@@ -6,6 +6,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -31,12 +32,40 @@ export default function WaferResilientSeatCheckValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const dimensionData = [
+    { size: "DN25", ftf: "16", bore: "14", outer: "65" },
+    { size: "DN40", ftf: "19", bore: "24", outer: "84" },
+    { size: "DN50", ftf: "19", bore: "30", outer: "103" },
+    { size: "DN65", ftf: "19", bore: "40", outer: "123" },
+    { size: "DN80", ftf: "19", bore: "52", outer: "136" },
+    { size: "DN100", ftf: "19", bore: "71", outer: "174" },
+    { size: "DN125", ftf: "19", bore: "93", outer: "195" },
+    { size: "DN150", ftf: "19", bore: "114", outer: "220" },
+    { size: "DN200", ftf: "28", bore: "157", outer: "278" },
+    { size: "DN250", ftf: "28", bore: "195", outer: "340" },
+    { size: "DN300", ftf: "38", bore: "230", outer: "410" },
+    { size: "DN350", ftf: "41", bore: "270", outer: "451" },
+    { size: "DN400", ftf: "51", bore: "310", outer: "511" },
+    { size: "DN450", ftf: "51", bore: "360", outer: "549" },
+    { size: "DN500", ftf: "60", bore: "406", outer: "606" },
+    { size: "DN600", ftf: "70", bore: "490", outer: "714" },
+    { size: "DN650", ftf: "80", bore: "530", outer: "722" },
+    { size: "DN700", ftf: "89", bore: "570", outer: "773" },
+    { size: "DN800", ftf: "102", bore: "652", outer: "878" },
+    { size: "DN900", ftf: "127", bore: "715", outer: "984" },
+    { size: "DN1000", ftf: "-", bore: "-", outer: "-" },
+  ];
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["Dimension Table"],
+      ["Size", "Face To Face", "Bore Dia", "Outer Dia"],
+      ...dimensionData.map(row => [row.size, row.ftf, row.bore, row.outer])
     ];
     
     const csvContent = [
@@ -77,7 +106,7 @@ export default function WaferResilientSeatCheckValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -122,6 +151,42 @@ export default function WaferResilientSeatCheckValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      WAFER CHECK VALVE RESILIENT SEAT
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE DIA</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">OUTER DIA</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.outer}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
