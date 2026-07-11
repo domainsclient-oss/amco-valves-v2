@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -31,12 +33,38 @@ export default function FlangedDamperValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const dimensionData = [
+    { size: "DN50", ftf: "30", top: "135", bottom: "76" },
+    { size: "DN65", ftf: "30", top: "142", bottom: "84" },
+    { size: "DN80", ftf: "30", top: "150", bottom: "92" },
+    { size: "DN100", ftf: "30", top: "160", bottom: "102" },
+    { size: "DN125", ftf: "30", top: "172", bottom: "114" },
+    { size: "DN150", ftf: "34", top: "195", bottom: "135" },
+    { size: "DN200", ftf: "34", top: "220", bottom: "160" },
+    { size: "DN250", ftf: "38", top: "250", bottom: "195" },
+    { size: "DN300", ftf: "38", top: "275", bottom: "220" },
+    { size: "DN350", ftf: "38", top: "293", bottom: "248" },
+    { size: "DN400", ftf: "50", top: "315", bottom: "300" },
+    { size: "DN450", ftf: "50", top: "340", bottom: "325" },
+    { size: "DN500", ftf: "50", top: "365", bottom: "360" },
+    { size: "DN600", ftf: "50", top: "415", bottom: "425" },
+    { size: "DN650", ftf: "50", top: "440", bottom: "450" },
+    { size: "DN700", ftf: "50", top: "465", bottom: "475" },
+    { size: "DN800", ftf: "50", top: "515", bottom: "530" },
+    { size: "DN900", ftf: "65", top: "585", bottom: "590" },
+    { size: "DN1000", ftf: "65", top: "635", bottom: "645" },
+  ];
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["Dimension Table"],
+      ["Size", "Face To Face", "Center To Top", "Center To Bottom"],
+      ...dimensionData.map(row => [row.size, row.ftf, row.top, row.bottom])
     ];
     
     const csvContent = [
@@ -77,7 +105,7 @@ export default function FlangedDamperValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -122,6 +150,42 @@ export default function FlangedDamperValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      FLANGED TYPE DAMPER VALVE
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">CENTER TO TOP</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">CENTER TO BOTTOM</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.top}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.bottom}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
