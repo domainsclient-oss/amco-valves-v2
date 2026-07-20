@@ -714,4 +714,19 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 599",
     testingStandard: "API 598",
   },
+
+  // PTFE Lined Wafer Check Valve
+  "ptfe-lined-wafer-check-valve": {
+    title: "PTFE Lined Wafer Check Valve",
+    subTitle: "PTFE Lined Wafer Check Valve",
+    category: "PTFE Lined Wafer Check Valve",
+    subCategory: "Lined Valves",
+    size: "DN50 - DN300",
+    material: "CS / SS / Alloy steel",
+    lining: "PFA / FEP",
+    endConnection: "Wafer to suit ANSI 150# flanges",
+    pressureRating: "PN10 / 16",
+    manufacturingStandard: "Manufacturer Std",
+    testingStandard: "API 598",
+  },
 };
