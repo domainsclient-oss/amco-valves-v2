@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -8,10 +7,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function WaferSemiLuggedButterflyValvePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-3") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "Wafer Semi Lugged Butterfly Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN40 - DN1000" },
@@ -227,7 +228,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                     <TableRow className="bg-white border-b border-neutral-300">
                       <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">WAFER BFV</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">FACE TO FACE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
@@ -267,7 +268,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
@@ -308,7 +309,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT PN16# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT JIS 5K FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
@@ -347,7 +348,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                     <TableRow className="bg-white border-b border-neutral-300">
                       <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">TO SUIT JIS 10K FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
