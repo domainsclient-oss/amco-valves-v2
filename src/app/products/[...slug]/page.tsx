@@ -8,7 +8,6 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function DynamicProductDetailPage() {
@@ -34,19 +33,27 @@ export default function DynamicProductDetailPage() {
     );
   }
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
     { label: "Material of construction", value: product.material },
     ...(product.seatLiner ? [{ label: "Seat / Liner", value: product.seatLiner }] : []),
     ...(product.seat ? [{ label: "Seat", value: product.seat }] : []),
+    ...(product.lining ? [{ label: "Lining", value: product.lining }] : []),
+    ...(product.diaphragm ? [{ label: "Diaphragm", value: product.diaphragm }] : []),
+    ...(product.mesh ? [{ label: "Mesh", value: product.mesh }] : []),
+    ...(product.oRings ? [{ label: "O rings", value: product.oRings }] : []),
+    ...(product.sleeve ? [{ label: "Sleeve", value: product.sleeve }] : []),
     { label: "End connection", value: product.endConnection },
     { label: "Pressure rating", value: product.pressureRating },
     { label: "Mode of operation", value: product.modeOfOperation },
     { label: "Manufacturing Standard", value: product.manufacturingStandard },
     { label: "Testing Standard", value: product.testingStandard },
-  ];
+  ].filter(s => s.value !== undefined);
 
   const handleDownloadCSV = () => {
     if (!product) return;
