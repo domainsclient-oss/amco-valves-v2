@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -8,10 +7,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function FullLuggedButterflyValvePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-3") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "Full Lugged Butterfly Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN40 - DN1000" },
@@ -227,11 +228,11 @@ export default function FullLuggedButterflyValvePage() {
                     <TableRow className="bg-white border-b border-neutral-300">
                       <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">LUGGED BFV</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">CENTER TO BOTTOM HEIGHT</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">CENTER TO BOTTOM HEIGHT</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">LEVER LENGTH</TableHead>
                       <TableHead className="text-center font-bold text-primary text-xs uppercase leading-tight">GEAR OPERATION WHEEL DIA</TableHead>
                     </TableRow>
@@ -267,8 +268,8 @@ export default function FullLuggedButterflyValvePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs">PCD</TableHead>
@@ -278,7 +279,7 @@ export default function FullLuggedButterflyValvePage() {
                   </TableHeader>
                   <TableBody>
                     {flangeSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
@@ -308,8 +309,8 @@ export default function FullLuggedButterflyValvePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT PN16# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT JIS 5K FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs">PCD</TableHead>
@@ -319,7 +320,7 @@ export default function FullLuggedButterflyValvePage() {
                   </TableHeader>
                   <TableBody>
                     {pn16JisSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p16}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d16}</TableCell>
@@ -347,8 +348,8 @@ export default function FullLuggedButterflyValvePage() {
                     <TableRow className="bg-white border-b border-neutral-300">
                       <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">TO SUIT JIS 10K FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary text-xs uppercase">NO. OF HOLES</TableHead>
@@ -356,7 +357,7 @@ export default function FullLuggedButterflyValvePage() {
                   </TableHeader>
                   <TableBody>
                     {jis10kSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dia}</TableCell>
