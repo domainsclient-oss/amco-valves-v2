@@ -8,10 +8,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function TwoPieceFloatingFlangedBallValvePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-2") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "2 Piece Flanged Ball Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN15 - DN300" },
@@ -24,8 +26,6 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
   ];
 
   const table150_300 = [
-    { size: "DN8", f150fl: "", f150bw: "", d150: "", h150: "", pcd150: "", f300fl: "", f300bw: "", d300: "", h300: "", pcd300: "" },
-    { size: "DN10", f150fl: "", f150bw: "", d150: "", h150: "", pcd150: "", f300fl: "", f300bw: "", d300: "", h300: "", pcd300: "" },
     { size: "DN15", f150fl: "108", f150bw: "140", d150: "90", h150: "Ø 16 X 4", pcd150: "60.3", f300fl: "140", f300bw: "140", d300: "95", h300: "Ø 16 X 4", pcd300: "66.7" },
     { size: "DN20", f150fl: "117", f150bw: "152", d150: "100", h150: "Ø 16 X 4", pcd150: "69.9", f300fl: "152", f300bw: "152", d300: "115", h300: "Ø 19 X 4", pcd300: "82.6" },
     { size: "DN25", f150fl: "127", f150bw: "165", d150: "110", h150: "Ø 16 X 4", pcd150: "79.4", f300fl: "165", f300bw: "165", d300: "125", h300: "Ø 19 X 4", pcd300: "88.9" },
@@ -43,8 +43,6 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
   ];
 
   const table600 = [
-    { size: "DN8", f: "-", bw: "-", d: "-", h: "-", pcd: "-" },
-    { size: "DN10", f: "-", bw: "-", d: "-", h: "-", pcd: "-" },
     { size: "DN15", f: "165", bw: "165", d: "95", h: "Ø 16 X 4", pcd: "66.7" },
     { size: "DN20", f: "190", bw: "190", d: "115", h: "Ø 19 X 4", pcd: "82.6" },
     { size: "DN25", f: "216", bw: "216", d: "125", h: "Ø 19 X 4", pcd: "88.9" },
