@@ -9,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function YStrainerScrewedPage() {
   const slug = "strainer/y-strainer-screwed";
@@ -17,7 +16,10 @@ export default function YStrainerScrewedPage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
