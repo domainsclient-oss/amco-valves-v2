@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -8,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function WaferRetainerlessMetalSeatCheckValvePage() {
   const slug = "dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300";
@@ -16,7 +16,10 @@ export default function WaferRetainerlessMetalSeatCheckValvePage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
@@ -147,9 +150,11 @@ export default function WaferRetainerlessMetalSeatCheckValvePage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -160,6 +165,7 @@ export default function WaferRetainerlessMetalSeatCheckValvePage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (

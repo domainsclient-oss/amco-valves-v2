@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -8,7 +9,6 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function LuggedRetainerlessMetalSeatCheckValvePage() {
   const slug = "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300";
@@ -16,7 +16,10 @@ export default function LuggedRetainerlessMetalSeatCheckValvePage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
@@ -133,7 +136,6 @@ export default function LuggedRetainerlessMetalSeatCheckValvePage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
