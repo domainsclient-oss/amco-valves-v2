@@ -592,4 +592,19 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "-",
     testingStandard: "API 598",
   },
+
+  // High Pressure Needle Valve
+  "high-pressure-needle-valve": {
+    title: "High Pressure Needle Valve",
+    subTitle: "High Pressure Needle Valve",
+    category: "High Pressure Needle Valve",
+    subCategory: "High Pressure Range",
+    size: "DN06 - DN50",
+    material: "CS / SS / Alloy steel / Duplex SS",
+    endConnection: "BSPF / NPTF / SW",
+    pressureRating: "3000 PSI / 6000 PSI",
+    modeOfOperation: "Lever",
+    manufacturingStandard: "-",
+    testingStandard: "API 598",
+  },
 };
