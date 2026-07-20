@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -10,7 +11,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Trunnion2PiecePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-4") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "2 Piece Trunnion Ball Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN100 - DN300" },
