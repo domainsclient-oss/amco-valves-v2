@@ -8,10 +8,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function DoubleFlangedButterflyValvePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-3") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "Double Flanged Butterfly Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN40 - DN1000" },
@@ -185,7 +187,7 @@ export default function DoubleFlangedButterflyValvePage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Double Flanged Butterfly Valve"
+                alt={productImage.description}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -384,4 +386,3 @@ export default function DoubleFlangedButterflyValvePage() {
     </main>
   );
 }
-
