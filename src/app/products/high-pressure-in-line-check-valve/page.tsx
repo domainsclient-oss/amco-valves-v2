@@ -7,7 +7,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function HighPressureInLineCheckValvePage() {
   const slug = "high-pressure-in-line-check-valve";
@@ -28,7 +27,10 @@ export default function HighPressureInLineCheckValvePage() {
     );
   }
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-8") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
