@@ -607,4 +607,19 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "-",
     testingStandard: "API 598",
   },
+
+  // PTFE Lined Ball Check Valve
+  "ptfe-lined-ball-check-valve": {
+    title: "PTFE Lined Ball Check Valve",
+    subTitle: "PTFE Lined Ball Check Valve",
+    category: "PTFE Lined Ball Check Valve",
+    subCategory: "Lined Valves",
+    size: "DN50 - DN300",
+    material: "CS / SS / Alloy steel",
+    lining: "PFA / FEP",
+    endConnection: "Flanged 150#",
+    pressureRating: "PN10 / 16",
+    manufacturingStandard: "Manufacturer Std",
+    testingStandard: "API 598",
+  },
 };
