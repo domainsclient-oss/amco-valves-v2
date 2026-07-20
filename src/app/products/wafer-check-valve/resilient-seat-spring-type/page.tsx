@@ -8,7 +8,6 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function WaferSpringCheckValvePage() {
   const slug = "wafer-check-valve/resilient-seat-spring-type";
@@ -16,7 +15,10 @@ export default function WaferSpringCheckValvePage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
@@ -97,7 +99,7 @@ export default function WaferSpringCheckValvePage() {
       [""],
       ["Flange Suitability Table (150# & 300#)"],
       ["Size", "Outer Dia (150#)", "Hole Pattern (150#)", "PCD (150#)", "Outer Dia (300#)", "Hole Pattern (300#)", "PCD (300#)"],
-      ...flangeSuitabilityData.map(row => row.isHeader ? [row.size] : [row.size, row.o150, row.h150, row.p150, row.o300, row.h300, row.p300])
+      ...flangeSuitabilityData.map(row => (row as any).isHeader ? [row.size] : [row.size, (row as any).o150, (row as any).h150, (row as any).p150, (row as any).o300, (row as any).h300, (row as any).p300])
     ];
     
     const csvContent = [
@@ -250,25 +252,25 @@ export default function WaferSpringCheckValvePage() {
                   </TableHeader>
                   <TableBody>
                     {flangeSuitabilityData.map((row, idx) => {
-                      if (row.isHeader) {
+                      if ((row as any).isHeader) {
                         return (
                           <TableRow key={idx} className="bg-primary/5">
                             <TableCell colSpan={4} className="font-bold text-primary py-2 text-center border-r border-neutral-100">{row.size}</TableCell>
-                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center">{row.size}</TableCell>
+                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center">{(row as any).size}</TableCell>
                           </TableRow>
                         );
                       }
                       return (
                         <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
                           <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p150}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o150}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h150}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{(row as any).p150}</TableCell>
                           
                           <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o300}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
-                          <TableCell className="text-center text-foreground/80">{row.p300}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o300}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h300}</TableCell>
+                          <TableCell className="text-center text-foreground/80">{(row as any).p300}</TableCell>
                         </TableRow>
                       );
                     })}
