@@ -7,7 +7,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function PtfeLinedBallValvePage() {
   const slug = "ptfe-lined-ball-valve";
@@ -27,8 +26,6 @@ export default function PtfeLinedBallValvePage() {
       </main>
     );
   }
-
-  const productImage = PlaceHolderImages.find(img => img.id === "product-3") || PlaceHolderImages[0];
 
   const specs = [
     { label: "Size", value: product.size },
@@ -91,7 +88,7 @@ export default function PtfeLinedBallValvePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="/dummy-image.png"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
