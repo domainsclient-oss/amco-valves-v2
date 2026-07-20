@@ -622,4 +622,20 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "Manufacturer Std",
     testingStandard: "API 598",
   },
+
+  // PTFE Lined Ball Valve
+  "ptfe-lined-ball-valve": {
+    title: "PTFE Lined Ball Valve",
+    subTitle: "PTFE Lined Ball Valve",
+    category: "PTFE Lined Ball Valve",
+    subCategory: "Lined Valves",
+    size: "DN50 - DN250",
+    material: "CS / SS / Alloy steel",
+    lining: "PFA / FEP",
+    endConnection: "Flanged",
+    pressureRating: "150#",
+    modeOfOperation: "Lever, Gear, Actuator",
+    manufacturingStandard: "ISO 17292",
+    testingStandard: "API 598",
+  },
 };
