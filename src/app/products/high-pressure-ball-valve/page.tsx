@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -7,7 +8,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function HighPressureBallValvePage() {
   const slug = "high-pressure-ball-valve";
@@ -28,8 +28,6 @@ export default function HighPressureBallValvePage() {
     );
   }
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-8") || PlaceHolderImages[0];
-
   const specs = [
     { label: "Size", value: product.size },
     { label: "Material of construction", value: product.material },
@@ -41,6 +39,8 @@ export default function HighPressureBallValvePage() {
   ];
 
   const handleDownloadCSV = () => {
+    if (!product) return;
+    
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
@@ -90,7 +90,7 @@ export default function HighPressureBallValvePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="/dummy-image.png"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
