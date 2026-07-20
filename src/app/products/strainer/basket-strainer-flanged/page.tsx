@@ -15,7 +15,10 @@ export default function BasketStrainerFlangedPage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
