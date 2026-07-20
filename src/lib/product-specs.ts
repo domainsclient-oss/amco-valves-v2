@@ -578,4 +578,18 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "-",
     testingStandard: "API 598",
   },
+
+  // High Pressure In-Line Check Valve
+  "high-pressure-in-line-check-valve": {
+    title: "High Pressure In-Line Check Valve",
+    subTitle: "High Pressure In-Line Check Valve",
+    category: "High Pressure In-Line Check Valve",
+    subCategory: "High Pressure Range",
+    size: "DN06 - DN50",
+    material: "CS / SS / Alloy steel / Duplex SS",
+    endConnection: "BSPF / NPTF",
+    pressureRating: "3000 PSI / 6000 PSI",
+    manufacturingStandard: "-",
+    testingStandard: "API 598",
+  },
 };
