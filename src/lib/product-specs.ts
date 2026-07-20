@@ -563,4 +563,19 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 594",
     testingStandard: "API 598",
   },
+
+  // High Pressure Ball Valve
+  "high-pressure-ball-valve": {
+    title: "High Pressure Ball Valve",
+    subTitle: "High Pressure Ball Valve",
+    category: "High Pressure Ball Valve",
+    subCategory: "High Pressure Range",
+    size: "DN06 - DN50",
+    material: "CS / SS / Alloy steel / Duplex SS",
+    endConnection: "BSPF / NPTF / SW (extended nipple)",
+    pressureRating: "3000 PSI / 6000 PSI",
+    modeOfOperation: "Lever, Actuator",
+    manufacturingStandard: "-",
+    testingStandard: "API 598",
+  },
 };
