@@ -15,43 +15,6 @@ export default function PtfeSleevedFlangedPlugValvePage() {
 
   if (!product) return null;
 
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
-
-  const specs = [
-    { label: "Size", value: product.size },
-    { label: "Material of construction", value: product.material },
-    { label: "Sleeve", value: product.sleeve },
-    { label: "End connection", value: product.endConnection },
-    { label: "Pressure rating", value: product.pressureRating },
-    { label: "Mode of operation", value: product.modeOfOperation },
-    { label: "Manufacturing Standard", value: product.manufacturingStandard },
-    { label: "Testing Standard", value: product.testingStandard },
-  ];
-
-  const handleDownloadCSV = () => {
-    const headers = ["Specification", "Details"];
-    const rows = [
-      ["Product", product.subTitle],
-      ["Category", product.category],
-      ...specs.map(spec => [spec.label, spec.value])
-    ];
-    
-    const csvContent = [
-      headers.join(","),
-      ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
-    ].join("\n");
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `PTFE_Sleeved_Flanged_Plug_Valve_Data_Sheet.csv`);
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
@@ -75,7 +38,7 @@ export default function PtfeSleevedFlangedPlugValvePage() {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="/dummy-image.png"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
@@ -85,7 +48,16 @@ export default function PtfeSleevedFlangedPlugValvePage() {
 
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
-                {specs.map((spec, i) => (
+                {[
+                  { label: "Size", value: product.size },
+                  { label: "Material of construction", value: product.material },
+                  { label: "Sleeve", value: product.sleeve },
+                  { label: "End connection", value: product.endConnection },
+                  { label: "Pressure rating", value: product.pressureRating },
+                  { label: "Mode of operation", value: product.modeOfOperation },
+                  { label: "Manufacturing Standard", value: product.manufacturingStandard },
+                  { label: "Testing Standard", value: product.testingStandard },
+                ].map((spec, i) => (
                   <div key={i} className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 border-b border-border pb-4 last:border-none">
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
                       {spec.label} :
@@ -104,7 +76,27 @@ export default function PtfeSleevedFlangedPlugValvePage() {
                 <Button 
                   variant="outline" 
                   className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors"
-                  onClick={handleDownloadCSV}
+                  onClick={() => {
+                    const headers = ["Specification", "Details"];
+                    const rows = [
+                      ["Product", product.subTitle],
+                      ["Category", product.category],
+                      ["Size", product.size],
+                      ["Material", product.material],
+                      ["Sleeve", product.sleeve],
+                      ["End Connection", product.endConnection],
+                      ["Pressure Rating", product.pressureRating],
+                      ["Manufacturing Std", product.manufacturingStandard],
+                      ["Testing Std", product.testingStandard],
+                    ];
+                    const csvContent = [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", url);
+                    link.setAttribute("download", `PTFE_Sleeved_Flanged_Plug_Valve_Data_Sheet.csv`);
+                    link.click();
+                  }}
                 >
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
