@@ -8,10 +8,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function BiDirectionalWaferLuggedResilientSeatPage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
@@ -135,7 +137,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">

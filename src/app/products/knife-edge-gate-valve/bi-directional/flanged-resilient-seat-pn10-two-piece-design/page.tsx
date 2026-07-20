@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -6,10 +7,12 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function BiDirectionalFlangedTwoPiecePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "2 piece design Bi-Directional Flanged Resilient Seat Knife Edge Gate Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },

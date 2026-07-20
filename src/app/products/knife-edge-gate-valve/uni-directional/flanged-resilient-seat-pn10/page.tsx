@@ -8,10 +8,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function FlangedResilientSeatKnifeEdgeGateValvePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "Flanged Resilient Seat Knife Edge Gate Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
@@ -100,7 +102,19 @@ export default function FlangedResilientSeatKnifeEdgeGateValvePage() {
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
       ["Model", "Flanged Resilient seat PN10#"],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["General Dimensions (mm)"],
+      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
+      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
+      [""],
+      ["Flange Suitability"],
+      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
+      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10]),
+      [""],
+      ["To Suit PN16# Flanges"],
+      ["Size", "PCD", "Hole Dia", "No. of Holes"],
+      ...pn16Suitability.map(row => [row.size, row.p, row.d, row.n])
     ];
     
     const csvContent = [
@@ -163,7 +177,7 @@ export default function FlangedResilientSeatKnifeEdgeGateValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs opacity-70 uppercase font-normal">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>

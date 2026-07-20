@@ -8,10 +8,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function BiDirectionalWaferTwoPiecePage() {
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: "2 piece design Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
+  };
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
