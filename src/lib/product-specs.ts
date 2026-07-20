@@ -668,4 +668,20 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "API 609",
     testingStandard: "API 598",
   },
+
+  // PTFE Lined Diaphragm Valve
+  "ptfe-lined-diaphragm-valve": {
+    title: "PTFE Lined Diaphragm Valve",
+    subTitle: "PTFE Lined Diaphragm Valve",
+    category: "PTFE Lined Diaphragm Valve",
+    subCategory: "Lined Valves",
+    size: "DN25 - DN100",
+    material: "DI / CS / SS",
+    lining: "PFA / FEP",
+    endConnection: "Flanged 150#",
+    pressureRating: "PN10",
+    modeOfOperation: "Wheel",
+    manufacturingStandard: "BS EN 13397:2002",
+    testingStandard: "BS EN 12266",
+  },
 };
