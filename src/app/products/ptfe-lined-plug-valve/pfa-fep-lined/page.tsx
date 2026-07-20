@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -7,7 +8,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function PfaFepLinedPlugValvePage() {
   const slug = "ptfe-lined-plug-valve/pfa-fep-lined";
@@ -27,8 +27,6 @@ export default function PfaFepLinedPlugValvePage() {
       </main>
     );
   }
-
-  const productImage = PlaceHolderImages.find(img => img.id === "product-1") || PlaceHolderImages[0];
 
   const specs = [
     { label: "Size", value: product.size },
@@ -88,7 +86,7 @@ export default function PfaFepLinedPlugValvePage() {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="/dummy-image.png"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
