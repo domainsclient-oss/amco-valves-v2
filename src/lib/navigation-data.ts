@@ -45,6 +45,43 @@ export const productNavigationData: MegaMenuCategory[][] = [
   ],
   [
     {
+      title: "Butterfly Valve",
+      subCategories: [
+        {
+          name: "Centric Disc Design",
+          products: [
+            { name: "Wafer Semi Lugged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/wafer-semi-lugged-pn10-pn16-pn20-pn25" },
+            { name: "Full Lugged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/full-lugged-pn10-pn16-pn20-pn25" },
+            { name: "Wafer Flanged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/wafer-flanged-pn10-pn16-pn20-pn25" },
+            { name: "Double Flanged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/double-flanged-pn10-pn16-pn20-pn25" }
+          ]
+        },
+        {
+          name: "Double Offset Design",
+          products: [
+            { name: "Wafer Semi Lugged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/wafer-semi-lugged-150-300" },
+            { name: "Full Lugged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/full-lugged-150-300" },
+            { name: "Double Flanged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/double-flanged-150-300" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Wafer Check Valve",
+      subCategories: [
+        {
+          name: "Wafer Check Range",
+          products: [
+            { name: "Wafer type check valve Resilient seat", href: "/products/wafer-check-valve/resilient-seat" },
+            { name: "Wafer type check valve Metal seat", href: "/products/wafer-check-valve/metal-seat" },
+            { name: "Wafer type check valve Resilient seat - Spring type", href: "/products/wafer-check-valve/resilient-seat-spring-type" }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
       title: "Ball Valve",
       subCategories: [
         {
@@ -63,30 +100,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
           products: [
             { name: "2 Piece Design Flanged ANSI 150#, 300#, 600#", href: "/products/ball-valve/trunnion-mounted/2-piece-design-flanged-ansi-150-300-600" },
             { name: "3 Piece Design Flanged ANSI 150#, 300#, 600#", href: "/products/ball-valve/trunnion-mounted/3-piece-design-flanged-ansi-150-300-600" }
-          ]
-        }
-      ]
-    }
-  ],
-  [
-    {
-      title: "Butterfly Valve",
-      subCategories: [
-        {
-          name: "Centric Disc Design",
-          products: [
-            { name: "Wafer Semi Lugged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/wafer-semi-lugged-pn10-pn16-pn20-pn25" },
-            { name: "Full Lugged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/full-lugged-pn10-pn16-pn20-pn25" },
-            { name: "Wafer Flanged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/wafer-flanged-pn10-pn16-pn20-pn25" },
-            { name: "Double Flanged PN10# / PN16# / PN20# / PN25#", href: "/products/butterfly-valve/centric-disc-design/double-flanged-pn10-pn16-pn20-pn25" }
-          ]
-        },
-        {
-          name: "Double Offset Design",
-          products: [
-            { name: "Wafer Semi Lugged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/wafer-semi-lugged-150-300" },
-            { name: "Full Lugged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/full-lugged-150-300" },
-            { name: "Double Flanged 150# / 300#", href: "/products/butterfly-valve/double-offset-design/double-flanged-150-300" }
           ]
         }
       ]
