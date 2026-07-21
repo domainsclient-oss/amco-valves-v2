@@ -132,6 +132,30 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
+    },
+    {
+      title: "Gate Valve for Fire Fighting",
+      subCategories: [
+        {
+          name: "Fire Fighting Range",
+          products: [
+            { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Strainer",
+      subCategories: [
+        {
+          name: "Strainer Range",
+          products: [
+            { name: "Y Strainer - Screwed", href: "/products/strainer/y-strainer-screwed" },
+            { name: "Y Strainer - Flanged", href: "/products/strainer/y-strainer-flanged" },
+            { name: "Basket Strainer - Flanged", href: "/products/strainer/basket-strainer-flanged" }
+          ]
+        }
+      ]
     }
   ],
   [
@@ -154,30 +178,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
           name: "Unlined and Lined",
           products: [
             { name: "Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
-          ]
-        }
-      ]
-    },
-    {
-      title: "Gate Valve for Fire Fighting",
-      subCategories: [
-        {
-          name: "Fire Fighting Range",
-          products: [
-            { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
-          ]
-        }
-      ]
-    },
-    {
-      title: "Strainer",
-      subCategories: [
-        {
-          name: "Strainer Range",
-          products: [
-            { name: "Y Strainer - Screwed", href: "/products/strainer/y-strainer-screwed" },
-            { name: "Y Strainer - Flanged", href: "/products/strainer/y-strainer-flanged" },
-            { name: "Basket Strainer - Flanged", href: "/products/strainer/basket-strainer-flanged" }
           ]
         }
       ]
