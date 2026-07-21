@@ -215,6 +215,24 @@ export const productNavigationData: MegaMenuCategory[][] = [
   ],
   [
     {
+      title: "IBR & Non IBR Small & Large Bore",
+      subCategories: [
+        {
+          name: "Valve Range",
+          products: [
+            { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
+            { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
+            { name: "IBR & Non IBR Gate Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
+            { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
       title: "PTFE Sleeved Plug Valve",
       subCategories: [
         {
@@ -235,24 +253,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
           products: [
             { name: "Wafer Centric Disc Design", href: "/products/ptfe-seated-butterfly-valve/wafer-centric-disc-design" },
             { name: "Wafer Full Lug Type", href: "/products/ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design" }
-          ]
-        }
-      ]
-    }
-  ],
-  [
-    {
-      title: "IBR & Non IBR Small & Large Bore",
-      subCategories: [
-        {
-          name: "Valve Range",
-          products: [
-            { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
-            { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
-            { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
-            { name: "IBR & Non IBR Gate Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
-            { name: "IBR & Non IBR Globe Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
-            { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
           ]
         }
       ]
