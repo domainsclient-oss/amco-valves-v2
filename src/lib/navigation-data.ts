@@ -181,6 +181,24 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
+    },
+    {
+      title: "FEP & PFA Lined Valves",
+      subCategories: [
+        {
+          name: "Lined Valve Range",
+          products: [
+            { name: "Ball Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-check-valve" },
+            { name: "Ball Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-valve" },
+            { name: "Butterfly Valve Wafer (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
+            { name: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design" },
+            { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
+            { name: "Plug Valve PFA/FEP Lined", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
+            { name: "Plug Valve PFA/FEP Jacketed", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined-jacketed" },
+            { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" }
+          ]
+        }
+      ]
     }
   ],
   [
@@ -223,24 +241,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
     }
   ],
   [
-    {
-      title: "FEP & PFA Lined Valves",
-      subCategories: [
-        {
-          name: "Lined Valve Range",
-          products: [
-            { name: "Ball Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-check-valve" },
-            { name: "Ball Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-valve" },
-            { name: "Butterfly Valve Wafer (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
-            { name: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design" },
-            { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
-            { name: "Plug Valve PFA/FEP Lined", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
-            { name: "Plug Valve PFA/FEP Jacketed", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined-jacketed" },
-            { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" }
-          ]
-        }
-      ]
-    },
     {
       title: "IBR & Non IBR Small & Large Bore",
       subCategories: [
