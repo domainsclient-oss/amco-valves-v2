@@ -130,7 +130,7 @@ export function Navbar() {
           <div className="bg-white shadow-2xl border-t border-border overflow-hidden rounded-b-3xl">
             <div className="overflow-y-auto max-h-[80vh] scrollbar-thin scrollbar-thumb-secondary/20 scrollbar-track-transparent">
               <div className="max-w-[1440px] mx-auto p-8 lg:p-12 px-12 md:px-24">
-                <div className="grid grid-cols-3 lg:grid-cols-6 gap-x-12 gap-y-16">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-12 gap-y-16">
                   {productNavigationData.map((column, colIdx) => (
                     <div key={colIdx} className="space-y-12">
                       {column.map((category) => (
