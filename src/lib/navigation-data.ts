@@ -148,5 +148,16 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       }
     ]
+  },
+  {
+    title: "Gate valve for fire fighting",
+    subCategories: [
+      {
+        name: "Fire Fighting Range",
+        products: [
+          { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
+        ]
+      }
+    ]
   }
 ];
