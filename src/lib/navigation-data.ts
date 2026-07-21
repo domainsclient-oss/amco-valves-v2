@@ -83,7 +83,7 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
-    title: "Piston, Diaphragm & Fire Safe Valves",
+    title: "Specialized & Fire Safe Valves",
     subCategories: [
       {
         name: "Piston Valve Range",
@@ -93,15 +93,15 @@ export const productNavigationData: MegaMenuCategory[] = [
         ]
       },
       {
-        name: "Diaphragm Valve Range",
+        name: "Diaphragm Valve",
         products: [
           { name: "Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
         ]
       },
       {
-        name: "Fire Fighting Range",
+        name: "Gate Valve for Fire Fighting",
         products: [
-          { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
+          { name: "Double Flanged Soft Seated", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
         ]
       }
     ]
@@ -112,8 +112,8 @@ export const productNavigationData: MegaMenuCategory[] = [
       {
         name: "Seatless Design",
         products: [
-          { name: "Wafer type Damper valve - seatless design", href: "/products/damper-valve/wafer-type-seatless-design" },
-          { name: "Flanged type Damper valve - seatless design", href: "/products/damper-valve/flanged-type-seatless-design" }
+          { name: "Wafer type Damper valve", href: "/products/damper-valve/wafer-type-seatless-design" },
+          { name: "Flanged type Damper valve", href: "/products/damper-valve/flanged-type-seatless-design" }
         ]
       }
     ]
@@ -140,12 +140,8 @@ export const productNavigationData: MegaMenuCategory[] = [
       {
         name: "Valve Range",
         products: [
-          { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
-          { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
-          { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
-          { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
-          { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
-          { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
+          { name: "Small Bore Forged Gate/Globe/Lift Check", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
+          { name: "Large Bore Cast Gate/Globe/Swing Check", href: "/products/ibr-valves/large-bore-cast-gate-valve" }
         ]
       }
     ]
