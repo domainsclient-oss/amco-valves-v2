@@ -126,6 +126,22 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
+    },
+    {
+      title: "FEP & PFA Lined Valves",
+      subCategories: [
+        {
+          name: "Lined Valve Range",
+          products: [
+            { name: "Plug Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
+            { name: "Ball Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-valve" },
+            { name: "Butterfly Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
+            { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
+            { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" },
+            { name: "Ball Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-check-valve" }
+          ]
+        }
+      ]
     }
   ],
   [
