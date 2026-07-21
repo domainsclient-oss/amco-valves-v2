@@ -83,13 +83,25 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
-    title: "Piston Valve - Seatless & Glandless",
+    title: "Piston, Diaphragm & Fire Safe Valves",
     subCategories: [
       {
         name: "Piston Valve Range",
         products: [
           { name: "Small bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/small-bore-non-ibr-ibr" },
           { name: "Large bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/large-bore-non-ibr-ibr" }
+        ]
+      },
+      {
+        name: "Diaphragm Valve Range",
+        products: [
+          { name: "Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
+        ]
+      },
+      {
+        name: "Fire Fighting Range",
+        products: [
+          { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
         ]
       }
     ]
@@ -123,7 +135,7 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
-    title: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+    title: "IBR & Non IBR Valves",
     subCategories: [
       {
         name: "Valve Range",
@@ -134,28 +146,6 @@ export const productNavigationData: MegaMenuCategory[] = [
           { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
           { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
           { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
-        ]
-      }
-    ]
-  },
-  {
-    title: "Diaphragm Valve",
-    subCategories: [
-      {
-        name: "Unlined and Lined",
-        products: [
-          { name: "Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
-        ]
-      }
-    ]
-  },
-  {
-    title: "Gate valve for fire fighting",
-    subCategories: [
-      {
-        name: "Fire Fighting Range",
-        products: [
-          { name: "Double Flanged Soft seated Gate Valve", href: "/products/gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16" }
         ]
       }
     ]
