@@ -126,25 +126,34 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
-    },
-    {
-      title: "FEP & PFA Lined Valves",
-      subCategories: [
-        {
-          name: "Lined Valve Range",
-          products: [
-            { name: "Plug Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
-            { name: "Ball Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-valve" },
-            { name: "Butterfly Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
-            { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
-            { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" },
-            { name: "Ball Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-check-valve" }
-          ]
-        }
-      ]
     }
   ],
   [
+    {
+      title: "PTFE Sleeved Plug Valve",
+      subCategories: [
+        {
+          name: "Plug Valve Range",
+          products: [
+            { name: "Flanged", href: "/products/ptfe-sleeved-plug-valve/flanged" },
+            { name: "Jacketed", href: "/products/ptfe-sleeved-plug-valve/jacketed" },
+            { name: "Screwed / Socket / Butt", href: "/products/ptfe-sleeved-plug-valve/screwed-socket-butt" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "PTFE Seated Butterfly Valve",
+      subCategories: [
+        {
+          name: "Centric Disc Design",
+          products: [
+            { name: "Wafer Centric Disc Design", href: "/products/ptfe-seated-butterfly-valve/wafer-centric-disc-design" },
+            { name: "Wafer Full Lug Type", href: "/products/ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design" }
+          ]
+        }
+      ]
+    },
     {
       title: "Damper Valve",
       subCategories: [
@@ -173,17 +182,35 @@ export const productNavigationData: MegaMenuCategory[][] = [
   ],
   [
     {
-      title: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
+      title: "FEP & PFA Lined Valves",
+      subCategories: [
+        {
+          name: "Lined Valve Range",
+          products: [
+            { name: "Ball Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-check-valve" },
+            { name: "Ball Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-ball-valve" },
+            { name: "Butterfly Valve Wafer (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
+            { name: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design" },
+            { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
+            { name: "Plug Valve PFA/FEP Lined", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
+            { name: "Plug Valve PFA/FEP Jacketed", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined-jacketed" },
+            { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "IBR & Non IBR Small & Large Bore",
       subCategories: [
         {
           name: "Valve Range",
           products: [
-            { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
-            { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
-            { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
-            { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
-            { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
-            { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
+            { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
+            { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
+            { name: "IBR & Non IBR Gate Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
+            { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600#", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
           ]
         }
       ]
