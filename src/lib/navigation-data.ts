@@ -229,9 +229,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
-    }
-  ],
-  [
+    },
     {
       title: "PTFE Sleeved Plug Valve",
       subCategories: [
