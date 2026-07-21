@@ -91,6 +91,12 @@ export const productNavigationData: MegaMenuCategory[] = [
           { name: "Small bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/small-bore-non-ibr-ibr" },
           { name: "Large bore Non IBR & IBR Piston Valve", href: "/products/piston-valve/large-bore-non-ibr-ibr" }
         ]
+      },
+      {
+        name: "Diaphragm Valve",
+        products: [
+          { name: "Unlined and Lined", href: "/products/diaphragm-valve/unlined-and-lined" }
+        ]
       }
     ]
   },
