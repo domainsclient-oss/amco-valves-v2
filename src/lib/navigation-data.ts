@@ -95,6 +95,18 @@ export const productNavigationData: MegaMenuCategory[] = [
     ]
   },
   {
+    title: "Damper Valve",
+    subCategories: [
+      {
+        name: "Seatless Design",
+        products: [
+          { name: "Wafer type Damper valve - seatless design", href: "/products/damper-valve/wafer-type-seatless-design" },
+          { name: "Flanged type Damper valve - seatless design", href: "/products/damper-valve/flanged-type-seatless-design" }
+        ]
+      }
+    ]
+  },
+  {
     title: "Dual Plate Check Valve",
     subCategories: [
       {
