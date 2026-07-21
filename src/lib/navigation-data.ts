@@ -16,7 +16,6 @@ export interface MegaMenuCategory {
 /**
  * productNavigationData is now a 2D array: MegaMenuCategory[][]
  * Each top-level array element represents a column in the mega menu.
- * This allows multiple "Orange" titled categories to stack in one column.
  */
 export const productNavigationData: MegaMenuCategory[][] = [
   [
@@ -94,7 +93,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
     }
   ],
   [
-    // Column 4 - Grouping Piston, Diaphragm, and Fire Fighting into one column but as separate categories
     {
       title: "Piston Valve - Seatless & Glandless",
       subCategories: [
@@ -146,13 +144,17 @@ export const productNavigationData: MegaMenuCategory[][] = [
   ],
   [
     {
-      title: "IBR & Non IBR Valves",
+      title: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
       subCategories: [
         {
           name: "Valve Range",
           products: [
-            { name: "Small Bore Forged Gate/Globe/Lift Check", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
-            { name: "Large Bore Cast Gate/Globe/Swing Check", href: "/products/ibr-valves/large-bore-cast-gate-valve" }
+            { name: "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-globe-valve" },
+            { name: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld", href: "/products/ibr-valves/small-bore-forged-lift-check-valve" },
+            { name: "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-gate-valve" },
+            { name: "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-globe-valve" },
+            { name: "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld", href: "/products/ibr-valves/large-bore-cast-swing-check-valve" }
           ]
         }
       ]
