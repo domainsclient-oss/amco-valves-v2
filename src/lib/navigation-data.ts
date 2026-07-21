@@ -199,6 +199,18 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
+    },
+    {
+      title: "Damper Valve",
+      subCategories: [
+        {
+          name: "Seatless Design",
+          products: [
+            { name: "Wafer type Damper valve", href: "/products/damper-valve/wafer-type-seatless-design" },
+            { name: "Flanged type Damper valve", href: "/products/damper-valve/flanged-type-seatless-design" }
+          ]
+        }
+      ]
     }
   ],
   [
@@ -223,18 +235,6 @@ export const productNavigationData: MegaMenuCategory[][] = [
           products: [
             { name: "Wafer Centric Disc Design", href: "/products/ptfe-seated-butterfly-valve/wafer-centric-disc-design" },
             { name: "Wafer Full Lug Type", href: "/products/ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design" }
-          ]
-        }
-      ]
-    },
-    {
-      title: "Damper Valve",
-      subCategories: [
-        {
-          name: "Seatless Design",
-          products: [
-            { name: "Wafer type Damper valve", href: "/products/damper-valve/wafer-type-seatless-design" },
-            { name: "Flanged type Damper valve", href: "/products/damper-valve/flanged-type-seatless-design" }
           ]
         }
       ]
