@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
@@ -27,6 +27,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +45,20 @@ export function Navbar() {
       document.body.style.overflow = "unset";
     }
   }, [isOpen, isMegaMenuOpen]);
+
+  const openMegaMenu = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsMegaMenuOpen(true);
+  };
+
+  const closeMegaMenu = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsMegaMenuOpen(false);
+    }, 150); // Small delay to bridge gap between link and menu
+  };
 
   return (
     <>
@@ -83,8 +98,8 @@ export function Navbar() {
               <div 
                 key={link.name} 
                 className="relative h-full flex items-center group/navitem"
-                onMouseEnter={() => link.hasMegaMenu && setIsMegaMenuOpen(true)}
-                onMouseLeave={() => link.hasMegaMenu && setIsMegaMenuOpen(false)}
+                onMouseEnter={() => link.hasMegaMenu && openMegaMenu()}
+                onMouseLeave={() => link.hasMegaMenu && closeMegaMenu()}
               >
                 <Link
                   href={link.href}
@@ -121,14 +136,14 @@ export function Navbar() {
         <div 
           className={cn(
             "absolute left-0 w-full transition-all duration-300 origin-top z-50 hidden md:block",
-            scrolled ? "top-full" : "top-[calc(100%-16px)] pt-[16px]",
+            scrolled ? "top-full" : "top-[calc(100%-2px)]",
             isMegaMenuOpen ? "opacity-100 translate-y-0 scale-y-100 pointer-events-auto" : "opacity-0 -translate-y-4 scale-y-0 pointer-events-none"
           )}
-          onMouseEnter={() => setIsMegaMenuOpen(true)}
-          onMouseLeave={() => setIsMegaMenuOpen(false)}
+          onMouseEnter={openMegaMenu}
+          onMouseLeave={closeMegaMenu}
         >
           <div className="bg-white shadow-2xl border-t border-border overflow-hidden rounded-b-3xl">
-            <div className="overflow-y-auto max-h-[80vh] scrollbar-thin scrollbar-thumb-secondary/20 scrollbar-track-transparent">
+            <div className="overflow-y-auto max-h-[85vh] scrollbar-thin scrollbar-thumb-secondary/20 scrollbar-track-transparent">
               <div className="max-w-[1440px] mx-auto p-8 lg:p-12 px-12 md:px-24">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-12 gap-y-16">
                   {productNavigationData.map((column, colIdx) => (
