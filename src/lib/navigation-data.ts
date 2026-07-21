@@ -140,6 +140,19 @@ export const productNavigationData: MegaMenuCategory[][] = [
           ]
         }
       ]
+    },
+    {
+      title: "High Pressure Valve",
+      subCategories: [
+        {
+          name: "High Pressure Range",
+          products: [
+            { name: "High Pressure Ball Valve", href: "/products/high-pressure-ball-valve" },
+            { name: "High Pressure In-Line Check Valve", href: "/products/high-pressure-in-line-check-valve" },
+            { name: "High Pressure Needle Valve", href: "/products/high-pressure-needle-valve" }
+          ]
+        }
+      ]
     }
   ],
   [
