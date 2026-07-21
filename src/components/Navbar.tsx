@@ -127,34 +127,38 @@ export function Navbar() {
         <div className="bg-white shadow-2xl border-t border-border overflow-y-auto max-h-[calc(100vh-100px)] scrollbar-thin scrollbar-thumb-secondary/20">
           <div className="max-w-[1440px] mx-auto p-8 lg:p-10 px-12 md:px-24">
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
-              {productNavigationData.map((category) => (
-                <div key={category.title} className="space-y-4">
-                  <h4 className="text-secondary font-bold text-[12px] uppercase tracking-wider border-b border-secondary/20 pb-2 leading-tight min-h-[40px] flex items-end">
-                    {category.title}
-                  </h4>
-                  <div className="space-y-6">
-                    {category.subCategories.map((sub) => (
-                      <div key={sub.name} className="space-y-2">
-                        <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
-                          <ChevronRight className="size-3 text-secondary shrink-0" />
-                          {sub.name}
-                        </h5>
-                        <ul className="space-y-1.5 pl-5">
-                          {sub.products.map((product) => (
-                            <li key={product.name}>
-                              <Link 
-                                href={product.href} 
-                                className="text-foreground/60 hover:text-secondary text-[12px] lg:text-[13px] transition-colors block leading-tight"
-                                onClick={() => setIsMegaMenuOpen(false)}
-                              >
-                                {product.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+              {productNavigationData.map((column, colIdx) => (
+                <div key={colIdx} className="space-y-10">
+                  {column.map((category) => (
+                    <div key={category.title} className="space-y-4">
+                      <h4 className="text-secondary font-bold text-[12px] uppercase tracking-wider border-b border-secondary/20 pb-2 leading-tight min-h-[40px] flex items-end">
+                        {category.title}
+                      </h4>
+                      <div className="space-y-6">
+                        {category.subCategories.map((sub) => (
+                          <div key={sub.name} className="space-y-2">
+                            <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
+                              <ChevronRight className="size-3 text-secondary shrink-0" />
+                              {sub.name}
+                            </h5>
+                            <ul className="space-y-1.5 pl-5">
+                              {sub.products.map((product) => (
+                                <li key={product.name}>
+                                  <Link 
+                                    href={product.href} 
+                                    className="text-foreground/60 hover:text-secondary text-[12px] lg:text-[13px] transition-colors block leading-tight"
+                                    onClick={() => setIsMegaMenuOpen(false)}
+                                  >
+                                    {product.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -200,35 +204,39 @@ export function Navbar() {
                       {link.name}
                     </AccordionTrigger>
                     <AccordionContent>
-                      <div className="space-y-6 pt-2 pb-4">
-                        {productNavigationData.map((category) => (
-                          <div key={category.title} className="space-y-4">
-                            <h4 className="text-secondary font-bold text-xs uppercase tracking-wider bg-secondary/5 px-3 py-1 rounded">
-                              {category.title}
-                            </h4>
-                            <div className="space-y-5 pl-2">
-                              {category.subCategories.map((sub) => (
-                                <div key={sub.name} className="space-y-2">
-                                  <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
-                                    <ChevronRight className="size-3 text-secondary shrink-0" />
-                                    {sub.name}
-                                  </h5>
-                                  <ul className="space-y-2 pl-5">
-                                    {sub.products.map((product) => (
-                                      <li key={product.name}>
-                                        <Link 
-                                          href={product.href} 
-                                          className="text-foreground/60 text-sm block py-1 leading-tight"
-                                          onClick={() => setIsOpen(false)}
-                                        >
-                                          {product.name}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
+                      <div className="space-y-10 pt-2 pb-4">
+                        {productNavigationData.map((column, colIdx) => (
+                          <div key={colIdx} className="space-y-8">
+                            {column.map((category) => (
+                              <div key={category.title} className="space-y-4">
+                                <h4 className="text-secondary font-bold text-xs uppercase tracking-wider bg-secondary/5 px-3 py-1 rounded">
+                                  {category.title}
+                                </h4>
+                                <div className="space-y-5 pl-2">
+                                  {category.subCategories.map((sub) => (
+                                    <div key={sub.name} className="space-y-2">
+                                      <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
+                                        <ChevronRight className="size-3 text-secondary shrink-0" />
+                                        {sub.name}
+                                      </h5>
+                                      <ul className="space-y-2 pl-5">
+                                        {sub.products.map((product) => (
+                                          <li key={product.name}>
+                                            <Link 
+                                              href={product.href} 
+                                              className="text-foreground/60 text-sm block py-1 leading-tight"
+                                              onClick={() => setIsOpen(false)}
+                                            >
+                                              {product.name}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            ))}
                           </div>
                         ))}
                       </div>
