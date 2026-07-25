@@ -12,7 +12,7 @@ export function Footer() {
             <Link href="#" className="flex items-center mb-6">
               <div className="relative w-36 h-20">
                 <Image
-                  src="/amco-logo.jpg"
+                  src="/Logo-Asset.png"
                   alt="AMCO Valves Logo"
                   fill
                   className="object-contain"
