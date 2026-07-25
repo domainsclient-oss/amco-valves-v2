@@ -10,12 +10,12 @@ export function Footer() {
           {/* Column 1: Logo and About */}
           <div>
             <Link href="#" className="flex items-center mb-6">
-              <div className="relative w-36 h-20">
+              <div className="relative w-40 h-20 bg-white rounded-xl p-3 flex items-center justify-center shadow-lg">
                 <Image
                   src="/Logo-Asset.png"
                   alt="AMCO Valves Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain p-2"
                 />
               </div>
             </Link>
