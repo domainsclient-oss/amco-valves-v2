@@ -77,7 +77,7 @@ export function Navbar() {
         )}>
           <div className="transition-all duration-500 ease-in-out flex items-center">
             <Link href="/" className="flex items-center group">
-              <div className="relative w-20 h-10 md:w-28 md:h-14 transition-transform group-hover:scale-105">
+              <div className="relative w-24 h-12 md:w-36 md:h-18 transition-transform group-hover:scale-105">
                 <Image
                   src="/Logo-Asset.png"
                   alt="AMCO Valves Logo"
@@ -210,7 +210,7 @@ export function Navbar() {
         )}
       >
         <div className="p-5 flex items-center justify-between border-b border-border bg-white shrink-0">
-          <div className="relative w-24 h-12">
+          <div className="relative w-32 h-16">
             <Image
               src="/Logo-Asset.png"
               alt="AMCO Valves Logo"
