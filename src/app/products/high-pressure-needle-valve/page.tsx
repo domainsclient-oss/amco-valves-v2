@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -28,6 +27,11 @@ export default function HighPressureNeedleValvePage() {
       </main>
     );
   }
+
+  const productImage = {
+    imageUrl: "/HP_needle_valve_2.jpg",
+    description: product.subTitle
+  };
 
   const specs = [
     { label: "Size", value: product.size },
@@ -106,7 +110,7 @@ export default function HighPressureNeedleValvePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="/dummy-image.png"
+                src={productImage.imageUrl}
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
