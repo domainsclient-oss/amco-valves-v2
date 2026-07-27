@@ -11,7 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 export default function WaferLuggedResilientSeatPage() {
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg",
     description: "Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -126,7 +126,7 @@ export default function WaferLuggedResilientSeatPage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
+    link.setAttribute("download", `Uni_Directional_Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -137,7 +137,6 @@ export default function WaferLuggedResilientSeatPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
@@ -160,7 +159,7 @@ export default function WaferLuggedResilientSeatPage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Wafer Lugged Resilient Seat Knife Edge Gate Valve"
+                alt="Uni-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -199,6 +198,47 @@ export default function WaferLuggedResilientSeatPage() {
                 >
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              Visual Showcase
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg"
+                  alt="Uni-Directional Wafer Lugged Resilient Seat View 1"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg"
+                  alt="Uni-Directional Wafer Lugged Resilient Seat View 2"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg"
+                  alt="Uni-Directional Wafer Lugged Resilient Seat View 3"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg"
+                  alt="Uni-Directional Wafer Lugged Resilient Seat View 4"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
             </div>
           </div>
