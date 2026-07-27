@@ -301,7 +301,7 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
 
       {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (
