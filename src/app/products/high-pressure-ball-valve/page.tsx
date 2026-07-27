@@ -7,6 +7,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function HighPressureBallValvePage() {
@@ -28,6 +29,11 @@ export default function HighPressureBallValvePage() {
     );
   }
 
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
+
   const specs = [
     { label: "Size", value: product.size },
     { label: "Material of construction", value: product.material },
@@ -38,6 +44,17 @@ export default function HighPressureBallValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const dimensionData = [
+    { size: "DN8", ftf: "71", bore: "6", lever: "110", height: "91" },
+    { size: "DN10", ftf: "73", bore: "10", lever: "110", height: "96" },
+    { size: "DN15", ftf: "83", bore: "13", lever: "110", height: "100" },
+    { size: "DN20", ftf: "95", bore: "20", lever: "180", height: "106" },
+    { size: "DN25", ftf: "112", bore: "25", lever: "180", height: "116" },
+    { size: "DN32", ftf: "110", bore: "32", lever: "305", height: "145" },
+    { size: "DN40", ftf: "130", bore: "38", lever: "305", height: "155" },
+    { size: "DN50", ftf: "140", bore: "50", lever: "305", height: "173" },
+  ];
+
   const handleDownloadCSV = () => {
     if (!product) return;
     
@@ -45,7 +62,11 @@ export default function HighPressureBallValvePage() {
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
-      ...specs.map(spec => [spec.label, spec.value])
+      ...specs.map(spec => [spec.label, spec.value]),
+      [""],
+      ["Dimension Table (3000 psi / 6000 psi)"],
+      ["SIZE", "FACE TO FACE", "BORE", "LEVER LENGTH", "CENTER TO TOP HEIGHT"],
+      ...dimensionData.map(row => [row.size, row.ftf, row.bore, row.lever, row.height])
     ];
     
     const csvContent = [
@@ -86,11 +107,11 @@ export default function HighPressureBallValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="/dummy-image.png"
+                src={productImage.imageUrl}
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
@@ -125,6 +146,44 @@ export default function HighPressureBallValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-5xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      HIGH PRESSURE BALL VALVE 3000 psi / 6000 psi
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">LEVER LENGTH</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.lever}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.height}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
