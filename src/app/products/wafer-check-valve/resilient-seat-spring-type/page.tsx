@@ -16,7 +16,7 @@ export default function WaferSpringCheckValvePage() {
   if (!product) return null;
 
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/seat-spring-type.jpg",
     description: product.subTitle
   };
 
@@ -72,18 +72,6 @@ export default function WaferSpringCheckValvePage() {
     { size: "DN450", o150: "635", h150: "32 X 16", p150: "577.9", o300: "710", h300: "35 X 24", p300: "628.6" },
     { size: "DN500", o150: "700", h150: "32 X 20", p150: "635", o300: "775", h300: "35 X 24", p300: "685.8" },
     { size: "DN600", o150: "815", h150: "35 X 20", p150: "749.3", o300: "915", h300: "41 X 24", p300: "812.8" },
-    { isHeader: true, size: "DN700" },
-    { size: "SERIES A FLANGE", o150: "925", h150: "35 X 28", p150: "863.6", o300: "1035", h300: "44 X 28", p300: "939.8" },
-    { size: "SERIES B FLANGE", o150: "835", h150: "22.2 X 40", p150: "795.3", o300: "920", h300: "35 X 36", p300: "857.2" },
-    { isHeader: true, size: "DN800" },
-    { size: "SERIES A FLANGE", o150: "1060", h150: "41.2 X 28", p150: "977.9", o300: "1150", h300: "50 X 28", p300: "1054.1" },
-    { size: "SERIES B FLANGE", o150: "940", h150: "22.2 X 48", p150: "900.1", o300: "1055", h300: "41.2 X 32", p300: "977.9" },
-    { isHeader: true, size: "DN900" },
-    { size: "SERIES A FLANGE", o150: "1170", h150: "41 X 32", p150: "1085.8", o300: "1270", h300: "54 X 32", p300: "1168.4" },
-    { size: "SERIES B FLANGE", o150: "1055", h150: "25.4 X 44", p150: "1009.6", o300: "1170", h300: "44 X 32", p300: "1089.0" },
-    { isHeader: true, size: "DN1000" },
-    { size: "SERIES A FLANGE", o150: "1290", h150: "41 X 36", p150: "1200.2", o300: "1240", h300: "44 X 32", p300: "1155.7" },
-    { size: "SERIES B FLANGE", o150: "1175", h150: "29 X 44", p150: "1120.8", o300: "1275", h300: "44 X 40", p300: "1190.6" },
   ];
 
   const handleDownloadCSV = () => {
@@ -99,7 +87,7 @@ export default function WaferSpringCheckValvePage() {
       [""],
       ["Flange Suitability Table (150# & 300#)"],
       ["Size", "Outer Dia (150#)", "Hole Pattern (150#)", "PCD (150#)", "Outer Dia (300#)", "Hole Pattern (300#)", "PCD (300#)"],
-      ...flangeSuitabilityData.map(row => (row as any).isHeader ? [row.size] : [row.size, (row as any).o150, (row as any).h150, (row as any).p150, (row as any).o300, (row as any).h300, (row as any).p300])
+      ...flangeSuitabilityData.map(row => [row.size, row.o150, row.h150, row.p150, row.o300, row.h300, row.p300])
     ];
     
     const csvContent = [
@@ -251,29 +239,19 @@ export default function WaferSpringCheckValvePage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {flangeSuitabilityData.map((row, idx) => {
-                      if ((row as any).isHeader) {
-                        return (
-                          <TableRow key={idx} className="bg-primary/5">
-                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center border-r border-neutral-100">{row.size}</TableCell>
-                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center">{(row as any).size}</TableCell>
-                          </TableRow>
-                        );
-                      }
-                      return (
-                        <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
-                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{(row as any).p150}</TableCell>
-                          
-                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o300}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h300}</TableCell>
-                          <TableCell className="text-center text-foreground/80">{(row as any).p300}</TableCell>
-                        </TableRow>
-                      );
-                    })}
+                    {flangeSuitabilityData.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p150}</TableCell>
+                        
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o300}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.p300}</TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </div>
