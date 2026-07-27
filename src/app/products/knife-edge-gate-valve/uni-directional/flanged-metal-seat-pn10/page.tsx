@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -11,7 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 export default function FlangedMetalSeatKnifeEdgeGateValvePage() {
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/uni-directional-double-flanged-metal-seat.webp",
     description: "Flanged Metal Seat Knife Edge Gate Valve"
   };
 
