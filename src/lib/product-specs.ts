@@ -576,8 +576,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "BSPF / NPTF / SW (extended nipple)",
     pressureRating: "3000 PSI / 6000 PSI",
     modeOfOperation: "Lever, Actuator",
-    manufacturingStandard: "-",
-    testingStandard: "API 598",
+    manufacturingStandard: "ISO 17292 / API 608",
+    testingStandard: "ISO 5208 / API 598",
   },
 
   // High Pressure In-Line Check Valve
