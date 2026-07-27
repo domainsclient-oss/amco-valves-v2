@@ -1,16 +1,47 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function WaferSemiLuggedButterflyValvePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const showcaseImages = [
+    { src: "/products/butterfly-valve-wafer-semi-lugged-1.jpg", alt: "Wafer Semi Lugged BFV View 1" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-2.jpg", alt: "Wafer Semi Lugged BFV View 2" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-3.jpg", alt: "Wafer Semi Lugged BFV View 3" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-4.jpg", alt: "Wafer Semi Lugged BFV View 4" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-5.jpg", alt: "Wafer Semi Lugged BFV View 5" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-6.jpg", alt: "Wafer Semi Lugged BFV View 6" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-7.jpg", alt: "Wafer Semi Lugged BFV View 7" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-8.jpg", alt: "Wafer Semi Lugged BFV View 8" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-9.jpg", alt: "Wafer Semi Lugged BFV View 9" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-10.jpg", alt: "Wafer Semi Lugged BFV View 10" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-11.jpg", alt: "Wafer Semi Lugged BFV View 11" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-12.jpg", alt: "Wafer Semi Lugged BFV View 12" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-13.jpg", alt: "Wafer Semi Lugged BFV View 13" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-14.jpg", alt: "Wafer Semi Lugged BFV View 14" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-15.jpg", alt: "Wafer Semi Lugged BFV View 15" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-16.jpg", alt: "Wafer Semi Lugged BFV View 16" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-17.jpg", alt: "Wafer Semi Lugged BFV View 17" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-18.jpg", alt: "Wafer Semi Lugged BFV View 18" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-19.jpg", alt: "Wafer Semi Lugged BFV View 19" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-20.jpg", alt: "Wafer Semi Lugged BFV View 20" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-21.jpg", alt: "Wafer Semi Lugged BFV View 21" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-22.jpg", alt: "Wafer Semi Lugged BFV View 22" },
+    { src: "/products/butterfly-valve-wafer-semi-lugged-23.jpeg", alt: "Wafer Semi Lugged BFV View 23" },
+  ];
+
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: "Wafer Semi Lugged Butterfly Valve"
   };
 
@@ -71,51 +102,19 @@ export default function WaferSemiLuggedButterflyValvePage() {
     { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
-  const pn16JisSuitabilityData = [
-    { size: "DN40", p16: "110", d16: "18", n16: "4", pJIS: "95", dJIS: "15", nJIS: "4" },
-    { size: "DN50", p16: "125", d16: "18", n16: "4", pJIS: "105", dJIS: "15", nJIS: "4" },
-    { size: "DN65", p16: "145", d16: "18", n16: "4", pJIS: "130", dJIS: "15", nJIS: "4" },
-    { size: "DN80", p16: "160", d16: "18", n16: "8", pJIS: "145", dJIS: "19", nJIS: "4" },
-    { size: "DN100", p16: "180", d16: "18", n16: "8", pJIS: "165", dJIS: "19", nJIS: "8" },
-    { size: "DN125", p16: "210", d16: "18", n16: "8", pJIS: "200", dJIS: "19", nJIS: "8" },
-    { size: "DN150", p16: "240", d16: "22", n16: "8", pJIS: "230", dJIS: "19", nJIS: "8" },
-    { size: "DN200", p16: "295", d16: "22", n16: "12", pJIS: "280", dJIS: "23", nJIS: "8" },
-    { size: "DN250", p16: "355", d16: "26", n16: "12", pJIS: "345", dJIS: "23", nJIS: "12" },
-    { size: "DN300", p16: "410", d16: "26", n16: "12", pJIS: "390", dJIS: "23", nJIS: "12" },
-    { size: "DN350", p16: "470", d16: "26", n16: "16", pJIS: "435", dJIS: "25", nJIS: "12" },
-    { size: "DN400", p16: "525", d16: "30", n16: "16", pJIS: "495", dJIS: "25", nJIS: "16" },
-    { size: "DN450", p16: "585", d16: "30", n16: "20", pJIS: "555", dJIS: "25", nJIS: "16" },
-    { size: "DN500", p16: "650", d16: "33", n16: "20", pJIS: "605", dJIS: "25", nJIS: "20" },
-    { size: "DN600", p16: "770", d16: "36", n16: "20", pJIS: "715", dJIS: "27", nJIS: "20" },
-    { size: "DN700", p16: "840", d16: "36", n16: "24", pJIS: "820", dJIS: "27", nJIS: "24" },
-    { size: "DN750", p16: "-", d16: "-", n16: "-", pJIS: "880", dJIS: "33", nJIS: "24" },
-    { size: "DN800", p16: "950", d16: "39", n16: "24", pJIS: "930", dJIS: "33", nJIS: "24" },
-    { size: "DN900", p16: "1050", d16: "39", n16: "28", pJIS: "1030", dJIS: "33", nJIS: "24" },
-    { size: "DN1000", p16: "1170", d16: "42", n16: "28", pJIS: "1130", dJIS: "33", nJIS: "28" },
-  ];
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
 
-  const jis10kSuitabilityData = [
-    { size: "DN40", pcd: "105", dia: "19", holes: "4" },
-    { size: "DN50", pcd: "120", dia: "19", holes: "4" },
-    { size: "DN65", pcd: "140", dia: "19", holes: "4" },
-    { size: "DN80", pcd: "150", dia: "19", holes: "8" },
-    { size: "DN100", pcd: "175", dia: "19", holes: "8" },
-    { size: "DN125", pcd: "210", dia: "23", holes: "8" },
-    { size: "DN150", pcd: "240", dia: "23", holes: "8" },
-    { size: "DN200", pcd: "290", dia: "23", holes: "12" },
-    { size: "DN250", pcd: "355", dia: "25", holes: "12" },
-    { size: "DN300", pcd: "400", dia: "25", holes: "16" },
-    { size: "DN350", pcd: "445", dia: "25", holes: "16" },
-    { size: "DN400", pcd: "510", dia: "27", holes: "16" },
-    { size: "DN450", pcd: "565", dia: "27", holes: "20" },
-    { size: "DN500", pcd: "620", dia: "27", holes: "20" },
-    { size: "DN600", pcd: "730", dia: "33", holes: "24" },
-    { size: "DN700", pcd: "840", dia: "33", holes: "24" },
-    { size: "DN750", pcd: "900", dia: "33", holes: "24" },
-    { size: "DN800", pcd: "950", dia: "33", holes: "28" },
-    { size: "DN900", pcd: "1050", dia: "33", holes: "28" },
-    { size: "DN1000", pcd: "1160", dia: "39", holes: "28" },
-  ];
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -124,23 +123,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
       ["Category", "Butterfly Valve"],
       ["Sub Category", "Centric Disc Design"],
       ["Model", "Wafer Semi Lugged PN10# / PN16# / PN20# / PN25#"],
-      ...specs.map(spec => [spec.label, spec.value]),
-      [""],
-      ["General Dimensions"],
-      ["Size", "Face To Face", "Center To Top", "Center To Bottom", "Lever Length", "Gear Wheel Dia"],
-      ...dimensionData.map(row => [row.size, row.f, row.th, row.bh, row.ll, row.gear]),
-      [""],
-      ["Flange Suitability (150# / PN10)"],
-      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
-      ...flangeSuitabilityData.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10]),
-      [""],
-      ["Flange Suitability (PN16 / JIS 5K)"],
-      ["Size", "PCD (PN16)", "Hole Dia (PN16)", "No. Holes (PN16)", "PCD (JIS 5K)", "Hole Dia (JIS 5K)", "No. Holes (JIS 5K)"],
-      ...pn16JisSuitabilityData.map(row => [row.size, row.p16, row.d16, row.n16, row.pJIS, row.dJIS, row.nJIS]),
-      [""],
-      ["Flange Suitability (JIS 10K)"],
-      ["Size", "PCD", "Hole Dia", "No. of Holes"],
-      ...jis10kSuitabilityData.map(row => [row.size, row.pcd, row.dia, row.holes])
+      ...specs.map(spec => [spec.label, spec.value])
     ];
     
     const csvContent = [
@@ -180,6 +163,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -190,6 +174,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -219,6 +204,34 @@ export default function WaferSemiLuggedButterflyValvePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-12">
             {/* General Dimensions Table */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
@@ -229,10 +242,10 @@ export default function WaferSemiLuggedButterflyValvePage() {
                       <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">WAFER BFV</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">CENTER TO BOTTOM HEIGHT</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">CENTER TO BOTTOM HEIGHT</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">LEVER LENGTH</TableHead>
                       <TableHead className="text-center font-bold text-primary text-xs uppercase leading-tight">GEAR OPERATION WHEEL DIA</TableHead>
                     </TableRow>
@@ -269,7 +282,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs">PCD</TableHead>
@@ -298,84 +311,51 @@ export default function WaferSemiLuggedButterflyValvePage() {
                 </p>
               </div>
             </div>
-
-            {/* Flange Suitability Table (PN16# & JIS 5K) */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">SIZE</TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT PN16# FLANGES</TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT JIS 5K FLANGES</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary text-xs uppercase">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pn16JisSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p16}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d16}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n16}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pJIS}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dJIS}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.nJIS}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-base text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* JIS 10K Suitability Table */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">TO SUIT JIS 10K FLANGES</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary text-xs uppercase">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {jis10kSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dia}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.holes}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-base text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
