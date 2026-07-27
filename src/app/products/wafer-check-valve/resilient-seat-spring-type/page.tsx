@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -16,7 +17,7 @@ export default function WaferSpringCheckValvePage() {
   if (!product) return null;
 
   const productImage = {
-    imageUrl: "/seat-spring-type.jpg",
+    imageUrl: "/products/wafer-check-valve/resilient-seat-spring-type.jpg",
     description: product.subTitle
   };
 
