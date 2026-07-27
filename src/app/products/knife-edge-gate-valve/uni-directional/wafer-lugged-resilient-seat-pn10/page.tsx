@@ -310,7 +310,7 @@ export default function WaferLuggedResilientSeatPage() {
               <>
                 <button 
                   onClick={() => setSelectedImageIndex(null)}
-                  className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
                 >
                   <X className="size-8" />
                 </button>
