@@ -84,28 +84,6 @@ export default function WaferLuggedResilientSeatPage() {
     { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
-  const pn16Suitability = [
-    { size: "DN50", p: "125", d: "18", n: "4" },
-    { size: "DN65", p: "145", d: "18", n: "4" },
-    { size: "DN80", p: "160", d: "18", n: "8" },
-    { size: "DN100", p: "180", d: "18", n: "8" },
-    { size: "DN125", p: "210", d: "18", n: "8" },
-    { size: "DN150", p: "240", d: "22", n: "8" },
-    { size: "DN200", p: "295", d: "22", n: "12" },
-    { size: "DN250", p: "355", d: "26", n: "12" },
-    { size: "DN300", p: "410", d: "26", n: "12" },
-    { size: "DN350", p: "470", d: "26", n: "16" },
-    { size: "DN400", p: "525", d: "30", n: "16" },
-    { size: "DN450", p: "585", d: "30", n: "20" },
-    { size: "DN500", p: "650", d: "33", n: "20" },
-    { size: "DN600", p: "770", d: "36", n: "20" },
-    { size: "DN700", p: "840", d: "36", n: "24" },
-    { size: "DN750", p: "-", d: "-", n: "-" },
-    { size: "DN800", p: "950", d: "39", n: "24" },
-    { size: "DN900", p: "1050", d: "39", n: "28" },
-    { size: "DN1000", p: "1170", d: "42", n: "28" },
-  ];
-
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (selectedImageIndex !== null) {
@@ -319,47 +297,13 @@ export default function WaferLuggedResilientSeatPage() {
                 </p>
               </div>
             </div>
-
-            {/* Table 3: To Suit PN16# Flanges */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">TO SUIT PN16# FLANGES</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pn16Suitability.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.n}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[75vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden mt-20">
+        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (
@@ -379,13 +323,13 @@ export default function WaferLuggedResilientSeatPage() {
                 
                 <button 
                   onClick={handlePrev}
-                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
                 >
                   <ChevronLeft className="size-8" />
                 </button>
                 <button 
                   onClick={handleNext}
-                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
                 >
                   <ChevronRight className="size-8" />
                 </button>

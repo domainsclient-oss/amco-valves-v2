@@ -301,7 +301,7 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
 
       {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[75vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden mt-20">
+        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (
@@ -321,13 +321,13 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                 
                 <button 
                   onClick={handlePrev}
-                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
                 >
                   <ChevronLeft className="size-8" />
                 </button>
                 <button 
                   onClick={handleNext}
-                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
                 >
                   <ChevronRight className="size-8" />
                 </button>
