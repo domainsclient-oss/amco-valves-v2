@@ -105,7 +105,7 @@ export default function HighPressureInLineCheckValvePage() {
                 {specs.map((spec, i) => (
                   <div key={i} className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 border-b border-border pb-4 last:border-none">
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
-                      {spec.label} :
+                      {spec.label} :-
                     </span>
                     <span className="text-foreground/70 text-sm md:text-base leading-relaxed">
                       {spec.value}

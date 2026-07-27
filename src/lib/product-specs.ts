@@ -590,7 +590,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     material: "CS / SS / Alloy steel / Duplex SS",
     endConnection: "BSPF / NPTF",
     pressureRating: "3000 PSI / 6000 PSI",
-    manufacturingStandard: "-",
+    manufacturingStandard: "Manufacturer Std",
     testingStandard: "API 598",
   },
 
