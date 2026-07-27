@@ -1,17 +1,27 @@
-
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function WaferLuggedResilientSeatPage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const showcaseImages = [
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
+  ];
+
   const productImage = {
-    imageUrl: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg",
+    imageUrl: showcaseImages[0].src,
     description: "Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -96,12 +106,26 @@ export default function WaferLuggedResilientSeatPage() {
     { size: "DN1000", p: "1170", d: "42", n: "28" },
   ];
 
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
-      ["Model", "Wafer Lugged Resilient seat PN10#"],
+      ["Model", "Wafer Lugged Resilient seat PN10# - Single piece design"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
       [""],
       ["General Dimensions (mm)"],
@@ -126,7 +150,7 @@ export default function WaferLuggedResilientSeatPage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `Uni_Directional_Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
+    link.setAttribute("download", `Bi_Directional_Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -205,41 +229,28 @@ export default function WaferLuggedResilientSeatPage() {
           {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-              Visual Showcase
+              <Sparkles className="size-3.5" /> Visual Showcase
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <Image
-                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg"
-                  alt="Uni-Directional Wafer Lugged Resilient Seat View 1"
-                  fill
-                  className="object-contain p-6"
-                />
-              </div>
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <Image
-                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg"
-                  alt="Uni-Directional Wafer Lugged Resilient Seat View 2"
-                  fill
-                  className="object-contain p-6"
-                />
-              </div>
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <Image
-                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg"
-                  alt="Uni-Directional Wafer Lugged Resilient Seat View 3"
-                  fill
-                  className="object-contain p-6"
-                />
-              </div>
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <Image
-                  src="/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg"
-                  alt="Uni-Directional Wafer Lugged Resilient Seat View 4"
-                  fill
-                  className="object-contain p-6"
-                />
-              </div>
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-6"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-6 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
 
@@ -357,6 +368,44 @@ export default function WaferLuggedResilientSeatPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[90vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
+            {selectedImageIndex !== null && (
+              <>
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                    <p className="text-white text-lg font-medium">{showcaseImages[selectedImageIndex].alt}</p>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
