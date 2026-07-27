@@ -11,7 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 export default function MetalSeatKnifeEdgeGateValvePage() {
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/uni-directionalwafer-lugged-metal-seat-pn10-1.jpg",
     description: "Wafer Lugged Metal Seat Knife Edge Gate Valve"
   };
 
@@ -199,6 +199,39 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                 >
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              Visual Showcase
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-metal-seat-pn10-1.jpg"
+                  alt="Uni-Directional Wafer Lugged Metal Seat View 1"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-metal-seat-pn10-2.jpg"
+                  alt="Uni-Directional Wafer Lugged Metal Seat View 2"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <Image
+                  src="/products/uni-directionalwafer-lugged-metal-seat-pn10-3.jpg"
+                  alt="Uni-Directional Wafer Lugged Metal Seat View 3"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
             </div>
           </div>
