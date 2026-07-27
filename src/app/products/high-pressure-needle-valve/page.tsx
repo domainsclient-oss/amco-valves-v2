@@ -130,6 +130,7 @@ export default function HighPressureNeedleValvePage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -222,7 +223,7 @@ export default function HighPressureNeedleValvePage() {
       </section>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
+        <DialogContent className="max-w-[95vw] max-h-[75vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden mt-20">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (

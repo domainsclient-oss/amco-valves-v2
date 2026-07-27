@@ -125,20 +125,8 @@ export default function WaferLuggedResilientSeatPage() {
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
-      ["Model", "Wafer Lugged Resilient seat PN10# - Single piece design"],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
-      [""],
-      ["General Dimensions (mm)"],
-      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
-      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
-      [""],
-      ["Flange Suitability"],
-      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
-      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10]),
-      [""],
-      ["To Suit PN16# Flanges"],
-      ["Size", "PCD", "Hole Dia", "No. of Holes"],
-      ...pn16Suitability.map(row => [row.size, row.p, row.d, row.n])
+      ["Model", "Wafer Lugged Resilient seat PN10#"],
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
     ];
     
     const csvContent = [
@@ -150,7 +138,7 @@ export default function WaferLuggedResilientSeatPage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `Bi_Directional_Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
+    link.setAttribute("download", `Wafer_Lugged_Resilient_seat_PN10_data_sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -371,7 +359,7 @@ export default function WaferLuggedResilientSeatPage() {
 
       {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
+        <DialogContent className="max-w-[95vw] max-h-[75vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden mt-20">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (
