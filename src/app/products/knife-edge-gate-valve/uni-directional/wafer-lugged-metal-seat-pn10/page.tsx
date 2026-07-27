@@ -149,7 +149,7 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `Flanged_Metal_seat_PN10_data_sheet.csv`);
+    link.setAttribute("download", `Wafer_Lugged_Metal_seat_PN10_data_sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -369,9 +369,9 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
 
       {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[90vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
+        <DialogContent className="max-w-[95vw] max-h-[85vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-hidden">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
-          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
             {selectedImageIndex !== null && (
               <>
                 <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
@@ -389,13 +389,13 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                 
                 <button 
                   onClick={handlePrev}
-                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10"
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
                 >
                   <ChevronLeft className="size-8" />
                 </button>
                 <button 
                   onClick={handleNext}
-                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10"
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-10"
                 >
                   <ChevronRight className="size-8" />
                 </button>
