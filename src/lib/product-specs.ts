@@ -605,7 +605,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "BSPF / NPTF / SW",
     pressureRating: "3000 PSI / 6000 PSI",
     modeOfOperation: "Lever",
-    manufacturingStandard: "-",
+    manufacturingStandard: "Manufacturer Std",
     testingStandard: "API 598",
   },
 
