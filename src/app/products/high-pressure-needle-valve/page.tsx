@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -32,8 +33,7 @@ export default function HighPressureNeedleValvePage() {
   }
 
   const showcaseImages = [
-    { src: "/HP_needle_valve_1.jpg", alt: "High Pressure Needle Valve View 1" },
-    { src: "/HP_needle_valve_2.jpg", alt: "High Pressure Needle Valve View 2" },
+    { src: "/products/HP_needle_valve.jpg", alt: "High Pressure Needle Valve View" },
   ];
 
   const specs = [
@@ -122,7 +122,7 @@ export default function HighPressureNeedleValvePage() {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="/HP_needle_valve_2.jpg"
+                src="/products/HP_needle_valve.jpg"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
