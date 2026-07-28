@@ -6,6 +6,7 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function PtfeLinedDiaphragmValvePage() {
@@ -38,12 +39,30 @@ export default function PtfeLinedDiaphragmValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const dimensionData = [
+    { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
+    { size: "DN20", ftf: "118", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
+    { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
+    { size: "DN32", ftf: "145", od: "115", hole: "Ø 16 X 4", pcd: "88.9" },
+    { size: "DN40", ftf: "158", od: "125", hole: "Ø 16 X 4", pcd: "98.4" },
+    { size: "DN50", ftf: "188", od: "150", hole: "Ø 19 X 4", pcd: "120.7" },
+    { size: "DN65", ftf: "220", od: "180", hole: "Ø 19 X 4", pcd: "139.7" },
+    { size: "DN80", ftf: "254", od: "190", hole: "Ø 19 X 4", pcd: "152.4" },
+    { size: "DN100", ftf: "304", od: "230", hole: "Ø 19 X 8", pcd: "190.5" },
+  ];
+
   const handleDownloadCSV = () => {
+    if (!product) return;
+    
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
-      ...specs.map(spec => [spec.label, spec.value])
+      ...specs.map(spec => [spec.label, spec.value]),
+      [""],
+      ["PTFE LINED DIAPHRAGM VALVE FLANGED 150#"],
+      ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD"],
+      ...dimensionData.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd])
     ];
     
     const csvContent = [
@@ -84,7 +103,7 @@ export default function PtfeLinedDiaphragmValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -123,6 +142,44 @@ export default function PtfeLinedDiaphragmValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      PTFE LINED DIAPHRAGM VALVE FLANGED 150#
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
