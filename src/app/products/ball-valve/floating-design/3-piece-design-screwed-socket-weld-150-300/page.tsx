@@ -17,6 +17,12 @@ export default function ThreePieceBallValvePage() {
     { src: "/products/3pc-design-screwed-1.png", alt: "3PC Design Screwed View 1" },
     { src: "/products/3pc-design-screwed-2.png", alt: "3PC Design Screwed View 2" },
     { src: "/products/3pc-design-screwed-3.png", alt: "3PC Design Screwed View 3" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-1.jpg", alt: "3PC Design Screwed View 4" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-2.jpg", alt: "3PC Design Screwed View 5" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-3.jpg", alt: "3PC Design Screwed View 6" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-4.jpg", alt: "3PC Design Screwed View 7" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-5.jpg", alt: "3PC Design Screwed View 8" },
+    { src: "/products/3-piece-design-screwed-socket-weld-150-300-6.jpg", alt: "3PC Design Screwed View 9" },
   ];
 
   const productImage = {
@@ -40,9 +46,9 @@ export default function ThreePieceBallValvePage() {
     { size: "DN15", f150: "63", l150: "110", h150: "50", f300: "63", l300: "110", h300: "50" },
     { size: "DN20", f150: "75", l150: "110", h150: "55", f300: "75", l300: "110", h300: "55" },
     { size: "DN25", f150: "87", l150: "140", h150: "70", f300: "87", l300: "140", h300: "70" },
-    { size: "DN32", f150: "88", l150: "180", h150: "26", f300: "88", l300: "180", h300: "26" },
-    { size: "DN40", f150: "110", l150: "180", h150: "90", f300: "110", l300: "180", h300: "90" },
-    { size: "DN50", f150: "112", l150: "180", h150: "105", f300: "112", l300: "180", h300: "105" },
+    { size: "DN32", f150: "88", l150: "180", h150: "26", f300: "88", l150: "180", h300: "26" },
+    { size: "DN40", f150: "110", l150: "180", h150: "90", f300: "110", l150: "180", h300: "90" },
+    { size: "DN50", f150: "112", l150: "180", h150: "105", f300: "112", l150: "180", h300: "105" },
     { size: "DN65", f150: "on request", l150: "on request", h150: "on request", f300: "on request", l300: "on request", h300: "on request" },
     { size: "DN80", f150: "162", l150: "290", h150: "135", f300: "162", l300: "290", h300: "135" },
     { size: "DN100", f150: "on request", l150: "on request", h150: "on request", f300: "on request", l300: "on request", h300: "on request" },
