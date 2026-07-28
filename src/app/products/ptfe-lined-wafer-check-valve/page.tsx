@@ -45,31 +45,27 @@ export default function PtfeLinedWaferCheckValvePage() {
   ];
 
   const dimensionData = [
-    { size: "DN50", ftf: "43", bore: "51" },
-    { size: "DN65", ftf: "46", bore: "64" },
-    { size: "DN80", ftf: "46", bore: "76" },
-    { size: "DN100", ftf: "52", bore: "101" },
-    { size: "DN125", ftf: "56", bore: "125" },
-    { size: "DN150", ftf: "56", bore: "152" },
-    { size: "DN200", ftf: "60", bore: "203" },
-    { size: "DN250", ftf: "68", bore: "254" },
-    { size: "DN300", ftf: "78", bore: "305" },
-    { size: "DN350", ftf: "78", bore: "336" },
-    { size: "DN400", ftf: "102", bore: "387" },
+    { size: "DN50", bore: "26", ftf: "43", od: "113" },
+    { size: "DN65", bore: "-", ftf: "-", od: "-" },
+    { size: "DN80", bore: "42", ftf: "46", od: "147" },
+    { size: "DN100", bore: "65", ftf: "52", od: "180" },
+    { size: "DN125", bore: "-", ftf: "-", od: "-" },
+    { size: "DN150", bore: "111", ftf: "56", od: "236.8" },
+    { size: "DN200", bore: "133", ftf: "60", od: "290" },
+    { size: "DN250", bore: "184", ftf: "68", od: "344" },
+    { size: "DN300", bore: "232", ftf: "78", od: "415" },
   ];
 
   const flangeSuitabilityData = [
     { size: "DN50", pcd: "120.7", dia: "19", holes: "4" },
-    { size: "DN65", pcd: "139.7", dia: "19", holes: "4" },
+    { size: "DN65", pcd: "-", dia: "-", holes: "-" },
     { size: "DN80", pcd: "152.4", dia: "19", holes: "4" },
     { size: "DN100", pcd: "190.5", dia: "19", holes: "8" },
-    { size: "DN125", pcd: "215.9", dia: "22.2", holes: "8" },
+    { size: "DN125", pcd: "-", dia: "-", holes: "-" },
     { size: "DN150", pcd: "241.3", dia: "22.2", holes: "8" },
     { size: "DN200", pcd: "298.5", dia: "22.2", holes: "8" },
     { size: "DN250", pcd: "362.0", dia: "25.4", holes: "12" },
     { size: "DN300", pcd: "431.8", dia: "25.4", holes: "12" },
-    { size: "DN350", pcd: "476.3", dia: "29", holes: "12" },
-    { size: "DN400", pcd: "539.8", dia: "29", holes: "16" },
   ];
 
   const handleDownloadCSV = () => {
@@ -81,9 +77,9 @@ export default function PtfeLinedWaferCheckValvePage() {
       ["Category", product.category],
       ...specs.map(spec => [spec.label, spec.value]),
       [""],
-      ["LINED WAFER CHECK VALVE DIMENSIONS"],
-      ["SIZE", "FACE TO FACE", "BORE"],
-      ...dimensionData.map(row => [row.size, row.ftf, row.bore]),
+      ["PTFE LINED WAFER CHECK VALVE DIMENSIONS"],
+      ["SIZE", "BORE", "FACE TO FACE", "OUTER DIA"],
+      ...dimensionData.map(row => [row.size, row.bore, row.ftf, row.od]),
       [""],
       ["TO SUIT 150# FLANGES"],
       ["SIZE", "PCD", "HOLE DIA", "NO. OF HOLES"],
@@ -177,22 +173,24 @@ export default function PtfeLinedWaferCheckValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        LINED WAFER CHECK VALVE DIMENSIONS
+                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        PTFE LINED WAFER CHECK VALVE
                       </TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">BORE</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">OUTER DIA</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {dimensionData.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.bore}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.od}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
