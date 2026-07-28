@@ -1,16 +1,32 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function ThreePieceFlangedBallValveFullRangePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const showcaseImages = [
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-1.jpg", alt: "3PC Flanged Ball Valve View 1" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-2.jpg", alt: "3PC Flanged Ball Valve View 2" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-3.jpg", alt: "3PC Flanged Ball Valve View 3" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-4.jpg", alt: "3PC Flanged Ball Valve View 4" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-5.jpg", alt: "3PC Flanged Ball Valve View 5" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-6.jpg", alt: "3PC Flanged Ball Valve View 6" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-7.jpeg", alt: "3PC Flanged Ball Valve View 7" },
+    { src: "/products/3-piece-design-flanged-ansi-150-300-600-900-8.jpg", alt: "3PC Flanged Ball Valve View 8" },
+  ];
+
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: "3 Piece Flanged Ball Valve"
   };
 
@@ -25,8 +41,6 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
   ];
 
   const table150_300 = [
-    { size: "DN8", f150fl: "", f150bw: "", d150: "", h150: "", pcd150: "", f300fl: "", f300bw: "", d300: "", h300: "", pcd300: "" },
-    { size: "DN10", f150fl: "", f150bw: "", d150: "", h150: "", pcd150: "", f300fl: "", f300bw: "", d300: "", h300: "", pcd300: "" },
     { size: "DN15", f150fl: "108", f150bw: "140", d150: "90", h150: "Ø 16 X 4", pcd150: "60.3", f300fl: "140", f300bw: "140", d300: "95", h300: "Ø 16 X 4", pcd300: "66.7" },
     { size: "DN20", f150fl: "117", f150bw: "152", d150: "100", h150: "Ø 16 X 4", pcd150: "69.9", f300fl: "152", f300bw: "152", d300: "115", h300: "Ø 19 X 4", pcd300: "82.6" },
     { size: "DN25", f150fl: "127", f150bw: "165", d150: "110", h150: "Ø 16 X 4", pcd150: "79.4", f300fl: "165", f300bw: "165", d300: "125", h300: "Ø 19 X 4", pcd300: "88.9" },
@@ -36,7 +50,7 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
     { size: "DN65", f150fl: "190", f150bw: "241", d150: "180", h150: "Ø 19 X 4", pcd150: "139.7", f300fl: "241", f300bw: "241", d300: "190", h300: "Ø 22.2 X 8", pcd300: "149.2" },
     { size: "DN80", f150fl: "203", f150bw: "282", d150: "190", h150: "Ø 19 X 4", pcd150: "152.4", f300fl: "282", f300bw: "282", d300: "210", h300: "Ø 22.2 X 8", pcd300: "168.3" },
     { size: "DN100", f150fl: "229", f150bw: "305", d150: "230", h150: "Ø 19 X 8", pcd150: "190.5", f300fl: "305", f300bw: "305", d300: "255", h300: "Ø 22.2 X 8", pcd300: "200" },
-    { size: "DN125", f150fl: "254", f150bw: "", d150: "255", h150: "Ø 22.2 X 8", pcd150: "215.9", f300fl: "", f300bw: "", d300: "280", h300: "Ø 22.2 X 8", pcd300: "235" },
+    { size: "DN125", f150fl: "254", f150bw: "-", d150: "255", h150: "Ø 22.2 X 8", pcd150: "215.9", f300fl: "", f300bw: "", d300: "280", h300: "Ø 22.2 X 8", pcd300: "235" },
     { size: "DN150", f150fl: "267", f150bw: "403", d150: "280", h150: "Ø 22.2 X 8", pcd150: "241.3", f300fl: "403", f300bw: "403", d300: "320", h300: "Ø 22.2 X 12", pcd300: "269.9" },
     { size: "DN200", f150fl: "292", f150bw: "419", d150: "345", h150: "Ø 22.2 X 8", pcd150: "298.5", f300fl: "419", f300bw: "419", d300: "380", h300: "Ø 25.4 X 12", pcd300: "330.2" },
     { size: "DN250", f150fl: "330", f150bw: "457", d150: "405", h150: "Ø 25.4 X 12", pcd150: "362", f300fl: "457", f300bw: "457", d300: "445", h300: "Ø 29 X 16", pcd300: "387.4" },
@@ -44,8 +58,6 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
   ];
 
   const table600_900 = [
-    { size: "DN8", f600fl: "-", f600bw: "-", d600: "-", h600: "-", pcd600: "-", f900fl: "-", f900bw: "-", d900: "-", h900: "-", pcd900: "-" },
-    { size: "DN10", f600fl: "-", f600bw: "-", d600: "-", h600: "-", pcd600: "-", f900fl: "-", f900bw: "-", d900: "-", h900: "-", pcd900: "-" },
     { size: "DN15", f600fl: "165", f600bw: "165", d600: "95", h600: "Ø 16 X 4", pcd600: "66.7", f900fl: "-", f900bw: "-", d900: "120", h900: "Ø 22.2 X 4", pcd900: "82.6" },
     { size: "DN20", f600fl: "190", f600bw: "190", d600: "115", h600: "Ø 19 X 4", pcd600: "82.6", f900fl: "-", f900bw: "-", d900: "130", h900: "Ø 22.2 X 4", pcd900: "88.9" },
     { size: "DN25", f600fl: "216", f600bw: "216", d600: "125", h600: "Ø 19 X 4", pcd600: "88.9", f900fl: "254", f900bw: "254", d900: "150", h900: "Ø 25.4 X 4", pcd900: "101.6" },
@@ -57,6 +69,20 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
     { size: "DN100", f600fl: "432", f600bw: "432", d600: "275", h600: "Ø 25.4 X 8", pcd600: "215.9", f900fl: "457", f900bw: "457", d900: "290", h900: "Ø 32 X 8", pcd900: "235" },
     { size: "DN125", f600fl: "", f600bw: "", d600: "330", h600: "Ø 29 X 8", pcd600: "266.7", f900fl: "", f900bw: "", d900: "350", h900: "Ø 35 X 8", pcd900: "279.4" },
   ];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -144,6 +170,34 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-12">
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
               <div className="overflow-x-auto">
@@ -177,7 +231,7 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.pcd150}</TableCell>
                         
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300fl}</TableCell>
@@ -251,6 +305,48 @@ export default function ThreePieceFlangedBallValveFullRangePage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
