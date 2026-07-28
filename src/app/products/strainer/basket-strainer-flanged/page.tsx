@@ -1,22 +1,47 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function BasketStrainerFlangedPage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const slug = "strainer/basket-strainer-flanged";
   const product = productSpecsRegistry[slug];
 
-  if (!product) return null;
+  if (!product) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Navbar />
+        <div className="pt-40 pb-20 container mx-auto px-6 text-center">
+          <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
+          <Button className="mt-8" asChild>
+            <Link href="/#products">Back to Products</Link>
+          </Button>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  const showcaseImages = [
+    { src: "/products/basket-strainer-flanged-1.jpg", alt: "Basket Strainer View 1" },
+    { src: "/products/basket-strainer-flanged-2.jpg", alt: "Basket Strainer View 2" },
+    { src: "/products/basket-strainer-flanged-3.jpg", alt: "Basket Strainer View 3" },
+    { src: "/products/basket-strainer-flanged-4.jpg", alt: "Basket Strainer View 4" },
+    { src: "/products/basket-strainer-flanged-5.jpg", alt: "Basket Strainer View 5" },
+    { src: "/products/basket-strainer-flanged-6.jpg", alt: "Basket Strainer View 6" },
+  ];
 
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: product.subTitle
   };
 
@@ -30,9 +55,24 @@ export default function BasketStrainerFlangedPage() {
     { label: "Mesh", value: product.mesh },
     { label: "End connection", value: product.endConnection },
     { label: "Pressure rating", value: product.pressureRating },
+    { label: "Mode of operation", value: product.modeOfOperation },
     { label: "Manufacturing Standard", value: product.manufacturingStandard },
     { label: "Testing Standard", value: product.testingStandard },
   ];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -80,7 +120,7 @@ export default function BasketStrainerFlangedPage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -127,8 +167,78 @@ export default function BasketStrainerFlangedPage() {
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
