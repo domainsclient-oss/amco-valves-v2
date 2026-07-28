@@ -1,17 +1,31 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function BiDirectionalWaferTwoPiecePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const showcaseImages = [
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-1.jpg", alt: "2-Piece Bi-Directional KGV View 1" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-2.jpg", alt: "2-Piece Bi-Directional KGV View 2" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-3.jpg", alt: "2-Piece Bi-Directional KGV View 3" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-4.jpg", alt: "2-Piece Bi-Directional KGV View 4" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-5.jpg", alt: "2-Piece Bi-Directional KGV View 5" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-6.jpg", alt: "2-Piece Bi-Directional KGV View 6" },
+    { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-7.webp", alt: "2-Piece Bi-Directional KGV View 7" },
+  ];
+
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: "2 piece design Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -43,14 +57,6 @@ export default function BiDirectionalWaferTwoPiecePage() {
     { size: "DN300", f: "84", bore: "300", h: "830", wheel: "300" },
     { size: "DN350", f: "84", bore: "334", h: "930", wheel: "450" },
     { size: "DN400", f: "97", bore: "380", h: "1080", wheel: "450" },
-    { size: "DN450", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN500", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN600", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN750", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN800", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN900", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
   ];
 
   const flangeSuitability = [
@@ -65,15 +71,21 @@ export default function BiDirectionalWaferTwoPiecePage() {
     { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
     { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
     { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
-    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
-    { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
-    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
-    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
-    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
-    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
-    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
-    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -170,6 +182,34 @@ export default function BiDirectionalWaferTwoPiecePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-12">
             {/* Table 1: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
@@ -221,7 +261,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs">PCD</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
                     </TableRow>
@@ -250,6 +290,48 @@ export default function BiDirectionalWaferTwoPiecePage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
