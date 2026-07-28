@@ -1,22 +1,33 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function WaferDamperValvePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const slug = "damper-valve/wafer-type-seatless-design";
   const product = productSpecsRegistry[slug];
 
   if (!product) return null;
 
+  const showcaseImages = [
+    { src: "/products/damper-valvewafer-type-seatless-design-1.jpg", alt: "Wafer Type Damper Valve View 1" },
+    { src: "/products/damper-valvewafer-type-seatless-design-2.jpg", alt: "Wafer Type Damper Valve View 2" },
+    { src: "/products/damper-valvewafer-type-seatless-design-3.jpg", alt: "Wafer Type Damper Valve View 3" },
+    { src: "/products/damper-valvewafer-type-seatless-design-4.jpg", alt: "Wafer Type Damper Valve View 4" },
+  ];
+
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: product.subTitle
   };
 
@@ -56,55 +67,19 @@ export default function WaferDamperValvePage() {
     { size: "DN1000", ftf: "65", top: "635", bottom: "645" },
   ];
 
-  const flangeSuitabilityData = [
-    { size: "DN50", o150: "150", h150: "19 X 4", p150: "120.7", o300: "165", h300: "19 X 8", p300: "127" },
-    { size: "DN65", o150: "180", h150: "19 X 4", p150: "139.7", o300: "190", h300: "22.2 X 8", p300: "149.2" },
-    { size: "DN80", o150: "190", h150: "19 X 4", p150: "152.4", o300: "210", h300: "22.2 X 8", p300: "168.3" },
-    { size: "DN100", o150: "230", h150: "19 X 8", p150: "190.5", o300: "255", h300: "22.2 X 8", p300: "200" },
-    { size: "DN125", o150: "255", h150: "22.2 X 8", p150: "215.9", o300: "280", h300: "22.2 X 8", p300: "235" },
-    { size: "DN150", o150: "280", h150: "22.2 X 8", p150: "241.3", o300: "320", h300: "22.2 X 12", p300: "269.9" },
-    { size: "DN200", o150: "345", h150: "22.2 X 8", p150: "298.5", o300: "380", h300: "25.4 X 12", p300: "330.2" },
-    { size: "DN250", o150: "405", h150: "25.4 X 12", p150: "362", o300: "445", h300: "29 X 16", p300: "387.4" },
-    { size: "DN300", o150: "485", h150: "25.4 X 12", p150: "431.8", o300: "520", h300: "32 X 16", p300: "450.8" },
-    { size: "DN350", o150: "535", h150: "29 X 12", p150: "476.3", o300: "585", h300: "32 X 20", p300: "514.4" },
-    { size: "DN400", o150: "595", h150: "29 X 16", p150: "539.8", o300: "650", h300: "35 X 20", p300: "571.5" },
-    { size: "DN450", o150: "635", h150: "32 X 16", p150: "577.9", o300: "710", h300: "35 X 24", p300: "628.6" },
-    { size: "DN500", o150: "700", h150: "32 X 20", p150: "635", o300: "775", h300: "35 X 24", p300: "685.8" },
-    { size: "DN600", o150: "815", h150: "35 X 20", p150: "749.3", o300: "915", h300: "41 X 24", p300: "812.8" },
-    { isHeader: true, size: "DN700" },
-    { size: "SERIES A FLANGE", o150: "925", h150: "35 X 28", p150: "863.6", o300: "1035", h300: "44 X 28", p300: "939.8" },
-    { size: "SERIES B FLANGE", o150: "835", h150: "22.2 X 40", p150: "795.3", o300: "920", h300: "35 X 36", p300: "857.2" },
-    { isHeader: true, size: "DN800" },
-    { size: "SERIES A FLANGE", o150: "1060", h150: "41.2 X 28", p150: "977.9", o300: "1150", h300: "50 X 28", p300: "1054.1" },
-    { size: "SERIES B FLANGE", o150: "940", h150: "22.2 X 48", p150: "900.1", o300: "1055", h300: "41.2 X 32", p300: "977.9" },
-    { isHeader: true, size: "DN900" },
-    { size: "SERIES A FLANGE", o150: "1170", h150: "41 X 32", p150: "1085.8", o300: "1270", h300: "54 X 32", p300: "1168.4" },
-    { size: "SERIES B FLANGE", o150: "1055", h150: "25.4 X 44", p150: "1009.6", o300: "1170", h300: "44 X 32", p300: "1089.0" },
-    { isHeader: true, size: "DN1000" },
-    { size: "SERIES A FLANGE", o150: "1290", h150: "41 X 36", p150: "1200.2", o300: "1240", h300: "44 X 32", p300: "1155.7" },
-    { size: "SERIES B FLANGE", o150: "1175", h150: "29 X 44", p150: "1120.8", o300: "1275", h300: "44 X 40", p300: "1190.6" },
-  ];
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
 
-  const flangePN10_16Data = [
-    { size: "DN50", o10: "165", h10: "18 X 4", p10: "125", o16: "165", h16: "18 X 4", p16: "125" },
-    { size: "DN65", o10: "185", h10: "18 X 4", p10: "145", o16: "185", h16: "18 X 4", p16: "145" },
-    { size: "DN80", o10: "200", h10: "18 X 8", p10: "160", o16: "200", h16: "18 X 8", p16: "160" },
-    { size: "DN100", o10: "220", h10: "18 X 8", p10: "180", o16: "220", h16: "18 X 8", p16: "180" },
-    { size: "DN125", o10: "250", h10: "18 X 8", p10: "210", o16: "250", h16: "18 X 8", p16: "210" },
-    { size: "DN150", o10: "285", h10: "22 X 8", p10: "240", o16: "285", h16: "22 X 8", p16: "240" },
-    { size: "DN200", o10: "340", h10: "22 X 8", p10: "295", o16: "340", h16: "22 X 12", p16: "295" },
-    { size: "DN250", o10: "395", h10: "22 X 12", p10: "350", o16: "405", h16: "26 X 12", p16: "355" },
-    { size: "DN300", o10: "445", h10: "22 X 12", p10: "400", o16: "460", h16: "26 X 12", p16: "410" },
-    { size: "DN350", o10: "505", h10: "22 X 16", p10: "460", o16: "520", h16: "26 X 16", p16: "470" },
-    { size: "DN400", o10: "565", h10: "26 X 16", p10: "515", o16: "580", h16: "30 X 16", p16: "525" },
-    { size: "DN450", o10: "615", h10: "26 X 20", p10: "565", o16: "640", h16: "30 X 20", p16: "585" },
-    { size: "DN500", o10: "670", h10: "26 X 20", p10: "620", o16: "715", h16: "33 X 20", p16: "650" },
-    { size: "DN600", o10: "780", h10: "30 X 20", p10: "725", o16: "840", h16: "36 X 20", p16: "770" },
-    { size: "DN700", o10: "895", h10: "30 X 24", p10: "840", o16: "895", h16: "36 X 24", p16: "840" },
-    { size: "DN800", o10: "1015", h10: "33 X 24", p10: "950", o16: "1015", h16: "39 X 24", p16: "950" },
-    { size: "DN900", o10: "1115", h10: "33 X 24", p10: "1050", o16: "1115", h16: "36 X 28", p16: "1050" },
-    { size: "DN1000", o10: "1230", h10: "36 X 28", p10: "1160", o16: "1230", h16: "42 X 28", p16: "1170" },
-  ];
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -115,15 +90,7 @@ export default function WaferDamperValvePage() {
       [""],
       ["Dimension Table"],
       ["Size", "Face To Face", "Center To Top", "Center To Bottom"],
-      ...dimensionData.map(row => [row.size, row.ftf, row.top, row.bottom]),
-      [""],
-      ["Flange Suitability Table (150# & 300#)"],
-      ["Size", "Outer Dia (150#)", "Hole Pattern (150#)", "PCD (150#)", "Outer Dia (300#)", "Hole Pattern (300#)", "PCD (300#)"],
-      ...flangeSuitabilityData.map(row => (row as any).isHeader ? [row.size] : [row.size, (row as any).o150, (row as any).h150, (row as any).p150, (row as any).o300, (row as any).h300, (row as any).p300]),
-      [""],
-      ["Flange Suitability Table (PN10 & PN16)"],
-      ["Size", "Outer Dia (PN10)", "Hole Pattern (PN10)", "PCD (PN10)", "Outer Dia (PN16)", "Hole Pattern (PN16)", "PCD (PN16)"],
-      ...flangePN10_16Data.map(row => [row.size, row.o10, row.h10, row.p10, row.o16, row.h16, row.p16])
+      ...dimensionData.map(row => [row.size, row.ftf, row.top, row.bottom])
     ];
     
     const csvContent = [
@@ -212,6 +179,34 @@ export default function WaferDamperValvePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-4"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-16">
             {/* Table: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
@@ -248,117 +243,51 @@ export default function WaferDamperValvePage() {
                 </p>
               </div>
             </div>
-
-            {/* Table 2: Flange Suitability (150# & 300#) */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-7xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-lg">
-                        TO SUIT 150# FLANGES
-                      </TableHead>
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        TO SUIT 300# FLANGES
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {flangeSuitabilityData.map((row, idx) => {
-                      if ((row as any).isHeader) {
-                        return (
-                          <TableRow key={idx} className="bg-primary/5">
-                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center border-r border-neutral-100">{row.size}</TableCell>
-                            <TableCell colSpan={4} className="font-bold text-primary py-2 text-center">{row.size}</TableCell>
-                          </TableRow>
-                        );
-                      }
-                      return (
-                        <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
-                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h150}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{(row as any).p150}</TableCell>
-                          
-                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).o300}</TableCell>
-                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{(row as any).h300}</TableCell>
-                          <TableCell className="text-center text-foreground/80">{(row as any).p300}</TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 3: Flange Suitability (PN10 & PN16) */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-7xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-lg">
-                        TO SUIT PN10 FLANGES
-                      </TableHead>
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        TO SUIT PN16 FLANGES
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {flangePN10_16Data.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o10}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h10}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p10}</TableCell>
-                        
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.o16}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h16}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.p16}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
