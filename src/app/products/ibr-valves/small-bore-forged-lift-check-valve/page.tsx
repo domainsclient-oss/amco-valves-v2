@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -6,8 +7,8 @@ import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function SmallBoreForgedLiftCheckValvePage() {
   const slug = "ibr-valves/small-bore-forged-lift-check-valve";
@@ -33,13 +34,52 @@ export default function SmallBoreForgedLiftCheckValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
+  const table150 = [
+    { size: "DN15", ftf: "108", od: "90", hole: "16 X 4", pcd: "60.3", height: "53" },
+    { size: "DN20", ftf: "117", od: "100", hole: "16 X 4", pcd: "69.9", height: "56" },
+    { size: "DN25", ftf: "127", od: "110", hole: "16 X 4", pcd: "79.4", height: "66" },
+    { size: "DN32", ftf: "140", od: "115", hole: "16 X 4", pcd: "88.9", height: "86" },
+    { size: "DN40", ftf: "165", od: "125", hole: "16 X 4", pcd: "98.4", height: "86" },
+    { size: "DN50", ftf: "203", od: "150", hole: "19 X 4", pcd: "120.7", height: "104" },
+  ];
+
+  const table300 = [
+    { size: "DN15", ftf: "152", od: "95", hole: "16 X 4", pcd: "66.7", height: "53" },
+    { size: "DN20", ftf: "178", od: "115", hole: "19 X 4", pcd: "82.6", height: "56" },
+    { size: "DN25", ftf: "203", od: "125", hole: "19 X 4", pcd: "88.9", height: "66" },
+    { size: "DN32", ftf: "216", od: "135", hole: "19 X 4", pcd: "98.4", height: "86" },
+    { size: "DN40", ftf: "229", od: "155", hole: "22.2 X 4", pcd: "114.3", height: "86" },
+    { size: "DN50", ftf: "267", od: "165", hole: "19 X 8", pcd: "127", height: "104" },
+  ];
+
+  const table600 = [
+    { size: "DN15", ftf: "165", od: "95", hole: "16 X 4", pcd: "66.7", height: "53" },
+    { size: "DN20", ftf: "190", od: "115", hole: "19 X 4", pcd: "82.6", height: "56" },
+    { size: "DN25", ftf: "216", od: "125", hole: "19 X 4", pcd: "88.9", height: "66" },
+    { size: "DN32", ftf: "229", od: "135", hole: "19 X 4", pcd: "98.4", height: "86" },
+    { size: "DN40", ftf: "241", od: "155", hole: "22.2 X 4", pcd: "114.3", height: "86" },
+    { size: "DN50", ftf: "292", od: "165", hole: "19 X 8", pcd: "127", height: "104" },
+  ];
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
       ["Sub Category", product.subCategory],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["A105 / F304L / F316L LIFT CHECK VALVE FLANGED 150#"],
+      ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD", "CENTER TO TOP HEIGHT"],
+      ...table150.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd, row.height]),
+      [""],
+      ["A105 / F304L / F316L LIFT CHECK VALVE FLANGED 300#"],
+      ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD", "CENTER TO TOP HEIGHT"],
+      ...table300.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd, row.height]),
+      [""],
+      ["A105 / F304L / F316L GATE VALVE FLANGED 600#"],
+      ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD", "CENTER TO TOP HEIGHT"],
+      ...table600.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd, row.height]),
     ];
     
     const csvContent = [
@@ -80,7 +120,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
       {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
@@ -127,6 +167,118 @@ export default function SmallBoreForgedLiftCheckValvePage() {
               </div>
             </div>
           </div>
+
+          <div className="space-y-16">
+            {/* Table 1: 150# */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        A105 / F304L / F316L LIFT CHECK VALVE FLANGED 150#
+                      </TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table150.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.height}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Table 2: 300# */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        A105 / F304L / F316L LIFT CHECK VALVE FLANGED 300#
+                      </TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table300.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.height}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Table 3: 600# */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        A105 / F304L / F316L GATE VALVE FLANGED 600#
+                      </TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">CENTER TO TOP HEIGHT</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table600.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.height}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -134,3 +286,4 @@ export default function SmallBoreForgedLiftCheckValvePage() {
     </main>
   );
 }
+
