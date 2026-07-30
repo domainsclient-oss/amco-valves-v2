@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -76,7 +75,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
     { size: "DN25", ftf: "145", bore: "14.5", sw: "33.9", height: "86" },
     { size: "DN32", ftf: "145", bore: "20.5", sw: "42.7", height: "86" },
     { size: "DN40", ftf: "160", bore: "25.5", sw: "48.8", height: "104" },
-    { size: "DN50", ftf: "172", bore: "27.5", sw: "61.2", height: "127" },
+    { size: "DN50", ftf: "172", bore: "34.9", sw: "61.2", height: "127" },
   ];
 
   const table2500 = [
@@ -181,7 +180,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs opacity-70 uppercase font-normal">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
@@ -243,6 +242,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                     </TableBody>
                   </Table>
                 </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
+                </div>
               </div>
 
               {/* Table: 300# */}
@@ -278,6 +282,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                     </TableBody>
                   </Table>
                 </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
+                </div>
               </div>
 
               {/* Table: 600# */}
@@ -287,7 +296,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                     <TableHeader>
                       <TableRow className="bg-white border-b border-neutral-300">
                         <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                          A105 / F304L / F316L GATE VALVE FLANGED 600#
+                          A105 / F304L / F316L LIFT CHECK VALVE FLANGED 600#
                         </TableHead>
                       </TableRow>
                       <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
@@ -312,6 +321,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                       ))}
                     </TableBody>
                   </Table>
+                </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
                 </div>
               </div>
             </div>
@@ -349,6 +363,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                     </TableBody>
                   </Table>
                 </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
+                </div>
               </div>
 
               {/* Table: 1500# */}
@@ -381,6 +400,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                       ))}
                     </TableBody>
                   </Table>
+                </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
                 </div>
               </div>
 
@@ -415,13 +439,12 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                     </TableBody>
                   </Table>
                 </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
+                </div>
               </div>
-            </div>
-
-            <div className="px-6 py-3 bg-neutral-100/50 rounded-xl">
-              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                All dimensions are in mm
-              </p>
             </div>
           </div>
         </div>

@@ -147,7 +147,7 @@ export default function SmallBorePistonValvePage() {
               <Table className="border-collapse w-full">
                 <TableHeader>
                   <TableRow className="bg-white border-b border-neutral-300">
-                    <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6">
+                    <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
                       A105 / F304L / F316L PISTON VALVE SW & SE 800#
                     </TableHead>
                   </TableRow>

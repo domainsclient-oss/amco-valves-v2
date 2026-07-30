@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -204,6 +203,11 @@ export default function SmallBoreForgedGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
             </div>
 
             {/* 1500# Table */}
@@ -240,6 +244,11 @@ export default function SmallBoreForgedGateValvePage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
 
