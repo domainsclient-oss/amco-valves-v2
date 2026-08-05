@@ -1,22 +1,26 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function LargeBorePistonValvePage() {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const slug = "piston-valve/large-bore-non-ibr-ibr";
   const product = productSpecsRegistry[slug];
 
   if (!product) return null;
 
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/large-bore-non-ibr-ibr.jpg",
     description: product.subTitle
   };
 
@@ -158,6 +162,31 @@ export default function LargeBorePistonValvePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="max-w-md">
+              <button 
+                onClick={() => setIsLightboxOpen(true)}
+                className="relative aspect-square w-full rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+              >
+                <Image
+                  src={productImage.imageUrl}
+                  alt={productImage.description}
+                  fill
+                  className="object-contain p-6"
+                />
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    <Maximize className="size-6 text-primary" />
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+
           <div className="space-y-16">
             {/* Table 1: 150# Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-7xl mx-auto">
@@ -196,8 +225,8 @@ export default function LargeBorePistonValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -240,8 +269,8 @@ export default function LargeBorePistonValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -249,6 +278,31 @@ export default function LargeBorePistonValvePage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            <button 
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+            >
+              <X className="size-8" />
+            </button>
+
+            <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+              <Image
+                src={productImage.imageUrl}
+                alt={productImage.description}
+                fill
+                className="object-contain bg-black/20"
+                priority
+              />
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
