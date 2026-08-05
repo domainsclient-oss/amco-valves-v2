@@ -1,17 +1,25 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function BiDirectionalWaferLuggedResilientSeatPage() {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const showcaseImages = [
+    { src: "/products/wafer-lugged-resilient-seat-pn10.jpg", alt: "Wafer Lugged Resilient Seat KGV View" },
+  ];
+
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: "Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -60,8 +68,8 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
     { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
     { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
     { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
-    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN12: "12" },
-    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN12: "12" },
+    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
     { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
     { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
     { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
@@ -74,28 +82,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
     { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
-  const pn16Suitability = [
-    { size: "DN50", p: "125", d: "18", n: "4" },
-    { size: "DN65", p: "145", d: "18", n: "4" },
-    { size: "DN80", p: "160", d: "18", n: "8" },
-    { size: "DN100", p: "180", d: "18", n: "8" },
-    { size: "DN125", p: "210", d: "18", n: "8" },
-    { size: "DN150", p: "240", d: "22", n: "8" },
-    { size: "DN200", p: "295", d: "22", n: "12" },
-    { size: "DN250", p: "355", d: "26", n: "12" },
-    { size: "DN300", p: "410", d: "26", n: "12" },
-    { size: "DN350", p: "470", d: "26", n: "16" },
-    { size: "DN400", p: "525", d: "30", n: "16" },
-    { size: "DN450", p: "585", d: "30", n: "20" },
-    { size: "DN500", p: "650", d: "33", n: "20" },
-    { size: "DN600", p: "770", d: "36", n: "20" },
-    { size: "DN700", p: "840", d: "36", n: "24" },
-    { size: "DN750", p: "-", d: "-", n: "-" },
-    { size: "DN800", p: "950", d: "39", n: "24" },
-    { size: "DN900", p: "1050", d: "39", n: "28" },
-    { size: "DN1000", p: "1170", d: "42", n: "28" },
-  ];
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
@@ -103,18 +89,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
       ["Type", "Bi Directional"],
       ["Model", "Wafer Lugged Resilient seat PN10# - Single piece design"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
-      [""],
-      ["General Dimensions (mm)"],
-      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
-      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
-      [""],
-      ["Flange Suitability"],
-      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
-      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10]),
-      [""],
-      ["To Suit PN16# Flanges"],
-      ["Size", "PCD", "Hole Dia", "No. of Holes"],
-      ...pn16Suitability.map(row => [row.size, row.p, row.d, row.n])
     ];
     
     const csvContent = [
@@ -151,11 +125,9 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
         </div>
       </div>
 
-      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -166,7 +138,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
               />
             </div>
 
-            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -176,7 +147,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs opacity-70 uppercase font-normal">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
@@ -199,6 +170,31 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="max-w-md">
+              <button 
+                onClick={() => setIsLightboxOpen(true)}
+                className="relative aspect-square w-full rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+              >
+                <Image
+                  src={productImage.imageUrl}
+                  alt={productImage.description}
+                  fill
+                  className="object-contain p-6"
+                />
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    <Maximize className="size-6 text-primary" />
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
 
@@ -232,14 +228,14 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
             </div>
 
-            {/* Table 2: Flange Suitability (150# & PN10#) */}
+            {/* Table 2: Flange Suitability */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
@@ -273,42 +269,8 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 3: To Suit PN16# Flanges */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">TO SUIT PN16# FLANGES</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pn16Suitability.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.n}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -316,6 +278,31 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            <button 
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+            >
+              <X className="size-8" />
+            </button>
+
+            <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+              <Image
+                src={productImage.imageUrl}
+                alt={productImage.description}
+                fill
+                className="object-contain bg-black/20"
+                priority
+              />
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
