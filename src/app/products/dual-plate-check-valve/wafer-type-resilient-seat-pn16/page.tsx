@@ -1,23 +1,43 @@
-
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 
 export default function WaferResilientSeatCheckValvePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const slug = "dual-plate-check-valve/wafer-type-resilient-seat-pn16";
   const product = productSpecsRegistry[slug];
 
-  if (!product) return null;
+  if (!product) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Navbar />
+        <div className="pt-40 pb-20 container mx-auto px-6 text-center">
+          <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
+          <Button className="mt-8" asChild>
+            <Link href="/#products">Back to Products</Link>
+          </Button>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  const showcaseImages = [
+    { src: "/products/wafer-type-resilient-seat-pn16-1.jpg", alt: "Wafer type Resilient seat View 1" },
+    { src: "/products/wafer-type-resilient-seat-pn16-2.jpg", alt: "Wafer type Resilient seat View 2" },
+  ];
 
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: showcaseImages[0].src,
     description: product.subTitle
   };
 
@@ -95,13 +115,26 @@ export default function WaferResilientSeatCheckValvePage() {
     { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", p300: "-", d300: "-", n300: "-" },
   ];
 
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
-      ["Product", "Wafer type Resilient seat Dual Plate Check Valve"],
+      ["Product", product.subTitle],
       ["Category", product.category],
-      ["Sub Category", product.subCategory],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
     ];
     
     const csvContent = [
@@ -113,7 +146,7 @@ export default function WaferResilientSeatCheckValvePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `Wafer_Resilient_Seat_Check_Valve_Data_Sheet.csv`);
+    link.setAttribute("download", `${product.subTitle.replace(/[^a-z0-9]/gi, '_')}_Data_Sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -147,7 +180,7 @@ export default function WaferResilientSeatCheckValvePage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Wafer type Resilient seat Dual Plate Check Valve"
+                alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -190,6 +223,34 @@ export default function WaferResilientSeatCheckValvePage() {
             </div>
           </div>
 
+          {/* Visual Showcase Section */}
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-6"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-6 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-12">
             {/* Table 1: 150# Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
@@ -218,8 +279,8 @@ export default function WaferResilientSeatCheckValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -252,8 +313,8 @@ export default function WaferResilientSeatCheckValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -293,8 +354,8 @@ export default function WaferResilientSeatCheckValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -302,6 +363,48 @@ export default function WaferResilientSeatCheckValvePage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Dialog */}
+      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
+        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
+          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
+          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
+            {selectedImageIndex !== null && (
+              <>
+                <button 
+                  onClick={() => setSelectedImageIndex(null)}
+                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
+                >
+                  <X className="size-8" />
+                </button>
+
+                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
+                  <Image
+                    src={showcaseImages[selectedImageIndex].src}
+                    alt={showcaseImages[selectedImageIndex].alt}
+                    fill
+                    className="object-contain bg-black/20"
+                    priority
+                  />
+                </div>
+                
+                <button 
+                  onClick={handlePrev}
+                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronLeft className="size-8" />
+                </button>
+                <button 
+                  onClick={handleNext}
+                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
+                >
+                  <ChevronRight className="size-8" />
+                </button>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </main>
