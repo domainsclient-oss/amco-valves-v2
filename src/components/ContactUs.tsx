@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { MapPin, Phone, Mail, Send, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -112,7 +113,9 @@ export function ContactUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Mobile</h4>
-                  <p className="text-foreground/60 text-sm">91-9841114671</p>
+                  <Link href="tel:+919841114671" className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                    91-9841114671
+                  </Link>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -121,7 +124,9 @@ export function ContactUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Email</h4>
-                  <p className="text-foreground/60 text-sm">contact@amcovalves.com</p>
+                  <Link href="mailto:contact@amcovalves.com" className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                    contact@amcovalves.com
+                  </Link>
                 </div>
               </div>
             </div>
