@@ -11,9 +11,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function DiaphragmValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "diaphragm-valve/unlined-and-lined";
   const product = productSpecsRegistry[slug];
 
@@ -159,7 +161,11 @@ export default function DiaphragmValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -234,8 +240,8 @@ export default function DiaphragmValvePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                 All dimensions are in mm
               </p>
             </div>
@@ -284,6 +290,12 @@ export default function DiaphragmValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="Diaphragm Valve - Unlined and Lined" 
+      />
 
       <Footer />
     </main>

@@ -10,9 +10,11 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function Trunnion2PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const productImage = {
     imageUrl: "/products/trunnion-mounted2-piece-design-flanged-ansi-150-300-600.jpg",
@@ -24,7 +26,7 @@ export default function Trunnion2PiecePage() {
     { label: "Material of construction", value: "WCB / CF8 / CF8M / CF3 / CF3M" },
     { label: "End connection", value: "FLANGED" },
     { label: "Pressure rating", value: "150# / 300# / 600#" },
-    { label: "Mode of operation", value: "Lever, Actuator" },
+    { label: "Mode of operation", value: "Lever, Gear, Actuator" },
     { label: "Manufacturing Standard", value: "ISO 17292 / API 6D / API 608" },
     { label: "Testing Standard", value: "ISO 5208 / ISO 10497 / API 607" },
   ];
@@ -117,7 +119,13 @@ export default function Trunnion2PiecePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">Request a Quote</Button>
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
+                  Request a Quote
+                </Button>
                 <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors" onClick={handleDownloadCSV}>
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
@@ -285,6 +293,12 @@ export default function Trunnion2PiecePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="Trunnion Mounted 2 Piece Design Flanged ANSI 150#, 300#, 600#" 
+      />
 
       <Footer />
     </main>

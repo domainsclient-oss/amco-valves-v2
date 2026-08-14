@@ -10,9 +10,11 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function TwoPieceFloatingFlangedBallValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
     { src: "/products/2-piece-design-flanged-ansi-150-300-600-1.jpg", alt: "2PC Flanged Ball Valve View 1" },
@@ -167,7 +169,11 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -339,6 +345,12 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="2 Piece Design Flanged ANSI 150#, 300#, 600#" 
+      />
 
       <Footer />
     </main>

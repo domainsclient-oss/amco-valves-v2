@@ -10,9 +10,11 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function DoubleFlangedButterflyValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
     { src: "/products/butterfly-valvecentric-disc-designdouble-flanged-pn10-pn16-pn20-pn25-1.jpg", alt: "Double Flanged BFV View 1" },
@@ -241,7 +243,11 @@ export default function DoubleFlangedButterflyValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -482,6 +488,12 @@ export default function DoubleFlangedButterflyValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="Double Flanged PN10# / PN16# / PN20# / PN25# Butterfly Valve" 
+      />
 
       <Footer />
     </main>

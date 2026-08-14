@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -9,9 +10,11 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function BiDirectionalFlangedResilientSeatPage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const productImage = {
     imageUrl: "/products/KGV-flanged-resilient-seat-pn10.webp",
@@ -188,7 +191,11 @@ export default function BiDirectionalFlangedResilientSeatPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -366,6 +373,12 @@ export default function BiDirectionalFlangedResilientSeatPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="Bi-Directional Flanged Resilient Seat Knife Edge Gate Valve PN10#" 
+      />
 
       <Footer />
     </main>
