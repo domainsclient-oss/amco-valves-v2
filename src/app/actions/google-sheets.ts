@@ -13,7 +13,6 @@ export interface SheetRow {
 
 /**
  * Server action to append a row to a specified Google Sheet tab.
- * tabName defaults to 'Leads' if not provided.
  */
 export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
   try {
@@ -22,8 +21,18 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
     const privateKey = rawPrivateKey ? rawPrivateKey.replace(/\\n/g, '\n') : undefined;
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     
-    // Target tab: custom name (like 'Request_quote') or fallbacks
-    const tabName = targetTab || process.env.GOOGLE_SHEET_TAB_NAME || 'Leads';
+    // Logic for determining the target tab:
+    // 1. If an explicit tab is passed, use it.
+    // 2. If it's a quote request (Product Name is not "Contact Form"), use the secondary tab name.
+    // 3. Fallback to the default Leads tab.
+    let tabName = targetTab;
+    if (!tabName) {
+      if (data["Product Name"] && data["Product Name"] !== "Contact Form") {
+        tabName = process.env.GOOGLE_SHEET_TAB_NAME2 || "Request_quote";
+      } else {
+        tabName = process.env.GOOGLE_SHEET_TAB_NAME || 'Leads';
+      }
+    }
 
     if (!clientEmail || !privateKey || !spreadsheetId) {
       console.error('GOOGLE SHEETS: Missing environment variables.');

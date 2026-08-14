@@ -49,13 +49,14 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
       name: "",
       email: "",
       phone: "",
-      message: `I am interested in the ${productName}. Please provide a quote.`,
+      message: `I am interested in the ${productName}. Please provide a quote with lead times and technical specifications.`,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
+      // Explicitly directing to the Request_quote tab
       const result = await appendToGoogleSheet({
         "Full Name": values.name,
         "Email Address": values.email,
@@ -68,7 +69,7 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
 
       toast({
         title: "Quote Request Sent",
-        description: "We have received your request and will get back to you shortly.",
+        description: "We have received your request and will get back to you shortly with detailed pricing.",
       });
       onOpenChange(false);
       form.reset();
@@ -89,7 +90,7 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-primary">Request a Quote</DialogTitle>
           <DialogDescription className="text-foreground/60">
-            Submit your details for <span className="font-bold text-secondary">{productName}</span> and our team will get back to you with a custom quote.
+            Submit your details for <span className="font-bold text-secondary">{productName}</span> and our team will prepare a custom proposal.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -143,7 +144,7 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
                   <FormLabel className="font-bold text-primary">Your Message</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Special requirements or questions..." 
+                      placeholder="Specify size, material requirements, or project details..." 
                       className="min-h-[120px] resize-none bg-background border-none focus-visible:ring-secondary"
                       {...field} 
                     />
@@ -156,11 +157,11 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 animate-spin size-5" />
-                  Sending...
+                  Processing...
                 </>
               ) : (
                 <>
-                  Send Message
+                  Send Request
                   <Send className="ml-2 size-5" />
                 </>
               )}
