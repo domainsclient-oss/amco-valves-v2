@@ -17,6 +17,13 @@ export interface ProductSpecs {
   mesh?: string;
   oRings?: string;
   sleeve?: string;
+  showcaseImages?: { src: string; alt: string }[];
+  dimensionTables?: {
+    title: string;
+    headers: string[];
+    subHeaders?: { title: string; colSpan: number }[];
+    rows: { data: string[]; isHeader?: boolean; isChild?: boolean }[];
+  }[];
 }
 
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
@@ -33,6 +40,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Wheel",
     manufacturingStandard: "API 602",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/piston-valvesmall-bore-non-ibr-ibr.jpg", alt: "Small Bore Piston Valve" }]
   },
   "piston-valve/large-bore-non-ibr-ibr": {
     title: "Piston Valve - Seatless & Glandless",
@@ -46,6 +54,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Wheel",
     manufacturingStandard: "API 602",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/large-bore-non-ibr-ibr.jpg", alt: "Large Bore Piston Valve" }]
   },
 
   // Ball Valve - Floating Design
@@ -61,6 +70,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever",
     manufacturingStandard: "ISO 17292",
     testingStandard: "ISO 5208",
+    showcaseImages: [{ src: "/products/2pc-screwed-1.webp", alt: "2PC Screwed Ball Valve" }]
   },
   "ball-valve/floating-design/3-piece-design-screwed-socket-weld-150-300": {
     title: "Floating Design",
@@ -74,6 +84,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292",
     testingStandard: "ISO 5208",
+    showcaseImages: [{ src: "/products/3pc-design-screwed-1.png", alt: "3PC Screwed Ball Valve" }]
   },
   "ball-valve/floating-design/3-piece-design-screwed-socket-weld-600-800-1500": {
     title: "Floating Design",
@@ -87,6 +98,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
+    showcaseImages: [{ src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-1.jpg", alt: "3PC High Pressure Ball Valve" }]
   },
   "ball-valve/floating-design/3-piece-design-flanged-ansi-150-300-600-900": {
     title: "Floating Design",
@@ -100,6 +112,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
+    showcaseImages: [{ src: "/products/3-piece-design-flanged-ansi-150-300-600-900-1.jpg", alt: "3PC Flanged Ball Valve" }]
   },
   "ball-valve/floating-design/2-piece-design-flanged-ansi-150-300-600": {
     title: "Floating Design",
@@ -113,6 +126,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
+    showcaseImages: [{ src: "/products/2-piece-design-flanged-ansi-150-300-600-1.jpg", alt: "2PC Flanged Ball Valve" }]
   },
   "ball-valve/floating-design/wafer-design-ball-valve-150-pn25-pn40": {
     title: "Floating Design",
@@ -126,6 +140,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292",
     testingStandard: "ISO 5208",
+    showcaseImages: [{ src: "/Amco-Banner.png", alt: "Wafer Design Ball Valve" }]
   },
 
   // Ball Valve - Trunnion Mounted
@@ -141,6 +156,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
+    showcaseImages: [{ src: "/products/trunnion-mounted2-piece-design-flanged-ansi-150-300-600.jpg", alt: "2PC Trunnion Ball Valve" }]
   },
   "ball-valve/trunnion-mounted/3-piece-design-flanged-ansi-150-300-600": {
     title: "Trunnion Mounted",
@@ -154,6 +170,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
+    showcaseImages: [{ src: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg", alt: "3PC Trunnion Ball Valve" }]
   },
 
   // Butterfly Valve - Centric Disc Design
@@ -170,6 +187,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/butterfly-valve-wafer-semi-lugged-1.jpg", alt: "Wafer Semi Lugged BFV" }]
   },
   "butterfly-valve/centric-disc-design/full-lugged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
@@ -184,6 +202,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/centric-disc-designfull-lugged-pn10-pn16-pn20-pn25.jpg", alt: "Full Lugged BFV" }]
   },
   "butterfly-valve/centric-disc-design/wafer-flanged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
@@ -198,6 +217,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-1.jpg", alt: "Wafer Flanged BFV" }]
   },
   "butterfly-valve/centric-disc-design/double-flanged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
@@ -212,6 +232,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/butterfly-valvecentric-disc-designdouble-flanged-pn10-pn16-pn20-pn25-1.jpg", alt: "Double Flanged BFV" }]
   },
 
   // Butterfly Valve - Double Offset Design
@@ -228,6 +249,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/butterfly-valvedouble-offset-designwafer-semi-lugged-150-300-1.jpg", alt: "Double Offset Wafer BFV" }]
   },
   "butterfly-valve/double-offset-design/full-lugged-150-300": {
     title: "Double Offset Design",
@@ -242,6 +264,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/Amco-Banner.png", alt: "Double Offset Lugged BFV" }]
   },
   "butterfly-valve/double-offset-design/double-flanged-150-300": {
     title: "Double Offset Design",
@@ -256,6 +279,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/butterfly-valvedouble-offset-designdouble-flanged-150-300.jpg", alt: "Double Offset Flanged BFV" }]
   },
 
   // Gate Valve for Fire Fighting
@@ -272,6 +296,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Bare shaft, Wheel, Gear box, Actuator",
     manufacturingStandard: "API 600",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/fire-fightingdouble-flanged-soft-seated-pn16-1.jpg", alt: "Fire Fighting Gate Valve" }]
   },
 
   // Dual Plate Check Valve
@@ -288,6 +313,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Automatic",
     manufacturingStandard: "API 594",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/wafer-type-resilient-seat-pn16-1.jpg", alt: "Wafer Check Valve" }]
   },
   "dual-plate-check-valve/lugged-type-resilient-seat-pn16": {
     title: "Check Valve Range",
@@ -302,142 +328,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Automatic",
     manufacturingStandard: "API 594",
     testingStandard: "API 598",
-  },
-  "dual-plate-check-valve/flanged-type-resilient-seat-pn16": {
-    title: "Check Valve Range",
-    subTitle: "Flanged type Resilient seat",
-    category: "Dual plate check valve",
-    subCategory: "Check Valve Range",
-    size: "DN50 - DN800",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    seat: "EPDM / VITON",
-    endConnection: "Flanged to suit ANSI flanges",
-    pressureRating: "150#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-  "dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300": {
-    title: "Check Valve Range",
-    subTitle: "Wafer type Retainerless Metal seat",
-    category: "Dual plate check valve",
-    subCategory: "Check Valve Range",
-    size: "DN50 - DN800",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    seat: "Welded / Integral",
-    endConnection: "Wafer to suit ANSI flanges",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-  "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300": {
-    title: "Check Valve Range",
-    subTitle: "Lugged type Retainerless Metal seat",
-    category: "Dual plate check valve",
-    subCategory: "Check Valve Range",
-    size: "DN50 - DN800",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    seat: "Welded / Integral",
-    endConnection: "Wafer Lugged to suit ANSI flanges",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-  "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
-    title: "Check Valve Range",
-    subTitle: "Flanged type Retainerless Metal",
-    category: "Dual plate check valve",
-    subCategory: "Check Valve Range",
-    size: "DN50 - DN800",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    seat: "Welded / Integral",
-    endConnection: "Flanged to suit ANSI flanges",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-
-  // IBR & Non IBR Valves
-  "ibr-valves/small-bore-forged-gate-valve": {
-    title: "Small Bore Forged IBR & Non IBR Gate Valve",
-    subTitle: "Small Bore Forged IBR & Non IBR Gate Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Small Bore Forged",
-    size: "DN15 - DN50",
-    material: "A105 / F304/L / F316/L / F11 / F22",
-    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
-    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
-    modeOfOperation: "Wheel",
-    manufacturingStandard: "API 602",
-    testingStandard: "API 598",
-  },
-  "ibr-valves/small-bore-forged-globe-valve": {
-    title: "Small Bore Forged IBR & Non IBR Globe Valve",
-    subTitle: "Small Bore Forged IBR & Non IBR Globe Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Small Bore Forged",
-    size: "DN15 - DN50",
-    material: "A105 / F304/L / F316/L / F11 / F22",
-    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
-    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
-    modeOfOperation: "Wheel",
-    manufacturingStandard: "API 602",
-    testingStandard: "API 598",
-  },
-  "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "Small Bore Forged IBR & Non IBR Lift check Valve",
-    subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Small Bore Forged",
-    size: "DN15 - DN50",
-    material: "A105 / F304/L / F316/L / F11 / F22",
-    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
-    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 602",
-    testingStandard: "API 598",
-  },
-  "ibr-valves/large-bore-cast-gate-valve": {
-    title: "Large Bore Cast IBR & Non IBR Gate Valve",
-    subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Large Bore Cast",
-    size: "DN50 - DN800",
-    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
-    endConnection: "Flanged / Butt weld",
-    pressureRating: "150#, 300#, 600#",
-    modeOfOperation: "Wheel / Electric",
-    manufacturingStandard: "API 600",
-    testingStandard: "API 598",
-  },
-  "ibr-valves/large-bore-cast-globe-valve": {
-    title: "Large Bore Cast IBR & Non IBR Globe Valve",
-    subTitle: "Large Bore Cast IBR & Non IBR Globe Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Large Bore Cast",
-    size: "DN50 - DN600",
-    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
-    endConnection: "Flanged / Butt weld",
-    pressureRating: "150#, 300#, 600#",
-    modeOfOperation: "Wheel / Electric",
-    manufacturingStandard: "API 623",
-    testingStandard: "API 598",
-  },
-  "ibr-valves/large-bore-cast-swing-check-valve": {
-    title: "Large Bore Cast IBR & Non IBR Swing check Valve",
-    subTitle: "Large Bore Cast IBR & Non IBR Swing check Valve",
-    category: "IBR & Non IBR Small & Large Bore Gate/Globe/Check Valve",
-    subCategory: "Large Bore Cast",
-    size: "DN50 - DN600",
-    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
-    endConnection: "Flanged / Butt weld",
-    pressureRating: "150#, 300#, 600#",
-    modeOfOperation: "Automatic",
-    manufacturingStandard: "API 600",
-    testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/wafer-type-resilient-seat-pn16-1.jpg", alt: "Lugged Check Valve" }]
   },
 
   // Damper Valve
@@ -453,6 +344,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "Manufacturer / API 609",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/damper-valvewafer-type-seatless-design-1.jpg", alt: "Wafer Damper Valve" }]
   },
   "damper-valve/flanged-type-seatless-design": {
     title: "Damper valve",
@@ -466,6 +358,24 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "Manufacturer / API 609",
     testingStandard: "API 598",
+    showcaseImages: [{ src: "/Amco-Banner.png", alt: "Flanged Damper Valve" }]
+  },
+
+  // Knife Edge Gate Valve - Uni Directional
+  "knife-edge-gate-valve/uni-directional/wafer-lugged-resilient-seat-pn10": {
+    title: "Uni Directional",
+    subTitle: "Wafer Lugged Resilient seat PN10#",
+    category: "Knife Edge Gate Valve",
+    subCategory: "Uni Directional",
+    size: "DN50 - DN1000",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS",
+    seat: "PTFE / EPDM / VITON",
+    endConnection: "Wafer Lugged to suit ANSI flanges",
+    pressureRating: "PN10#",
+    modeOfOperation: "Wheel, Gear, Actuator",
+    manufacturingStandard: "MSS SP 81",
+    testingStandard: "MSS SP 81",
+    showcaseImages: [{ src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional KGV" }]
   },
 
   // Diaphragm Valve
@@ -483,86 +393,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Wheel",
     manufacturingStandard: "BS 5156",
     testingStandard: "API 6755 Part I",
-  },
-
-  // Strainer
-  "strainer/y-strainer-screwed": {
-    title: "Strainer",
-    subTitle: "Y Strainer - Screwed",
-    category: "Strainer",
-    subCategory: "Y Strainer - Screwed",
-    size: "DN15 - DN50",
-    material: "CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
-    mesh: "All sizes available",
-    endConnection: "Screwed",
-    pressureRating: "PN40",
-    manufacturingStandard: "ASME B16.34",
-    testingStandard: "API 598",
-  },
-  "strainer/y-strainer-flanged": {
-    title: "Strainer",
-    subTitle: "Y Strainer - Flanged",
-    category: "Strainer",
-    subCategory: "Y Strainer - Flanged",
-    size: "DN25 - DN400",
-    material: "CI / DI / CS / SS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
-    mesh: "All sizes available",
-    endConnection: "Flanged to ANSI 150# / 300#",
-    pressureRating: "PN10 / PN16 / 150# / 300#",
-    manufacturingStandard: "ASME B16.34",
-    testingStandard: "API 598",
-  },
-  "strainer/basket-strainer-flanged": {
-    title: "Strainer",
-    subTitle: "Basket Strainer - Flanged",
-    category: "Strainer",
-    subCategory: "Basket Strainer - Flanged",
-    size: "DN50 - DN600",
-    material: "CS / SS / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
-    mesh: "All sizes available",
-    endConnection: "Flanged ANSI 150# / 300# / 600#",
-    pressureRating: "150# / 300# / 600#",
-    manufacturingStandard: "ASME B16.34",
-    testingStandard: "API 598",
-  },
-
-  // Wafer check valve
-  "wafer-check-valve/resilient-seat": {
-    title: "Wafer check valve",
-    subTitle: "Wafer type check valve Resilient seat",
-    category: "Wafer check valve",
-    subCategory: "Resilient seat",
-    size: "DN25 - DN1000",
-    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    oRings: "BUNA N / EPDM / VITON / SILICON / PTFE",
-    endConnection: "Wafer to suit ANSI flanges",
-    pressureRating: "PN16",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-  "wafer-check-valve/metal-seat": {
-    title: "Wafer check valve",
-    subTitle: "Wafer type check valve Metal seat",
-    category: "Wafer check valve",
-    subCategory: "Metal seat",
-    size: "DN25 - DN1000",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    endConnection: "Serrated Wafer to suit ANSI flanges",
-    pressureRating: "PN16",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
-  },
-  "wafer-check-valve/resilient-seat-spring-type": {
-    title: "Wafer check valve",
-    subTitle: "Wafer type check valve Resilient seat - Spring type",
-    category: "Wafer check valve",
-    subCategory: "Spring type",
-    size: "DN25 - DN1000",
-    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
-    endConnection: "Serrated Wafer to suit ANSI flanges",
-    pressureRating: "PN16",
-    manufacturingStandard: "API 594",
-    testingStandard: "API 598",
+    showcaseImages: [{ src: "/products/diaphragm-valveunlined-and-lined-1.jpg", alt: "Diaphragm Valve" }]
   },
 
   // High Pressure Ball Valve
@@ -578,230 +409,22 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 608",
     testingStandard: "ISO 5208 / API 598",
+    showcaseImages: [{ src: "/products/high-pressure-ball-valve-1.jpg", alt: "HP Ball Valve" }]
   },
 
-  // High Pressure In-Line Check Valve
-  "high-pressure-in-line-check-valve": {
-    title: "High Pressure In-Line Check Valve",
-    subTitle: "High Pressure In-Line Check Valve",
-    category: "High Pressure In-Line Check Valve",
-    subCategory: "High Pressure Range",
-    size: "DN06 - DN50",
-    material: "CS / SS / Alloy steel / Duplex SS",
-    endConnection: "BSPF / NPTF",
-    pressureRating: "3000 PSI / 6000 PSI",
-    manufacturingStandard: "Manufacturer Std",
+  // Strainer
+  "strainer/y-strainer-flanged": {
+    title: "Strainer",
+    subTitle: "Y Strainer - Flanged",
+    category: "Strainer",
+    subCategory: "Y Strainer - Flanged",
+    size: "DN25 - DN400",
+    material: "CI / DI / CS / SS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
+    mesh: "All sizes available",
+    endConnection: "Flanged to ANSI 150# / 300#",
+    pressureRating: "PN10 / PN16 / 150# / 300#",
+    manufacturingStandard: "ASME B16.34",
     testingStandard: "API 598",
-  },
-
-  // High Pressure Needle Valve
-  "high-pressure-needle-valve": {
-    title: "High Pressure Needle Valve",
-    subTitle: "High Pressure Needle Valve",
-    category: "High Pressure Needle Valve",
-    subCategory: "High Pressure Range",
-    size: "DN06 - DN50",
-    material: "CS / SS / Alloy steel / Duplex SS",
-    endConnection: "BSPF / NPTF / SW",
-    pressureRating: "3000 PSI / 6000 PSI",
-    modeOfOperation: "Lever",
-    manufacturingStandard: "Manufacturer Std",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Lined Ball Check Valve
-  "ptfe-lined-ball-check-valve": {
-    title: "PTFE Lined Ball Check Valve",
-    subTitle: "PTFE Lined Ball Check Valve",
-    category: "PTFE Lined Ball Check Valve",
-    subCategory: "Lined Valves",
-    size: "DN50 - DN300",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA / FEP",
-    endConnection: "Flanged 150#",
-    pressureRating: "PN10 / 16",
-    manufacturingStandard: "Manufacturer Std",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Lined Ball Valve
-  "ptfe-lined-ball-valve": {
-    title: "PTFE Lined Ball Valve",
-    subTitle: "PTFE Lined Ball Valve",
-    category: "PTFE Lined Ball Valve",
-    subCategory: "Lined Valves",
-    size: "DN50 - DN250",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA / FEP",
-    endConnection: "Flanged",
-    pressureRating: "150#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "ISO 17292",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Lined Butterfly Valve Centric Disc Design
-  "ptfe-lined-butterfly-valve/wafer-centric-disc-design": {
-    title: "PTFE Lined Butterfly Valve Centric Disc Design",
-    subTitle: "PTFE Lined Butterfly Valve Wafer Centric Disc Design",
-    category: "PTFE Lined Butterfly Valve Centric Disc Design",
-    subCategory: "Wafer",
-    size: "DN50 - DN400",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA / FEP",
-    endConnection: "Wafer to suit ANSI 150# flanges",
-    pressureRating: "PN10",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 609",
-    testingStandard: "API 598",
-  },
-  "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "PTFE Lined Butterfly Valve Centric Disc Design",
-    subTitle: "PTFE Lined Butterfly Valve Wafer Full Lug Type Centric Disc Design",
-    category: "PTFE Lined Butterfly Valve Centric Disc Design",
-    subCategory: "Wafer Full Lug Type",
-    size: "DN50 - DN400",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA / FEP",
-    endConnection: "Wafer to suit ANSI 150# flanges",
-    pressureRating: "PN10",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 609",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Lined Diaphragm Valve
-  "ptfe-lined-diaphragm-valve": {
-    title: "PTFE Lined Diaphragm Valve",
-    subTitle: "PTFE Lined Diaphragm Valve",
-    category: "PTFE Lined Diaphragm Valve",
-    subCategory: "Lined Valves",
-    size: "DN25 - DN100",
-    material: "DI / CS / SS",
-    lining: "PFA / FEP",
-    endConnection: "Flanged 150#",
-    pressureRating: "PN10",
-    modeOfOperation: "Wheel",
-    manufacturingStandard: "BS EN 13397:2002",
-    testingStandard: "BS EN 12266",
-  },
-
-  // PTFE Lined Plug Valve
-  "ptfe-lined-plug-valve/pfa-fep-lined": {
-    title: "PTFE Lined Plug Valve",
-    subTitle: "PFA & FEP Lined Plug Valve",
-    category: "PTFE Lined Plug Valve",
-    subCategory: "Lined Valves",
-    size: "DN15 - DN200",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA & FEP",
-    endConnection: "Flanged",
-    pressureRating: "150#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 599",
-    testingStandard: "API 598",
-  },
-  "ptfe-lined-plug-valve/pfa-fep-lined-jacketed": {
-    title: "PTFE Lined Plug Valve",
-    subTitle: "PFA & FEP Lined Jacketed Plug Valve",
-    category: "PTFE Lined Plug Valve",
-    subCategory: "Lined Valves",
-    size: "DN15 - DN200",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA & FEP",
-    endConnection: "Flanged",
-    pressureRating: "150#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 599",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Lined Wafer Check Valve
-  "ptfe-lined-wafer-check-valve": {
-    title: "PTFE Lined Wafer Check Valve",
-    subTitle: "PTFE Lined Wafer Check Valve",
-    category: "PTFE Lined Wafer Check Valve",
-    subCategory: "Lined Valves",
-    size: "DN50 - DN300",
-    material: "CS / SS / Alloy steel",
-    lining: "PFA / FEP",
-    endConnection: "Wafer to suit ANSI 150# flanges",
-    pressureRating: "PN10 / 16",
-    manufacturingStandard: "Manufacturer Std",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Seated Butterfly Valve Centric Disc Design
-  "ptfe-seated-butterfly-valve/wafer-centric-disc-design": {
-    title: "PTFE Seated Butterfly Valve Centric Disc Design",
-    subTitle: "PTFE Seated Butterfly Valve Wafer Centric Disc Design",
-    category: "PTFE Seated Butterfly Valve Centric Disc Design",
-    subCategory: "Wafer",
-    size: "DN50 - DN300",
-    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
-    seat: "PTFE",
-    endConnection: "Wafer to suit ANSI 150# flanges",
-    pressureRating: "PN10",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 609",
-    testingStandard: "API 598",
-  },
-  "ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "PTFE Seated Butterfly Valve Centric Disc Design",
-    subTitle: "PTFE Seated Butterfly Valve Wafer Full Lug Type Centric Disc Design",
-    category: "PTFE Seated Butterfly Valve Centric Disc Design",
-    subCategory: "Wafer Full Lug Type",
-    size: "DN50 - DN300",
-    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
-    seat: "PTFE",
-    endConnection: "Wafer to suit ANSI 150# flanges",
-    pressureRating: "PN10",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 609",
-    testingStandard: "API 598",
-  },
-
-  // PTFE Sleeved Plug Valve
-  "ptfe-sleeved-plug-valve/flanged": {
-    title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Plug Valve (Flanged)",
-    category: "PTFE Sleeved Plug Valve",
-    subCategory: "Standard Design",
-    size: "DN15 - DN300",
-    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
-    sleeve: "PTFE",
-    endConnection: "Flanged",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 599",
-    testingStandard: "API 598",
-  },
-  "ptfe-sleeved-plug-valve/jacketed": {
-    title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Jacketed Plug Valve",
-    category: "PTFE Sleeved Plug Valve",
-    subCategory: "Jacketed Design",
-    size: "DN15 - DN300",
-    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
-    sleeve: "PTFE",
-    endConnection: "Flanged",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 599",
-    testingStandard: "API 598",
-  },
-  "ptfe-sleeved-plug-valve/screwed-socket-butt": {
-    title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Plug Valve (Screwed / Socket weld / Buttweld)",
-    category: "PTFE Sleeved Plug Valve",
-    subCategory: "Standard Design",
-    size: "DN15 - DN100",
-    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
-    sleeve: "PTFE",
-    endConnection: "Screwed / Socket weld / Buttweld",
-    pressureRating: "150#",
-    modeOfOperation: "Lever, Gear, Actuator",
-    manufacturingStandard: "API 599",
-    testingStandard: "API 598",
-  },
+    showcaseImages: [{ src: "/products/y-strainer-flanged-1.jpg", alt: "Y Strainer Flanged" }]
+  }
 };

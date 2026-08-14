@@ -12,6 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { QuotePopup } from "@/components/QuotePopup";
+import { cn } from "@/lib/utils";
 
 export default function DynamicProductDetailPage() {
   const params = useParams();
@@ -96,6 +97,9 @@ export default function DynamicProductDetailPage() {
     document.body.removeChild(link);
   };
 
+  // Professional fallback image from standard pattern
+  const mainImage = product.showcaseImages?.[0]?.src || "https://picsum.photos/seed/amco/800/800";
+
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
@@ -122,11 +126,12 @@ export default function DynamicProductDetailPage() {
             {/* Left Column: Main Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={product.showcaseImages?.[0]?.src || "/dummy-image.png"}
+                src={mainImage}
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
+                data-ai-hint="industrial valve"
               />
             </div>
 
