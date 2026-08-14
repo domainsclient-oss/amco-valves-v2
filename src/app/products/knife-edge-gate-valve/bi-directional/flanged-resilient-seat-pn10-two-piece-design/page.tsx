@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -9,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { QuotePopup } from "@/components/QuotePopup";
 
 interface GeneralDim {
   size: string;
@@ -73,10 +73,8 @@ const flangeSuitabilityData: FlangeSuitability[] = [
 ];
 
 export default function BiDirectionalFlangedTwoPiecePage() {
-  const productImage = {
-    imageUrl: "/dummy-image.png",
-    description: "2 piece design Bi-Directional Flanged Resilient Seat Knife Edge Gate Valve"
-  };
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const productName = "2 piece design Bi-Directional Flanged Resilient Seat Knife Edge Gate Valve PN10#";
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
@@ -149,8 +147,8 @@ export default function BiDirectionalFlangedTwoPiecePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
-                alt={productImage.description}
+                src="/dummy-image.png"
+                alt={productName}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -179,7 +177,7 @@ export default function BiDirectionalFlangedTwoPiecePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -277,6 +275,12 @@ export default function BiDirectionalFlangedTwoPiecePage() {
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={productName} 
+      />
 
       <Footer />
     </main>
