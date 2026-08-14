@@ -129,8 +129,8 @@ export default function PrivacyPolicyPage() {
               <p className="mb-4">If you have questions regarding this Privacy Policy or how we handle personal information, please contact:</p>
               <div className="bg-neutral-50 p-6 rounded-2xl border border-border">
                 <p className="font-bold text-primary">AMCO Valves</p>
-                <p>Email: contact@amcovalves.com</p>
-                <p>Phone: 91-9841114671</p>
+                <p>Email: <Link href="mailto:contact@amcovalves.com" className="text-secondary hover:underline">contact@amcovalves.com</Link></p>
+                <p>Phone: <Link href="tel:+919841114671" className="text-secondary hover:underline">91-9841114671</Link></p>
                 <p>Address: 638/A Tiruvottriyur high road, Ajax, Chennai, 600019</p>
               </div>
             </div>
