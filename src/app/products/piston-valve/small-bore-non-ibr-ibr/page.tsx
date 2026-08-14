@@ -21,7 +21,7 @@ export default function SmallBorePistonValvePage() {
   if (!product) return null;
 
   const productImage = {
-    imageUrl: "/products/piston-valvesmall-bore-non-ibr-ibr.jpg",
+    imageUrl: "/products/small-bore-non-ibr-ibr.jpg",
     description: product.subTitle
   };
 
