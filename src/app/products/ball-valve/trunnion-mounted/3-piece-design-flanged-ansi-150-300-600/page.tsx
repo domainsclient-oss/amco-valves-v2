@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -16,7 +17,7 @@ export default function Trunnion3PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
   const productImage = {
-    imageUrl: "/products/trunnion-mounted-3-piece-design-flanged-ansi-150-300-600.jpg",
+    imageUrl: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg",
     description: "3 Piece Trunnion Ball Valve"
   };
 
