@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function SmallBoreForgedGlobeValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ibr-valves/small-bore-forged-globe-valve";
   const product = productSpecsRegistry[slug];
 
@@ -63,51 +64,6 @@ export default function SmallBoreForgedGlobeValvePage() {
     { size: "DN32", ftf: "140", od: "115", hole: "16 X 4", pcd: "88.9", open: "228", close: "199", wheel: "150" },
     { size: "DN40", ftf: "165", od: "125", hole: "16 X 4", pcd: "98.4", open: "228", close: "199", wheel: "150" },
     { size: "DN50", ftf: "203", od: "150", hole: "19 X 4", pcd: "120.7", open: "265", close: "236", wheel: "150" },
-  ];
-
-  const table300 = [
-    { size: "DN15", ftf: "152", od: "95", hole: "16 X 4", pcd: "66.7", open: "159", close: "143", wheel: "86" },
-    { size: "DN20", ftf: "178", od: "115", hole: "19 X 4", pcd: "82.6", open: "162", close: "146", wheel: "86" },
-    { size: "DN25", ftf: "203", od: "125", hole: "19 X 4", pcd: "88.9", open: "191", close: "171", wheel: "116" },
-    { size: "DN32", ftf: "216", od: "135", hole: "19 X 4", pcd: "98.4", open: "228", close: "199", wheel: "150" },
-    { size: "DN40", ftf: "229", od: "155", hole: "22.2 X 4", pcd: "114.3", open: "228", close: "199", wheel: "150" },
-    { size: "DN50", ftf: "267", od: "165", hole: "19 X 8", pcd: "127", open: "265", close: "236", wheel: "150" },
-  ];
-
-  const table600 = [
-    { size: "DN15", ftf: "165", od: "95", hole: "16 X 4", pcd: "66.7", open: "159", close: "143", wheel: "86" },
-    { size: "DN20", ftf: "190", od: "115", hole: "19 X 4", pcd: "82.6", open: "162", close: "146", wheel: "86" },
-    { size: "DN25", ftf: "216", od: "125", hole: "19 X 4", pcd: "88.9", open: "191", close: "171", wheel: "116" },
-    { size: "DN32", ftf: "229", od: "135", hole: "19 X 4", pcd: "98.4", open: "228", close: "199", wheel: "150" },
-    { size: "DN40", ftf: "241", od: "155", hole: "22.2 X 4", pcd: "114.3", open: "228", close: "199", wheel: "150" },
-    { size: "DN50", ftf: "292", od: "165", hole: "19 X 8", pcd: "127", open: "265", close: "236", wheel: "150" },
-  ];
-
-  const table800 = [
-    { size: "DN15", ftf: "73", bore: "9.5", sw: "21.8", open: "159", close: "143", wheel: "86" },
-    { size: "DN20", ftf: "80", bore: "12.7", sw: "27.2", open: "162", close: "146", wheel: "86" },
-    { size: "DN25", ftf: "100", bore: "17.5", sw: "33.9", open: "191", close: "171", wheel: "116" },
-    { size: "DN32", ftf: "145", bore: "23.8", sw: "42.7", open: "228", close: "199", wheel: "150" },
-    { size: "DN40", ftf: "145", bore: "28.6", sw: "48.8", open: "228", close: "199", wheel: "150" },
-    { size: "DN50", ftf: "160", bore: "36.5", sw: "61.2", open: "265", close: "236", wheel: "150" },
-  ];
-
-  const table1500 = [
-    { size: "DN15", ftf: "80", bore: "8.5", sw: "21.8", open: "160", close: "148", wheel: "86" },
-    { size: "DN20", ftf: "100", bore: "9.5", sw: "27.2", open: "174", close: "187", wheel: "116" },
-    { size: "DN25", ftf: "145", bore: "14.5", sw: "33.9", open: "224", close: "204", wheel: "150" },
-    { size: "DN32", ftf: "145", bore: "20.5", sw: "42.7", open: "224", close: "204", wheel: "150" },
-    { size: "DN40", ftf: "160", bore: "25.5", sw: "48.8", open: "239", close: "261", wheel: "150" },
-    { size: "DN50", ftf: "172", bore: "27.5", sw: "61.2", open: "318", close: "290", wheel: "225" },
-  ];
-
-  const table2500 = [
-    { size: "DN15", ftf: "100", bore: "7.0", sw: "21.8", open: "178", close: "162", wheel: "116" },
-    { size: "DN20", ftf: "145", bore: "12.5", sw: "27.2", open: "227", close: "207", wheel: "150" },
-    { size: "DN25", ftf: "160", bore: "15.5", sw: "33.9", open: "256", close: "224", wheel: "150" },
-    { size: "DN32", ftf: "172", bore: "21.5", sw: "42.7", open: "303", close: "263", wheel: "225" },
-    { size: "DN40", ftf: "172", bore: "26.5", sw: "48.8", open: "303", close: "263", wheel: "225" },
-    { size: "DN50", ftf: "-", bore: "-", sw: "-", open: "-", close: "-", wheel: "-" },
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -171,7 +127,6 @@ export default function SmallBoreForgedGlobeValvePage() {
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -204,7 +159,11 @@ export default function SmallBoreForgedGlobeValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -218,7 +177,6 @@ export default function SmallBoreForgedGlobeValvePage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
@@ -282,221 +240,6 @@ export default function SmallBoreForgedGlobeValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Dimension Table Section - 300# */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        A105 / F304L / F316L GLOBE VALVE FLANGED 300#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HEIGHT (OPEN/CLOSE)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">WHEEL DIA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table300.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.open} / {row.close}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Dimension Table Section - 600# */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        A105 / F304L / F316L GLOBE VALVE FLANGED 600#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HEIGHT (OPEN/CLOSE)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">WHEEL DIA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table600.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.open} / {row.close}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 4: 800# SW/SE */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        A105 / F304L / F316L GLOBE VALVE SW, SE & BW 800#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">SOCKETWELD BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (OPEN)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (CLOSE)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4">WHEEL DIA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table800.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.sw}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.open}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.close}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 5: 1500# SW/SE */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        A105 / F304L / F316L GLOBE VALVE SW, SE & BW 1500#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">SOCKETWELD BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (OPEN)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (CLOSE)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4">WHEEL DIA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table1500.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.sw}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.open}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.close}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 6: 2500# SW/SE */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        A105 / F304L / F316L GLOBE VALVE SW, SE & BW 2500#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">SOCKETWELD BORE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (OPEN)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (CLOSE)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4">WHEEL DIA</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table2500.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.sw}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.open}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.close}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.wheel}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -543,6 +286,12 @@ export default function SmallBoreForgedGlobeValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

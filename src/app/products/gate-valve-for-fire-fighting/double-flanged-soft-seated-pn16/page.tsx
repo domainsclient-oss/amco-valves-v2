@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function FireFightingGateValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16";
   const product = productSpecsRegistry[slug];
 
@@ -79,10 +80,6 @@ export default function FireFightingGateValvePage() {
       ["Category", product.category],
       ["Sub Category", product.subCategory],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
-      [""],
-      ["Dimensions (150# Flanged End)"],
-      ["Size", "Face To Face", "Outer Dia", "Hole Dia x No. Holes", "PCD"],
-      ...dimensionData.map(row => [row.size, row.f, row.d, row.h, row.pcd])
     ];
     
     const csvContent = [
@@ -157,7 +154,11 @@ export default function FireFightingGateValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -278,6 +279,12 @@ export default function FireFightingGateValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

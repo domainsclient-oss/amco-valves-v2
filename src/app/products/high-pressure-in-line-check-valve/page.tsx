@@ -1,6 +1,6 @@
-
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -9,8 +9,10 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function HighPressureInLineCheckValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "high-pressure-in-line-check-valve";
   const product = productSpecsRegistry[slug];
 
@@ -59,10 +61,6 @@ export default function HighPressureInLineCheckValvePage() {
       ["Product", product.subTitle],
       ["Category", product.category],
       ...specs.map(spec => [spec.label, spec.value]),
-      [""],
-      ["Dimension Table (3000 psi / 6000 psi)"],
-      ["SIZE", "FACE TO FACE", "TOTAL HEIGHT"],
-      ...dimensionData.map(row => [row.size, row.ftf, row.height])
     ];
     
     const csvContent = [
@@ -131,7 +129,11 @@ export default function HighPressureInLineCheckValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -172,14 +174,20 @@ export default function HighPressureInLineCheckValvePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                 All dimensions are in mm
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

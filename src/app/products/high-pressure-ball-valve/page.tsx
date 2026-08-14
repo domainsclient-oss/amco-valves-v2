@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function HighPressureBallValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "high-pressure-ball-valve";
   const product = productSpecsRegistry[slug];
 
@@ -87,10 +88,6 @@ export default function HighPressureBallValvePage() {
       ["Product", product.subTitle],
       ["Category", product.category],
       ...specs.map(spec => [spec.label, spec.value]),
-      [""],
-      ["Dimension Table (3000 psi / 6000 psi)"],
-      ["SIZE", "FACE TO FACE", "BORE", "LEVER LENGTH", "CENTER TO TOP HEIGHT"],
-      ...dimensionData.map(row => [row.size, row.ftf, row.bore, row.lever, row.height])
     ];
     
     const csvContent = [
@@ -159,7 +156,11 @@ export default function HighPressureBallValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -282,6 +283,12 @@ export default function HighPressureBallValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>
