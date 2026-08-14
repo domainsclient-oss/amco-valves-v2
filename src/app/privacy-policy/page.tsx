@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
             <span className="text-primary">Privacy Policy</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Privacy Policy</h1>
-          <p className="text-foreground/50 mt-2">{effectiveDate}</p>
+          <p className="text-foreground/50 mt-2">Date: {effectiveDate}</p>
         </div>
       </div>
 
