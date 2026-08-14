@@ -9,9 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useFirestore, useAuth, useUser } from "@/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
-import { errorEmitter } from "@/firebase/error-emitter";
-import { FirestorePermissionError } from "@/firebase/errors";
-import { appendToLeadsSheet } from "@/app/actions/google-sheets";
+import { appendToGoogleSheet } from "@/app/actions/google-sheets";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function ContactUs() {
@@ -29,7 +27,6 @@ export function ContactUs() {
     setIsSubmitting(true);
     setLastError(null);
     
-    const targetEmail = "contact@amcovalves.com";
     const formData = new FormData(e.target as HTMLFormElement);
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
@@ -40,6 +37,7 @@ export function ContactUs() {
       metadata: { name, email, phone, message: messageContent },
       submittedAt: serverTimestamp(),
       status: "New",
+      type: "Contact Form"
     };
 
     const googleSheetPayload = {
@@ -47,22 +45,20 @@ export function ContactUs() {
       "Email Address": email,
       "Phone Number": phone,
       "Your Message": messageContent,
+      "Product Name": "Contact Form"
     };
 
     try {
-      // 1. Ensure Auth for Firestore
       if (!user) {
         await signInAnonymously(auth);
       }
 
-      // 2. Submit to Firestore (Internal backup)
       const firestorePromise = addDoc(collection(db, "contactSubmissions"), submissionData)
         .catch((error) => {
           console.error("Firestore backup failed:", error);
         });
 
-      // 3. Submit to Google Sheets (Primary target)
-      const sheetResult = await appendToLeadsSheet(googleSheetPayload);
+      const sheetResult = await appendToGoogleSheet(googleSheetPayload);
 
       if (!sheetResult.success) {
         throw new Error(sheetResult.error || "Failed to store data in Google Sheets.");
