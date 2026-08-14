@@ -4,15 +4,17 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
+import { ChevronRight, Download, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function BiDirectionalWaferTwoPiecePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
     { src: "/products/bi-directionalwafer-lugged-resilient-seat-pn10-two-piece-design-1.jpg", alt: "2-Piece Bi-Directional KGV View 1" },
@@ -73,20 +75,6 @@ export default function BiDirectionalWaferTwoPiecePage() {
     { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
   ];
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
-    }
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
-    }
-  };
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
@@ -110,6 +98,20 @@ export default function BiDirectionalWaferTwoPiecePage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
   };
 
   return (
@@ -139,7 +141,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="2 piece design Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
+                alt={productImage.description}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -168,7 +170,11 @@ export default function BiDirectionalWaferTwoPiecePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -240,8 +246,8 @@ export default function BiDirectionalWaferTwoPiecePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -281,8 +287,8 @@ export default function BiDirectionalWaferTwoPiecePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -332,6 +338,12 @@ export default function BiDirectionalWaferTwoPiecePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="2 piece design Bi-Directional Wafer Lugged Resilient seat PN10#" 
+      />
 
       <Footer />
     </main>

@@ -4,22 +4,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
+import { ChevronRight, Download, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function BiDirectionalWaferLuggedResilientSeatPage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-  const showcaseImages = [
-    { src: "/products/wafer-lugged-resilient-seat-pn10.jpg", alt: "Wafer Lugged Resilient Seat KGV View" },
-  ];
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const productImage = {
-    imageUrl: showcaseImages[0].src,
+    imageUrl: "/products/wafer-lugged-resilient-seat-pn10.jpg",
     description: "Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -131,7 +129,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Bi-Directional Knife Edge Gate Valve"
+                alt={productImage.description}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -159,7 +157,11 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -173,33 +175,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section */}
-          <div className="mb-20 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="size-3.5" /> Visual Showcase
-            </div>
-            <div className="max-w-md">
-              <button 
-                onClick={() => setIsLightboxOpen(true)}
-                className="relative aspect-square w-full rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
-              >
-                <Image
-                  src={productImage.imageUrl}
-                  alt={productImage.description}
-                  fill
-                  className="object-contain p-6"
-                />
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    <Maximize className="size-6 text-primary" />
-                  </div>
-                </div>
-              </button>
-            </div>
-          </div>
-
           <div className="space-y-12">
-            {/* Table 1: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
@@ -227,52 +203,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                     ))}
                   </TableBody>
                 </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 2: Flange Suitability */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">SIZE</TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {flangeSuitability.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pPN10}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dPN10}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.nPN10}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
               </div>
             </div>
           </div>
@@ -303,6 +233,12 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="Bi-Directional Wafer Lugged Resilient seat PN10# - Single piece design" 
+      />
 
       <Footer />
     </main>
