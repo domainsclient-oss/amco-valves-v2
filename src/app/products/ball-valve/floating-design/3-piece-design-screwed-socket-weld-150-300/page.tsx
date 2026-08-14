@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -9,9 +10,11 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function ThreePieceBallValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
     { src: "/products/3pc-design-screwed-1.png", alt: "3PC Design Screwed View 1" },
@@ -46,9 +49,9 @@ export default function ThreePieceBallValvePage() {
     { size: "DN15", f150: "63", l150: "110", h150: "50", f300: "63", l300: "110", h300: "50" },
     { size: "DN20", f150: "75", l150: "110", h150: "55", f300: "75", l300: "110", h300: "55" },
     { size: "DN25", f150: "87", l150: "140", h150: "70", f300: "87", l300: "140", h300: "70" },
-    { size: "DN32", f150: "88", l150: "180", h150: "26", f300: "88", l150: "180", h300: "26" },
-    { size: "DN40", f150: "110", l150: "180", h150: "90", f300: "110", l150: "180", h300: "90" },
-    { size: "DN50", f150: "112", l150: "180", h150: "105", f300: "112", l150: "180", h300: "105" },
+    { size: "DN32", f150: "88", l150: "180", h150: "26", f300: "88", l300: "180", h300: "26" },
+    { size: "DN40", f150: "110", l150: "180", h150: "90", f300: "110", l300: "180", h300: "90" },
+    { size: "DN50", f150: "112", l150: "180", h150: "105", f300: "112", l300: "180", h300: "105" },
     { size: "DN65", f150: "on request", l150: "on request", h150: "on request", f300: "on request", l300: "on request", h300: "on request" },
     { size: "DN80", f150: "162", l150: "290", h150: "135", f300: "162", l300: "290", h300: "135" },
     { size: "DN100", f150: "on request", l150: "on request", h150: "on request", f300: "on request", l300: "on request", h300: "on request" },
@@ -144,7 +147,11 @@ export default function ThreePieceBallValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -275,6 +282,12 @@ export default function ThreePieceBallValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName="3 Piece Design Screwed / Socket weld 150# & 300# Ball Valve" 
+      />
 
       <Footer />
     </main>
