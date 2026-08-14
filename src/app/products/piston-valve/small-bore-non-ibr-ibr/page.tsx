@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -21,7 +22,7 @@ export default function SmallBorePistonValvePage() {
   if (!product) return null;
 
   const productImage = {
-    imageUrl: "/products/small-bore-non-ibr-ibr.jpg",
+    imageUrl: "/products/piston-valvesmall-bore-non-ibr-ibr.jpg",
     description: product.subTitle
   };
 

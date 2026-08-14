@@ -17,7 +17,7 @@ export default function Trunnion3PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
   const productImage = {
-    imageUrl: "/products/trunnion-mounted-3-piece-design-flanged-ansi-150-300-600.jpg",
+    imageUrl: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg",
     description: "3 Piece Trunnion Ball Valve"
   };
 
@@ -115,7 +115,6 @@ export default function Trunnion3PiecePage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
@@ -174,7 +173,6 @@ export default function Trunnion3PiecePage() {
         </div>
       </section>
 
-      {/* Lightbox Dialog */}
       <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
         <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
