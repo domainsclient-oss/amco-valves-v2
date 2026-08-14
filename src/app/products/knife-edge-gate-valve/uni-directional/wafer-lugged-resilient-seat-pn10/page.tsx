@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -16,10 +17,10 @@ export default function WaferLuggedResilientSeatPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
+    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
+    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
+    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
+    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
   ];
 
   const productImage = {
@@ -59,13 +60,57 @@ export default function WaferLuggedResilientSeatPage() {
     { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
   ];
 
+  const flangeSuitability = [
+    { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
+    { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
+    { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
+    { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
+    { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
+    { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
+    { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
+    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
+    { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
+    { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
+    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
+    { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
+    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
+    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
+    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
+    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
+    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
+    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
+  ];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
+
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
       ["Model", "Wafer Lugged Resilient seat PN10#"],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["General Dimensions (mm)"],
+      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
+      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
+      [""],
+      ["Flange Suitability"],
+      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
+      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10])
     ];
     
     const csvContent = [
@@ -88,6 +133,7 @@ export default function WaferLuggedResilientSeatPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
+      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
@@ -102,13 +148,15 @@ export default function WaferLuggedResilientSeatPage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Uni-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
+                alt="Wafer Lugged Resilient Seat Knife Edge Gate Valve"
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -137,11 +185,7 @@ export default function WaferLuggedResilientSeatPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button 
-                  variant="secondary" 
-                  className="h-12 px-8 rounded-xl font-bold"
-                  onClick={() => setIsQuoteOpen(true)}
-                >
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -212,6 +256,47 @@ export default function WaferLuggedResilientSeatPage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+            </div>
+
+            {/* Table 2: Flange Suitability */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">SIZE</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangeSuitability.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.nPN10}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
