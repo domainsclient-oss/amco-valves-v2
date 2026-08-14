@@ -4,13 +4,18 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function PrivacyPolicyPage() {
-  const effectiveDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+  const [effectiveDate, setEffectiveDate] = useState("");
+
+  useEffect(() => {
+    setEffectiveDate(new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }));
+  }, []);
 
   return (
     <main className="min-h-screen bg-white">
@@ -25,7 +30,7 @@ export default function PrivacyPolicyPage() {
             <span className="text-primary">Privacy Policy</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Privacy Policy</h1>
-          <p className="text-foreground/50 mt-2">Effective Date: {effectiveDate}</p>
+          <p className="text-foreground/50 mt-2">{effectiveDate}</p>
         </div>
       </div>
 

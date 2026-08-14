@@ -30,7 +30,7 @@ export default function TermsOfServicePage() {
             <span className="text-primary">Terms of Service</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Terms of Service</h1>
-          <p className="text-foreground/50 mt-2">Effective Date: {currentDate || "[Insert Date]"}</p>
+          <p className="text-foreground/50 mt-2">{currentDate || "[Insert Date]"}</p>
         </div>
       </div>
 
