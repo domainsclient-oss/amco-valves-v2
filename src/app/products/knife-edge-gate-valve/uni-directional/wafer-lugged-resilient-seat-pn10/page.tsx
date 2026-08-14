@@ -17,10 +17,10 @@ export default function WaferLuggedResilientSeatPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const showcaseImages = [
-    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
-    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
-    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
-    { src: "/products/uni-directional/wafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
+    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
   ];
 
   const productImage = {
@@ -58,6 +58,11 @@ export default function WaferLuggedResilientSeatPage() {
     { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
     { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
     { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
+    { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN750", f: "117", bore: "670", h: "1634", wheel: "-" },
+    { size: "DN800", f: "117", bore: "794", h: "1871", wheel: "-" },
+    { size: "DN900", f: "117", bore: "810", h: "1945", wheel: "-" },
+    { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
   ];
 
   const flangeSuitability = [
@@ -103,14 +108,6 @@ export default function WaferLuggedResilientSeatPage() {
       ["Type", "Uni Directional"],
       ["Model", "Wafer Lugged Resilient seat PN10#"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
-      [""],
-      ["General Dimensions (mm)"],
-      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
-      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
-      [""],
-      ["Flange Suitability"],
-      ["Size", "PCD (150#)", "Hole Dia (150#)", "No. Holes (150#)", "PCD (PN10)", "Hole Dia (PN10)", "No. Holes (PN10)"],
-      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10])
     ];
     
     const csvContent = [
@@ -204,7 +201,7 @@ export default function WaferLuggedResilientSeatPage() {
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {showcaseImages.map((img, idx) => (
                 <button 
                   key={idx}
@@ -348,7 +345,7 @@ export default function WaferLuggedResilientSeatPage() {
       <QuotePopup 
         isOpen={isQuoteOpen} 
         onOpenChange={setIsQuoteOpen} 
-        productName="Wafer Lugged Resilient seat PN10# Uni Directional KGV" 
+        productName="Wafer Lugged Resilient seat PN10# Uni-Directional KGV" 
       />
 
       <Footer />
