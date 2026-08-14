@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function WaferDamperValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "damper-valve/wafer-type-seatless-design";
   const product = productSpecsRegistry[slug];
 
@@ -153,7 +154,7 @@ export default function WaferDamperValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs opacity-70 uppercase font-normal">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
@@ -165,7 +166,11 @@ export default function WaferDamperValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -288,6 +293,12 @@ export default function WaferDamperValvePage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

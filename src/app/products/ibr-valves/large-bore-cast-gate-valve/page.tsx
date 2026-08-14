@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function LargeBoreCastGateValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ibr-valves/large-bore-cast-gate-valve";
   const product = productSpecsRegistry[slug];
 
@@ -65,29 +66,6 @@ export default function LargeBoreCastGateValvePage() {
     { size: "DN800", f150fl: "660", f150bw: "965", f300fl: "1524", f300bw: "1524", isHeader: true },
     { size: "SERIES A FLANGE", d150: "1060", h150: "41.2 X 28", pcd150: "977.9", d300: "1150", h300: "50 X 28", pcd300: "1054.1", isChild: true },
     { size: "SERIES B FLANGE", d150: "940", h150: "22.2 X 48", pcd150: "900.1", d300: "1055", h300: "41.2 X 32", pcd300: "977.9", isChild: true },
-  ];
-
-  const table600 = [
-    { size: "DN50", fl: "292", bw: "292", d: "165", h: "19 X 8", pcd: "127" },
-    { size: "DN65", fl: "330", bw: "330", d: "190", h: "22.2 X 8", pcd: "149.2" },
-    { size: "DN80", fl: "356", bw: "356", d: "210", h: "22.2 X 8", pcd: "168.3" },
-    { size: "DN100", fl: "432", bw: "432", d: "275", h: "25.4 X 8", pcd: "215.9" },
-    { size: "DN125", fl: "508", bw: "508", d: "330", h: "29 X 8", pcd: "266.7" },
-    { size: "DN150", fl: "559", bw: "559", d: "355", h: "29 X 12", pcd: "292.1" },
-    { size: "DN200", fl: "660", bw: "660", d: "420", h: "32 X 12", pcd: "349.2" },
-    { size: "DN250", fl: "787", bw: "787", d: "510", h: "35 X 16", pcd: "431.8" },
-    { size: "DN300", fl: "838", bw: "838", d: "560", h: "35 X 20", pcd: "489" },
-    { size: "DN350", fl: "889", bw: "889", d: "605", h: "38 X 20", pcd: "527" },
-    { size: "DN400", fl: "991", bw: "991", d: "685", h: "41 X 20", pcd: "603.2" },
-    { size: "DN450", fl: "1092", bw: "1092", d: "745", h: "44 X 20", pcd: "654" },
-    { size: "DN500", fl: "1194", bw: "1194", d: "815", h: "44 X 24", pcd: "723.9" },
-    { size: "DN600", fl: "1397", bw: "1397", d: "940", h: "51 X 24", pcd: "838.2" },
-    { size: "DN700", fl: "1549", bw: "1549", isHeader: true },
-    { size: "SERIES A FLANGE", d: "1075", h: "54 X 28", pcd: "965.2", isChild: true },
-    { size: "SERIES B FLANGE", d: "950", h: "47.6 X 28", pcd: "863.6", isChild: true },
-    { size: "DN800", fl: "1778", bw: "1778", isHeader: true },
-    { size: "SERIES A FLANGE", d: "1195", h: "60 X 28", pcd: "1079.5", isChild: true },
-    { size: "SERIES B FLANGE", d: "1085", h: "54 X 28", pcd: "984.2", isChild: true },
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -184,7 +162,11 @@ export default function LargeBoreCastGateValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -195,34 +177,6 @@ export default function LargeBoreCastGateValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
-            </div>
-          </div>
-
-          {/* Visual Showcase Section */}
-          <div className="mb-20 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="size-3.5" /> Visual Showcase
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {showcaseImages.map((img, idx) => (
-                <button 
-                  key={idx}
-                  onClick={() => setSelectedImageIndex(idx)}
-                  className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-contain p-6"
-                  />
-                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                      <Maximize className="size-6 text-primary" />
-                    </div>
-                  </div>
-                </button>
-              ))}
             </div>
           </div>
 
@@ -273,95 +227,16 @@ export default function LargeBoreCastGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Dimension Table Section - 600# */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-5xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">GATE VALVE FLANGED END 600#</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (FL)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (BW)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table600.map((row, idx) => (
-                      <TableRow key={idx} className={`border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-[10px] md:text-xs ${row.isHeader ? 'bg-primary/5' : ''}`}>
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.fl || ""}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bw || ""}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d || ""}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h || ""}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.pcd || ""}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                  All dimensions are in mm
-                </p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Lightbox Dialog */}
-      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
-          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
-          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
-            {selectedImageIndex !== null && (
-              <>
-                <button 
-                  onClick={() => setSelectedImageIndex(null)}
-                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
-                >
-                  <X className="size-8" />
-                </button>
-
-                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
-                  <Image
-                    src={showcaseImages[selectedImageIndex].src}
-                    alt={showcaseImages[selectedImageIndex].alt}
-                    fill
-                    className="object-contain bg-black/20"
-                    priority
-                  />
-                </div>
-                
-                <button 
-                  onClick={handlePrev}
-                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
-                >
-                  <ChevronLeft className="size-8" />
-                </button>
-                <button 
-                  onClick={handleNext}
-                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
-                >
-                  <ChevronRight className="size-8" />
-                </button>
-              </>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

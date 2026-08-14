@@ -21,22 +21,14 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
     const privateKey = rawPrivateKey ? rawPrivateKey.replace(/\\n/g, '\n') : undefined;
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     
-    // Logic for determining the target tab:
-    // 1. If an explicit tab is passed, use it.
-    // 2. If it's a quote request (Product Name is not "Contact Form"), use the secondary tab name.
-    // 3. Fallback to the default Leads tab.
-    let tabName = targetTab;
-    if (!tabName) {
-      if (data["Product Name"] && data["Product Name"] !== "Contact Form") {
-        tabName = process.env.GOOGLE_SHEET_TAB_NAME2 || "Request_quote";
-      } else {
-        tabName = process.env.GOOGLE_SHEET_TAB_NAME || 'Leads';
-      }
-    }
+    // Determine the target tab
+    let tabName = targetTab || (data["Product Name"] && data["Product Name"] !== "Contact Form" 
+      ? (process.env.GOOGLE_SHEET_TAB_NAME2 || "Request_quote")
+      : (process.env.GOOGLE_SHEET_TAB_NAME || 'Leads'));
 
     if (!clientEmail || !privateKey || !spreadsheetId) {
-      console.error('GOOGLE SHEETS: Missing environment variables.');
-      throw new Error('Server configuration error. Please ensure environment variables are set.');
+      console.error('GOOGLE SHEETS CONFIG ERROR: Missing environment variables.');
+      throw new Error('Server configuration error. Environment variables are not set.');
     }
 
     const serviceAccountAuth = new JWT({
@@ -48,9 +40,12 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
     const doc = new GoogleSpreadsheet(spreadsheetId, serviceAccountAuth);
     await doc.loadInfo();
     
-    const sheet = doc.sheetsByTitle[tabName];
+    let sheet = doc.sheetsByTitle[tabName];
+    
+    // If tab doesn't exist, try to find the first one or error
     if (!sheet) {
-      throw new Error(`Tab "${tabName}" not found in spreadsheet.`);
+      console.warn(`Tab "${tabName}" not found. Falling back to default tab.`);
+      sheet = doc.sheetsByIndex[0];
     }
 
     const sanitizeForSheet = (val: string) => {
@@ -61,7 +56,11 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
       return stringVal;
     };
 
-    // Note: Tab headers should match: Full Name | Email Address | Phone Number | Your Message | Product Name
+    // Ensure headers exist if sheet is empty
+    if (sheet.rowCount <= 1) {
+      await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product Name"]);
+    }
+
     await sheet.addRow({
       "Full Name": data["Full Name"],
       "Email Address": data["Email Address"],
