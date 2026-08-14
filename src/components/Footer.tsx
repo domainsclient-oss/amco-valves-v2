@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Column 1: Logo and About */}
           <div>
-            <Link href="#" className="flex items-center mb-6">
+            <Link href="/" className="flex items-center mb-6">
               <div className="relative w-40 h-20 bg-white rounded-xl p-3 flex items-center justify-center shadow-lg">
                 <Image
                   src="/Logo-Asset.png"
@@ -25,7 +25,7 @@ export function Footer() {
             <div className="flex gap-4">
               {[Linkedin, Twitter, Facebook].map((Icon, idx) => (
                 <Link key={idx} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-colors">
-                  <Icon className="size-7 md:size-[18px]" />
+                  <Icon className="size-5" />
                 </Link>
               ))}
             </div>
@@ -35,10 +35,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
             <ul className="space-y-4 text-white/60 text-sm">
-              <li><Link href="#about" className="hover:text-secondary transition-colors">About Us</Link></li>
-              <li><Link href="#products" className="hover:text-secondary transition-colors">Products</Link></li>
-              <li><Link href="#certificates" className="hover:text-secondary transition-colors">Certifications</Link></li>
-              <li><Link href="#gallery" className="hover:text-secondary transition-colors">Gallery</Link></li>
+              <li><Link href="/#about" className="hover:text-secondary transition-colors">About Us</Link></li>
+              <li><Link href="/#products" className="hover:text-secondary transition-colors">Products</Link></li>
+              <li><Link href="/#certificates" className="hover:text-secondary transition-colors">Certifications</Link></li>
+              <li><Link href="/#gallery" className="hover:text-secondary transition-colors">Gallery</Link></li>
             </ul>
           </div>
 
@@ -46,7 +46,7 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-6 text-white">Legal</h4>
             <ul className="space-y-4 text-white/60 text-sm">
-              <li><Link href="#" className="hover:text-secondary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-secondary transition-colors">Privacy Policy</Link></li>
               <li><Link href="#" className="hover:text-secondary transition-colors">Terms of Service</Link></li>
               <li><Link href="#" className="hover:text-secondary transition-colors">Compliance</Link></li>
               <li><Link href="#" className="hover:text-secondary transition-colors">Cookie Policy</Link></li>
@@ -58,27 +58,27 @@ export function Footer() {
             <h4 className="font-bold text-lg mb-6 text-white">Contact Us</h4>
             <ul className="space-y-5 text-white/60 text-sm">
               <li className="flex gap-3">
-                <MapPin className="text-secondary shrink-0 size-7 md:size-[18px]" />
+                <MapPin className="text-secondary shrink-0 size-5" />
                 <span>
                   <strong>Factory:</strong><br />
                   638/A Tiruvottriyur high road, Ajax, Chennai, 600019
                 </span>
               </li>
               <li className="flex gap-3">
-                <MapPin className="text-secondary shrink-0 size-7 md:size-[18px]" />
+                <MapPin className="text-secondary shrink-0 size-5" />
                 <span>
                   <strong>Warehouse:</strong><br />
                   104-A East Mada church street, Royapuram, Chennai, 600013
                 </span>
               </li>
               <li className="flex gap-3">
-                <Phone className="text-secondary shrink-0 size-7 md:size-[18px]" />
+                <Phone className="text-secondary shrink-0 size-5" />
                 <Link href="tel:+919841114671" className="hover:text-secondary transition-colors">
                   91-9841114671
                 </Link>
               </li>
               <li className="flex gap-3">
-                <Mail className="text-secondary shrink-0 size-7 md:size-[18px]" />
+                <Mail className="text-secondary shrink-0 size-5" />
                 <Link href="mailto:contact@amcovalves.com" className="hover:text-secondary transition-colors">
                   contact@amcovalves.com
                 </Link>
