@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -8,9 +9,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { productSpecsRegistry } from "@/lib/product-specs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PtfeSleevedScrewedPlugValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-sleeved-plug-valve/screwed-socket-butt";
   const product = productSpecsRegistry[slug];
 
@@ -102,7 +104,7 @@ export default function PtfeSleevedScrewedPlugValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -117,6 +119,12 @@ export default function PtfeSleevedScrewedPlugValvePage() {
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

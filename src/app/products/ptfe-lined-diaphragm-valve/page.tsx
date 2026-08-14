@@ -1,5 +1,7 @@
+
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -8,8 +10,10 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PtfeLinedDiaphragmValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-lined-diaphragm-valve";
   const product = productSpecsRegistry[slug];
 
@@ -60,7 +64,7 @@ export default function PtfeLinedDiaphragmValvePage() {
       ["Category", product.category],
       ...specs.map(spec => [spec.label, spec.value]),
       [""],
-      ["PTFE LINED DIAPHRAGM VALVE FLANGED 150#"],
+      ["PTFE LINED DIAPHRAGM VALVE FLANGED END 150#"],
       ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD"],
       ...dimensionData.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd])
     ];
@@ -131,7 +135,7 @@ export default function PtfeLinedDiaphragmValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -184,6 +188,12 @@ export default function PtfeLinedDiaphragmValvePage() {
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

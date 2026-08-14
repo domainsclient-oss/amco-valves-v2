@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -9,8 +10,10 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PfaFepLinedJacketedPlugValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-lined-plug-valve/pfa-fep-lined-jacketed";
   const product = productSpecsRegistry[slug];
 
@@ -103,6 +106,7 @@ export default function PfaFepLinedJacketedPlugValvePage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
@@ -133,7 +137,7 @@ export default function PfaFepLinedJacketedPlugValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -186,6 +190,12 @@ export default function PfaFepLinedJacketedPlugValvePage() {
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

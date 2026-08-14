@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -9,8 +10,10 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PtfeSeatedWaferButterflyValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-seated-butterfly-valve/wafer-centric-disc-design";
   const product = productSpecsRegistry[slug];
 
@@ -151,7 +154,7 @@ export default function PtfeSeatedWaferButterflyValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -238,6 +241,12 @@ export default function PtfeSeatedWaferButterflyValvePage() {
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>

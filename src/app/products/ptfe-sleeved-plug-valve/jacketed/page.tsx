@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
@@ -9,8 +10,10 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { productSpecsRegistry } from "@/lib/product-specs";
+import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PtfeSleevedJacketedPlugValvePage() {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-sleeved-plug-valve/jacketed";
   const product = productSpecsRegistry[slug];
 
@@ -62,6 +65,8 @@ export default function PtfeSleevedJacketedPlugValvePage() {
   ];
 
   const handleDownloadCSV = () => {
+    if (!product) return;
+    
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
@@ -86,7 +91,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `PTFE_Sleeved_Jacketed_Plug_Valve_Data_Sheet.csv`);
+    link.setAttribute("download", `PFA_FEP_Lined_Jacketed_Plug_Valve_Data_Sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -104,7 +109,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <span className="text-primary">PTFE Sleeved Plug Valve</span>
+            <span className="text-primary">PTFE Lined Plug Valve</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.category}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
@@ -114,6 +119,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src="/dummy-image.png"
@@ -124,6 +130,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -139,7 +146,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold">
+                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
                   Request a Quote
                 </Button>
                 <Button 
@@ -153,85 +160,51 @@ export default function PtfeSleevedJacketedPlugValvePage() {
             </div>
           </div>
 
-          <div className="space-y-16">
-            {/* Table 1: 150# Dimensions */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        SLEEVED JACKETED PLUG VALVE FLANGED END 150#
-                      </TableHead>
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      LINED PLUG VALVE FLANGED END 150#
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table150.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
+                  ))}
+                </TableBody>
+              </Table>
             </div>
-
-            {/* Table 2: 300# Dimensions */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        SLEEVED JACKETED PLUG VALVE FLANGED END 300#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table300.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
       </section>
+
+      <QuotePopup 
+        isOpen={isQuoteOpen} 
+        onOpenChange={setIsQuoteOpen} 
+        productName={product.subTitle} 
+      />
 
       <Footer />
     </main>
