@@ -912,15 +912,19 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     title: "IBR & Non IBR Gate Valve 150#, 300#, 600#",
     subTitle: "IBR & Non IBR Large Bore Cast Gate Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
-    size: "DN50 - DN600",
-    material: "WCB / CF8 / CF8M",
-    endConnection: "Flanged",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Wheel / Gear",
+    subCategory: "Large Bore Cast",
+    size: "DN50 - DN800",
+    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
+    endConnection: "Flanged / Butt weld",
+    pressureRating: "150#, 300#, 600#",
+    modeOfOperation: "Wheel / Electric",
     manufacturingStandard: "API 600",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/ibr-valveslarge-bore-cast-gate-valve-1.jpg", alt: "Cast Gate Valve" }]
+    showcaseImages: [
+      { src: "/products/ibr-valveslarge-bore-cast-gate-valve-1.jpg", alt: "Large Bore Cast Gate Valve View 1" },
+      { src: "/products/ibr-valveslarge-bore-cast-gate-valve-2.jpg", alt: "Large Bore Cast Gate Valve View 2" },
+      { src: "/products/ibr-valveslarge-bore-cast-gate-valve-3.jpg", alt: "Large Bore Cast Gate Valve View 3" }
+    ]
   },
   "ibr-valves/large-bore-cast-globe-valve": {
     title: "IBR & Non IBR Globe Valve 150#, 300#, 600#",
