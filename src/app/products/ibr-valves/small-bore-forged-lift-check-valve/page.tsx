@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -150,8 +149,6 @@ export default function SmallBoreForgedLiftCheckValvePage() {
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
             <span className="text-primary">IBR & Non IBR Valves</span>
-            <ChevronRight className="size-4" />
-            <span className="text-primary">Small Bore Forged</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Small Bore Forged</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
