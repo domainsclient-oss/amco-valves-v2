@@ -33,7 +33,11 @@ export default function SmallBoreForgedLiftCheckValvePage() {
 
   const specs = [
     { label: "Size", value: product.size },
-    { label: "Material of construction (Bill of material)", value: product.material },
+    { 
+      label: "Material of construction", 
+      subLabel: "(Bill of material)",
+      value: product.material 
+    },
     { label: "End connection", value: product.endConnection },
     { label: "Pressure rating", value: product.pressureRating },
     { label: "Manufacturing Standard", value: product.manufacturingStandard },
@@ -114,7 +118,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
       ["Product", "Small Bore Forged IBR & Non IBR Lift check Valve"],
       ["Category", "IBR & Non IBR Valves"],
       ["Sub Category", "Small Bore Forged"],
-      ...specs.map(spec => [spec.label, spec.value]),
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
     ];
     
     const csvContent = [
@@ -175,7 +179,13 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                 {specs.map((spec, i) => (
                   <div key={i} className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 border-b border-border pb-4 last:border-none">
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
-                      {spec.label} :
+                      {spec.label}
+                      {spec.subLabel && (
+                        <>
+                          <br />
+                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                        </>
+                      )} :
                     </span>
                     <span className="text-foreground/70 text-sm md:text-base leading-relaxed">
                       {spec.value}
