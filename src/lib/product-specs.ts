@@ -29,12 +29,12 @@ export interface ProductSpecs {
 export const productSpecsRegistry: Record<string, ProductSpecs> = {
   // Piston Valve
   "piston-valve/small-bore-non-ibr-ibr": {
-    title: "Piston Valve - Seatless & Glandless",
-    subTitle: "Small bore Non IBR & IBR Piston Valve",
+    title: "Small Bore Non IBR & IBR Piston Valve",
+    subTitle: "Small Bore Non IBR & IBR Piston Valve",
     category: "Piston Valve",
-    subCategory: "Small bore",
+    subCategory: "Piston Valve Range",
     size: "DN15 - DN50",
-    material: "A105 / F304/L / F316/L",
+    material: "A105 / F304/L / F316/L / F11 / F22",
     endConnection: "Screwed / Socket weld",
     pressureRating: "800#",
     modeOfOperation: "Wheel",
@@ -43,10 +43,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-non-ibr-ibr.jpg", alt: "Small Bore Piston Valve" }]
   },
   "piston-valve/large-bore-non-ibr-ibr": {
-    title: "Piston Valve - Seatless & Glandless",
-    subTitle: "Large bore Non IBR & IBR Piston Valve",
+    title: "Large Bore Non IBR & IBR Piston Valve",
+    subTitle: "Large Bore Non IBR & IBR Piston Valve",
     category: "Piston Valve",
-    subCategory: "Large bore",
+    subCategory: "Piston Valve Range",
     size: "DN25 - DN200",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
     endConnection: "Flanged ANSI 150# / 300#",
@@ -546,8 +546,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Diaphragm Valve" }]
   },
   "ptfe-lined-plug-valve/pfa-fep-lined": {
-    title: "Plug Valve PFA/FEP Lined",
-    subTitle: "Plug Valve PFA/FEP Lined",
+    title: "PFA & FEP Lined Plug Valve",
+    subTitle: "PFA & FEP Lined Plug Valve",
     category: "FEP & PFA Lined Valves",
     subCategory: "Lined Valve Range",
     size: "DN15 - DN200",
@@ -578,8 +578,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ptfe-lined-wafer-check-valve": {
     title: "PTFE Lined Wafer Check Valve",
     subTitle: "PTFE Lined Wafer Check Valve",
-    category: "PTFE Lined Wafer Check Valve",
-    subCategory: "Lined Valves",
+    category: "Lined Valves",
+    subCategory: "PTFE Lined Wafer Check Valve",
     size: "DN50 - DN300",
     material: "CS / SS / Alloy steel",
     lining: "PFA / FEP",
@@ -587,7 +587,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "PN10 / 16",
     manufacturingStandard: "Manufacturer Std",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer Check Valve" }]
+    showcaseImages: [{ src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Lined Wafer Check Valve" }]
   },
 
   // Sleeved Plug Valves
@@ -758,7 +758,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // IBR Valves
   "ibr-valves/small-bore-forged-gate-valve": {
-    title: "Small Bore Forged",
+    title: "Small Bore Forged IBR & Non IBR Gate Valve",
     subTitle: "Small Bore Forged IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
@@ -775,7 +775,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/small-bore-forged-globe-valve": {
-    title: "Small Bore Forged",
+    title: "Small Bore Forged IBR & Non IBR Globe Valve",
     subTitle: "Small Bore Forged IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
@@ -792,8 +792,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "Small Bore Forged",
-    subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
+    title: "Small Bore Forged IBR & Non IBR Lift Check Valve",
+    subTitle: "Small Bore Forged IBR & Non IBR Lift Check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
@@ -808,7 +808,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-gate-valve": {
-    title: "Large Bore Cast",
+    title: "Large Bore Cast IBR & Non IBR Gate Valve",
     subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -826,7 +826,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-globe-valve": {
-    title: "Large Bore Cast",
+    title: "Large Bore Cast IBR & Non IBR Globe Valve",
     subTitle: "Large Bore Cast IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -844,7 +844,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-swing-check-valve": {
-    title: "Large Bore Cast",
+    title: "Large Bore Cast IBR & Non IBR Swing Check Valve",
     subTitle: "Large Bore Cast IBR & Non IBR Swing Check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
