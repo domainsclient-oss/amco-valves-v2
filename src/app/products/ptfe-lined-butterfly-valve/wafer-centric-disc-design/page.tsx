@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -122,9 +121,11 @@ export default function PtfeLinedWaferButterflyValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <span className="text-primary">PTFE Lined Butterfly Valve</span>
+            <Link href="#" className="hover:text-secondary transition-colors">PTFE Lined Butterfly Valve</Link>
+            <ChevronRight className="size-4" />
+            <span className="text-primary">Centric Disc Design</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Centric Disc Design</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.title}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
