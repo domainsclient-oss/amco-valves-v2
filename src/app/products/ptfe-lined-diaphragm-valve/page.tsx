@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -44,9 +43,7 @@ export default function PtfeLinedDiaphragmValvePage() {
   ];
 
   const dimensionData = [
-    { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
-    { size: "DN20", ftf: "118", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
-    { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
+    { size: "DN25", ftf: "127", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
     { size: "DN32", ftf: "145", od: "115", hole: "Ø 16 X 4", pcd: "88.9" },
     { size: "DN40", ftf: "158", od: "125", hole: "Ø 16 X 4", pcd: "98.4" },
     { size: "DN50", ftf: "188", od: "150", hole: "Ø 19 X 4", pcd: "120.7" },
@@ -156,7 +153,7 @@ export default function PtfeLinedDiaphragmValvePage() {
                 <TableHeader>
                   <TableRow className="bg-white border-b border-neutral-300">
                     <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                      PTFE LINED DIAPHRAGM VALVE FLANGED 150#
+                      PTFE LINED DIAPHRAGM VALVE FLANGED END 150#
                     </TableHead>
                   </TableRow>
                   <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
@@ -180,8 +177,8 @@ export default function PtfeLinedDiaphragmValvePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                 All dimensions are in mm
               </p>
             </div>
