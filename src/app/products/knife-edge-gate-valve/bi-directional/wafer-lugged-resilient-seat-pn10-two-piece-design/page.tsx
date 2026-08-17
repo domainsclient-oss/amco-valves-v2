@@ -156,6 +156,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button 
+                  type="button"
                   variant="secondary" 
                   className="h-12 px-8 rounded-xl font-bold"
                   onClick={() => setIsQuoteOpen(true)}

@@ -16,7 +16,7 @@ export default function Trunnion3PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
   const productImage = {
-    imageUrl: "/products/trunnion-mounted-3-piece-design-flanged-ansi-150-300-600.jpg",
+    imageUrl: "/dummy-image.png",
     description: "3 Piece Trunnion Ball Valve"
   };
 
@@ -101,6 +101,7 @@ export default function Trunnion3PiecePage() {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button 
+                  type="button"
                   variant="secondary" 
                   className="h-12 px-8 rounded-xl font-bold"
                   onClick={() => setIsQuoteOpen(true)}

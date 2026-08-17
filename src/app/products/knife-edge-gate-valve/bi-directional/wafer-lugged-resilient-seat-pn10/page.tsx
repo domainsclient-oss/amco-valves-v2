@@ -16,7 +16,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const productImage = {
-    imageUrl: "/products/wafer-lugged-resilient-seat-pn10.jpg",
+    imageUrl: "/dummy-image.png",
     description: "Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
@@ -130,6 +130,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button 
+                  type="button"
                   variant="secondary" 
                   className="h-12 px-8 rounded-xl font-bold"
                   onClick={() => setIsQuoteOpen(true)}
@@ -209,7 +210,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
       <QuotePopup 
         isOpen={isQuoteOpen} 
         onOpenChange={setIsQuoteOpen} 
-        productName="Bi-Directional Wafer Lugged Resilient seat PN10# - Single piece design" 
+        productName="Bi-Directional Wafer Lugged Resilient seat PN10# Knife Edge Gate Valve" 
       />
 
       <Footer />
