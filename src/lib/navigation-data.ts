@@ -194,7 +194,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
             { name: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)", href: "/products/ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design" },
             { name: "Diaphragm Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-diaphragm-valve" },
             { name: "Plug Valve PFA/FEP Lined", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
-            { name: "Plug Valve PFA/FEP Jacketed", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined-jacketed" },
+            { name: "PFA & FEP Lined Jacketed Plug Valve", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined-jacketed" },
             { name: "Wafer Check Valve (PFA/FEP Lined)", href: "/products/ptfe-lined-wafer-check-valve" }
           ]
         }

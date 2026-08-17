@@ -383,7 +383,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   // Damper Valve
   "damper-valve/wafer-type-seatless-design": {
     title: "Damper Valve",
-    subTitle: "Wafer type Damper valve - seatless design",
+    subTitle: "Wafer type Damper valve",
     category: "Damper Valve",
     subCategory: "Seatless Design",
     size: "DN50 - DN1000",
@@ -397,7 +397,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "damper-valve/flanged-type-seatless-design": {
     title: "Damper Valve",
-    subTitle: "Flanged type Damper valve - seatless design",
+    subTitle: "Flanged type Damper valve",
     category: "Damper Valve",
     subCategory: "Seatless Design",
     size: "DN50 - DN1000",
@@ -561,8 +561,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Plug Valve" }]
   },
   "ptfe-lined-plug-valve/pfa-fep-lined-jacketed": {
-    title: "Plug Valve PFA/FEP Jacketed",
-    subTitle: "Plug Valve PFA/FEP Jacketed",
+    title: "PFA & FEP Lined Jacketed Plug Valve",
+    subTitle: "PFA & FEP Lined Jacketed Plug Valve",
     category: "FEP & PFA Lined Valves",
     subCategory: "Lined Valve Range",
     size: "DN15 - DN200",
