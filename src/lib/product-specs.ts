@@ -528,7 +528,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "PN10#",
     modeOfOperation: "Wheel, Gear, Actuator",
     manufacturingStandard: "MSS SP 81",
-    testingStandard: "MSS SP 81"
+    testingStandard: "MSS SP 81",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "2-Piece Bi-Directional KGV" }]
   },
 
   // Diaphragm Valve
@@ -574,7 +575,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "BSPF / NPTF / SW",
     pressureRating: "3000 PSI / 6000 PSI",
     manufacturingStandard: "Manufacturer Standard",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "HP In-line Check Valve" }]
   },
   "high-pressure-needle-valve": {
     title: "High Pressure Valve",
@@ -603,7 +605,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "Flanged",
     pressureRating: "150#",
     manufacturingStandard: "ASME B16.34",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Ball Check Valve" }]
   },
   "ptfe-lined-ball-valve": {
     title: "Ball Valve (PFA/FEP Lined)",
@@ -617,7 +620,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "ISO 17292",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Ball Valve" }]
   },
   "ptfe-lined-butterfly-valve/wafer-centric-disc-design": {
     title: "Butterfly Valve Wafer (PFA/FEP Lined)",
@@ -631,7 +635,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
     title: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
@@ -645,7 +650,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Full Lug BFV" }]
   },
   "ptfe-lined-diaphragm-valve": {
     title: "Diaphragm Valve (PFA/FEP Lined)",
@@ -659,7 +665,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Wheel",
     manufacturingStandard: "BS 5156",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Diaphragm Valve" }]
   },
   "ptfe-lined-plug-valve/pfa-fep-lined": {
     title: "Plug Valve PFA/FEP Lined",
@@ -673,7 +680,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 599",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Plug Valve" }]
   },
   "ptfe-lined-plug-valve/pfa-fep-lined-jacketed": {
     title: "Plug Valve PFA/FEP Jacketed",
@@ -687,7 +695,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 599",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Jacketed Plug Valve" }]
   },
   "ptfe-lined-wafer-check-valve": {
     title: "Wafer Check Valve (PFA/FEP Lined)",
@@ -717,7 +726,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150# / 300#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 599",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Sleeved Plug Valve" }]
   },
   "ptfe-sleeved-plug-valve/jacketed": {
     title: "PTFE Sleeved Plug Valve",
@@ -746,7 +756,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "800#",
     modeOfOperation: "Lever",
     manufacturingStandard: "API 599",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Screwed Sleeved Plug Valve" }]
   },
 
   // PTFE Seated Butterfly Valves
@@ -762,7 +773,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "PN10 / PN16 / 150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "PTFE Seated Wafer BFV" }]
   },
   "ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design": {
     title: "PTFE Seated Butterfly Valve",
@@ -776,7 +788,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "PN10 / PN16 / 150#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "https://picsum.photos/seed/amco-full-lug-bfv/800/800", alt: "PTFE Seated Full Lug BFV" }]
   },
 
   // Wafer Check Valves
@@ -910,7 +923,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ibr-valves/large-bore-cast-gate-valve": {
     title: "IBR & Non IBR Gate Valve 150#, 300#, 600#",
-    subTitle: "IBR & Non IBR Large Bore Cast Gate Valve",
+    subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
     size: "DN50 - DN800",
