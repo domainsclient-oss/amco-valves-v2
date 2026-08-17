@@ -16,7 +16,7 @@ export default function Trunnion3PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg",
     description: "3 Piece Trunnion Ball Valve"
   };
 
@@ -174,7 +174,7 @@ export default function Trunnion3PiecePage() {
                   </TableHeader>
                   <TableBody>
                     {table150_300.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
@@ -216,7 +216,7 @@ export default function Trunnion3PiecePage() {
                   </TableHeader>
                   <TableBody>
                     {table600.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
