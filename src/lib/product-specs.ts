@@ -516,7 +516,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "Centric Disc Design PTFE Lined Butterfly Valve Wafer Full Lug Type Centric Disc Design",
+    title: "Centric Disc Design",
     subTitle: "PTFE Lined Butterfly Valve Wafer Full Lug Type Centric Disc Design",
     category: "PTFE Lined Butterfly Valve",
     subCategory: "Centric Disc Design",
