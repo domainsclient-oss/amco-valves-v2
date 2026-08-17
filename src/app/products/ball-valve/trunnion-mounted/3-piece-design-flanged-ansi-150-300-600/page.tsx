@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, Maximize, Sparkles, X } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ export default function Trunnion3PiecePage() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   
   const productImage = {
-    imageUrl: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg",
+    imageUrl: "/products/trunnion-mounted-3-piece-design-flanged-ansi-150-300-600.jpg",
     description: "3 Piece Trunnion Ball Valve"
   };
 
