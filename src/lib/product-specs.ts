@@ -881,21 +881,24 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // IBR Valves
   "ibr-valves/small-bore-forged-gate-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Small Bore Forged",
     subTitle: "Small Bore Forged IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
-    material: "A105 / F304L / F316L",
-    endConnection: "Screwed / Socket / Flanged",
-    pressureRating: "800# / 1500# / 150#",
+    material: "A105 / F304/L / F316/L / F11 / F22",
+    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
     modeOfOperation: "Wheel",
     manufacturingStandard: "API 602",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/small-bore-forged-gate-valve-1.jpg", alt: "Forged Gate Valve" }]
+    showcaseImages: [
+      { src: "/products/small-bore-forged-gate-valve-1.jpg", alt: "Small Bore Forged Gate Valve View 1" },
+      { src: "/products/small-bore-forged-gate-valve-2.jpg", alt: "Small Bore Forged Gate Valve View 2" }
+    ]
   },
   "ibr-valves/small-bore-forged-globe-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Small Bore Forged",
     subTitle: "Small Bore Forged IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
@@ -912,7 +915,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Small Bore Forged",
     subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Small Bore Forged",
@@ -928,7 +931,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-gate-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Large Bore Cast",
     subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -946,7 +949,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-globe-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Large Bore Cast",
     subTitle: "Large Bore Cast IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -964,7 +967,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-swing-check-valve": {
-    title: "IBR & Non IBR Valves",
+    title: "Large Bore Cast",
     subTitle: "Large Bore Cast IBR & Non IBR Swing Check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
