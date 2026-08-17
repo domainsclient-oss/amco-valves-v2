@@ -60,6 +60,11 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     { size: "DN300", ftf: "356", od: "485", hole: "Ø 25.4 X 12", pcd: "431.8" },
   ];
 
+  const productImage = {
+    imageUrl: "/dummy-image.png",
+    description: product.subTitle
+  };
+
   const handleDownloadCSV = () => {
     if (!product) return;
     
@@ -104,23 +109,19 @@ export default function PtfeSleevedJacketedPlugValvePage() {
         </div>
       </div>
 
-      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="https://picsum.photos/seed/amco-jacketed-plug-valve/800/800"
+                src={productImage.imageUrl}
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
-                data-ai-hint="plug valve"
               />
             </div>
 
-            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -151,7 +152,6 @@ export default function PtfeSleevedJacketedPlugValvePage() {
           </div>
 
           <div className="space-y-16">
-            {/* Table 1: 150# Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">

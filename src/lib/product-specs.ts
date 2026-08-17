@@ -701,7 +701,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     manufacturingStandard: "API 6D",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "https://picsum.photos/seed/amco-lined-wafer/800/800", alt: "Lined Wafer Check Valve" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer Check Valve" }]
   },
 
   // Sleeved Plug Valves
@@ -732,7 +732,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 599",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "https://picsum.photos/seed/amco-jacketed-plug/800/800", alt: "Jacketed Plug Valve" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Jacketed Plug Valve" }]
   },
   "ptfe-sleeved-plug-valve/screwed-socket-butt": {
     title: "PTFE Sleeved Plug Valve",
