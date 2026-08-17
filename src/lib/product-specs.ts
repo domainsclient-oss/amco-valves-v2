@@ -31,7 +31,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "piston-valve/small-bore-non-ibr-ibr": {
     title: "Piston Valve - Seatless & Glandless",
     subTitle: "Small bore Non IBR & IBR Piston Valve",
-    category: "Piston Valve - Seatless & Glandless",
+    category: "Piston Valve",
     subCategory: "Small bore",
     size: "DN15 - DN50",
     material: "A105 / F304/L / F316/L",
@@ -40,12 +40,12 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Wheel",
     manufacturingStandard: "API 602",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/piston-valvesmall-bore-non-ibr-ibr.jpg", alt: "Small Bore Piston Valve" }]
+    showcaseImages: [{ src: "/products/small-bore-non-ibr-ibr.jpg", alt: "Small Bore Piston Valve" }]
   },
   "piston-valve/large-bore-non-ibr-ibr": {
     title: "Piston Valve - Seatless & Glandless",
     subTitle: "Large bore Non IBR & IBR Piston Valve",
-    category: "Piston Valve - Seatless & Glandless",
+    category: "Piston Valve",
     subCategory: "Large bore",
     size: "DN25 - DN200",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -61,7 +61,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/2-piece-design-screwed-1000-wog": {
     title: "Floating Design",
     subTitle: "2 Piece Design screwed 1000 WOG",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN6 - DN100",
     material: "CF8 / CF8M / CF3 / CF3M",
@@ -75,7 +75,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/3-piece-design-screwed-socket-weld-150-300": {
     title: "Floating Design",
     subTitle: "3 Piece Design Screwed / Socket weld 150# & 300#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN6 - DN100",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -89,7 +89,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/3-piece-design-screwed-socket-weld-600-800-1500": {
     title: "Floating Design",
     subTitle: "3 Piece Design Screwed / Socket weld 600# & 800# & 1500#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN6 - DN50",
     material: "A105 / F304/L / F316/L / CF8 / CF8M / CF3 / CF3M",
@@ -103,7 +103,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/3-piece-design-flanged-ansi-150-300-600-900": {
     title: "Floating Design",
     subTitle: "3 Piece Design Flanged ANSI 150#, 300#, 600# & 900#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN6 - DN300",
     material: "A105 / F304/L / F316/L / WCB / CF8 / CF8M / CF3 / CF3M",
@@ -117,7 +117,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/2-piece-design-flanged-ansi-150-300-600": {
     title: "Floating Design",
     subTitle: "2 Piece Design Flanged ANSI 150#, 300#, 600#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN6 - DN300",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -131,7 +131,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/floating-design/wafer-design-ball-valve-150-pn25-pn40": {
     title: "Floating Design",
     subTitle: "Wafer Design Ball valve 150# / PN25 / PN40",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Floating Design",
     size: "DN50 - DN150",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -140,14 +140,14 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292",
     testingStandard: "ISO 5208",
-    showcaseImages: [{ src: "/Amco-Banner.png", alt: "Wafer Design Ball Valve" }]
+    showcaseImages: [{ src: "https://picsum.photos/seed/amco-wafer-ball/800/800", alt: "Wafer Design Ball Valve" }]
   },
 
   // Ball Valve - Trunnion Mounted
   "ball-valve/trunnion-mounted/2-piece-design-flanged-ansi-150-300-600": {
     title: "Trunnion Mounted",
     subTitle: "2 Piece Design Flanged ANSI 150#, 300#, 600#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Trunnion Mounted",
     size: "DN100 - DN300",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -161,7 +161,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ball-valve/trunnion-mounted/3-piece-design-flanged-ansi-150-300-600": {
     title: "Trunnion Mounted",
     subTitle: "3 Piece Design Flanged ANSI 150#, 300#, 600#",
-    category: "Ball valve",
+    category: "Ball Valve",
     subCategory: "Trunnion Mounted",
     size: "DN100 - DN300",
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
@@ -177,7 +177,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/centric-disc-design/wafer-semi-lugged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
     subTitle: "Wafer Semi Lugged PN10# / PN16# / PN20# / PN25#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN40 - DN1000",
     material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -192,7 +192,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/centric-disc-design/full-lugged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
     subTitle: "Full Lugged PN10# / PN16# / PN20# / PN25#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN40 - DN1000",
     material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -207,7 +207,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/centric-disc-design/wafer-flanged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
     subTitle: "Wafer Flanged PN10# / PN16# / PN20# / PN25#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN40 - DN1000",
     material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -222,7 +222,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/centric-disc-design/double-flanged-pn10-pn16-pn20-pn25": {
     title: "Centric Disc Design",
     subTitle: "Double Flanged PN10# / PN16# / PN20# / PN25#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN40 - DN1000",
     material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -239,7 +239,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/double-offset-design/wafer-semi-lugged-150-300": {
     title: "Double Offset Design",
     subTitle: "Wafer Semi Lugged 150# / 300#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Double Offset Design",
     size: "DN40 - DN1000",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -254,7 +254,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "butterfly-valve/double-offset-design/full-lugged-150-300": {
     title: "Double Offset Design",
     subTitle: "Full Lugged 150# / 300#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Double Offset Design",
     size: "DN40 - DN1000",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -264,12 +264,12 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/Amco-Banner.png", alt: "Double Offset Lugged BFV" }]
+    showcaseImages: [{ src: "https://picsum.photos/seed/amco-double-offset/800/800", alt: "Double Offset Lugged BFV" }]
   },
   "butterfly-valve/double-offset-design/double-flanged-150-300": {
     title: "Double Offset Design",
     subTitle: "Double Flanged 150# / 300#",
-    category: "Butterfly valve",
+    category: "Butterfly Valve",
     subCategory: "Double Offset Design",
     size: "DN40 - DN1000",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DSS / SDS / AL. BR",
@@ -286,7 +286,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16": {
     title: "Fire Fighting Range",
     subTitle: "Double Flanged Soft seated Gate Valve",
-    category: "Gate valve for fire fighting",
+    category: "Gate Valve",
     subCategory: "Fire Fighting Range",
     size: "DN50 - DN400",
     material: "DI",
@@ -303,7 +303,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/wafer-type-resilient-seat-pn16": {
     title: "Check Valve Range",
     subTitle: "Wafer type Resilient seat PN16#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -317,7 +317,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/lugged-type-resilient-seat-pn16": {
     title: "Check Valve Range",
     subTitle: "Lugged type Resilient seat PN16#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -330,7 +330,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/flanged-type-resilient-seat-pn16": {
     title: "Check Valve Range",
     subTitle: "Flanged type Resilient seat PN16#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -343,7 +343,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
     subTitle: "Wafer type Retainerless Metal seat 150#, 300#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -356,7 +356,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
     subTitle: "Lugged type Retainerless Metal seat 150#, 300#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -369,7 +369,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
     subTitle: "Flanged type Retainerless Metal seat 150#, 300#",
-    category: "Dual plate check valve",
+    category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SDS / AL. BR / ALLOY STEEL",
@@ -382,10 +382,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Damper Valve
   "damper-valve/wafer-type-seatless-design": {
-    title: "Damper valve",
-    subTitle: "Wafer type Damper valve - seatless design",
-    category: "Damper valve",
-    subCategory: "Wafer type",
+    title: "Damper Valve",
+    subTitle: "Wafer type Damper valve",
+    category: "Damper Valve",
+    subCategory: "Seatless Design",
     size: "DN50 - DN1000",
     material: "CS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
     endConnection: "Wafer to suit ANSI / ND Flanges",
@@ -396,10 +396,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/damper-valvewafer-type-seatless-design-1.jpg", alt: "Wafer Damper Valve" }]
   },
   "damper-valve/flanged-type-seatless-design": {
-    title: "Damper valve",
-    subTitle: "Flanged type Damper valve - seatless design",
-    category: "Damper valve",
-    subCategory: "Flanged type",
+    title: "Damper Valve",
+    subTitle: "Flanged type Damper valve",
+    category: "Damper Valve",
+    subCategory: "Seatless Design",
     size: "DN50 - DN1000",
     material: "CS / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALLOY STEEL",
     endConnection: "Flanged to suit ANSI / ND Flanges",
@@ -533,8 +533,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Diaphragm Valve
   "diaphragm-valve/unlined-and-lined": {
-    title: "Diaphragm Valve - Unlined and Lined",
-    subTitle: "Unlined and Lined Diaphragm Valve",
+    title: "Unlined and Lined",
+    subTitle: "Unlined and Lined",
     category: "Diaphragm Valve",
     subCategory: "Unlined and Lined",
     size: "DN15 - DN150",
@@ -551,9 +551,9 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // High Pressure Valves
   "high-pressure-ball-valve": {
-    title: "High Pressure Ball Valve",
-    subTitle: "High Pressure Ball Valve 3000 psi / 6000 psi",
-    category: "High Pressure Ball Valve",
+    title: "High Pressure Valve",
+    subTitle: "High Pressure Ball Valve",
+    category: "High Pressure Valve",
     subCategory: "High Pressure Range",
     size: "DN06 - DN50",
     material: "CS / SS / Alloy steel / Duplex SS",
@@ -565,9 +565,9 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/high-pressure-ball-valve-1.jpg", alt: "HP Ball Valve" }]
   },
   "high-pressure-in-line-check-valve": {
-    title: "High Pressure In-Line Check Valve",
-    subTitle: "High Pressure In-Line Check Valve 3000 psi / 6000 psi",
-    category: "High Pressure In-Line Check Valve",
+    title: "High Pressure Valve",
+    subTitle: "High Pressure In-Line Check Valve",
+    category: "High Pressure Valve",
     subCategory: "High Pressure Range",
     size: "DN08 - DN50",
     material: "CS / SS / Alloy Steel / Duplex SS",
@@ -577,9 +577,9 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "high-pressure-needle-valve": {
-    title: "High Pressure Needle Valve",
-    subTitle: "High Pressure Needle Valve 3000 psi / 6000 psi",
-    category: "High Pressure Needle Valve",
+    title: "High Pressure Valve",
+    subTitle: "High Pressure Needle Valve",
+    category: "High Pressure Valve",
     subCategory: "High Pressure Range",
     size: "DN08 - DN50",
     material: "CS / SS / Alloy Steel / Duplex SS",
@@ -593,10 +593,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Lined Valves
   "ptfe-lined-ball-check-valve": {
-    title: "PFA / FEP Lined Ball Check Valve",
+    title: "Ball Check Valve (PFA/FEP Lined)",
     subTitle: "Ball type check valve (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "PFA / FEP Lined",
+    subCategory: "Lined Valve Range",
     size: "DN15 - DN300",
     material: "WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -606,10 +606,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-ball-valve": {
-    title: "PFA / FEP Lined Ball Valve",
+    title: "Ball Valve (PFA/FEP Lined)",
     subTitle: "Ball valve (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "PFA / FEP Lined",
+    subCategory: "Lined Valve Range",
     size: "DN15 - DN250",
     material: "WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -620,10 +620,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-butterfly-valve/wafer-centric-disc-design": {
-    title: "PFA / FEP Lined Butterfly Valve",
+    title: "Butterfly Valve Wafer (PFA/FEP Lined)",
     subTitle: "Butterfly Valve Wafer (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Centric Disc Design",
+    subCategory: "Lined Valve Range",
     size: "DN50 - DN400",
     material: "CI / DI / WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -634,10 +634,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "PFA / FEP Lined Butterfly Valve",
+    title: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
     subTitle: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Centric Disc Design",
+    subCategory: "Lined Valve Range",
     size: "DN50 - DN400",
     material: "CI / DI / WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -648,10 +648,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-diaphragm-valve": {
-    title: "PFA / FEP Lined Diaphragm Valve",
+    title: "Diaphragm Valve (PFA/FEP Lined)",
     subTitle: "Diaphragm Valve (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Lined Valves",
+    subCategory: "Lined Valve Range",
     size: "DN15 - DN100",
     material: "CI / DI / WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -662,10 +662,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-plug-valve/pfa-fep-lined": {
-    title: "PFA / FEP Lined Plug Valve",
+    title: "Plug Valve PFA/FEP Lined",
     subTitle: "Plug Valve PFA/FEP Lined",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Lined Valves",
+    subCategory: "Lined Valve Range",
     size: "DN15 - DN200",
     material: "WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -676,10 +676,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-plug-valve/pfa-fep-lined-jacketed": {
-    title: "PFA / FEP Lined Plug Valve",
+    title: "Plug Valve PFA/FEP Jacketed",
     subTitle: "Plug Valve PFA/FEP Jacketed",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Lined Valves",
+    subCategory: "Lined Valve Range",
     size: "DN15 - DN200",
     material: "WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -690,10 +690,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "ptfe-lined-wafer-check-valve": {
-    title: "PFA / FEP Lined Wafer Check Valve",
+    title: "Wafer Check Valve (PFA/FEP Lined)",
     subTitle: "Wafer Check Valve (PFA/FEP Lined)",
     category: "FEP & PFA Lined Valves",
-    subCategory: "Lined Valves",
+    subCategory: "Lined Valve Range",
     size: "DN50 - DN300",
     material: "CI / DI / WCB / CF8 / CF8M",
     lining: "PFA / FEP",
@@ -701,13 +701,13 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150#",
     manufacturingStandard: "API 6D",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/butterfly-valve-wafer-semi-lugged-1.jpg", alt: "Lined Wafer Check Valve" }]
+    showcaseImages: [{ src: "https://picsum.photos/seed/amco-lined-wafer/800/800", alt: "Lined Wafer Check Valve" }]
   },
 
   // Sleeved Plug Valves
   "ptfe-sleeved-plug-valve/flanged": {
     title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Plug Valve - Flanged",
+    subTitle: "Flanged",
     category: "PTFE Sleeved Plug Valve",
     subCategory: "Plug Valve Range",
     size: "DN15 - DN300",
@@ -721,7 +721,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ptfe-sleeved-plug-valve/jacketed": {
     title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Plug Valve - Jacketed",
+    subTitle: "Jacketed",
     category: "PTFE Sleeved Plug Valve",
     subCategory: "Plug Valve Range",
     size: "DN15 - DN300",
@@ -735,7 +735,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ptfe-sleeved-plug-valve/screwed-socket-butt": {
     title: "PTFE Sleeved Plug Valve",
-    subTitle: "PTFE Sleeved Plug Valve - Screwed / Socket / Butt",
+    subTitle: "Screwed / Socket / Butt",
     category: "PTFE Sleeved Plug Valve",
     subCategory: "Plug Valve Range",
     size: "DN15 - DN50",
@@ -751,7 +751,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   // PTFE Seated Butterfly Valves
   "ptfe-seated-butterfly-valve/wafer-centric-disc-design": {
     title: "PTFE Seated Butterfly Valve",
-    subTitle: "PTFE Seated Butterfly Valve Wafer Centric Disc Design",
+    subTitle: "Wafer Centric Disc Design",
     category: "PTFE Seated Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN50 - DN400",
@@ -765,7 +765,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ptfe-seated-butterfly-valve/wafer-full-lug-centric-disc-design": {
     title: "PTFE Seated Butterfly Valve",
-    subTitle: "PTFE Seated Butterfly Valve Wafer Full Lug Type",
+    subTitle: "Wafer Full Lug Type",
     category: "PTFE Seated Butterfly Valve",
     subCategory: "Centric Disc Design",
     size: "DN50 - DN400",
@@ -780,7 +780,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Wafer Check Valves
   "wafer-check-valve/resilient-seat": {
-    title: "Wafer Check Range",
+    title: "Wafer type check valve Resilient seat",
     subTitle: "Wafer type check valve Resilient seat",
     category: "Wafer Check Valve",
     subCategory: "Wafer Check Range",
@@ -794,7 +794,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/wafer-check-valveresilient-seat-1.jpg", alt: "Wafer Check Valve Resilient Seat" }]
   },
   "wafer-check-valve/metal-seat": {
-    title: "Wafer Check Range",
+    title: "Wafer type check valve Metal seat",
     subTitle: "Wafer type check valve Metal seat",
     category: "Wafer Check Valve",
     subCategory: "Wafer Check Range",
@@ -807,7 +807,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/wafer-type-check-valve-metal-seat-1.jpg", alt: "Wafer Check Valve Metal Seat" }]
   },
   "wafer-check-valve/resilient-seat-spring-type": {
-    title: "Wafer Check Range",
+    title: "Wafer type check valve Resilient seat - Spring type",
     subTitle: "Wafer type check valve Resilient seat - Spring type",
     category: "Wafer Check Valve",
     subCategory: "Wafer Check Range",
@@ -822,7 +822,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Strainers
   "strainer/y-strainer-flanged": {
-    title: "Flanged Design",
+    title: "Y Strainer - Flanged",
     subTitle: "Y Strainer - Flanged",
     category: "Strainer",
     subCategory: "Strainer Range",
@@ -836,7 +836,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/y-strainer-flanged-1.jpg", alt: "Y Strainer Flanged" }]
   },
   "strainer/y-strainer-screwed": {
-    title: "Screwed Design",
+    title: "Y Strainer - Screwed",
     subTitle: "Y Strainer - Screwed",
     category: "Strainer",
     subCategory: "Strainer Range",
@@ -850,7 +850,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/y-strainer-screwed-1.jpeg", alt: "Y Strainer Screwed" }]
   },
   "strainer/basket-strainer-flanged": {
-    title: "Basket Design",
+    title: "Basket Strainer - Flanged",
     subTitle: "Basket Strainer - Flanged",
     category: "Strainer",
     subCategory: "Strainer Range",
@@ -867,7 +867,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // IBR Valves
   "ibr-valves/small-bore-forged-gate-valve": {
-    title: "Small Bore Forged",
+    title: "IBR & Non IBR Gate Valve 800#, 1500#, 2500#",
     subTitle: "IBR & Non IBR Small Bore Forged Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
@@ -881,7 +881,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-forged-gate-valve-1.jpg", alt: "Forged Gate Valve" }]
   },
   "ibr-valves/small-bore-forged-globe-valve": {
-    title: "Small Bore Forged",
+    title: "IBR & Non IBR Globe Valve 800#, 1500#, 2500#",
     subTitle: "IBR & Non IBR Small Bore Forged Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
@@ -895,7 +895,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-forged-globe-valve-1.jpg", alt: "Forged Globe Valve" }]
   },
   "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "Small Bore Forged",
+    title: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#",
     subTitle: "IBR & Non IBR Small Bore Forged Lift Check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
@@ -908,7 +908,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-forged-lift-check-valve-1.jpg", alt: "Forged Lift Check Valve" }]
   },
   "ibr-valves/large-bore-cast-gate-valve": {
-    title: "Large Bore Cast",
+    title: "IBR & Non IBR Gate Valve 150#, 300#, 600#",
     subTitle: "IBR & Non IBR Large Bore Cast Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
@@ -922,7 +922,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/ibr-valveslarge-bore-cast-gate-valve-1.jpg", alt: "Cast Gate Valve" }]
   },
   "ibr-valves/large-bore-cast-globe-valve": {
-    title: "Large Bore Cast",
+    title: "IBR & Non IBR Globe Valve 150#, 300#, 600#",
     subTitle: "IBR & Non IBR Large Bore Cast Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
@@ -936,7 +936,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/large-bore-cast-globe-valve-1.jpg", alt: "Cast Globe Valve" }]
   },
   "ibr-valves/large-bore-cast-swing-check-valve": {
-    title: "Large Bore Cast",
+    title: "IBR & Non IBR Swing check Valve 150#, 300#, 600#",
     subTitle: "IBR & Non IBR Large Bore Cast Swing Check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",

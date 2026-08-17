@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -23,6 +22,7 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
         <Navbar />
         <div className="pt-40 pb-20 container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
+          <p className="text-foreground/60 mt-4">The product specification you are looking for is not available.</p>
           <Button className="mt-8" asChild>
             <Link href="/#products">Back to Products</Link>
           </Button>
@@ -31,11 +31,6 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
       </main>
     );
   }
-
-  const productImage = {
-    imageUrl: "/dummy-image.png",
-    description: product.subTitle
-  };
 
   const specs = [
     { label: "Size", value: product.size },
@@ -60,32 +55,12 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
     { size: "DN300", ftf: "78", bore: "305" },
   ];
 
-  const flangeSuitabilityData = [
-    { size: "DN50", pcd: "120.7", dia: "19", holes: "4" },
-    { size: "DN65", pcd: "139.7", dia: "19", holes: "4" },
-    { size: "DN80", pcd: "152.4", dia: "19", holes: "4" },
-    { size: "DN100", pcd: "190.5", dia: "19", holes: "8" },
-    { size: "DN125", pcd: "215.9", dia: "22.2", holes: "8" },
-    { size: "DN150", pcd: "241.3", dia: "22.2", holes: "8" },
-    { size: "DN200", pcd: "298.5", dia: "22.2", holes: "8" },
-    { size: "DN250", pcd: "362.0", dia: "25.4", holes: "12" },
-    { size: "DN300", pcd: "431.8", dia: "25.4", holes: "12" },
-  ];
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
       ["Category", product.category],
       ...specs.map(spec => [spec.label, spec.value]),
-      [""],
-      ["PTFE SEATED FULL LUG BFV DIMENSIONS"],
-      ["SIZE", "FACE TO FACE", "BORE"],
-      ...dimensionData.map(row => [row.size, row.ftf, row.bore]),
-      [""],
-      ["TO SUIT 150# FLANGES"],
-      ["SIZE", "PCD", "HOLE DIA", "NO. OF HOLES"],
-      ...flangeSuitabilityData.map(row => [row.size, row.pcd, row.dia, row.holes])
     ];
     
     const csvContent = [
@@ -108,7 +83,6 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
@@ -118,27 +92,25 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
             <ChevronRight className="size-4" />
             <span className="text-primary">PTFE Seated Butterfly Valve</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Centric Disc Design</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.category}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
 
-      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
+                src="https://picsum.photos/seed/amco-full-lug-bfv/800/800"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
+                data-ai-hint="butterfly valve"
               />
             </div>
 
-            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -169,7 +141,6 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
           </div>
 
           <div className="space-y-16">
-            {/* Table 1: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
@@ -191,42 +162,6 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
                         <TableCell className="text-center text-foreground/80">{row.bore}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
-
-            {/* Table 2: Flange Suitability */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        TO SUIT 150# FLANGES
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {flangeSuitabilityData.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pcd}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dia}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.holes}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
