@@ -576,6 +576,18 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "Manufacturer Standard",
     testingStandard: "API 598"
   },
+  "high-pressure-in-line-check-valve-static": {
+    title: "High Pressure Valve",
+    subTitle: "High Pressure In-Line Check Valve",
+    category: "High Pressure Valve",
+    subCategory: "High Pressure Range",
+    size: "DN08 - DN50",
+    material: "CS / SS / Alloy Steel / Duplex SS",
+    endConnection: "BSPF / NPTF / SW",
+    pressureRating: "3000 PSI / 6000 PSI",
+    manufacturingStandard: "Manufacturer Standard",
+    testingStandard: "API 598"
+  },
   "high-pressure-needle-valve": {
     title: "High Pressure Valve",
     subTitle: "High Pressure Needle Valve",
@@ -725,7 +737,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     category: "PTFE Sleeved Plug Valve",
     subCategory: "Plug Valve Range",
     size: "DN15 - DN300",
-    material: "WCB / CF8 / CF8M / CF3 / CF3M",
+    material: "CS / SS / Alloy steel / Duplex SS / Inconel",
     sleeve: "PTFE",
     endConnection: "Flanged",
     pressureRating: "150# / 300#",
