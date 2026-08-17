@@ -30,13 +30,22 @@ export default function Trunnion3PiecePage() {
     { label: "Testing Standard", value: "ISO 5208 / ISO 10497 / API 607" },
   ];
 
-  const table150 = [
-    { size: "DN100", f: "229", d: "230", h: "Ø 19 X 8", pcd: "190.5" },
-    { size: "DN125", f: "", d: "255", h: "Ø 22.2 X 8", pcd: "215.9" },
-    { size: "DN150", f: "394", d: "280", h: "Ø 22.2 X 8", pcd: "241.3" },
-    { size: "DN200", f: "457", d: "345", h: "Ø 22.2 X 8", pcd: "298.5" },
-    { size: "DN250", f: "533", d: "405", h: "Ø 25.4 X 12", pcd: "362" },
-    { size: "DN300", f: "610", d: "485", h: "Ø 25.4 X 12", pcd: "431.8" },
+  const table150_300 = [
+    { size: "DN100", f150: "229", d150: "230", h150: "Ø 19 X 8", p150: "190.5", f300: "305", d300: "255", h300: "Ø 22.2 X 8", p300: "200" },
+    { size: "DN125", f150: "", d150: "255", h150: "Ø 22.2 X 8", p150: "215.9", f300: "", d300: "280", h300: "Ø 22.2 X 8", p300: "235" },
+    { size: "DN150", f150: "394", d150: "280", h150: "Ø 22.2 X 8", p150: "241.3", f300: "403", d300: "320", h300: "Ø 22.2 X 12", p300: "269.9" },
+    { size: "DN200", f150: "457", d150: "345", h150: "Ø 22.2 X 8", p150: "298.5", f300: "502", d300: "380", h300: "Ø 25.4 X 12", p300: "330.2" },
+    { size: "DN250", f150: "533", d150: "405", h150: "Ø 25.4 X 12", p150: "362", f300: "568", d300: "445", h300: "Ø 29 X 16", p300: "387.4" },
+    { size: "DN300", f150: "610", d150: "485", h150: "Ø 25.4 X 12", p150: "431.8", f300: "648", d300: "520", h300: "Ø 32 X 16", p300: "450.8" },
+  ];
+
+  const table600 = [
+    { size: "DN100", f: "432", d: "275", h: "Ø 25.4 X 8", pcd: "215.9" },
+    { size: "DN125", f: "", d: "330", h: "Ø 29 X 8", pcd: "266.7" },
+    { size: "DN150", f: "559", d: "355", h: "Ø 29 X 12", pcd: "292.1" },
+    { size: "DN200", f: "660", d: "420", h: "Ø 32 X 12", pcd: "349.2" },
+    { size: "DN250", f: "787", d: "510", h: "Ø 35 X 16", pcd: "431.8" },
+    { size: "DN300", f: "838", d: "560", h: "Ø 35 X 20", pcd: "489" },
   ];
 
   const handleDownloadCSV = () => {
@@ -140,23 +149,73 @@ export default function Trunnion3PiecePage() {
           </div>
 
           <div className="space-y-12">
-            <div className="bg-white rounded-[1.5rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+            {/* Dimension Table Section - 150# & 300# */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-4">TRUNNION 3PC FLANGED END 150#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">TRUNNION 2PC/3PC FLANGED END 150#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">TRUNNION 2PC/3PC FLANGED END 300#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">FACE TO FACE (FL)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary text-xs uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (FL)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Outer Dia</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Hole Dia x No. Holes</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 uppercase">PCD</TableHead>
+                      
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Face To Face (FL)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Outer Dia</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">Hole Dia x No. Holes</TableHead>
+                      <TableHead className="text-center font-bold text-primary text-xs py-4 uppercase">PCD</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {table150.map((row, idx) => (
+                    {table150_300.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p150}</TableCell>
+                        
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d300}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.p300}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Dimension Table Section - 600# */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">TRUNNION 2PC/3PC FLANGED END 600#</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">FACE TO FACE (FL)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">OUTER DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4 leading-tight uppercase">HOLE DIA X NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary text-xs py-4 leading-tight uppercase">PCD</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {table600.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
@@ -167,6 +226,11 @@ export default function Trunnion3PiecePage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
