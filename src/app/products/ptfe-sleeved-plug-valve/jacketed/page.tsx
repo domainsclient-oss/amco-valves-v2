@@ -22,6 +22,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
         <Navbar />
         <div className="pt-40 pb-20 container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
+          <p className="text-foreground/60 mt-4">The product specification you are looking for is not available.</p>
           <Button className="mt-8" asChild>
             <Link href="/#products">Back to Products</Link>
           </Button>
@@ -30,6 +31,17 @@ export default function PtfeSleevedJacketedPlugValvePage() {
       </main>
     );
   }
+
+  const specs = [
+    { label: "Size", value: product.size },
+    { label: "Material of construction", value: product.material },
+    { label: "Sleeve", value: product.sleeve },
+    { label: "End connection", value: product.endConnection },
+    { label: "Pressure rating", value: product.pressureRating },
+    { label: "Mode of operation", value: product.modeOfOperation },
+    { label: "Manufacturing Standard", value: product.manufacturingStandard },
+    { label: "Testing Standard", value: product.testingStandard },
+  ];
 
   const dimensionData = [
     { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
@@ -46,34 +58,6 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     { size: "DN200", ftf: "292", od: "345", hole: "Ø 22.2 X 8", pcd: "298.5" },
     { size: "DN250", ftf: "330", od: "405", hole: "Ø 25.4 X 12", pcd: "362" },
     { size: "DN300", ftf: "356", od: "485", hole: "Ø 25.4 X 12", pcd: "431.8" },
-  ];
-
-  const table300 = [
-    { size: "DN15", ftf: "140", od: "95", hole: "Ø 16 X 4", pcd: "66.7" },
-    { size: "DN20", ftf: "152", od: "115", hole: "Ø 19 X 4", pcd: "82.6" },
-    { size: "DN25", ftf: "165", od: "125", hole: "Ø 19 X 4", pcd: "88.9" },
-    { size: "DN32", ftf: "178", od: "135", hole: "Ø 19 X 4", pcd: "98.4" },
-    { size: "DN40", ftf: "190", od: "155", hole: "Ø 22.2 X 4", pcd: "114.3" },
-    { size: "DN50", ftf: "216", od: "165", hole: "Ø 19 X 8", pcd: "127" },
-    { size: "DN65", ftf: "241", od: "190", hole: "Ø 22.2 X 8", pcd: "149.2" },
-    { size: "DN80", ftf: "282", od: "210", hole: "Ø 22.2 X 8", pcd: "168.3" },
-    { size: "DN100", ftf: "305", od: "255", hole: "Ø 22.2 X 8", pcd: "200" },
-    { size: "DN125", ftf: "381", od: "280", hole: "Ø 22.2 X 8", pcd: "235" },
-    { size: "DN150", ftf: "403", od: "320", hole: "Ø 22.2 X 12", pcd: "269.9" },
-    { size: "DN200", ftf: "419", od: "380", hole: "Ø 25.4 X 12", pcd: "330.2" },
-    { size: "DN250", ftf: "457", od: "445", hole: "Ø 29 X 16", pcd: "387.4" },
-    { size: "DN300", ftf: "502", od: "520", hole: "Ø 32 X 16", pcd: "450.8" },
-  ];
-
-  const specs = [
-    { label: "Size", value: product.size },
-    { label: "Material of construction", value: product.material },
-    { label: "Sleeve", value: product.sleeve },
-    { label: "End connection", value: product.endConnection },
-    { label: "Pressure rating", value: product.pressureRating },
-    { label: "Mode of operation", value: product.modeOfOperation },
-    { label: "Manufacturing Standard", value: product.manufacturingStandard },
-    { label: "Testing Standard", value: product.testingStandard },
   ];
 
   const handleDownloadCSV = () => {
@@ -93,7 +77,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `PFA_FEP_Lined_Jacketed_Plug_Valve_Data_Sheet.csv`);
+    link.setAttribute("download", `PTFE_Sleeved_Jacketed_Plug_Valve_Data_Sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -118,19 +102,23 @@ export default function PtfeSleevedJacketedPlugValvePage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="https://picsum.photos/seed/jacketed-plug/800/800"
+                src="https://picsum.photos/seed/amco-jacketed-plug-valve/800/800"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
+                data-ai-hint="jacketed valve"
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
