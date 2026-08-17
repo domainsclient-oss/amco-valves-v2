@@ -119,7 +119,6 @@ export default function PtfeLinedWaferCheckValvePage() {
             <span className="text-primary">{product.category}</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.subCategory}</p>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base mt-2">{product.title}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
