@@ -60,23 +60,6 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     { size: "DN300", ftf: "356", od: "485", hole: "Ø 25.4 X 12", pcd: "431.8" },
   ];
 
-  const dimensionData300 = [
-    { size: "DN15", ftf: "140", od: "95", hole: "Ø 16 X 4", pcd: "66.7" },
-    { size: "DN20", ftf: "152", od: "115", hole: "Ø 19 X 4", pcd: "82.6" },
-    { size: "DN25", ftf: "165", od: "125", hole: "Ø 19 X 4", pcd: "88.9" },
-    { size: "DN32", ftf: "178", od: "135", hole: "Ø 19 X 4", pcd: "98.4" },
-    { size: "DN40", ftf: "190", od: "155", hole: "Ø 22.2 X 4", pcd: "114.3" },
-    { size: "DN50", ftf: "216", od: "165", hole: "Ø 19 X 8", pcd: "127" },
-    { size: "DN65", ftf: "241", od: "190", hole: "Ø 22.2 X 8", pcd: "149.2" },
-    { size: "DN80", ftf: "282", od: "210", hole: "Ø 22.2 X 8", pcd: "168.3" },
-    { size: "DN100", ftf: "305", od: "255", hole: "Ø 22.2 X 8", pcd: "200" },
-    { size: "DN125", ftf: "381", od: "280", hole: "Ø 22.2 X 8", pcd: "235" },
-    { size: "DN150", ftf: "403", od: "320", hole: "Ø 22.2 X 12", pcd: "269.9" },
-    { size: "DN200", ftf: "419", od: "380", hole: "Ø 25.4 X 12", pcd: "330.2" },
-    { size: "DN250", ftf: "457", od: "445", hole: "Ø 29 X 16", pcd: "387.4" },
-    { size: "DN300", ftf: "502", od: "520", hole: "Ø 32 X 16", pcd: "450.8" },
-  ];
-
   const handleDownloadCSV = () => {
     if (!product) return;
     
@@ -128,11 +111,12 @@ export default function PtfeSleevedJacketedPlugValvePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={product.showcaseImages?.[0]?.src || "https://picsum.photos/seed/amco-jacketed/800/800"}
+                src="https://picsum.photos/seed/amco-jacketed-plug-valve/800/800"
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
+                data-ai-hint="plug valve"
               />
             </div>
 
@@ -197,44 +181,6 @@ export default function PtfeSleevedJacketedPlugValvePage() {
                     ))}
                   </TableBody>
                 </Table>
-              </div>
-            </div>
-
-            {/* Table 2: 300# Dimensions */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
-                        SLEEVED JACKETED PLUG VALVE FLANGED END 300#
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {dimensionData300.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
               </div>
             </div>
           </div>
