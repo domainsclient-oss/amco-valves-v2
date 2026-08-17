@@ -100,9 +100,7 @@ export default function PtfeLinedBallValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <Link href="/#products" className="hover:text-secondary transition-colors">PTFE Lined Ball Valve</Link>
-            <ChevronRight className="size-4" />
-            <span className="text-primary">{product.category}</span>
+            <span className="text-primary">PTFE Lined Ball Valve</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">PTFE Lined Ball Valve</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
@@ -185,7 +183,7 @@ export default function PtfeLinedBallValvePage() {
                 </TableBody>
               </Table>
             </div>
-            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
               <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                 All dimensions are in mm
               </p>
