@@ -516,8 +516,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
-    subTitle: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
+    title: "PTFE Lined Butterfly Valve Wafer Centric Disc Design",
+    subTitle: "PTFE Lined Butterfly Valve Wafer Centric Disc Design",
     category: "FEP & PFA Lined Valves",
     subCategory: "Lined Valve Range",
     size: "DN50 - DN400",
