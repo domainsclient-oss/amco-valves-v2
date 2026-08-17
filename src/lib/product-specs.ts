@@ -368,7 +368,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Flanged type Retainerless Metal seat 150#, 300#",
+    subTitle: "Flanged type Retainerless Metal 150#, 300#",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
@@ -472,9 +472,9 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Lined Valves
   "ptfe-lined-ball-check-valve": {
-    title: "Ball Check Valve (PFA/FEP Lined)",
-    subTitle: "Ball type check valve (PFA/FEP Lined)",
-    category: "FEP & PFA Lined Valves",
+    title: "PFA / FEP Lined",
+    subTitle: "PTFE Lined Ball Check Valve",
+    category: "PTFE Lined Ball Check Valve",
     subCategory: "Lined Valve Range",
     size: "DN15 - DN300",
     material: "WCB / CF8 / CF8M",
@@ -488,7 +488,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "ptfe-lined-ball-valve": {
     title: "PFA / FEP Lined",
     subTitle: "PTFE Lined Ball Valve",
-    category: "PFA / FEP Lined",
+    category: "PTFE Lined Ball Valve",
     subCategory: "Lined Valve Range",
     size: "DN50 - DN250",
     material: "CS / SS / Alloy steel",
@@ -516,15 +516,15 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
-    title: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
-    subTitle: "Butterfly Valve Wafer Full Lug (PFA/FEP Lined)",
-    category: "FEP & PFA Lined Valves",
-    subCategory: "Lined Valve Range",
+    title: "Centric Disc Design",
+    subTitle: "PTFE Lined Butterfly Valve Wafer Centric Disc Design",
+    category: "PTFE Lined Butterfly Valve",
+    subCategory: "Centric Disc Design",
     size: "DN50 - DN400",
-    material: "CI / DI / WCB / CF8 / CF8M",
+    material: "CS / SS / Alloy steel",
     lining: "PFA / FEP",
-    endConnection: "Wafer Full Lug",
-    pressureRating: "150#",
+    endConnection: "Wafer to suit ANSI 150# flanges",
+    pressureRating: "PN10",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
     testingStandard: "API 598",
