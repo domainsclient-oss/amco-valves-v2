@@ -43,7 +43,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     { label: "Testing Standard", value: product.testingStandard },
   ];
 
-  const table150 = [
+  const dimensionData150 = [
     { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
     { size: "DN20", ftf: "117", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
     { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
@@ -60,7 +60,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     { size: "DN300", ftf: "356", od: "485", hole: "Ø 25.4 X 12", pcd: "431.8" },
   ];
 
-  const table300 = [
+  const dimensionData300 = [
     { size: "DN15", ftf: "140", od: "95", hole: "Ø 16 X 4", pcd: "66.7" },
     { size: "DN20", ftf: "152", od: "115", hole: "Ø 19 X 4", pcd: "82.6" },
     { size: "DN25", ftf: "165", od: "125", hole: "Ø 19 X 4", pcd: "88.9" },
@@ -78,6 +78,8 @@ export default function PtfeSleevedJacketedPlugValvePage() {
   ];
 
   const handleDownloadCSV = () => {
+    if (!product) return;
+    
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", product.subTitle],
@@ -94,7 +96,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `PTFE_Sleeved_Jacketed_Plug_Valve_Data_Sheet.csv`);
+    link.setAttribute("download", `${product.subTitle.replace(/[^a-z0-9]/gi, '_')}_Data_Sheet.csv`);
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -114,7 +116,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
             <ChevronRight className="size-4" />
             <span className="text-primary">PTFE Sleeved Plug Valve</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.category}</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.title}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
@@ -126,12 +128,11 @@ export default function PtfeSleevedJacketedPlugValvePage() {
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src="https://picsum.photos/seed/amco-jacketed-plug/800/800"
+                src={product.showcaseImages?.[0]?.src || "https://picsum.photos/seed/amco-jacketed/800/800"}
                 alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
-                data-ai-hint="jacketed valve"
               />
             </div>
 
@@ -185,7 +186,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {table150.map((row, idx) => (
+                    {dimensionData150.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
@@ -218,7 +219,7 @@ export default function PtfeSleevedJacketedPlugValvePage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {table300.map((row, idx) => (
+                    {dimensionData300.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>

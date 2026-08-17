@@ -153,7 +153,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
     endConnection: "FLANGED",
     pressureRating: "150# / 300# / 600#",
-    modeOfOperation: "Lever, Actuator",
+    modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
     showcaseImages: [{ src: "/products/trunnion-mounted2-piece-design-flanged-ansi-150-300-600.jpg", alt: "2PC Trunnion Ball Valve" }]
@@ -721,7 +721,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ptfe-sleeved-plug-valve/jacketed": {
     title: "PTFE Sleeved Plug Valve",
-    subTitle: "Jacketed",
+    subTitle: "PTFE Sleeved Plug Valve - Jacketed",
     category: "PTFE Sleeved Plug Valve",
     subCategory: "Plug Valve Range",
     size: "DN15 - DN300",
@@ -731,7 +731,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     pressureRating: "150# / 300#",
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 599",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "https://picsum.photos/seed/amco-jacketed-plug/800/800", alt: "Jacketed Plug Valve" }]
   },
   "ptfe-sleeved-plug-valve/screwed-socket-butt": {
     title: "PTFE Sleeved Plug Valve",
