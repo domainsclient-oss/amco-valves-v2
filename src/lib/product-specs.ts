@@ -881,10 +881,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // IBR Valves
   "ibr-valves/small-bore-forged-gate-valve": {
-    title: "IBR & Non IBR Gate Valve 800#, 1500#, 2500#",
-    subTitle: "IBR & Non IBR Small Bore Forged Gate Valve",
+    title: "IBR & Non IBR Valves",
+    subTitle: "Small Bore Forged IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
+    subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
     material: "A105 / F304L / F316L",
     endConnection: "Screwed / Socket / Flanged",
@@ -895,24 +895,27 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-forged-gate-valve-1.jpg", alt: "Forged Gate Valve" }]
   },
   "ibr-valves/small-bore-forged-globe-valve": {
-    title: "IBR & Non IBR Globe Valve 800#, 1500#, 2500#",
-    subTitle: "IBR & Non IBR Small Bore Forged Globe Valve",
+    title: "IBR & Non IBR Valves",
+    subTitle: "Small Bore Forged IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
+    subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
-    material: "A105 / F304L / F316L",
-    endConnection: "Screwed / Socket / Flanged",
-    pressureRating: "800# / 1500# / 150#",
+    material: "A105 / F304/L / F316/L / F11 / F22",
+    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
     modeOfOperation: "Wheel",
-    manufacturingStandard: "BS 5352",
+    manufacturingStandard: "API 602",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/small-bore-forged-globe-valve-1.jpg", alt: "Forged Globe Valve" }]
+    showcaseImages: [
+      { src: "/products/small-bore-forged-globe-valve-1.jpg", alt: "Small Bore Forged Globe Valve View 1" },
+      { src: "/products/small-bore-forged-globe-valve-2.jpg", alt: "Small Bore Forged Globe Valve View 2" }
+    ]
   },
   "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "Small Bore Forged",
+    title: "IBR & Non IBR Valves",
     subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
+    subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
     material: "A105 / F304/L / F316/L / F11 / F22",
     endConnection: "Screwed / Socket weld / Butt weld / Flanged",
@@ -925,7 +928,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-gate-valve": {
-    title: "Large Bore Cast",
+    title: "IBR & Non IBR Valves",
     subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -943,7 +946,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-globe-valve": {
-    title: "IBR & Non IBR Globe Valve 150#, 300#, 600#",
+    title: "IBR & Non IBR Valves",
     subTitle: "Large Bore Cast IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -961,10 +964,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     ]
   },
   "ibr-valves/large-bore-cast-swing-check-valve": {
-    title: "IBR & Non IBR Swing check Valve 150#, 300#, 600#",
-    subTitle: "IBR & Non IBR Large Bore Cast Swing Check Valve",
+    title: "IBR & Non IBR Valves",
+    subTitle: "Large Bore Cast IBR & Non IBR Swing Check Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
+    subCategory: "Large Bore Cast",
     size: "DN50 - DN600",
     material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
     endConnection: "Flanged / Butt weld",
