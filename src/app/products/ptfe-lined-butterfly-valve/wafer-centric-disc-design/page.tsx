@@ -3,15 +3,17 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, ChevronLeft, Maximize, Sparkles, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { QuotePopup } from "@/components/QuotePopup";
 
 export default function PtfeLinedWaferButterflyValvePage() {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const slug = "ptfe-lined-butterfly-valve/wafer-centric-disc-design";
   const product = productSpecsRegistry[slug];
@@ -30,6 +32,13 @@ export default function PtfeLinedWaferButterflyValvePage() {
       </main>
     );
   }
+
+  const showcaseImages = [
+    { src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-1.jpg", alt: "Wafer Flanged BFV View 1" },
+    { src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-2.jpg", alt: "Wafer Flanged BFV View 2" },
+    { src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-3.jpg", alt: "Wafer Flanged BFV View 3" },
+    { src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-4.jpg", alt: "Wafer Flanged BFV View 4" },
+  ];
 
   const productImage = {
     imageUrl: "/dummy-image.png",
@@ -74,6 +83,20 @@ export default function PtfeLinedWaferButterflyValvePage() {
     { size: "DN350", pcd: "476.3", dia: "29", holes: "12" },
     { size: "DN400", pcd: "539.8", dia: "29", holes: "16" },
   ];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
+  };
 
   const handleDownloadCSV = () => {
     if (!product) return;
@@ -121,9 +144,7 @@ export default function PtfeLinedWaferButterflyValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <Link href="#" className="hover:text-secondary transition-colors">PTFE Lined Butterfly Valve</Link>
-            <ChevronRight className="size-4" />
-            <span className="text-primary">Centric Disc Design</span>
+            <span className="text-primary">PTFE Lined Butterfly Valve</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.title}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
@@ -203,8 +224,8 @@ export default function PtfeLinedWaferButterflyValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -239,8 +260,8 @@ export default function PtfeLinedWaferButterflyValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
