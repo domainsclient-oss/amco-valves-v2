@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -117,9 +116,10 @@ export default function PtfeLinedWaferCheckValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <span className="text-primary">PTFE Lined Wafer Check Valve</span>
+            <span className="text-primary">{product.category}</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Lined Valves</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">{product.subCategory}</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base mt-2">{product.title}</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
@@ -199,8 +199,8 @@ export default function PtfeLinedWaferCheckValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
@@ -235,8 +235,8 @@ export default function PtfeLinedWaferCheckValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>
