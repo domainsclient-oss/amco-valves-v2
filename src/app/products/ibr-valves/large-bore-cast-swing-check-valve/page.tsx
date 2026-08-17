@@ -32,26 +32,34 @@ export default function LargeBoreCastSwingCheckValvePage() {
   };
 
   const specs = [
-    { label: "Size", value: product.size },
+    { label: "Size", value: "DN50 - DN600" },
     { 
       label: "Material of construction", 
       subLabel: "(Bill of material)",
-      value: product.material 
+      value: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE" 
     },
-    { label: "End connection", value: product.endConnection },
-    { label: "Pressure rating", value: product.pressureRating },
-    { label: "Mode of operation", value: product.modeOfOperation },
-    { label: "Manufacturing Standard", value: product.manufacturingStandard },
-    { label: "Testing Standard", value: product.testingStandard },
+    { label: "End connection", value: "Flanged / Butt weld" },
+    { label: "Pressure rating", value: "150#, 300#, 600#" },
+    { label: "Mode of operation", value: "Automatic" },
+    { label: "Manufacturing Standard", value: "API 600" },
+    { label: "Testing Standard", value: "API 598" },
   ];
 
   const table150_300 = [
-    { size: "DN50", f150fl: "203", d150: "150", h150: "19 X 4", pcd150: "120.7", f300fl: "267", d300: "165", h300: "19 X 8", pcd300: "127" },
-    { size: "DN65", f150fl: "216", d150: "180", h150: "19 X 4", pcd150: "139.7", f300fl: "292", d300: "190", h300: "22.2 X 8", pcd300: "149.2" },
-    { size: "DN80", f150fl: "241", d150: "190", h150: "19 X 4", pcd150: "152.4", f300fl: "318", d300: "210", h300: "22.2 X 8", pcd300: "168.3" },
-    { size: "DN100", f150fl: "292", d150: "230", h150: "19 X 8", pcd150: "190.5", f300fl: "356", d300: "255", h300: "22.2 X 8", pcd300: "200" },
-    { size: "DN150", f150fl: "356", d150: "280", h150: "22.2 X 8", pcd150: "241.3", f300fl: "444", d300: "320", h300: "22.2 X 12", pcd300: "269.9" },
-    { size: "DN200", f150fl: "495", d150: "345", h150: "22.2 X 8", pcd150: "298.5", f300fl: "533", d300: "380", h300: "25.4 X 12", pcd300: "330.2" },
+    { size: "DN50", f150fl: "203", f150bw: "203", d150: "150", h150: "19 X 4", pcd150: "120.7", f300fl: "267", f300bw: "267", d300: "165", h300: "19 X 8", pcd300: "127" },
+    { size: "DN65", f150fl: "216", f150bw: "216", d150: "180", h150: "19 X 4", pcd150: "139.7", f300fl: "292", f300bw: "292", d300: "190", h300: "22.2 X 8", pcd300: "149.2" },
+    { size: "DN80", f150fl: "241", f150bw: "241", d150: "190", h150: "19 X 4", pcd150: "152.4", f300fl: "318", f300bw: "318", d300: "210", h300: "22.2 X 8", pcd300: "168.3" },
+    { size: "DN100", f150fl: "292", f150bw: "292", d150: "230", h150: "19 X 8", pcd150: "190.5", f300fl: "356", f300bw: "356", d300: "255", h300: "22.2 X 8", pcd300: "200" },
+    { size: "DN125", f150fl: "330", f150bw: "330", d150: "255", h150: "22.2 X 8", pcd150: "215.9", f300fl: "400", f300bw: "400", d300: "280", h300: "22.2 X 8", pcd300: "235" },
+    { size: "DN150", f150fl: "356", f150bw: "356", d150: "280", h150: "22.2 X 8", pcd150: "241.3", f300fl: "444", f300bw: "444", d300: "320", h300: "22.2 X 12", pcd300: "269.9" },
+    { size: "DN200", f150fl: "495", f150bw: "495", d150: "345", h150: "22.2 X 8", pcd150: "298.5", f300fl: "533", f300bw: "533", d300: "380", h300: "25.4 X 12", pcd300: "330.2" },
+    { size: "DN250", f150fl: "622", f150bw: "622", d150: "405", h150: "25.4 X 12", pcd150: "362", f300fl: "622", f300bw: "622", d300: "445", h300: "29 X 16", pcd300: "387.4" },
+    { size: "DN300", f150fl: "698", f150bw: "698", d150: "485", h150: "25.4 X 12", pcd150: "431.8", f300fl: "711", f300bw: "711", d300: "520", h300: "32 X 16", pcd300: "450.8" },
+    { size: "DN350", f150fl: "787", f150bw: "787", d150: "535", h150: "29 X 12", pcd150: "476.3", f300fl: "838", f300bw: "838", d300: "585", h300: "32 X 20", pcd300: "514.4" },
+    { size: "DN400", f150fl: "864", f150bw: "864", d150: "595", h150: "29 X 16", pcd150: "539.8", f300fl: "864", f300bw: "864", d300: "650", h300: "35 X 20", pcd300: "571.5" },
+    { size: "DN450", f150fl: "978", f150bw: "978", d150: "635", h150: "32 X 16", pcd150: "577.9", f300fl: "978", f300bw: "978", d300: "710", h300: "35 X 24", pcd300: "628.6" },
+    { size: "DN500", f150fl: "978", f150bw: "978", d150: "700", h150: "32 X 20", pcd150: "635", f300fl: "1016", f300bw: "1016", d300: "775", h300: "35 X 24", pcd300: "685.8" },
+    { size: "DN600", f150fl: "1295", f150bw: "1295", d150: "815", h150: "35 X 20", pcd150: "749.3", f300fl: "1346", f300bw: "1346", d300: "915", h300: "41 X 24", pcd300: "812.8" },
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -200,17 +208,20 @@ export default function LargeBoreCastSwingCheckValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">SWING CHECK VALVE FLANGED END 150#</TableHead>
-                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6">SWING CHECK VALVE FLANGED END 300#</TableHead>
+                      <TableHead colSpan={6} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">SWING CHECK VALVE FLANGED END 150#</TableHead>
+                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">SWING CHECK VALVE FLANGED END 300#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (FL)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (BW)</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">PCD</TableHead>
                       
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (FL)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (BW)</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
                       <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
@@ -221,10 +232,14 @@ export default function LargeBoreCastSwingCheckValvePage() {
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150fl}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.pcd150}</TableCell>
+                        
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300fl}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300bw}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d300}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
                         <TableCell className="text-center text-foreground/80">{row.pcd300}</TableCell>
@@ -232,6 +247,11 @@ export default function LargeBoreCastSwingCheckValvePage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
