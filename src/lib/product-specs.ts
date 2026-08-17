@@ -486,7 +486,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Ball Check Valve" }]
   },
   "ptfe-lined-ball-valve": {
-    title: "PTFE Lined Ball Valve",
+    title: "PFA / FEP Lined",
     subTitle: "PTFE Lined Ball Valve",
     category: "PFA / FEP Lined",
     subCategory: "Lined Valve Range",

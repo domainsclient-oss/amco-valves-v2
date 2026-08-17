@@ -102,7 +102,7 @@ export default function PtfeLinedBallValvePage() {
             <ChevronRight className="size-4" />
             <span className="text-primary">PTFE Lined Ball Valve</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">PTFE Lined Ball Valve</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">PFA / FEP Lined</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
