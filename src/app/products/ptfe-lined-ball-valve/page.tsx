@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -49,11 +48,6 @@ export default function PtfeLinedBallValvePage() {
   ];
 
   const dimensionData = [
-    { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
-    { size: "DN20", ftf: "117", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
-    { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
-    { size: "DN32", ftf: "140", od: "115", hole: "Ø 16 X 4", pcd: "88.9" },
-    { size: "DN40", ftf: "165", od: "125", hole: "Ø 16 X 4", pcd: "98.4" },
     { size: "DN50", ftf: "178", od: "150", hole: "Ø 19 X 4", pcd: "120.7" },
     { size: "DN65", ftf: "190", od: "180", hole: "Ø 19 X 4", pcd: "139.7" },
     { size: "DN80", ftf: "203", od: "190", hole: "Ø 19 X 4", pcd: "152.4" },
@@ -106,9 +100,11 @@ export default function PtfeLinedBallValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
+            <Link href="/#products" className="hover:text-secondary transition-colors">PTFE Lined Ball Valve</Link>
+            <ChevronRight className="size-4" />
             <span className="text-primary">{product.category}</span>
           </nav>
-          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">PFA / FEP Lined</p>
+          <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">PTFE Lined Ball Valve</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
         </div>
       </div>
