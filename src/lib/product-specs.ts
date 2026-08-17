@@ -472,16 +472,16 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
 
   // Lined Valves
   "ptfe-lined-ball-check-valve": {
-    title: "PFA / FEP Lined",
+    title: "PTFE Lined Ball Check Valve",
     subTitle: "PTFE Lined Ball Check Valve",
     category: "PTFE Lined Ball Check Valve",
     subCategory: "Lined Valve Range",
-    size: "DN15 - DN300",
-    material: "WCB / CF8 / CF8M",
+    size: "DN50 - DN300",
+    material: "CS / SS / Alloy steel",
     lining: "PFA / FEP",
-    endConnection: "Flanged",
-    pressureRating: "150#",
-    manufacturingStandard: "ASME B16.34",
+    endConnection: "Flanged 150#",
+    pressureRating: "PN10 / 16",
+    manufacturingStandard: "Manufacturer Std",
     testingStandard: "API 598",
     showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Ball Check Valve" }]
   },

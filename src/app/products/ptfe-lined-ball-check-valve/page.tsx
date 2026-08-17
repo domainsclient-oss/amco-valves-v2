@@ -34,11 +34,6 @@ export default function PtfeLinedBallCheckValvePage() {
   ];
 
   const dimensionData = [
-    { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
-    { size: "DN20", ftf: "117", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
-    { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
-    { size: "DN32", ftf: "140", od: "115", hole: "Ø 16 X 4", pcd: "88.9" },
-    { size: "DN40", ftf: "165", od: "125", hole: "Ø 16 X 4", pcd: "98.4" },
     { size: "DN50", ftf: "178", od: "150", hole: "Ø 19 X 4", pcd: "120.7" },
     { size: "DN65", ftf: "190", od: "180", hole: "Ø 19 X 4", pcd: "139.7" },
     { size: "DN80", ftf: "203", od: "190", hole: "Ø 19 X 4", pcd: "152.4" },
