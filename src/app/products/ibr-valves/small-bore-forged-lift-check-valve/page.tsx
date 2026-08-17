@@ -34,7 +34,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
     { label: "Size", value: product.size },
     { 
       label: "Material of construction", 
-      subLabel: "(Bill of material)",
+      subLabel: "(BILL OF MATERIAL)",
       value: product.material 
     },
     { label: "End connection", value: product.endConnection },
@@ -156,14 +156,14 @@ export default function SmallBoreForgedLiftCheckValvePage() {
       </div>
 
       {/* Main Content */}
-      <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: 'rgba(243, 243, 243, 0.74)' }}>
+      <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
-                alt="Small Bore Forged Lift Check Valve"
+                alt={product.subTitle}
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -180,7 +180,7 @@ export default function SmallBoreForgedLiftCheckValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-xs opacity-70 font-normal uppercase">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs font-normal uppercase opacity-70">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>

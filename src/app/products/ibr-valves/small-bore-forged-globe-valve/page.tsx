@@ -18,20 +18,7 @@ export default function SmallBoreForgedGlobeValvePage() {
   const slug = "ibr-valves/small-bore-forged-globe-valve";
   const product = productSpecsRegistry[slug];
 
-  if (!product) {
-    return (
-      <main className="min-h-screen bg-white">
-        <Navbar />
-        <div className="pt-40 pb-20 container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
-          <Button className="mt-8" asChild>
-            <Link href="/#products">Back to Products</Link>
-          </Button>
-        </div>
-        <Footer />
-      </main>
-    );
-  }
+  if (!product) return null;
 
   const showcaseImages = product.showcaseImages || [];
 
@@ -44,7 +31,7 @@ export default function SmallBoreForgedGlobeValvePage() {
     { label: "Size", value: product.size },
     { 
       label: "Material of construction", 
-      subLabel: "(Bill of material)",
+      subLabel: "(BILL OF MATERIAL)",
       value: product.material 
     },
     { label: "End connection", value: product.endConnection },
@@ -158,7 +145,7 @@ export default function SmallBoreForgedGlobeValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <span className="text-primary">IBR & Non IBR Valves</span>
+            <span className="text-primary">{product.category}</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Small Bore Forged</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
@@ -190,7 +177,7 @@ export default function SmallBoreForgedGlobeValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-[12px] opacity-70 uppercase font-normal">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs font-normal uppercase opacity-70">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
@@ -518,7 +505,7 @@ export default function SmallBoreForgedGlobeValvePage() {
         <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
           <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
-            {selectedImageIndex !== null && (
+            {selectedImageIndex !== null && showcaseImages && (
               <>
                 <button 
                   onClick={() => setSelectedImageIndex(null)}
@@ -565,4 +552,3 @@ export default function SmallBoreForgedGlobeValvePage() {
     </main>
   );
 }
-

@@ -31,7 +31,7 @@ export default function SmallBoreForgedGateValvePage() {
     { label: "Size", value: product.size },
     { 
       label: "Material of construction", 
-      subLabel: "(Bill of material)",
+      subLabel: "(BILL OF MATERIAL)",
       value: product.material 
     },
     { label: "End connection", value: product.endConnection },
@@ -145,9 +145,7 @@ export default function SmallBoreForgedGateValvePage() {
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
             <ChevronRight className="size-4" />
-            <span className="text-foreground/60">IBR & Non IBR Valves</span>
-            <ChevronRight className="size-4" />
-            <span className="text-primary">Small Bore Forged</span>
+            <span className="text-primary">{product.category}</span>
           </nav>
           <p className="text-secondary font-bold uppercase tracking-wider text-sm md:text-base">Small Bore Forged</p>
           <h1 className="text-3xl md:text-4xl font-bold text-primary mt-2">{product.subTitle}</h1>
@@ -179,7 +177,7 @@ export default function SmallBoreForgedGateValvePage() {
                       {spec.subLabel && (
                         <>
                           <br />
-                          <span className="text-[10px] md:text-[12px] font-normal lowercase opacity-70">{spec.subLabel}</span>
+                          <span className="text-[10px] md:text-xs font-normal uppercase opacity-70">{spec.subLabel}</span>
                         </>
                       )} :
                     </span>
