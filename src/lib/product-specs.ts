@@ -909,20 +909,23 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     showcaseImages: [{ src: "/products/small-bore-forged-globe-valve-1.jpg", alt: "Forged Globe Valve" }]
   },
   "ibr-valves/small-bore-forged-lift-check-valve": {
-    title: "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#",
-    subTitle: "IBR & Non IBR Small Bore Forged Lift Check Valve",
+    title: "Small Bore Forged",
+    subTitle: "Small Bore Forged IBR & Non IBR Lift check Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Valve Range",
     size: "DN15 - DN50",
-    material: "A105 / F304L / F316L",
-    endConnection: "Screwed / Socket / Flanged",
-    pressureRating: "800# / 1500# / 150#",
-    manufacturingStandard: "BS 5352",
+    material: "A105 / F304/L / F316/L / F11 / F22",
+    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
+    manufacturingStandard: "API 602",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/small-bore-forged-lift-check-valve-1.jpg", alt: "Forged Lift Check Valve" }]
+    showcaseImages: [
+      { src: "/products/small-bore-forged-lift-check-valve-1.jpg", alt: "Small Bore Forged Lift Check Valve View 1" },
+      { src: "/products/small-bore-forged-lift-check-valve-2.jpg", alt: "Small Bore Forged Lift Check Valve View 2" }
+    ]
   },
   "ibr-valves/large-bore-cast-gate-valve": {
-    title: "IBR & Non IBR Gate Valve 150#, 300#, 600#",
+    title: "Large Bore Cast",
     subTitle: "Large Bore Cast IBR & Non IBR Gate Valve",
     category: "IBR & Non IBR Valves",
     subCategory: "Large Bore Cast",
@@ -969,6 +972,10 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Automatic",
     manufacturingStandard: "API 600",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/large-bore-cast-swing-check-valve-1.jpg", alt: "Cast Swing Check Valve" }]
+    showcaseImages: [
+      { src: "/products/large-bore-cast-swing-check-valve-1.jpg", alt: "Large Bore Cast Swing Check Valve View 1" },
+      { src: "/products/large-bore-cast-swing-check-valve-2.jpg", alt: "Large Bore Cast Swing Check Valve View 2" },
+      { src: "/products/large-bore-cast-swing-check-valve-3.jpg", alt: "Large Bore Cast Swing Check Valve View 3" }
+    ]
   }
 };
