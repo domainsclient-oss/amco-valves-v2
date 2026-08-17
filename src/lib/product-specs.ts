@@ -576,18 +576,6 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     manufacturingStandard: "Manufacturer Standard",
     testingStandard: "API 598"
   },
-  "high-pressure-in-line-check-valve-static": {
-    title: "High Pressure Valve",
-    subTitle: "High Pressure In-Line Check Valve",
-    category: "High Pressure Valve",
-    subCategory: "High Pressure Range",
-    size: "DN08 - DN50",
-    material: "CS / SS / Alloy Steel / Duplex SS",
-    endConnection: "BSPF / NPTF / SW",
-    pressureRating: "3000 PSI / 6000 PSI",
-    manufacturingStandard: "Manufacturer Standard",
-    testingStandard: "API 598"
-  },
   "high-pressure-needle-valve": {
     title: "High Pressure Valve",
     subTitle: "High Pressure Needle Valve",
@@ -936,17 +924,21 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "ibr-valves/large-bore-cast-globe-valve": {
     title: "IBR & Non IBR Globe Valve 150#, 300#, 600#",
-    subTitle: "IBR & Non IBR Large Bore Cast Globe Valve",
+    subTitle: "Large Bore Cast IBR & Non IBR Globe Valve",
     category: "IBR & Non IBR Valves",
-    subCategory: "Valve Range",
-    size: "DN50 - DN200",
-    material: "WCB / CF8 / CF8M",
-    endConnection: "Flanged",
-    pressureRating: "150# / 300#",
-    modeOfOperation: "Wheel",
-    manufacturingStandard: "BS 1873",
+    subCategory: "Large Bore Cast",
+    size: "DN50 - DN600",
+    material: "WCB / LCB / WC6 / WC9 / CF8 / CF8M / CF3 / CF3M / ALLOY STEEL / DUPLEX / SUPER DUPLEX / INCONEL / ALUMINIUM BRONZE",
+    endConnection: "Flanged / Butt weld",
+    pressureRating: "150#, 300#, 600#",
+    modeOfOperation: "Wheel / Electric",
+    manufacturingStandard: "API 623",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/large-bore-cast-globe-valve-1.jpg", alt: "Cast Globe Valve" }]
+    showcaseImages: [
+      { src: "/products/large-bore-cast-globe-valve-1.jpg", alt: "Large Bore Cast Globe Valve View 1" },
+      { src: "/products/large-bore-cast-globe-valve-2.jpg", alt: "Large Bore Cast Globe Valve View 2" },
+      { src: "/products/large-bore-cast-globe-valve-3.jpg", alt: "Large Bore Cast Globe Valve View 3" }
+    ]
   },
   "ibr-valves/large-bore-cast-swing-check-valve": {
     title: "IBR & Non IBR Swing check Valve 150#, 300#, 600#",
