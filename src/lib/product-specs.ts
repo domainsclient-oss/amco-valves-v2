@@ -464,7 +464,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     material: "CS / SS / Alloy Steel / Duplex SS",
     endConnection: "BSPF / NPTF / SW",
     pressureRating: "3000 PSI / 6000 PSI",
-    modeOfOperation: "Wheel",
+    modeOfOperation: "Lever",
     manufacturingStandard: "Manufacturer Standard",
     testingStandard: "API 598",
     showcaseImages: [{ src: "/products/HP_needle_valve.jpg", alt: "HP Needle Valve" }]
@@ -781,7 +781,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     subCategory: "Small Bore Forged",
     size: "DN15 - DN50",
     material: "A105 / F304/L / F316/L / F11 / F22",
-    endConnection: "Screwed / Socket weld / Butt weld / Flanged",
+    endConnection: "Screwed / Socket weld / CB / BW",
     pressureRating: "150#, 300#, 600#, 800#, 1500#, 2500#",
     modeOfOperation: "Wheel",
     manufacturingStandard: "API 602",
