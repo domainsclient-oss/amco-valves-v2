@@ -3,13 +3,41 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, Maximize, Sparkles, X } from "lucide-react";
+import { ChevronRight, Download, Maximize, Sparkles, X, ChevronLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { QuotePopup } from "@/components/QuotePopup";
+
+const generalDimensions = [
+  { size: "DN50", f: "-", bore: "-", h: "-", wheel: "-" },
+  { size: "DN65", f: "-", bore: "-", h: "-", wheel: "-" },
+  { size: "DN80", f: "57", bore: "82", h: "410", wheel: "225" },
+  { size: "DN100", f: "58", bore: "102", h: "455", wheel: "300" },
+  { size: "DN125", f: "-", bore: "-", h: "-", wheel: "-" },
+  { size: "DN150", f: "63", bore: "152", h: "530", wheel: "300" },
+  { size: "DN200", f: "78", bore: "200", h: "640", wheel: "300" },
+  { size: "DN250", f: "78", bore: "250", h: "740", wheel: "300" },
+  { size: "DN300", f: "84", bore: "300", h: "830", wheel: "300" },
+  { size: "DN350", f: "84", bore: "334", h: "930", wheel: "450" },
+  { size: "DN400", f: "97", bore: "380", h: "1080", wheel: "450" },
+];
+
+const flangeSuitabilityData = [
+  { size: "DN50", p150: "120.7", d150: "19", n150: "4", p10: "125", d10: "18", n10: "4" },
+  { size: "DN65", p150: "139.7", d150: "19", n150: "4", p10: "145", d10: "18", n10: "4" },
+  { size: "DN80", p150: "152.4", d150: "19", n150: "4", p10: "160", d10: "18", n10: "8" },
+  { size: "DN100", p150: "190.5", d150: "19", n150: "8", p10: "180", d10: "18", n10: "8" },
+  { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", p10: "210", d10: "18", n10: "8" },
+  { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", p10: "240", d10: "22", n10: "8" },
+  { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", p10: "295", d10: "22", n10: "8" },
+  { size: "DN250", p150: "362", d150: "25.4", n150: "12", p10: "350", d10: "22", n10: "12" },
+  { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", p10: "400", d10: "22", n10: "12" },
+  { size: "DN350", p150: "476.3", d150: "29", n150: "12", p10: "460", d10: "22", n10: "16" },
+  { size: "DN400", p150: "539.8", d150: "29", n150: "16", p10: "515", d10: "26", n10: "16" },
+];
 
 export default function BiDirectionalWaferTwoPiecePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -46,27 +74,21 @@ export default function BiDirectionalWaferTwoPiecePage() {
     { label: "Testing Standard", value: "MSS SP 81" },
   ];
 
-  const generalDimensions = [
-    { size: "DN50", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN65", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN80", f: "57", bore: "82", h: "410", wheel: "225" },
-    { size: "DN100", f: "58", bore: "102", h: "455", wheel: "300" },
-    { size: "DN125", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN150", f: "63", bore: "152", h: "530", wheel: "300" },
-    { size: "DN200", f: "78", bore: "200", h: "640", wheel: "300" },
-    { size: "DN250", f: "78", bore: "250", h: "740", wheel: "300" },
-    { size: "DN300", f: "84", bore: "300", h: "830", wheel: "300" },
-    { size: "DN350", f: "84", bore: "334", h: "930", wheel: "450" },
-    { size: "DN400", f: "97", bore: "380", h: "1080", wheel: "450" },
-  ];
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
       ["Product", "Knife Edge Gate Valve"],
       ["Type", "Bi Directional"],
       ["Model", "2 piece design Wafer Lugged Resilient seat PN10#"],
-      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value])
+      ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["General Dimensions (mm)"],
+      ["SIZE", "FACE TO FACE (LINED)", "BORE DIA", "HEIGHT (CENTER TO TOP)", "WHEEL DIA"],
+      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
+      [""],
+      ["Flange Suitability"],
+      ["SIZE", "PCD (150#)", "HOLE DIA (150#)", "NO. OF HOLES (150#)", "PCD (PN10#)", "HOLE DIA (PN10#)", "NO. OF HOLES (PN10#)"],
+      ...flangeSuitabilityData.map(row => [row.size, row.p150, row.d150, row.n150, row.p10, row.d10, row.n10])
     ];
     
     const csvContent = [
@@ -103,7 +125,6 @@ export default function BiDirectionalWaferTwoPiecePage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
@@ -118,11 +139,9 @@ export default function BiDirectionalWaferTwoPiecePage() {
         </div>
       </div>
 
-      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -133,7 +152,6 @@ export default function BiDirectionalWaferTwoPiecePage() {
               />
             </div>
 
-            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -202,13 +220,16 @@ export default function BiDirectionalWaferTwoPiecePage() {
             </div>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
+            {/* Table 1: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">WAFER LUGGED BI-DIRECTIONAL TWO PIECE DESIGN RESILIENT SEAT KGV</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                        WAFER LUGGED BI-DIRECTIONAL TWO PIECE DESIGN RESILIENT SEAT KGV
+                      </TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
@@ -221,7 +242,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
                   <TableBody>
                     {generalDimensions.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h}</TableCell>
@@ -230,6 +251,54 @@ export default function BiDirectionalWaferTwoPiecePage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Table 2: Flange Suitability */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-[1400px] mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-sm">SIZE</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4 bg-neutral-50/50">TO SUIT 150# FLANGES</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4 bg-neutral-50/50">TO SUIT PN10# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase leading-tight">NO. OF HOLES</TableHead>
+                      
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-3 uppercase">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangeSuitabilityData.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
+                        
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d10}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.n10}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
@@ -281,7 +350,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
       <QuotePopup 
         isOpen={isQuoteOpen} 
         onOpenChange={setIsQuoteOpen} 
-        productName="2 piece design Bi-Directional Wafer Lugged Resilient seat PN10#" 
+        productName={productImage.description} 
       />
 
       <Footer />
