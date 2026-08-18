@@ -170,7 +170,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
-    showcaseImages: [{ src: "/products/trunnion-mounted3-piece-design-flanged-ansi-150-300-600.jpg", alt: "3PC Trunnion Ball Valve" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "3PC Trunnion Ball Valve" }]
   },
 
   // Butterfly Valve - Centric Disc Design
