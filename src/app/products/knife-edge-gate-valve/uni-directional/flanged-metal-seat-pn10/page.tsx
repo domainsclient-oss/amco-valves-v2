@@ -50,6 +50,55 @@ export default function FlangedMetalSeatKnifeEdgeGateValvePage() {
     { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
     { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
     { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
+    { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
+    { size: "DN750", f: "117", bore: "670", h: "1634", wheel: "-" },
+    { size: "DN800", f: "117", bore: "794", h: "1871", wheel: "-" },
+    { size: "DN900", f: "117", bore: "810", h: "1945", wheel: "-" },
+    { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
+  ];
+
+  const flangeSuitability = [
+    { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
+    { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
+    { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
+    { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
+    { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
+    { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
+    { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
+    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
+    { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
+    { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
+    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
+    { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
+    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
+    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
+    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
+    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
+    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
+    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
+  ];
+
+  const pn16Suitability = [
+    { size: "DN50", p: "125", d: "18", n: "4" },
+    { size: "DN65", p: "145", d: "18", n: "4" },
+    { size: "DN80", p: "160", d: "18", n: "8" },
+    { size: "DN100", p: "180", d: "18", n: "8" },
+    { size: "DN125", p: "210", d: "18", n: "8" },
+    { size: "DN150", p: "240", d: "22", n: "8" },
+    { size: "DN200", p: "295", d: "22", n: "12" },
+    { size: "DN250", p: "355", d: "26", n: "12" },
+    { size: "DN300", p: "410", d: "26", n: "12" },
+    { size: "DN350", p: "470", d: "26", n: "16" },
+    { size: "DN400", p: "525", d: "30", n: "16" },
+    { size: "DN450", p: "585", d: "30", n: "20" },
+    { size: "DN500", p: "650", d: "33", n: "20" },
+    { size: "DN600", p: "770", d: "36", n: "20" },
+    { size: "DN700", p: "840", d: "36", n: "24" },
+    { size: "DN750", p: "-", d: "-", n: "-" },
+    { size: "DN800", p: "950", d: "39", n: "24" },
+    { size: "DN900", p: "1050", d: "39", n: "28" },
+    { size: "DN1000", p: "1170", d: "42", n: "28" },
   ];
 
   const handleDownloadCSV = () => {
@@ -151,14 +200,14 @@ export default function FlangedMetalSeatKnifeEdgeGateValvePage() {
             </div>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {/* Table: General Dimensions */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">FLANGED UNI-DIRECTIONAL METAL SEAT KGV</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">FLANGED UNI-DIRECTIONAL METAL SEAT KGV</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
@@ -171,7 +220,7 @@ export default function FlangedMetalSeatKnifeEdgeGateValvePage() {
                   <TableBody>
                     {generalDimensions.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h}</TableCell>
@@ -180,6 +229,88 @@ export default function FlangedMetalSeatKnifeEdgeGateValvePage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Suitability Table 1 (150# & PN10#) */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-[1400px] mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-sm">SIZE</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4 bg-neutral-50/50">TO SUIT 150# FLANGES</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4 bg-neutral-50/50">TO SUIT PN10# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">NO. OF HOLES</TableHead>
+                      
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-3 leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangeSuitability.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-2.5 bg-neutral-50/20">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
+                        
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.nPN10}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Suitability Table 2 (PN16#) */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-4xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">TO SUIT PN16# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {pn16Suitability.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.n}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
           </div>
