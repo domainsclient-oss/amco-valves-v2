@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -26,7 +25,7 @@ export default function Trunnion2PiecePage() {
     { label: "Material of construction", value: "WCB / CF8 / CF8M / CF3 / CF3M" },
     { label: "End connection", value: "FLANGED" },
     { label: "Pressure rating", value: "150# / 300# / 600#" },
-    { label: "Mode of operation", value: "Lever, Gear, Actuator" },
+    { label: "Mode of operation", value: "Lever, Actuator" },
     { label: "Manufacturing Standard", value: "ISO 17292 / API 6D / API 608" },
     { label: "Testing Standard", value: "ISO 5208 / ISO 10497 / API 607" },
   ];
