@@ -460,7 +460,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     subTitle: "High Pressure Needle Valve",
     category: "High Pressure Valve",
     subCategory: "High Pressure Range",
-    size: "DN08 - DN50",
+    size: "DN06 - DN50",
     material: "CS / SS / Alloy Steel / Duplex SS",
     endConnection: "BSPF / NPTF / SW",
     pressureRating: "3000 PSI / 6000 PSI",
