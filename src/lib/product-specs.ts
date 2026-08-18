@@ -264,7 +264,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609 (Cat.A)",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "https://picsum.photos/seed/amco-double-offset/800/800", alt: "Double Offset Lugged BFV" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Full Lugged 150# / 300#" }]
   },
   "butterfly-valve/double-offset-design/double-flanged-150-300": {
     title: "Double Offset Design",

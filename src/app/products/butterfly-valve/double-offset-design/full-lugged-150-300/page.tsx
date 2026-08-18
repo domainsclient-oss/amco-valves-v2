@@ -73,14 +73,6 @@ export default function DoubleOffsetFullLuggedBFVPage() {
     { size: "DN65", f: "48", top: "146", bottom: "108" },
     { size: "DN80", f: "48", top: "158", bottom: "109" },
     { size: "DN100", f: "54", top: "172", bottom: "123" },
-    { size: "DN125", f: "59", top: "203", bottom: "139" },
-    { size: "DN150", f: "59", top: "220", bottom: "163" },
-    { size: "DN200", f: "73", top: "278", bottom: "200" },
-    { size: "DN250", f: "83", top: "300", bottom: "230" },
-    { size: "DN300", f: "92", top: "341", bottom: "267" },
-    { size: "DN350", f: "117", top: "457", bottom: "315" },
-    { size: "DN400", f: "133", top: "528", bottom: "365" },
-    { size: "DN450", f: "149", top: "591", bottom: "383" },
     { size: "DN500", f: "159", top: "602", bottom: "436" },
     { size: "DN600", f: "181", top: "795", bottom: "504" },
   ];
@@ -155,7 +147,7 @@ export default function DoubleOffsetFullLuggedBFVPage() {
     document.body.removeChild(link);
   };
 
-  const productImageMain = "https://picsum.photos/seed/amco-full-lug/800/800";
+  const productImageMain = "/dummy-image.png";
 
   return (
     <main className="min-h-screen bg-white">
@@ -188,7 +180,6 @@ export default function DoubleOffsetFullLuggedBFVPage() {
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
-                data-ai-hint="butterfly valve"
               />
             </div>
 
