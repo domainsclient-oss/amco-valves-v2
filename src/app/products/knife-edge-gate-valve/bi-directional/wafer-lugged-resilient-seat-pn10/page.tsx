@@ -1,14 +1,14 @@
+
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Download, Maximize, Sparkles, X, ChevronLeft } from "lucide-react";
+import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { QuotePopup } from "@/components/QuotePopup";
 
 const generalDimensions = [
@@ -22,10 +22,10 @@ const generalDimensions = [
   { size: "DN250", f: "75", bore: "230", h: "681", wheel: "310" },
   { size: "DN300", f: "82", bore: "275", h: "781", wheel: "310" },
   { size: "DN350", f: "82", bore: "305", h: "902", wheel: "410" },
-  { size: "DN400", f: "89", bore: "351.6", h: "1004", wheel: "410" },
-  { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
-  { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
-  { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
+  { size: "DN400", f: "96", bore: "351.6", h: "1004", wheel: "410" },
+  { size: "DN450", f: "96", bore: "390", h: "1028", wheel: "550" },
+  { size: "DN500", f: "120", bore: "435", h: "1120", wheel: "550" },
+  { size: "DN600", f: "120", bore: "522", h: "1438", wheel: "550" },
   { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
   { size: "DN750", f: "124", bore: "670", h: "1634", wheel: "-" },
   { size: "DN800", f: "124", bore: "794", h: "1871", wheel: "-" },
@@ -56,16 +56,7 @@ const flangeSuitability = [
 ];
 
 export default function BiDirectionalWaferLuggedResilientSeatPage() {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-
-  const showcaseImages = [
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 1" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 2" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 3" },
-    { src: "/products/uni-directionalwafer-lugged-resilient-seat-pn10-4.jpg", alt: "Uni-Directional Wafer Lugged Resilient Seat View 4" },
-  ];
 
   const productImage = {
     imageUrl: "/products/wafer-lugged-resilient-seat-pn10.jpg",
@@ -110,20 +101,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
-    }
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
-    }
   };
 
   return (
@@ -194,33 +171,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
-            </div>
-          </div>
-
-          <div className="mb-20 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="size-3.5" /> Visual Showcase
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
-              {showcaseImages.map((img, idx) => (
-                <button 
-                  key={idx}
-                  onClick={() => setSelectedImageIndex(idx)}
-                  className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-contain p-4"
-                  />
-                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                      <Maximize className="size-5 text-primary" />
-                    </div>
-                  </div>
-                </button>
-              ))}
             </div>
           </div>
 
@@ -308,48 +258,6 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
           </div>
         </div>
       </section>
-
-      {/* Lightbox Dialog */}
-      <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
-          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
-          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
-            {selectedImageIndex !== null && (
-              <>
-                <button 
-                  onClick={() => setSelectedImageIndex(null)}
-                  className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
-                >
-                  <X className="size-8" />
-                </button>
-
-                <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
-                  <Image
-                    src={showcaseImages[selectedImageIndex].src}
-                    alt={showcaseImages[selectedImageIndex].alt}
-                    fill
-                    className="object-contain bg-black/20"
-                    priority
-                  />
-                </div>
-                
-                <button 
-                  onClick={handlePrev}
-                  className="absolute left-6 md:left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
-                >
-                  <ChevronLeft className="size-8" />
-                </button>
-                <button 
-                  onClick={handleNext}
-                  className="absolute right-6 md:right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all border border-white/10 z-[102]"
-                >
-                  <ChevronRight className="size-8" />
-                </button>
-              </>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
 
       <QuotePopup 
         isOpen={isQuoteOpen} 
