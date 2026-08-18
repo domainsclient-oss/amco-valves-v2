@@ -45,37 +45,37 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
   ];
 
   const table150_300 = [
-    { size: "DN15", f150fl: "108", f150bw: "140", d150: "90", h150: "Ø 16 X 4", pcd150: "60.3", f300fl: "140", f300bw: "140", d300: "95", h300: "Ø 16 X 4", pcd300: "66.7" },
-    { size: "DN20", f150fl: "117", f150bw: "152", d150: "100", h150: "Ø 16 X 4", pcd150: "69.9", f300fl: "152", f300bw: "152", d300: "115", h300: "Ø 19 X 4", pcd300: "82.6" },
-    { size: "DN25", f150fl: "127", f150bw: "165", d150: "110", h150: "Ø 16 X 4", pcd150: "79.4", f300fl: "165", f300bw: "165", d300: "125", h300: "Ø 19 X 4", pcd300: "88.9" },
-    { size: "DN32", f150fl: "140", f150bw: "178", d150: "115", h150: "Ø 16 X 4", pcd150: "88.9", f300fl: "178", f300bw: "178", d300: "135", h300: "Ø 19 X 4", pcd300: "98.4" },
-    { size: "DN40", f150fl: "165", f150bw: "190", d150: "125", h150: "Ø 16 X 4", pcd150: "98.4", f300fl: "190", f300bw: "190", d300: "155", h300: "Ø 22.2 X 4", pcd300: "114.3" },
-    { size: "DN50", f150fl: "178", f150bw: "216", d150: "150", h150: "Ø 19 X 4", pcd150: "120.7", f300fl: "216", f300bw: "216", d300: "165", h300: "Ø 19 X 8", pcd300: "127" },
-    { size: "DN65", f150fl: "190", f150bw: "241", d150: "180", h150: "Ø 19 X 4", pcd139: "139.7", f300fl: "241", f300bw: "241", d300: "190", h300: "Ø 22.2 X 8", pcd300: "149.2" },
-    { size: "DN80", f150fl: "203", f150bw: "282", d150: "190", h150: "Ø 19 X 4", pcd152: "152.4", f300fl: "282", f300bw: "282", d300: "210", h300: "Ø 22.2 X 8", pcd300: "168.3" },
-    { size: "DN100", f150fl: "229", f150bw: "305", d150: "230", h150: "Ø 19 X 8", pcd190: "190.5", f300fl: "305", f300bw: "305", d300: "255", h300: "Ø 22.2 X 8", pcd300: "200" },
-    { size: "DN125", f150fl: "254", f150bw: "-", d150: "255", h150: "Ø 22.2 X 8", pcd215: "215.9", f300fl: "", f300bw: "", d300: "280", h300: "Ø 22.2 X 8", pcd300: "235" },
-    { size: "DN150", f150fl: "267", f150bw: "403", d150: "280", h150: "Ø 22.2 X 8", pcd241: "241.3", f300fl: "403", f300bw: "403", d300: "320", h300: "Ø 22.2 X 12", pcd300: "269.9" },
-    { size: "DN200", f150fl: "292", f150bw: "419", d150: "345", h150: "Ø 22.2 X 8", pcd298: "298.5", f300fl: "419", f300bw: "419", d300: "380", h300: "Ø 25.4 X 12", pcd300: "330.2" },
-    { size: "DN250", f150fl: "330", f150bw: "457", d150: "405", h150: "Ø 25.4 X 12", pcd362: "362", f300fl: "457", f300bw: "457", d300: "445", h300: "Ø 29 X 16", pcd300: "387.4" },
-    { size: "DN300", f150fl: "356", f150bw: "502", d150: "485", h150: "Ø 25.4 X 12", pcd431: "431.8", f300fl: "502", f300bw: "502", d300: "520", h300: "Ø 32 X 16", pcd300: "450.8" },
+    { size: "DN15", f150: "108", d150: "90", h150: "Ø 16 X 4", p150: "60.3", f300: "140", d300: "95", h300: "Ø 16 X 4", p300: "66.7" },
+    { size: "DN20", f150: "117", d150: "100", h150: "Ø 16 X 4", p150: "69.9", f300: "152", d300: "115", h300: "Ø 19 X 4", p300: "82.6" },
+    { size: "DN25", f150: "127", d150: "110", h150: "Ø 16 X 4", p150: "79.4", f300: "165", d300: "125", h300: "Ø 19 X 4", p300: "88.9" },
+    { size: "DN32", f150: "140", d150: "115", h150: "Ø 16 X 4", p150: "88.9", f300: "178", d300: "135", h300: "Ø 19 X 4", p300: "98.4" },
+    { size: "DN40", f150: "165", d150: "125", h150: "Ø 16 X 4", p150: "98.4", f300: "190", d300: "155", h300: "Ø 22.2 X 4", p300: "114.3" },
+    { size: "DN50", f150: "178", d150: "150", h150: "Ø 19 X 4", p150: "120.7", f300: "216", d300: "165", h300: "Ø 19 X 8", p300: "127" },
+    { size: "DN65", f150: "190", d150: "180", h150: "Ø 19 X 4", p150: "139.7", f300: "241", d300: "190", h300: "Ø 22.2 X 8", p300: "149.2" },
+    { size: "DN80", f150: "203", d150: "190", h150: "Ø 19 X 4", p150: "152.4", f300: "282", d300: "210", h300: "Ø 22.2 X 8", p300: "168.3" },
+    { size: "DN100", f150: "229", d150: "230", h150: "Ø 19 X 8", p150: "190.5", f300: "305", d300: "255", h300: "Ø 22.2 X 8", p300: "200" },
+    { size: "DN125", f150: "254", d150: "255", h150: "Ø 22.2 X 8", p150: "215.9", f300: "", d300: "280", h300: "Ø 22.2 X 8", p300: "235" },
+    { size: "DN150", f150: "267", d150: "280", h150: "Ø 22.2 X 8", p150: "241.3", f300: "403", d300: "320", h300: "Ø 22.2 X 12", p300: "269.9" },
+    { size: "DN200", f150: "292", d150: "345", h150: "Ø 22.2 X 8", p150: "298.5", f300: "419", d300: "380", h300: "Ø 25.4 X 12", p300: "330.2" },
+    { size: "DN250", f150: "330", d150: "405", h150: "Ø 25.4 X 12", p150: "362", f300: "457", d300: "445", h300: "Ø 29 X 16", p300: "387.4" },
+    { size: "DN300", f150: "356", d150: "485", h150: "Ø 25.4 X 12", p150: "431.8", f300: "502", d300: "520", h300: "Ø 32 X 16", p300: "450.8" },
   ];
 
   const table600 = [
-    { size: "DN15", f: "165", bw: "165", d: "95", h: "Ø 16 X 4", pcd: "66.7" },
-    { size: "DN20", f: "190", bw: "190", d: "115", h: "Ø 19 X 4", pcd: "82.6" },
-    { size: "DN25", f: "216", bw: "216", d: "125", h: "Ø 19 X 4", pcd: "88.9" },
-    { size: "DN32", f: "229", bw: "229", d: "135", h: "Ø 19 X 4", pcd: "98.4" },
-    { size: "DN40", f: "241", bw: "241", d: "155", h: "Ø 22.2 X 4", pcd: "114.3" },
-    { size: "DN50", f: "292", bw: "292", d: "165", h: "Ø 19 X 8", pcd: "127.0" },
-    { size: "DN65", f: "330", bw: "330", d: "190", h: "Ø 22.2 X 8", pcd: "149.2" },
-    { size: "DN80", f: "356", bw: "356", d: "210", h: "Ø 22.2 X 8", pcd: "168.3" },
-    { size: "DN100", f: "432", bw: "432", d: "275", h: "Ø 25.4 X 8", pcd: "215.9" },
-    { size: "DN125", f: "-", bw: "-", d: "330", h: "Ø 29 X 8", pcd: "266.7" },
-    { size: "DN150", f: "559", bw: "559", d: "355", h: "Ø 29 X 12", pcd: "292.1" },
-    { size: "DN200", f: "660", bw: "660", d: "420", h: "Ø 32 X 12", pcd: "349.2" },
-    { size: "DN250", f: "787", bw: "787", d: "510", h: "Ø 35 X 16", pcd: "431.8" },
-    { size: "DN300", f: "838", bw: "838", d: "560", h: "Ø 35 X 20", pcd: "489" },
+    { size: "DN15", f: "165", d: "95", h: "Ø 16 X 4", pcd: "66.7" },
+    { size: "DN20", f: "190", d: "115", h: "Ø 19 X 4", pcd: "82.6" },
+    { size: "DN25", f: "216", d: "125", h: "Ø 19 X 4", pcd: "88.9" },
+    { size: "DN32", f: "229", d: "135", h: "Ø 19 X 4", pcd: "98.4" },
+    { size: "DN40", f: "241", d: "155", h: "Ø 22.2 X 4", pcd: "114.3" },
+    { size: "DN50", f: "292", d: "165", h: "Ø 19 X 8", pcd: "127.0" },
+    { size: "DN65", f: "330", d: "190", h: "Ø 22.2 X 8", pcd: "149.2" },
+    { size: "DN80", f: "356", d: "210", h: "Ø 22.2 X 8", pcd: "168.3" },
+    { size: "DN100", f: "432", d: "275", h: "Ø 25.4 X 8", pcd: "215.9" },
+    { size: "DN125", f: "-", d: "330", h: "Ø 29 X 8", pcd: "266.7" },
+    { size: "DN150", f: "559", d: "355", h: "Ø 29 X 12", pcd: "292.1" },
+    { size: "DN200", f: "660", d: "420", h: "Ø 32 X 12", pcd: "349.2" },
+    { size: "DN250", f: "787", d: "510", h: "Ø 35 X 16", pcd: "431.8" },
+    { size: "DN300", f: "838", d: "560", h: "Ø 35 X 20", pcd: "489" },
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -221,8 +221,8 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6">2PC FLANGED END 150#</TableHead>
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 300#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-lg">2PC FLANGED END 150#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">2PC FLANGED END 300#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
@@ -242,16 +242,16 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                     {table150_300.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150fl}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h150}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.pcd150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.p150}</TableCell>
                         
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300fl}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f300}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d300}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h300}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.pcd300}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.p300}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -270,7 +270,7 @@ export default function TwoPieceFloatingFlangedBallValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">2PC FLANGED END 600#</TableHead>
+                      <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">2PC FLANGED END 600#</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
