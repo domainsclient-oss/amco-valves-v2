@@ -348,14 +348,14 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
     seat: "Welded / Integral",
-    endConnection: "Wafer",
+    endConnection: "Wafer to suit ANSI flanges",
     pressureRating: "150# / 300#",
     manufacturingStandard: "API 594",
     testingStandard: "API 598"
   },
   "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Lugged type Retainerless Metal seat",
+    subTitle: "Lugged type Retainerless Metal seat 150#, 300#",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
@@ -368,7 +368,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Flanged type Retainerless Metal",
+    subTitle: "Flanged type Retainerless Metal seat 150#, 300#",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
