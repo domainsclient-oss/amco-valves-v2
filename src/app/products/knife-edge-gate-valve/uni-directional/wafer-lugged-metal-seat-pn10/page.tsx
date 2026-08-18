@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -214,6 +215,7 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
           </div>
 
           <div className="space-y-12">
+            {/* General Dimensions Table */}
             <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
               <div className="overflow-x-auto">
                 <Table className="border-collapse w-full">
@@ -242,8 +244,8 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>
               </div>
@@ -285,8 +287,8 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>
               </div>
