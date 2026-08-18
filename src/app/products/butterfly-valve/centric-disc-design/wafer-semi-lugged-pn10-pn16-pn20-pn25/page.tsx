@@ -58,26 +58,49 @@ export default function WaferSemiLuggedButterflyValvePage() {
   ];
 
   const dimensionData = [
-    { size: "DN40", f: "33", th: "101", bh: "55", ll: "180", gear: "175" },
-    { size: "DN50", f: "41", th: "113", bh: "59", ll: "180", gear: "175" },
-    { size: "DN65", f: "44", th: "121", bh: "67", ll: "180", gear: "175" },
-    { size: "DN80", f: "44", th: "128", bh: "75", ll: "180", gear: "175" },
-    { size: "DN100", f: "51", th: "146", bh: "94", ll: "270", gear: "175" },
-    { size: "DN125", f: "54", th: "158", bh: "108", ll: "270", gear: "175" },
-    { size: "DN150", f: "54", th: "174", bh: "120", ll: "270", gear: "175" },
-    { size: "DN200", f: "58", th: "198", bh: "147", ll: "320", gear: "250" },
-    { size: "DN250", f: "68", th: "245", bh: "200", ll: "550", gear: "250" },
-    { size: "DN300", f: "78", th: "284", bh: "268", ll: "550", gear: "350" },
-    { size: "DN350", f: "78", th: "318", bh: "291", ll: "-", gear: "350" },
-    { size: "DN400", f: "102", th: "360", bh: "310", ll: "-", gear: "500" },
-    { size: "DN450", f: "114", th: "390", bh: "334", ll: "-", gear: "500" },
-    { size: "DN500", f: "127", th: "410", bh: "362", ll: "-", gear: "500" },
-    { size: "DN600", f: "154", th: "504", bh: "432", ll: "-", gear: "600" },
-    { size: "DN700", f: "165", th: "580", bh: "-", ll: "-", gear: "-" },
-    { size: "DN750", f: "165", th: "595", bh: "-", ll: "-", gear: "-" },
-    { size: "DN800", f: "190", th: "670", bh: "-", ll: "-", gear: "-" },
-    { size: "DN900", f: "203", th: "705", bh: "-", ll: "-", gear: "-" },
-    { size: "DN1000", f: "216", th: "782", bh: "-", ll: "-", gear: "-" },
+    { size: "DN40", ftf: "33", th: "101", bh: "55", ll: "180", gear: "175" },
+    { size: "DN50", ftf: "41", th: "113", bh: "59", ll: "180", gear: "175" },
+    { size: "DN65", ftf: "44", th: "121", bh: "67", ll: "180", gear: "175" },
+    { size: "DN80", ftf: "44", th: "128", bh: "75", ll: "180", gear: "175" },
+    { size: "DN100", ftf: "51", th: "146", bh: "94", ll: "270", gear: "175" },
+    { size: "DN125", ftf: "54", th: "158", bh: "108", ll: "270", gear: "175" },
+    { size: "DN150", ftf: "54", th: "174", bh: "120", ll: "270", gear: "175" },
+    { size: "DN200", ftf: "58", th: "198", bh: "147", ll: "320", gear: "250" },
+    { size: "DN250", ftf: "68", th: "245", bh: "200", ll: "550", gear: "250" },
+    { size: "DN300", ftf: "78", th: "284", bh: "268", ll: "550", gear: "350" },
+    { size: "DN350", ftf: "78", th: "318", bh: "291", ll: "-", gear: "350" },
+    { size: "DN400", ftf: "102", th: "360", bh: "310", ll: "-", gear: "500" },
+    { size: "DN450", ftf: "114", th: "390", bh: "334", ll: "-", gear: "500" },
+    { size: "DN500", ftf: "127", th: "410", bh: "362", ll: "-", gear: "500" },
+    { size: "DN600", ftf: "154", th: "504", bh: "432", ll: "-", gear: "600" },
+    { size: "DN700", ftf: "165", th: "580", bh: "-", ll: "-", gear: "-" },
+    { size: "DN750", ftf: "165", th: "595", bh: "-", ll: "-", gear: "-" },
+    { size: "DN800", ftf: "190", th: "670", bh: "-", ll: "-", gear: "-" },
+    { size: "DN900", ftf: "203", th: "705", bh: "-", ll: "-", gear: "-" },
+    { size: "DN1000", ftf: "216", th: "782", bh: "-", ll: "-", gear: "-" },
+  ];
+
+  const flangeSuitabilityData = [
+    { size: "DN40", p150: "98.4", d150: "16", n150: "4", pPN10: "110", dPN10: "18", nPN10: "4" },
+    { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
+    { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
+    { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
+    { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
+    { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
+    { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
+    { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
+    { size: "DN250", p150: "362.0", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
+    { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
+    { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
+    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
+    { size: "DN500", p150: "635.0", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
+    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
+    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
+    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
+    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
+    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
+    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -141,7 +164,6 @@ export default function WaferSemiLuggedButterflyValvePage() {
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
-            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -152,7 +174,6 @@ export default function WaferSemiLuggedButterflyValvePage() {
               />
             </div>
 
-            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
@@ -186,7 +207,6 @@ export default function WaferSemiLuggedButterflyValvePage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
@@ -221,7 +241,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                 <Table className="border-collapse w-full">
                   <TableHeader>
                     <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6">WAFER BFV</TableHead>
+                      <TableHead colSpan={6} className="text-center font-bold text-primary uppercase py-6 text-lg">WAFER BFV</TableHead>
                     </TableRow>
                     <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
                       <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
@@ -236,7 +256,7 @@ export default function WaferSemiLuggedButterflyValvePage() {
                     {dimensionData.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
                         <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.th}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bh}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ll}</TableCell>
@@ -247,7 +267,48 @@ export default function WaferSemiLuggedButterflyValvePage() {
                 </Table>
               </div>
               <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-base text-foreground/50 font-medium italic text-right">
+                <p className="text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Flange Suitability Table */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead rowSpan={2} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-6 text-sm">SIZE</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4 bg-neutral-50/50">TO SUIT 150# FLANGES</TableHead>
+                      <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4 bg-neutral-50/50">TO SUIT PN10# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase leading-tight">NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-3 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {flangeSuitabilityData.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.pPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.dPN10}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.nPN10}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                <p className="text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>
               </div>
@@ -256,7 +317,6 @@ export default function WaferSemiLuggedButterflyValvePage() {
         </div>
       </section>
 
-      {/* Lightbox Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && setSelectedImageIndex(null)}>
         <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
           <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
