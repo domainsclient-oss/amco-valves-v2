@@ -72,7 +72,7 @@ export default function DoubleOffsetWaferBFVPage() {
     { size: "DN250", f: "72", top: "230", bottom: "175" },
     { size: "DN300", f: "83", top: "270", bottom: "215" },
     { size: "DN350", f: "92", top: "320", bottom: "240" },
-    { size: "DN400", f: "102", top: "365", bottom: "280" },
+    { size: "DN400", f: "102", f102: "102", top: "365", bottom: "280" },
     { size: "DN450", f: "114", top: "375", bottom: "305" },
     { size: "DN500", f: "127", top: "410", bottom: "340" },
     { size: "DN600", f: "154", top: "634", bottom: "438" },
@@ -99,11 +99,6 @@ export default function DoubleOffsetWaferBFVPage() {
     { size: "DN450", f: "149", top: "591", bottom: "383" },
     { size: "DN500", f: "159", top: "602", bottom: "436" },
     { size: "DN600", f: "181", top: "795", bottom: "504" },
-    { size: "DN700", f: "-", top: "-", bottom: "-" },
-    { size: "DN750", f: "-", top: "-", bottom: "-" },
-    { size: "DN800", f: "-", top: "-", bottom: "-" },
-    { size: "DN900", f: "-", top: "-", bottom: "-" },
-    { size: "DN1000", f: "-", top: "-", bottom: "-" },
   ];
 
   const flangeSuit1 = [
@@ -194,6 +189,7 @@ export default function DoubleOffsetWaferBFVPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
+      {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
@@ -208,9 +204,11 @@ export default function DoubleOffsetWaferBFVPage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src={productImage.imageUrl}
@@ -221,6 +219,7 @@ export default function DoubleOffsetWaferBFVPage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (

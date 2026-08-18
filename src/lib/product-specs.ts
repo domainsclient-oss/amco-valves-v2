@@ -355,7 +355,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Lugged type Retainerless Metal seat 150#, 300#",
+    subTitle: "Lugged type Retainerless Metal seat",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
