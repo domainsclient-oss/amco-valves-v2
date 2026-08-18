@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { appendToGoogleSheet } from "@/app/actions/google-sheets";
+import { format } from "date-fns";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -56,6 +57,9 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
+      // Generate precise submission timestamp in requested format: 18-Aug-2026 03:05 PM
+      const submissionTime = format(new Date(), "dd-MMM-yyyy hh:mm a");
+
       // Explicitly directing to the Request_quote tab
       const result = await appendToGoogleSheet({
         "Full Name": values.name,
@@ -63,6 +67,7 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
         "Phone Number": values.phone,
         "Your Message": values.message,
         "Product Name": productName,
+        "Timestamp": submissionTime,
       }, "Request_quote");
 
       if (!result.success) throw new Error(result.error);

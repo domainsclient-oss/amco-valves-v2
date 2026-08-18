@@ -10,6 +10,7 @@ export interface SheetRow {
   "Phone Number": string;
   "Your Message": string;
   "Product Name"?: string;
+  "Timestamp"?: string;
 }
 
 /**
@@ -57,13 +58,13 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
       return stringVal;
     };
 
+    // Use passed timestamp or generate current one as fallback
+    const submissionTime = data["Timestamp"] || format(new Date(), "dd-MMM-yyyy hh:mm a");
+
     // Ensure headers exist if sheet is empty
     if (sheet.rowCount <= 1) {
       await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product Name", "Timestamp"]);
     }
-
-    // Generate current timestamp in requested format: 18-Aug-2026 03:05 PM
-    const timestamp = format(new Date(), "dd-MMM-yyyy hh:mm a");
 
     await sheet.addRow({
       "Full Name": data["Full Name"],
@@ -71,7 +72,7 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
       "Phone Number": sanitizeForSheet(data["Phone Number"]),
       "Your Message": data["Your Message"],
       "Product Name": data["Product Name"] || "General Inquiry",
-      "Timestamp": timestamp
+      "Timestamp": submissionTime
     });
 
     return { success: true };

@@ -12,6 +12,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
 import { appendToGoogleSheet } from "@/app/actions/google-sheets";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { format } from "date-fns";
 
 export function ContactUs() {
   const { toast } = useToast();
@@ -34,9 +35,13 @@ export function ContactUs() {
     const phone = formData.get("phone") as string;
     const messageContent = formData.get("message") as string;
     
+    // Generate precise submission timestamp in requested format: 18-Aug-2026 03:05 PM
+    const submissionTime = format(new Date(), "dd-MMM-yyyy hh:mm a");
+
     const submissionData = {
       metadata: { name, email, phone, message: messageContent },
       submittedAt: serverTimestamp(),
+      formattedTimestamp: submissionTime,
       status: "New",
       type: "Contact Form"
     };
@@ -46,7 +51,8 @@ export function ContactUs() {
       "Email Address": email,
       "Phone Number": phone,
       "Your Message": messageContent,
-      "Product Name": "Contact Form"
+      "Product Name": "Contact Form",
+      "Timestamp": submissionTime
     };
 
     try {
