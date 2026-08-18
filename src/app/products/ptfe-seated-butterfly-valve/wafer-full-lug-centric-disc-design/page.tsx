@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { productSpecsRegistry } from "@/lib/product-specs";
 import { QuotePopup } from "@/components/QuotePopup";
 
@@ -98,9 +99,11 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <section className="py-12 md:py-20 px-5 md:px-[63px]" style={{ backgroundColor: '#f3f3f3bd' }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
+            {/* Left Column: Image */}
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
                 src="/dummy-image.png"
@@ -111,6 +114,7 @@ export default function PtfeSeatedFullLugButterflyValvePage() {
               />
             </div>
 
+            {/* Right Column: Specs */}
             <div className="space-y-8">
               <div className="grid grid-cols-1 gap-6">
                 {specs.map((spec, i) => (
