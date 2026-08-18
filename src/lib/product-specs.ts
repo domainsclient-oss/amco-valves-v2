@@ -476,7 +476,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     subTitle: "PTFE Lined Ball Check Valve",
     category: "PTFE Lined Ball Check Valve",
     subCategory: "Lined Valve Range",
-    size: "DN50 - DN300",
+    size: "DN15 - DN300",
     material: "CS / SS / Alloy steel",
     lining: "PFA / FEP",
     endConnection: "Flanged 150#",
@@ -513,7 +513,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/dummy-image.png", alt: "Lined Wafer BFV" }]
+    showcaseImages: [{ src: "/products/butterfly-valve-wafer-semi-lugged-1.jpg", alt: "Wafer Semi Lugged BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
     title: "Centric Disc Design",
@@ -744,13 +744,13 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     title: "Basket Strainer - Flanged",
     subTitle: "Basket Strainer - Flanged",
     category: "Strainer",
-    subCategory: "Strainer Range",
-    size: "DN25 - DN400",
-    material: "WCB / CF8 / CF8M",
-    mesh: "To Requirement",
-    endConnection: "Flanged",
-    pressureRating: "150#",
-    modeOfOperation: "Manual",
+    subCategory: "Basket Design",
+    size: "DN50 - DN600",
+    material: "CS / SS / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
+    mesh: "All sizes available",
+    endConnection: "Flanged ANSI 150# / 300# / 600#",
+    pressureRating: "150# / 300# / 600#",
+    modeOfOperation: "",
     manufacturingStandard: "ASME B16.34",
     testingStandard: "API 598",
     showcaseImages: [{ src: "/products/basket-strainer-flanged-1.jpg", alt: "Basket Strainer" }]
