@@ -302,14 +302,14 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   // Dual Plate Check Valve
   "dual-plate-check-valve/wafer-type-resilient-seat-pn16": {
     title: "Check Valve Range",
-    subTitle: "Wafer type Resilient seat PN16#",
+    subTitle: "Wafer type Resilient seat",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
-    size: "DN25 - DN1000",
-    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
+    size: "DN50 - DN800",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
     seat: "EPDM / VITON",
     endConnection: "Wafer to suit ANSI flanges",
-    pressureRating: "PN16#",
+    pressureRating: "150#",
     manufacturingStandard: "API 594",
     testingStandard: "API 598",
     showcaseImages: [{ src: "/products/wafer-type-resilient-seat-pn16-1.jpg", alt: "Wafer Check Valve" }]
