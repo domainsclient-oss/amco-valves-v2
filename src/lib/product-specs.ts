@@ -286,7 +286,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   "gate-valve-for-fire-fighting/double-flanged-soft-seated-pn16": {
     title: "Fire Fighting Range",
     subTitle: "Double Flanged Soft seated Gate Valve",
-    category: "Gate Valve",
+    category: "Gate valve for fire fighting",
     subCategory: "Fire Fighting Range",
     size: "DN50 - DN400",
     material: "DI",
