@@ -361,7 +361,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     size: "DN50 - DN800",
     material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
     seat: "Welded / Integral",
-    endConnection: "Lugged",
+    endConnection: "Wafer Lugged to suit ANSI flanges",
     pressureRating: "150# / 300#",
     manufacturingStandard: "API 594",
     testingStandard: "API 598"
@@ -513,7 +513,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "/products/butterfly-valve-wafer-semi-lugged-1.jpg", alt: "Wafer Semi Lugged BFV" }]
+    showcaseImages: [{ src: "/products/butterfly-valvecentric-disc-designwafer-flanged-pn10-pn16-pn20-pn25-1.jpg", alt: "Wafer Semi Lugged BFV" }]
   },
   "ptfe-lined-butterfly-valve/wafer-full-lug-centric-disc-design": {
     title: "Centric Disc Design",
