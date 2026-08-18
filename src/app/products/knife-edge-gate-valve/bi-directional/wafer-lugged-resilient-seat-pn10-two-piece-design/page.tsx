@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -192,7 +193,6 @@ export default function BiDirectionalWaferTwoPiecePage() {
             </div>
           </div>
 
-          {/* Visual Showcase Section */}
           <div className="mb-20 space-y-8">
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
@@ -231,12 +231,12 @@ export default function BiDirectionalWaferTwoPiecePage() {
                         WAFER LUGGED BI-DIRECTIONAL TWO PIECE DESIGN RESILIENT SEAT KGV
                       </TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE (LINED)</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HEIGHT (CENTER TO TOP)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">WHEEL DIA</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE (LINED)</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">BORE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (CENTER TO TOP)</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 leading-tight">WHEEL DIA</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -252,7 +252,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
                 <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>
@@ -269,14 +269,14 @@ export default function BiDirectionalWaferTwoPiecePage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4 bg-neutral-50/50">TO SUIT 150# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4 bg-neutral-50/50">TO SUIT PN10# FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">NO. OF HOLES</TableHead>
                       
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 uppercase">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-3 uppercase">NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-3 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-3 leading-tight">NO. OF HOLES</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -295,7 +295,7 @@ export default function BiDirectionalWaferTwoPiecePage() {
                   </TableBody>
                 </Table>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
                 <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>

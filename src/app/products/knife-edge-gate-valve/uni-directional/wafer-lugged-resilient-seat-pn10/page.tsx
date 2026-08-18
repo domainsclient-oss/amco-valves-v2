@@ -87,19 +87,27 @@ export default function WaferLuggedResilientSeatPage() {
     { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
   ];
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
-    }
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
-    }
-  };
+  const pn16Suitability = [
+    { size: "DN50", p: "125", d: "18", n: "4" },
+    { size: "DN65", p: "145", d: "18", n: "4" },
+    { size: "DN80", p: "160", d: "18", n: "8" },
+    { size: "DN100", p: "180", d: "18", n: "8" },
+    { size: "DN125", p: "210", d: "18", n: "8" },
+    { size: "DN150", p: "240", d: "22", n: "8" },
+    { size: "DN200", p: "295", d: "22", n: "12" },
+    { size: "DN250", p: "355", d: "26", n: "12" },
+    { size: "DN300", p: "410", d: "26", n: "12" },
+    { size: "DN350", p: "470", d: "26", n: "16" },
+    { size: "DN400", p: "525", d: "30", n: "16" },
+    { size: "DN450", p: "585", d: "30", n: "20" },
+    { size: "DN500", p: "650", d: "33", n: "20" },
+    { size: "DN600", p: "770", d: "36", n: "20" },
+    { size: "DN700", p: "840", d: "36", n: "24" },
+    { size: "DN750", p: "-", d: "-", n: "-" },
+    { size: "DN800", p: "950", d: "39", n: "24" },
+    { size: "DN900", p: "1050", d: "39", n: "28" },
+    { size: "DN1000", p: "1170", d: "42", n: "28" },
+  ];
 
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
@@ -108,6 +116,18 @@ export default function WaferLuggedResilientSeatPage() {
       ["Type", "Uni Directional"],
       ["Model", "Wafer Lugged Resilient seat PN10#"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
+      [""],
+      ["General Dimensions (mm)"],
+      ["Size", "Face To Face", "Bore Dia", "Height (Center to Top)", "Wheel Dia"],
+      ...generalDimensions.map(row => [row.size, row.f, row.bore, row.h, row.wheel]),
+      [""],
+      ["Flange Suitability"],
+      ["Size", "PCD (150#)", "HOLE DIA (150#)", "NO. Holes (150#)", "PCD (PN10)", "HOLE DIA (PN10)", "NO. Holes (PN10)"],
+      ...flangeSuitability.map(row => [row.size, row.p150, row.d150, row.n150, row.pPN10, row.dPN10, row.nPN10]),
+      [""],
+      ["To Suit PN16# Flanges"],
+      ["Size", "PCD", "Hole Dia", "No. of Holes"],
+      ...pn16Suitability.map(row => [row.size, row.p, row.d, row.n])
     ];
     
     const csvContent = [
@@ -124,6 +144,20 @@ export default function WaferLuggedResilientSeatPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % showcaseImages.length);
+    }
   };
 
   return (
@@ -182,7 +216,11 @@ export default function WaferLuggedResilientSeatPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Button variant="secondary" className="h-12 px-8 rounded-xl font-bold" onClick={() => setIsQuoteOpen(true)}>
+                <Button 
+                  variant="secondary" 
+                  className="h-12 px-8 rounded-xl font-bold"
+                  onClick={() => setIsQuoteOpen(true)}
+                >
                   Request a Quote
                 </Button>
                 <Button 
@@ -233,18 +271,18 @@ export default function WaferLuggedResilientSeatPage() {
                     <TableRow className="bg-white border-b border-neutral-300">
                       <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6">WAFER LUGGED UNI-DIRECTIONAL RESILIENT SEAT KGV</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">BORE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HEIGHT (CENTER TO TOP)</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">WHEEL DIA</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">FACE TO FACE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">BORE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HEIGHT (CENTER TO TOP)</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 leading-tight">WHEEL DIA</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {generalDimensions.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.bore}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.h}</TableCell>
@@ -253,6 +291,11 @@ export default function WaferLuggedResilientSeatPage() {
                     ))}
                   </TableBody>
                 </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
               </div>
             </div>
 
@@ -266,19 +309,19 @@ export default function WaferLuggedResilientSeatPage() {
                       <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 uppercase py-4">TO SUIT 150# FLANGES</TableHead>
                       <TableHead colSpan={3} className="text-center font-bold text-primary uppercase py-4">TO SUIT PN10# FLANGES</TableHead>
                     </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">PCD</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA</TableHead>
-                      <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">NO. OF HOLES</TableHead>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">NO. OF HOLES</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 leading-tight">NO. OF HOLES</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {flangeSuitability.map((row, idx) => (
                       <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d150}</TableCell>
                         <TableCell className="text-center text-foreground/80 border-r border-neutral-200">{row.n150}</TableCell>
@@ -291,7 +334,41 @@ export default function WaferLuggedResilientSeatPage() {
                 </Table>
               </div>
               <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
+                  All dimensions are in mm
+                </p>
+              </div>
+            </div>
+
+            {/* Table 3: To Suit PN16# Flanges */}
+            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+              <div className="overflow-x-auto">
+                <Table className="border-collapse w-full">
+                  <TableHeader>
+                    <TableRow className="bg-white border-b border-neutral-300">
+                      <TableHead colSpan={4} className="text-center font-bold text-primary uppercase py-6 text-lg">TO SUIT PN16# FLANGES</TableHead>
+                    </TableRow>
+                    <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs uppercase">
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4">SIZE</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">PCD</TableHead>
+                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 leading-tight">HOLE DIA</TableHead>
+                      <TableHead className="text-center font-bold text-primary py-4 leading-tight">NO. OF HOLES</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {pn16Suitability.map((row, idx) => (
+                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3 bg-neutral-50/20">{row.size}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.p}</TableCell>
+                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.d}</TableCell>
+                        <TableCell className="text-center text-foreground/80">{row.n}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic text-right">
                   All dimensions are in mm
                 </p>
               </div>
@@ -345,7 +422,7 @@ export default function WaferLuggedResilientSeatPage() {
       <QuotePopup 
         isOpen={isQuoteOpen} 
         onOpenChange={setIsQuoteOpen} 
-        productName="Wafer Lugged Resilient seat PN10# Uni-Directional KGV" 
+        productName="Uni-Directional Wafer Lugged Resilient seat PN10# Knife Edge Gate Valve" 
       />
 
       <Footer />
