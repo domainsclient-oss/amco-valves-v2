@@ -9,11 +9,31 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { productSpecsRegistry } from "@/lib/product-specs";
 import { QuotePopup } from "@/components/QuotePopup";
 
 export default function ThreePieceHighPressureBallValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  
+  const slug = "ball-valve/floating-design/3-piece-design-screwed-socket-weld-600-800-1500";
+  const product = productSpecsRegistry[slug];
+
+  if (!product) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Navbar />
+        <div className="pt-40 pb-20 container mx-auto px-6 text-center">
+          <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
+          <p className="text-foreground/60 mt-4">The product specification you are looking for is not available.</p>
+          <Button className="mt-8" asChild>
+            <Link href="/#products">Back to Products</Link>
+          </Button>
+        </div>
+        <Footer />
+      </main>
+    );
+  }
 
   const showcaseImages = [
     { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-1.jpg", alt: "3PC High Pressure Valve View 1" },
@@ -31,22 +51,30 @@ export default function ThreePieceHighPressureBallValvePage() {
   };
 
   const specs = [
-    { label: "Size", value: "DN6 - DN50" },
-    { label: "Material of construction", value: "A105 / F304/L / F316/L / CF8 / CF8M / CF3 / CF3M" },
-    { label: "End connection", value: "BSPF / NPTF / SW / BW" },
-    { label: "Pressure rating", value: "600# / 800# / 1500#" },
-    { label: "Mode of operation", value: "Lever, Actuator" },
-    { label: "Manufacturing Standard", value: "ISO 17292 / API 6D / API 608" },
-    { label: "Testing Standard", value: "ISO 5208 / ISO 10497 / API 607" },
+    { label: "Size", value: product.size },
+    { label: "Material of construction", value: product.material },
+    { label: "End connection", value: product.endConnection },
+    { label: "Pressure rating", value: product.pressureRating },
+    { label: "Mode of operation", value: product.modeOfOperation },
+    { label: "Manufacturing Standard", value: product.manufacturingStandard },
+    { label: "Testing Standard", value: product.testingStandard },
   ];
 
-  const table600Data = [
+  const tableData = [
+    { size: "DN8", r_f: "-", r_l: "-", r_h: "-", f_f: "-", f_l: "-", f_h: "-" },
+    { size: "DN10", r_f: "-", r_l: "-", r_h: "-", f_f: "-", f_l: "-", f_h: "-" },
     { size: "DN15", r_f: "68", r_l: "128", r_h: "38", f_f: "68", f_l: "128", f_h: "38" },
     { size: "DN20", r_f: "67", r_l: "128", r_h: "39", f_f: "85", f_l: "151", f_h: "53" },
     { size: "DN25", r_f: "85", r_l: "151", r_h: "53", f_f: "95", f_l: "165", f_h: "56" },
     { size: "DN32", r_f: "95", r_l: "165", r_h: "56", f_f: "110", f_l: "202", f_h: "70" },
     { size: "DN40", r_f: "110", r_l: "202", r_h: "70", f_f: "120", f_l: "202", f_h: "74" },
     { size: "DN50", r_f: "120", r_l: "202", r_h: "74", f_f: "158", f_l: "280", f_h: "84" },
+  ];
+
+  const tableTitles = [
+    "3PC DESIGN SCREWED / SOCKETWELD 600#",
+    "3PC DESIGN SCREWED / SOCKETWELD 800#",
+    "3PC DESIGN SCREWED / SOCKETWELD 1500#",
   ];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -161,22 +189,22 @@ export default function ThreePieceHighPressureBallValvePage() {
             <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
               <Sparkles className="size-3.5" /> Visual Showcase
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
               {showcaseImages.map((img, idx) => (
                 <button 
                   key={idx}
                   onClick={() => setSelectedImageIndex(idx)}
-                  className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                  className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden bg-white border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.05] group"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-contain p-6"
+                    className="object-contain p-4"
                   />
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                      <Maximize className="size-6 text-primary" />
+                    <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-5 text-primary" />
                     </div>
                   </div>
                 </button>
@@ -185,50 +213,51 @@ export default function ThreePieceHighPressureBallValvePage() {
           </div>
 
           <div className="space-y-12">
-            {/* Dimension Table Section - 600# */}
-            <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <Table className="border-collapse w-full">
-                  <TableHeader>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6">3PC DESIGN SCREWED / SOCKETWELD 600# / 800# / 1500#</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-white border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4"></TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">REGULAR BORE</TableHead>
-                      <TableHead colSpan={3} className="text-center font-bold text-primary py-4 uppercase">FULL BORE</TableHead>
-                    </TableRow>
-                    <TableRow className="bg-neutral-50 border-b border-neutral-300">
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">LEVER LENGTH</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">HEIGHT</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">FACE TO FACE</TableHead>
-                      <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs uppercase">LEVER LENGTH</TableHead>
-                      <TableHead className="text-center font-bold text-primary text-xs uppercase">HEIGHT</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {table600Data.map((row, idx) => (
-                      <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
-                        <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_f}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_l}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_h}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f_f}</TableCell>
-                        <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f_l}</TableCell>
-                        <TableCell className="text-center text-foreground/80">{row.f_h}</TableCell>
+            {tableTitles.map((title, tIdx) => (
+              <div key={tIdx} className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden">
+                <div className="overflow-x-auto">
+                  <Table className="border-collapse w-full">
+                    <TableHeader>
+                      <TableRow className="bg-white border-b border-neutral-300">
+                        <TableHead colSpan={7} className="text-center font-bold text-primary uppercase py-6 text-lg">{title}</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                      <TableRow className="bg-white border-b border-neutral-300">
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4"></TableHead>
+                        <TableHead colSpan={3} className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">REGULAR BORE</TableHead>
+                        <TableHead colSpan={3} className="text-center font-bold text-primary py-4 uppercase">FULL BORE</TableHead>
+                      </TableRow>
+                      <TableRow className="bg-neutral-50 border-b border-neutral-300">
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-xs py-4">SIZE</TableHead>
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-[10px] uppercase leading-tight">FACE TO FACE</TableHead>
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-[10px] uppercase leading-tight">LEVER LENGTH</TableHead>
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-[10px] uppercase leading-tight">HEIGHT</TableHead>
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-[10px] uppercase leading-tight">FACE TO FACE</TableHead>
+                        <TableHead className="text-center font-bold text-primary border-r border-neutral-200 text-[10px] uppercase leading-tight">LEVER LENGTH</TableHead>
+                        <TableHead className="text-center font-bold text-primary text-[10px] uppercase leading-tight">HEIGHT</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tableData.map((row, idx) => (
+                        <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors">
+                          <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-4">{row.size}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_f}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_l}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.r_h}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f_f}</TableCell>
+                          <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.f_l}</TableCell>
+                          <TableCell className="text-center text-foreground/80">{row.f_h}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+                <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
+                  <p className="text-sm text-foreground/50 font-medium italic text-right">
+                    All dimensions are in mm
+                  </p>
+                </div>
               </div>
-              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                <p className="text-base text-foreground/50 font-medium italic text-right">
-                  All dimensions are in mm
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
