@@ -22,10 +22,10 @@ const generalDimensions = [
   { size: "DN250", f: "75", bore: "230", h: "681", wheel: "310" },
   { size: "DN300", f: "82", bore: "275", h: "781", wheel: "310" },
   { size: "DN350", f: "82", bore: "305", h: "902", wheel: "410" },
-  { size: "DN400", f: "96", bore: "351.6", h: "1004", wheel: "410" },
-  { size: "DN450", f: "96", bore: "390", h: "1028", wheel: "550" },
-  { size: "DN500", f: "120", bore: "435", h: "1120", wheel: "550" },
-  { size: "DN600", f: "120", bore: "522", h: "1438", wheel: "550" },
+  { size: "DN400", f: "89", bore: "351.6", h: "1004", wheel: "410" },
+  { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
+  { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
+  { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
   { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
   { size: "DN750", f: "124", bore: "670", h: "1634", wheel: "-" },
   { size: "DN800", f: "124", bore: "794", h: "1871", wheel: "-" },
@@ -68,7 +68,7 @@ export default function BiDirectionalWaferLuggedResilientSeatPage() {
   ];
 
   const productImage = {
-    imageUrl: "/dummy-image.png",
+    imageUrl: "/products/wafer-lugged-resilient-seat-pn10.jpg",
     description: "Bi-Directional Wafer Lugged Resilient Seat Knife Edge Gate Valve"
   };
 
