@@ -11,20 +11,59 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { QuotePopup } from "@/components/QuotePopup";
 
+const showcaseImages = [
+  { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 1" },
+  { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 2" },
+  { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 3" },
+];
+
+const generalDimensions = [
+  { size: "DN50", f: "48", bore: "50", h: "281", wheel: "225" },
+  { size: "DN65", f: "51", bore: "63", h: "308", wheel: "225" },
+  { size: "DN80", f: "51", bore: "80", h: "335", wheel: "225" },
+  { size: "DN100", f: "51", bore: "97", h: "374", wheel: "225" },
+  { size: "DN125", f: "57", bore: "117", h: "418", wheel: "225" },
+  { size: "DN150", f: "57", bore: "140", h: "465", wheel: "225" },
+  { size: "DN200", f: "70", bore: "184", h: "581", wheel: "310" },
+  { size: "DN250", f: "70", bore: "230", h: "681", wheel: "310" },
+  { size: "DN300", f: "76", bore: "275", h: "781", wheel: "310" },
+  { size: "DN350", f: "76", bore: "305", h: "902", wheel: "410" },
+  { size: "DN400", f: "89", bore: "351.6", h: "1004", wheel: "410" },
+  { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
+  { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
+  { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
+  { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
+  { size: "DN750", f: "117", bore: "670", h: "1634", wheel: "-" },
+  { size: "DN800", f: "117", bore: "794", h: "1871", wheel: "-" },
+  { size: "DN900", f: "117", bore: "810", h: "1945", wheel: "-" },
+  { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
+];
+
+const flangeSuitability = [
+  { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
+  { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
+  { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
+  { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
+  { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
+  { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
+  { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
+  { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
+  { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
+  { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
+  { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
+  { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
+  { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
+  { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
+  { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
+  { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
+  { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
+  { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
+  { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
+];
+
 export default function MetalSeatKnifeEdgeGateValvePage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-
-  const showcaseImages = [
-    { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-1.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 1" },
-    { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-2.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 2" },
-    { src: "/products/uni-directionalwafer-lugged-metal-seat-pn10-3.jpg", alt: "Uni-Directional Wafer Lugged Metal Seat View 3" },
-  ];
-
-  const productImage = {
-    imageUrl: showcaseImages[0].src,
-    description: "Wafer Lugged Metal Seat Knife Edge Gate Valve"
-  };
 
   const specs = [
     { label: "Size", value: "DN50 - DN1000" },
@@ -41,54 +80,11 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
     { label: "Testing Standard", value: "MSS SP 81" },
   ];
 
-  const generalDimensions = [
-    { size: "DN50", f: "48", bore: "50", h: "281", wheel: "225" },
-    { size: "DN65", f: "51", bore: "63", h: "308", wheel: "225" },
-    { size: "DN80", f: "51", bore: "80", h: "335", wheel: "225" },
-    { size: "DN100", f: "51", bore: "97", h: "374", wheel: "225" },
-    { size: "DN125", f: "57", bore: "117", h: "418", wheel: "225" },
-    { size: "DN150", f: "57", bore: "140", h: "465", wheel: "225" },
-    { size: "DN200", f: "70", bore: "184", h: "581", wheel: "310" },
-    { size: "DN250", f: "70", bore: "230", h: "681", wheel: "310" },
-    { size: "DN300", f: "76", bore: "275", h: "781", wheel: "310" },
-    { size: "DN350", f: "76", bore: "305", h: "902", wheel: "410" },
-    { size: "DN400", f: "89", bore: "351.6", h: "1004", wheel: "410" },
-    { size: "DN450", f: "89", bore: "390", h: "1028", wheel: "550" },
-    { size: "DN500", f: "114", bore: "435", h: "1120", wheel: "550" },
-    { size: "DN600", f: "114", bore: "522", h: "1438", wheel: "550" },
-    { size: "DN700", f: "-", bore: "-", h: "-", wheel: "-" },
-    { size: "DN750", f: "117", bore: "670", h: "1634", wheel: "-" },
-    { size: "DN800", f: "117", bore: "794", h: "1871", wheel: "-" },
-    { size: "DN900", f: "117", bore: "810", h: "1945", wheel: "-" },
-    { size: "DN1000", f: "-", bore: "-", h: "-", wheel: "-" },
-  ];
-
-  const flangeSuitability = [
-    { size: "DN50", p150: "120.7", d150: "19", n150: "4", pPN10: "125", dPN10: "18", nPN10: "4" },
-    { size: "DN65", p150: "139.7", d150: "19", n150: "4", pPN10: "145", dPN10: "18", nPN10: "4" },
-    { size: "DN80", p150: "152.4", d150: "19", n150: "4", pPN10: "160", dPN10: "18", nPN10: "8" },
-    { size: "DN100", p150: "190.5", d150: "19", n150: "8", pPN10: "180", dPN10: "18", nPN10: "8" },
-    { size: "DN125", p150: "215.9", d150: "22.2", n150: "8", pPN10: "210", dPN10: "18", nPN10: "8" },
-    { size: "DN150", p150: "241.3", d150: "22.2", n150: "8", pPN10: "240", dPN10: "22", nPN10: "8" },
-    { size: "DN200", p150: "298.5", d150: "22.2", n150: "8", pPN10: "295", dPN10: "22", nPN10: "8" },
-    { size: "DN250", p150: "362", d150: "25.4", n150: "12", pPN10: "350", dPN10: "22", nPN10: "12" },
-    { size: "DN300", p150: "431.8", d150: "25.4", n150: "12", pPN10: "400", dPN10: "22", nPN10: "12" },
-    { size: "DN350", p150: "476.3", d150: "29", n150: "12", pPN10: "460", dPN10: "22", nPN10: "16" },
-    { size: "DN400", p150: "539.8", d150: "29", n150: "16", pPN10: "515", dPN10: "26", nPN10: "16" },
-    { size: "DN450", p150: "577.9", d150: "32", n150: "16", pPN10: "565", dPN10: "26", nPN10: "20" },
-    { size: "DN500", p150: "635", d150: "32", n150: "20", pPN10: "620", dPN10: "26", nPN10: "20" },
-    { size: "DN600", p150: "749.3", d150: "35", n150: "20", pPN10: "725", dPN10: "30", nPN10: "20" },
-    { size: "DN700", p150: "863.6", d150: "35", n150: "28", pPN10: "840", dPN10: "30", nPN10: "24" },
-    { size: "DN750", p150: "914.4", d150: "35", n150: "28", pPN10: "-", dPN10: "-", nPN10: "-" },
-    { size: "DN800", p150: "977.9", d150: "41.2", n150: "28", pPN10: "950", dPN10: "33", nPN10: "24" },
-    { size: "DN900", p150: "1085.8", d150: "41.2", n150: "32", pPN10: "1050", dPN10: "33", nPN10: "24" },
-    { size: "DN1000", p150: "1200.2", d150: "41.2", n150: "36", pPN10: "1160", dPN10: "36", nPN10: "28" },
-  ];
-
   const handleDownloadCSV = () => {
     const headers = ["Specification", "Details"];
     const rows = [
-      ["Product", "Knife Edge Gate Valve"],
+      ["Product", "Wafer Lugged Metal Seat Knife Edge Gate Valve"],
+      ["Category", "Knife Edge Gate Valve"],
       ["Type", "Uni Directional"],
       ["Model", "Wafer Lugged Metal seat PN10#"],
       ...specs.map(spec => [spec.label + (spec.subLabel || ""), spec.value]),
@@ -147,8 +143,8 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start mb-20">
             <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white border border-border shadow-lg">
               <Image
-                src={productImage.imageUrl}
-                alt={productImage.description}
+                src={showcaseImages[0].src}
+                alt="Wafer Lugged Metal Seat Knife Edge Gate Valve"
                 fill
                 className="object-contain p-8 md:p-12"
                 priority
@@ -187,6 +183,33 @@ export default function MetalSeatKnifeEdgeGateValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          <div className="mb-20 space-y-8">
+            <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <Sparkles className="size-3.5" /> Visual Showcase
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {showcaseImages.map((img, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-white border border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain p-6"
+                  />
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                      <Maximize className="size-6 text-primary" />
+                    </div>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
 
