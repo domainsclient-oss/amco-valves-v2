@@ -271,6 +271,11 @@ export default function LargeBoreCastGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
+              </div>
             </div>
 
             {/* Table 2: 600# */}
@@ -304,11 +309,11 @@ export default function LargeBoreCastGateValvePage() {
                   </TableBody>
                 </Table>
               </div>
-            </div>
-            <div className="px-6 py-3 text-right">
-              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
-                All dimensions are in mm
-              </p>
+              <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                  All dimensions are in mm
+                </p>
+              </div>
             </div>
           </div>
         </div>
