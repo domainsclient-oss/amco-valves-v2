@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/navigation";
+import Link from "next/link";
 import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -118,7 +118,6 @@ export default function PtfeLinedBallCheckValvePage() {
             </div>
           </div>
 
-          {/* Dimension Table */}
           <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
             <div className="overflow-x-auto">
               <Table className="border-collapse w-full">
