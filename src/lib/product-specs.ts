@@ -328,17 +328,18 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     testingStandard: "API 598"
   },
   "dual-plate-check-valve/flanged-type-resilient-seat-pn16": {
-    title: "Check Valve Range",
+    title: "Dual Plate Check Valve",
     subTitle: "Flanged type Resilient seat PN16#",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
-    size: "DN25 - DN1000",
-    material: "CI / DI / WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE / ALLOY STEEL",
+    size: "DN50 - DN800",
+    material: "WCB / CF8 / CF8M / CF3 / CF3M / DUPLEX / SUPER DUPLEX / ALUMINIUM BRONZE",
     seat: "EPDM / VITON",
     endConnection: "Flanged to suit ANSI flanges",
-    pressureRating: "PN16#",
+    pressureRating: "150#",
     manufacturingStandard: "API 594",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Flanged Resilient Seat Check Valve" }]
   },
   "dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
