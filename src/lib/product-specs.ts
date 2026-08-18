@@ -342,7 +342,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
   },
   "dual-plate-check-valve/wafer-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Wafer type Retainerless Metal seat 150#, 300#",
+    subTitle: "Wafer type Retainerless Metal seat",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
@@ -351,11 +351,12 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "Wafer to suit ANSI flanges",
     pressureRating: "150# / 300#",
     manufacturingStandard: "API 594",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Wafer Retainerless Metal Seat Check Valve" }]
   },
   "dual-plate-check-valve/lugged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Lugged type Retainerless Metal seat 150#, 300#",
+    subTitle: "Lugged type Retainerless Metal seat",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
@@ -364,11 +365,12 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "Wafer Lugged to suit ANSI flanges",
     pressureRating: "150# / 300#",
     manufacturingStandard: "API 594",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Lugged Retainerless Metal Seat Check Valve" }]
   },
   "dual-plate-check-valve/flanged-type-retainerless-metal-seat-150-300": {
     title: "Check Valve Range",
-    subTitle: "Flanged type Retainerless Metal seat 150#, 300#",
+    subTitle: "Flanged type Retainerless Metal",
     category: "Dual Plate Check Valve",
     subCategory: "Check Valve Range",
     size: "DN50 - DN800",
@@ -377,7 +379,8 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     endConnection: "Flanged to suit ANSI flanges",
     pressureRating: "150# / 300#",
     manufacturingStandard: "API 594",
-    testingStandard: "API 598"
+    testingStandard: "API 598",
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Flanged Retainerless Metal Seat Check Valve" }]
   },
 
   // Damper Valve
