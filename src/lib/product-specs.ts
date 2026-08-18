@@ -140,7 +140,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292",
     testingStandard: "ISO 5208",
-    showcaseImages: [{ src: "https://picsum.photos/seed/amco-wafer-ball/800/800", alt: "Wafer Design Ball Valve" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "Wafer Design Ball Valve" }]
   },
 
   // Ball Valve - Trunnion Mounted
@@ -167,7 +167,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     material: "WCB / CF8 / CF8M / CF3 / CF3M",
     endConnection: "FLANGED",
     pressureRating: "150# / 300# / 600#",
-    modeOfOperation: "Lever, Gear, Actuator",
+    modeOfOperation: "Lever, Actuator",
     manufacturingStandard: "ISO 17292 / API 6D / API 608",
     testingStandard: "ISO 5208 / ISO 10497 / API 607",
     showcaseImages: [{ src: "/dummy-image.png", alt: "3PC Trunnion Ball Valve" }]
@@ -666,7 +666,7 @@ export const productSpecsRegistry: Record<string, ProductSpecs> = {
     modeOfOperation: "Lever, Gear, Actuator",
     manufacturingStandard: "API 609",
     testingStandard: "API 598",
-    showcaseImages: [{ src: "https://picsum.photos/seed/amco-full-lug-bfv/800/800", alt: "PTFE Seated Full Lug BFV" }]
+    showcaseImages: [{ src: "/dummy-image.png", alt: "PTFE Seated Full Lug BFV" }]
   },
 
   // Wafer Check Valves
