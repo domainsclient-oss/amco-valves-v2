@@ -2,6 +2,7 @@
 
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
+import { format } from 'date-fns';
 
 export interface SheetRow {
   "Full Name": string;
@@ -58,15 +59,19 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
 
     // Ensure headers exist if sheet is empty
     if (sheet.rowCount <= 1) {
-      await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product Name"]);
+      await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product Name", "Timestamp"]);
     }
+
+    // Generate current timestamp in requested format: 18-Aug-2026 03:05 PM
+    const timestamp = format(new Date(), "dd-MMM-yyyy hh:mm a");
 
     await sheet.addRow({
       "Full Name": data["Full Name"],
       "Email Address": data["Email Address"],
       "Phone Number": sanitizeForSheet(data["Phone Number"]),
       "Your Message": data["Your Message"],
-      "Product Name": data["Product Name"] || "General Inquiry"
+      "Product Name": data["Product Name"] || "General Inquiry",
+      "Timestamp": timestamp
     });
 
     return { success: true };
