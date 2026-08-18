@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/navigation";
 import { ChevronRight, Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -34,6 +34,11 @@ export default function PtfeLinedBallCheckValvePage() {
   ];
 
   const dimensionData = [
+    { size: "DN15", ftf: "108", od: "90", hole: "Ø 16 X 4", pcd: "60.3" },
+    { size: "DN20", ftf: "117", od: "100", hole: "Ø 16 X 4", pcd: "69.9" },
+    { size: "DN25", ftf: "127", od: "110", hole: "Ø 16 X 4", pcd: "79.4" },
+    { size: "DN32", ftf: "140", od: "115", hole: "Ø 16 X 4", pcd: "88.9" },
+    { size: "DN40", ftf: "165", od: "125", hole: "Ø 16 X 4", pcd: "98.4" },
     { size: "DN50", ftf: "178", od: "150", hole: "Ø 19 X 4", pcd: "120.7" },
     { size: "DN65", ftf: "190", od: "180", hole: "Ø 19 X 4", pcd: "139.7" },
     { size: "DN80", ftf: "203", od: "190", hole: "Ø 19 X 4", pcd: "152.4" },
@@ -51,8 +56,17 @@ export default function PtfeLinedBallCheckValvePage() {
     const rows = [
       ["Product", product.subTitle],
       ...specs.map(spec => [spec.label, spec.value]),
+      [""],
+      ["LINED BALL TYPE CHECK VALVE FLANGED END 150#"],
+      ["SIZE", "FACE TO FACE", "OUTER DIA", "HOLE DIA X NO. OF HOLES", "PCD"],
+      ...dimensionData.map(row => [row.size, row.ftf, row.od, row.hole, row.pcd])
     ];
-    const csvContent = [headers.join(","), ...rows.map(row => row.join(","))].join("\n");
+    
+    const csvContent = [
+      headers.join(","),
+      ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+    ].join("\n");
+
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -101,6 +115,44 @@ export default function PtfeLinedBallCheckValvePage() {
                   <Download className="mr-2 size-5" /> Download Data Sheet
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Dimension Table */}
+          <div className="bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto">
+            <div className="overflow-x-auto">
+              <Table className="border-collapse w-full">
+                <TableHeader>
+                  <TableRow className="bg-white border-b border-neutral-300">
+                    <TableHead colSpan={5} className="text-center font-bold text-primary uppercase py-6 text-lg">
+                      LINED BALL TYPE CHECK VALVE FLANGED END 150#
+                    </TableHead>
+                  </TableRow>
+                  <TableRow className="bg-neutral-50 border-b border-neutral-300 text-[10px] md:text-xs">
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase">SIZE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">FACE TO FACE</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">OUTER DIA</TableHead>
+                    <TableHead className="text-center font-bold text-primary border-r border-neutral-200 py-4 uppercase leading-tight">HOLE DIA X NO. OF HOLES</TableHead>
+                    <TableHead className="text-center font-bold text-primary py-4 uppercase leading-tight">PCD</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {dimensionData.map((row, idx) => (
+                    <TableRow key={idx} className="border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm">
+                      <TableCell className="font-bold text-primary text-center border-r border-neutral-100 py-3">{row.size}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.ftf}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.od}</TableCell>
+                      <TableCell className="text-center text-foreground/80 border-r border-neutral-100">{row.hole}</TableCell>
+                      <TableCell className="text-center text-foreground/80">{row.pcd}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
+              <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                All dimensions are in mm
+              </p>
             </div>
           </div>
         </div>
