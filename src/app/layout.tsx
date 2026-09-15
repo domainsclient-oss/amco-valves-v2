@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { TrackingCodes } from '@/components/TrackingCodes';
 
 export const metadata: Metadata = {
   title: 'AMCO Valves | High-Quality Industrial Valves',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <TrackingCodes />
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         <FirebaseClientProvider>
