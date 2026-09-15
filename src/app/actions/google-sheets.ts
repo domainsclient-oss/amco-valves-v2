@@ -9,7 +9,7 @@ export interface SheetRow {
   "Email Address": string;
   "Phone Number": string;
   "Your Message": string;
-  "Product Name"?: string;
+  "Product"?: string;
   "Timestamp"?: string;
 }
 
@@ -24,7 +24,7 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     
     // Determine the target tab
-    let tabName = targetTab || (data["Product Name"] && data["Product Name"] !== "Contact Form" 
+    let tabName = targetTab || (data["Product"] && data["Product"] !== "Contact Form" 
       ? (process.env.GOOGLE_SHEET_TAB_NAME2 || "Request_quote")
       : (process.env.GOOGLE_SHEET_TAB_NAME || 'Leads'));
 
@@ -63,7 +63,7 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
 
     // Ensure headers exist if sheet is empty
     if (sheet.rowCount <= 1) {
-      await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product Name", "Timestamp"]);
+      await sheet.setHeaderRow(["Full Name", "Email Address", "Phone Number", "Your Message", "Product", "Timestamp"]);
     }
 
     await sheet.addRow({
@@ -71,7 +71,7 @@ export async function appendToGoogleSheet(data: SheetRow, targetTab?: string) {
       "Email Address": data["Email Address"],
       "Phone Number": sanitizeForSheet(data["Phone Number"]),
       "Your Message": data["Your Message"],
-      "Product Name": data["Product Name"] || "General Inquiry",
+      "Product": data["Product"] || "General Inquiry",
       "Timestamp": submissionTime
     });
 

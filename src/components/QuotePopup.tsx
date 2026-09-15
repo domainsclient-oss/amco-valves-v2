@@ -57,16 +57,16 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      // Generate precise submission timestamp in requested format: 18-Aug-2026 03:05 PM
+      // Generate precise submission timestamp
       const submissionTime = format(new Date(), "dd-MMM-yyyy hh:mm a");
 
-      // Explicitly directing to the Request_quote tab
+      // Explicitly directing to the Request_quote tab with corrected "Product" key
       const result = await appendToGoogleSheet({
         "Full Name": values.name,
         "Email Address": values.email,
         "Phone Number": values.phone,
         "Your Message": values.message,
-        "Product Name": productName,
+        "Product": productName,
         "Timestamp": submissionTime,
       }, "Request_quote");
 

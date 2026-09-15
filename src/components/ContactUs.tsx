@@ -35,7 +35,7 @@ export function ContactUs() {
     const phone = formData.get("phone") as string;
     const messageContent = formData.get("message") as string;
     
-    // Generate precise submission timestamp in requested format: 18-Aug-2026 03:05 PM
+    // Generate precise submission timestamp
     const submissionTime = format(new Date(), "dd-MMM-yyyy hh:mm a");
 
     const submissionData = {
@@ -51,7 +51,7 @@ export function ContactUs() {
       "Email Address": email,
       "Phone Number": phone,
       "Your Message": messageContent,
-      "Product Name": "Contact Form",
+      "Product": "Contact Form",
       "Timestamp": submissionTime
     };
 
