@@ -262,7 +262,7 @@ export default function PfaVsFepBlogPage() {
 
                 <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">5. Is the valve required for isolation or flow control?</h3>
                 <p className="mb-[15px]">
-                  An isolation valve and a torrenting valve may require different designs.
+                  An isolation valve and a throttling valve may require different designs.
                 </p>
                 <p className="mb-[15px]">
                   Choosing a valve based only on chemical resistance can overlook the actual operating function.
@@ -310,7 +310,7 @@ export default function PfaVsFepBlogPage() {
                         Get a Technical Consultation <ArrowRight className="ml-3 size-5 md:size-6" />
                       </Link>
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-primary bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
+                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-white bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
                       <Link href="/#products">Explore Lined Catalog</Link>
                     </Button>
                   </div>

@@ -359,7 +359,7 @@ export default function WaterTreatmentBlogPage() {
                         Request a Quote <ArrowRight className="ml-3 size-5 md:size-6" />
                       </Link>
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-primary bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
+                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-white bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
                       <Link href="/#products">Explore Catalog</Link>
                     </Button>
                   </div>
@@ -441,7 +441,7 @@ export default function WaterTreatmentBlogPage() {
               <div className="p-6 md:p-8 border border-border rounded-2xl md:rounded-[2rem] bg-white overflow-hidden">
                 <h4 className="font-bold text-primary mb-4 flex items-center gap-2 break-words">
                   <Activity className="size-4 text-secondary shrink-0" />
-                  Quick Links
+                  Lined Product Range
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
                   {[
