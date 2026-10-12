@@ -89,7 +89,7 @@ export default function WaterTreatmentBlogPage() {
                   Which valves are commonly used in water and wastewater treatment?
                 </h2>
                 <p className="mb-[15px]">
-                  Various designs are utilized across treatment systems to handle specific process requirements. Common options include:
+                  Butterfly valves, check valves, knife gate valves, diaphragm valves and gate valves are among the options used across water and wastewater treatment systems.
                 </p>
                 <ul className="space-y-4 list-none pl-0 mb-[15px]">
                   {[
