@@ -144,10 +144,16 @@ export default function WaterTreatmentBlogPage() {
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
                 <p className="mb-[15px]">
-                  <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines. Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
+                  <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines.
                 </p>
                 <p className="mb-[15px]">
-                  However, the selection should not stop at the valve diameter. Engineers should also examine the operating pressure, seat material, water characteristics, required shut-off performance and frequency of operation.
+                  Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
+                </p>
+                <p className="mb-[15px]">
+                  However, the selection should not stop at the valve diameter.
+                </p>
+                <p className="mb-[15px]">
+                  Engineers should also examine the operating pressure, seat material, water characteristics, required shut-off performance and frequency of operation.
                 </p>
                 <p className="mb-[15px]">
                   For example, a butterfly valve installed on a clean water distribution line may face different service conditions from one handling treated industrial effluent.
