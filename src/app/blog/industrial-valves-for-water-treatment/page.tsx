@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -91,23 +90,9 @@ export default function WaterTreatmentBlogPage() {
                 <p className="mb-[15px]">
                   Butterfly valves, check valves, knife gate valves, diaphragm valves and gate valves are among the options used across water and wastewater treatment systems.
                 </p>
-                <ul className="space-y-4 list-none pl-0 mb-[15px]">
-                  {[
-                    "Butterfly valves for large-diameter distribution and isolation.",
-                    "Check valves to prevent reverse flow and protect pumping equipment.",
-                    "Knife gate valves for handling sludge and heavy solids.",
-                    "Diaphragm valves for precise chemical dosing and process control.",
-                    "Gate valves for reliable pipeline isolation."
-                  ].map((point, idx) => (
-                    <li key={idx} className="flex gap-3 text-lg text-foreground/80">
-                      <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-8 mb-[15px]">
-                  The suitability of these valves depends heavily on the specific stage of the process and the nature of the fluid being handled.
+                
+                <p className="mb-[15px]">
+                  Their suitability depends on the specific process.
                 </p>
 
                 {/* Comparison Table */}
@@ -214,7 +199,7 @@ export default function WaterTreatmentBlogPage() {
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
                 <p className="mb-[15px]">
-                  Sludge handling creates challenges that are not normally encountered in clean water pipelines. Suspended solids, fibrous material and variations in slurry concentration can affect how a valve opens, closes and seals.
+                  Sludge handling creates challenges that are not normally encountered in clean water pipelines. Suspended solids, fibrous material and variations in sludge concentration can affect how a valve opens, closes and seals.
                 </p>
                 <p className="mb-[15px]">
                   <Link href="/#products" className="text-secondary font-bold hover:underline">Knife gate valves</Link> are often considered for these services because their design can be suited to certain fluids containing suspended solids.
