@@ -92,7 +92,6 @@ export default function PfaVsFepBlogPage() {
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8">PFA vs FEP: What is the difference?</h2>
                 
-                {/* Comparison Table */}
                 <div className="my-12 overflow-hidden border border-border rounded-[2rem] shadow-xl bg-white">
                   <div className="bg-primary p-6">
                     <h4 className="text-white font-bold m-0 text-xl">Material Comparison Matrix</h4>
@@ -139,43 +138,20 @@ export default function PfaVsFepBlogPage() {
                 
                 <p className="mb-[15px]">The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.</p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When should you choose PFA lined valves?</h3>
-                <p className="mb-[15px]">
-                  PFA is the "premium" choice among fluoropolymers and should be selected when:
-                </p>
-                <ul className="space-y-4 list-none pl-0 mb-10">
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    Operating temperatures consistently exceed 150°C.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    The application involves extremely aggressive chemicals where FEP may degrade.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    High mechanical stress or cyclic operation is expected, as PFA has a higher flex life.
-                  </li>
-                </ul>
+                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When should you consider PFA lined valves?</h3>
+                <p className="mb-[15px]">PFA lined valves are often evaluated for chemical applications where both corrosion resistance and elevated temperature capability are important.</p>
+                <p className="mb-[15px]">They may be considered for certain chemical transfer, process isolation and handling applications involving aggressive media.</p>
+                <p className="mb-[15px]">However, it would be incorrect to assume that a PFA lining is suitable for every chemical at every temperature.</p>
+                <p className="mb-[15px]">Chemical concentration, operating pressure, temperature, permeation behaviour and potential mechanical damage all influence suitability.</p>
+                <p className="mb-[15px]">For demanding service conditions, engineers should confirm the complete valve's rated operating limits with the manufacturer.</p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When is FEP lining the better choice?</h3>
-                <p className="mb-[15px]">
-                  FEP is a highly versatile and cost-effective material that is suitable for:
-                </p>
-                <ul className="space-y-4 list-none pl-0 mb-10">
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    General corrosive chemical service where temperatures stay below 150°C.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    Applications where budget optimization is required without sacrificing chemical safety.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    Standard process lines where the superior mechanical properties of PFA are not strictly required.
-                  </li>
-                </ul>
+                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When can FEP lined valves be a suitable option?</h3>
+                <p className="mb-[15px]">FEP lined valves can also provide strong chemical resistance in appropriately selected applications.</p>
+                <p className="mb-[15px]">They may be considered where the operating conditions remain within the lining and complete valve assembly's limits.</p>
+                <p className="mb-[15px]">For some projects, FEP may provide a practical alternative to PFA.</p>
+                <p className="mb-[15px]">But the decision should not be based on lining material alone.</p>
+                <p className="mb-[15px]">Two valves with different designs, lining methods and sealing arrangements may perform differently even when both are described as FEP lined.</p>
+                <p className="mb-[15px]">This is why the technical datasheet matters more than a broad product label.</p>
 
                 <div className="relative aspect-video rounded-[2.5rem] overflow-hidden my-16 shadow-2xl">
                   <Image
