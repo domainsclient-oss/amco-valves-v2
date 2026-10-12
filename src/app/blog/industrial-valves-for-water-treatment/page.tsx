@@ -32,8 +32,8 @@ export default function WaterTreatmentBlogPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-background overflow-hidden border-b border-border/50">
-        <div className="absolute inset-0 opacity-10">
+      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <Image
             src={heroImg?.imageUrl || "/blog/hero-bg-blog1.webp"}
             alt="Water Treatment Header"
@@ -208,7 +208,7 @@ export default function WaterTreatmentBlogPage() {
                 <div className="bg-primary/5 border border-primary/10 p-8 rounded-3xl my-10">
                   <h4 className="text-xl font-bold text-primary mb-4">Does a non-slam check valve eliminate water hammer?</h4>
                   <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
-                    Not necessarily. A properly selected non-slam check valve can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system.
+                    Not necessarily. A properly selected non-slam check valve can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system. 
                   </p>
                   <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
                     Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
@@ -378,25 +378,25 @@ export default function WaterTreatmentBlogPage() {
                     <AccordionItem value="item-2" className="border-none bg-white rounded-2xl px-8 shadow-sm">
                       <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">What is the difference between a butterfly valve and a knife gate valve?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        A butterfly valve uses a rotating disc to control flow, while a knife gate valve uses a sliding gate. Their suitability depends on the fluid, solids content, pressure and sealing requirements.
+                        <p className="mb-[15px]">A butterfly valve uses a rotating disc to control flow, while a knife gate valve uses a sliding gate. Their suitability depends on the fluid, solids content, pressure and sealing requirements.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3" className="border-none bg-white rounded-2xl px-8 shadow-sm">
                       <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Why are check valves used in water treatment plants?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        Check valves help prevent reverse flow, particularly in pumping systems where flow direction may change after a pump stops.
+                        <p className="mb-[15px]">Check valves help prevent reverse flow, particularly in pumping systems where flow direction may change after a pump stops.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4" className="border-none bg-white rounded-2xl px-8 shadow-sm">
                       <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Can butterfly valves be automated?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        Yes. Suitable butterfly valve configurations can be fitted with pneumatic or electric actuators, subject to valve design, torque requirements and operating conditions.
+                        <p className="mb-[15px]">Yes. Suitable butterfly valve configurations can be fitted with pneumatic or electric actuators, subject to valve design, torque requirements and operating conditions.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-5" className="border-none bg-white rounded-2xl px-8 shadow-sm">
                       <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">What information should I provide when requesting a valve quotation?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        Provide the fluid type, pipe size, pressure, temperature, connection requirements, preferred material, operation method and applicable project specifications.
+                        <p className="mb-[15px]">Provide the fluid type, pipe size, pressure, temperature, connection requirements, preferred material, operation method and applicable project specifications.</p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

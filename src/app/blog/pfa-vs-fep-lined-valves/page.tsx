@@ -32,8 +32,8 @@ export default function PfaVsFepBlogPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-background overflow-hidden border-b border-border/50">
-        <div className="absolute inset-0 opacity-10">
+      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <Image
             src={heroImg?.imageUrl || "/blog/hero-bg-blog2.webp"}
             alt="Chemical Processing Plant"
@@ -308,7 +308,7 @@ export default function PfaVsFepBlogPage() {
                         Get a Technical Consultation <ArrowRight className="ml-3 size-6" />
                       </Link>
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-16 px-10 text-lg border-primary/20 text-primary hover:bg-primary/5" asChild>
+                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-16 px-10 text-lg border-primary text-primary hover:bg-primary/5 bg-white shadow-sm" asChild>
                       <Link href="/#products">Explore Lined Catalog</Link>
                     </Button>
                   </div>
