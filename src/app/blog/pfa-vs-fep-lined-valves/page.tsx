@@ -179,17 +179,12 @@ export default function PfaVsFepBlogPage() {
 
                 <div className="relative aspect-video rounded-[2.5rem] overflow-hidden my-16 shadow-2xl">
                   <Image
-                    src={midImg?.imageUrl || "https://picsum.photos/seed/lining1/800/600"}
-                    alt="Valve Lining Detail"
+                    src="/blog/PFA-lined-valves.webp"
+                    alt="PFA Lined Valve Detail"
                     fill
                     className="object-cover"
-                    data-ai-hint="valve lining"
+                    data-ai-hint="pfa lined valves"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Material Quality</p>
-                    <p className="text-xs italic opacity-80 mb-[15px]">Precision application of fluoropolymer lining ensures 100% surface protection.</p>
-                  </div>
                 </div>
 
                 <h2 className="text-2xl md:text-3xl mt-20 mb-8">What valve types are available with PFA or FEP lining?</h2>
