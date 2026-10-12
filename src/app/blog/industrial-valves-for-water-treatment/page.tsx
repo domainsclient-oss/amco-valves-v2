@@ -168,7 +168,7 @@ export default function WaterTreatmentBlogPage() {
                     <Info className="size-5 text-secondary" />
                     When should you consider a butterfly valve?
                   </h4>
-                  <p className="text-lg m-0 text-foreground/80 leading-relaxed mb-[15px]">
+                  <p className="text-lg m-0 text-foreground/80 leading-relaxed">
                     a butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
                   </p>
                 </div>
@@ -198,7 +198,7 @@ export default function WaterTreatmentBlogPage() {
                   <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
                     Not necessarily. A properly selected <Link href="/#products" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system.
                   </p>
-                  <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
+                  <p className="text-base text-foreground/70 leading-relaxed">
                     Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
                   </p>
                 </div>
@@ -214,33 +214,51 @@ export default function WaterTreatmentBlogPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8 text-white">
                     <p className="text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Maintenance Perspective</p>
-                    <p className="text-xs italic opacity-80 mb-[15px]">Correct valve orientation is critical for check valve longevity.</p>
+                    <p className="text-xs italic opacity-80">Correct valve orientation is critical for check valve longevity.</p>
                   </div>
                 </div>
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
                 <p className="mb-[15px]">
-                  Sludge handling creates challenges that are not normally encountered in clean water pipelines. Suspended solids, fibrous material and variations in sludge concentration can affect how a valve opens, closes and seals.
+                  Sludge handling creates challenges that are not normally encountered in clean water pipelines.
+                </p>
+                <p className="mb-[15px]">
+                  Suspended solids, fibrous material and variations in slurry concentration can affect how a valve opens, closes and seals.
                 </p>
                 <p className="mb-[15px]">
                   <Link href="/#products" className="text-secondary font-bold hover:underline">Knife gate valves</Link> are often considered for these services because their design can be suited to certain fluids containing suspended solids.
                 </p>
                 <p className="mb-[15px]">
-                  However, not every knife gate valve is suitable for every sludge application. The selection should account for solids concentration, particle characteristics, pressure differential, direction of flow and required sealing performance.
+                  However, not every knife gate valve is suitable for every sludge application.
                 </p>
                 <p className="mb-[15px]">
-                  Unidirectional and bidirectional knife gate valves also have different application considerations. Before placing an order, confirm whether the valve is intended to isolate pressure from one direction or both.
+                  The selection should account for solids concentration, particle characteristics, pressure differential, direction of flow and required sealing performance.
+                </p>
+                <p className="mb-[15px]">
+                  Unidirectional and bidirectional knife gate valves also have different application considerations.
+                </p>
+                <p className="mb-[15px]">
+                  Before placing an order, confirm whether the valve is intended to isolate pressure from one direction or both.
                 </p>
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">4. Diaphragm valves for selected chemical treatment lines</h3>
                 <p className="mb-[15px]">
-                  Chemical dosing is another area where valve selection requires care. Treatment plants may handle chemicals for disinfection, pH adjustment, coagulation or other processes.
+                  Chemical dosing is another area where valve selection requires care.
                 </p>
                 <p className="mb-[15px]">
-                  Depending on the chemical, concentration and operating temperature, a <Link href="/#products" className="text-secondary font-bold hover:underline">diaphragm valve</Link> may be an appropriate choice. Its suitability depends heavily on the diaphragm and lining materials.
+                  Treatment plants may handle chemicals for disinfection, pH adjustment, coagulation or other processes.
                 </p>
                 <p className="mb-[15px]">
-                  A valve that is compatible with one treatment chemical may not be suitable for another. For this reason, material compatibility should always be confirmed using the actual chemical concentration and operating conditions rather than the chemical name alone.
+                  Depending on the chemical, concentration and operating temperature, a <Link href="/#products" className="text-secondary font-bold hover:underline">diaphragm valve</Link> may be an appropriate choice.
+                </p>
+                <p className="mb-[15px]">
+                  Its suitability depends heavily on the diaphragm and lining materials.
+                </p>
+                <p className="mb-[15px]">
+                  A valve that is compatible with one treatment chemical may not be suitable for another.
+                </p>
+                <p className="mb-[15px]">
+                  For this reason, material compatibility should always be confirmed using the actual chemical concentration and operating conditions rather than the chemical name alone.
                 </p>
 
                 <h2 className="text-2xl md:text-3xl mt-20 mb-10 text-primary border-b border-border pb-4">
@@ -260,7 +278,7 @@ export default function WaterTreatmentBlogPage() {
                       </div>
                       <div>
                         <span className="font-bold text-primary text-xl block mb-2">{item.label}</span>
-                        <p className="text-base text-foreground/60 m-0 leading-relaxed mb-[15px]">{item.desc}</p>
+                        <p className="text-base text-foreground/60 m-0 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -277,7 +295,7 @@ export default function WaterTreatmentBlogPage() {
                 <div className="bg-primary text-white p-12 rounded-[3rem] my-20 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                   <h2 className="text-white text-3xl md:text-4xl mt-0 mb-8 font-bold relative z-10">Industrial valve solutions from AMCO</h2>
-                  <p className="text-white/70 text-lg mb-10 leading-relaxed relative z-10 mb-[15px]">
+                  <p className="text-white/70 text-lg mb-10 leading-relaxed relative z-10">
                     AMCO Industrial Valves manufactures a range of valves used across industrial applications, including sewage, effluent and water treatment. Its product portfolio includes butterfly valves, knife edge gate valves, wafer check valves, dual plate check valves, non-slam check valves, diaphragm valves and other flow-control products.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 relative z-10">
@@ -341,7 +359,7 @@ export default function WaterTreatmentBlogPage() {
                   </div>
                   <h3 className="font-bold text-2xl text-primary m-0">Expert Advice</h3>
                 </div>
-                <p className="text-foreground/60 text-base mb-10 leading-relaxed mb-[15px]">
+                <p className="text-foreground/60 text-base mb-10 leading-relaxed">
                   Planning a water or wastewater treatment project? Share your pipeline details with the AMCO engineering team for a custom valve configuration.
                 </p>
                 <div className="space-y-4">
