@@ -57,7 +57,7 @@ export default function PfaVsFepBlogPage() {
           <h1 className="text-3xl md:text-6xl font-bold text-white max-w-5xl leading-tight mb-8">
             PFA vs FEP Lined Valves: What Should You Choose for Corrosive Chemical Applications?
           </h1>
-          <p className="text-xl text-white/70 max-w-3xl leading-relaxed">
+          <p className="text-xl text-white/70 max-w-3xl leading-relaxed mb-[15px]">
             Selecting the right fluoropolymer lining is critical for the safety and longevity of your industrial valves in highly aggressive environments.
           </p>
         </div>
@@ -68,25 +68,25 @@ export default function PfaVsFepBlogPage() {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8">
-              <article className="prose prose-neutral max-w-none prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-lg prose-p:leading-relaxed">
-                <p>When a valve is exposed to corrosive chemicals, the wrong material choice can become an expensive problem.</p>
+              <article className="prose prose-neutral max-w-none prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
+                <p className="mb-[15px]">When a valve is exposed to corrosive chemicals, the wrong material choice can become an expensive problem.</p>
                 
-                <p>Corrosion, damaged sealing surfaces and premature lining failure can lead to leakage, maintenance work and unplanned interruptions.</p>
+                <p className="mb-[15px]">Corrosion, damaged sealing surfaces and premature lining failure can lead to leakage, maintenance work and unplanned interruptions.</p>
                 
-                <p>This is why engineers working with aggressive chemical media often consider fluoropolymer-lined valves.</p>
+                <p className="mb-[15px]">This is why engineers working with aggressive chemical media often consider fluoropolymer-lined valves.</p>
                 
-                <p>Two materials commonly encountered in this category are PFA and FEP.</p>
+                <p className="mb-[15px]">Two materials commonly encountered in this category are PFA and FEP.</p>
                 
-                <p>Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
+                <p className="mb-[15px]">Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
                   <Layout className="text-secondary size-8" />
                   What are PFA and FEP lined valves?
                 </h2>
-                <p>
+                <p className="mb-[15px]">
                   Fluoropolymers are highly resistant to chemical attack and are used as a lining for industrial valves. They provide:
                 </p>
-                <ul className="space-y-4 list-none pl-0">
+                <ul className="space-y-4 list-none pl-0 mb-10">
                   <li className="flex gap-3 text-lg text-foreground/80">
                     <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
                     Excellent resistance to a wide range of aggressive chemicals including acids and alkalis.
@@ -142,7 +142,7 @@ export default function PfaVsFepBlogPage() {
                 </div>
 
                 <h3 className="text-2xl md:text-3xl mt-16 mb-6">When should you choose PFA lined valves?</h3>
-                <p>
+                <p className="mb-[15px]">
                   PFA is the "premium" choice among fluoropolymers and should be selected when:
                 </p>
                 <ul className="space-y-4 list-none pl-0 mb-10">
@@ -161,7 +161,7 @@ export default function PfaVsFepBlogPage() {
                 </ul>
 
                 <h3 className="text-2xl md:text-3xl mt-16 mb-6">When is FEP lining the better choice?</h3>
-                <p>
+                <p className="mb-[15px]">
                   FEP is a highly versatile and cost-effective material that is suitable for:
                 </p>
                 <ul className="space-y-4 list-none pl-0 mb-10">
@@ -189,8 +189,8 @@ export default function PfaVsFepBlogPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em]">Material Quality</p>
-                    <p className="text-xs italic opacity-80">Precision application of fluoropolymer lining ensures 100% surface protection.</p>
+                    <p className="text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Material Quality</p>
+                    <p className="text-xs italic opacity-80 mb-[15px]">Precision application of fluoropolymer lining ensures 100% surface protection.</p>
                   </div>
                 </div>
 
@@ -226,19 +226,19 @@ export default function PfaVsFepBlogPage() {
                   ].map((item, i) => (
                     <div key={i} className="p-8 bg-neutral-50 border border-border rounded-3xl group hover:bg-white hover:shadow-lg transition-all">
                       <h4 className="font-bold text-primary text-xl mb-3">{item.q}</h4>
-                      <p className="text-base text-foreground/60 m-0 leading-relaxed">{item.a}</p>
+                      <p className="text-base text-foreground/60 m-0 leading-relaxed mb-[15px]">{item.a}</p>
                     </div>
                   ))}
                 </div>
 
                 <h2 className="text-2xl md:text-3xl mt-20 mb-6">Why your selection of valve construction matters</h2>
-                <p>
+                <p className="mb-[15px]">
                   The lining material is just one part of the equation. The quality of the cast body, the precision of the lining application, and the design of the seat and stem seals all contribute to the overall reliability of the valve. In corrosive environments, even a pinhole leak can lead to catastrophic failure.
                 </p>
 
                 <div className="bg-primary text-white p-12 rounded-[3rem] my-20 shadow-2xl relative overflow-hidden text-center">
                   <h2 className="text-white text-3xl md:text-4xl mt-0 mb-8 font-bold">Expert Lined Valve Solutions</h2>
-                  <p className="text-white/70 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+                  <p className="text-white/70 text-lg mb-10 leading-relaxed max-w-2xl mx-auto mb-[15px]">
                     AMCO Industrial Valves specializes in high-performance PFA and FEP lined valves for the most demanding chemical applications.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -296,7 +296,7 @@ export default function PfaVsFepBlogPage() {
                   </div>
                   <h3 className="font-bold text-2xl text-primary m-0">Need Help?</h3>
                 </div>
-                <p className="text-foreground/60 text-base mb-10 leading-relaxed">
+                <p className="text-foreground/60 text-base mb-10 leading-relaxed mb-[15px]">
                   Unsure which lining fits your process? Our engineers can analyze your media details and recommend the optimal PFA or FEP solution.
                 </p>
                 <div className="space-y-4">
