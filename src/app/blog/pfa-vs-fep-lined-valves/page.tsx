@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function PfaVsFepBlogPage() {
   const heroImg = placeholderImages.find(img => img.id === "blog-pfa-hero");
-  const midImg = placeholderImages.find(img => img.id === "blog-pfa-detail");
+  const midImg = "/blog/PFA-lined-valves.webp";
 
   return (
     <main className="min-h-screen bg-white">
@@ -78,26 +78,17 @@ export default function PfaVsFepBlogPage() {
                 
                 <p className="mb-[15px]">Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
 
-                <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
+                <h2 className="text-2xl md:text-3xl mt-16 mb-8">
                   What are PFA and FEP lined valves?
                 </h2>
-                <p className="mb-[15px]">
-                  Fluoropolymers are highly resistant to chemical attack and are used as a lining for industrial valves. They provide:
-                </p>
-                <ul className="space-y-4 list-none pl-0 mb-10">
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    Excellent resistance to a wide range of aggressive chemicals including acids and alkalis.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    High thermal stability, maintaining properties over a broad temperature range.
-                  </li>
-                  <li className="flex gap-3 text-lg text-foreground/80">
-                    <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
-                    Low coefficient of friction for smooth valve operation.
-                  </li>
-                </ul>
+                
+                <p className="mb-[15px]">PFA (perfluoroalkoxy) and FEP (fluorinated ethylene propylene) are fluoropolymers used to provide chemical-resistant surfaces.</p>
+                
+                <p className="mb-[15px]">In a lined valve, the lining separates the process fluid from the underlying valve body, helping protect it from direct chemical exposure.</p>
+                
+                <p className="mb-[15px]">A lined valve is therefore different from an unlined metallic valve, where the process fluid comes into contact with the body material.</p>
+                
+                <p className="mb-[15px]">Both PFA and FEP can be suitable for a wide range of corrosive chemicals. However, their performance limits and suitability depend on the application.</p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8">PFA vs FEP: What is the difference?</h2>
                 
@@ -109,35 +100,44 @@ export default function PfaVsFepBlogPage() {
                   <Table>
                     <TableHeader className="bg-neutral-50">
                       <TableRow>
-                        <TableHead className="text-primary font-bold h-14">Feature</TableHead>
-                        <TableHead className="text-primary font-bold h-14">PFA (Perfluoroalkoxy)</TableHead>
-                        <TableHead className="text-primary font-bold h-14">FEP (Fluorinated Ethylene Propylene)</TableHead>
+                        <TableHead className="text-primary font-bold h-14">Factor</TableHead>
+                        <TableHead className="text-primary font-bold h-14">PFA lining</TableHead>
+                        <TableHead className="text-primary font-bold h-14">FEP lining</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       <TableRow className="hover:bg-neutral-50/50">
-                        <TableCell className="font-bold text-primary">Max Operating Temp</TableCell>
-                        <TableCell>Up to 200°C (392°F)</TableCell>
-                        <TableCell>Up to 150°C (302°F)</TableCell>
+                        <TableCell className="font-bold text-primary">Chemical resistance</TableCell>
+                        <TableCell>Broad resistance to many aggressive chemicals</TableCell>
+                        <TableCell>Broad resistance to many aggressive chemicals</TableCell>
                       </TableRow>
                       <TableRow className="hover:bg-neutral-50/50">
-                        <TableCell className="font-bold text-primary">Chemical Resistance</TableCell>
-                        <TableCell>Excellent (Best in class)</TableCell>
-                        <TableCell>Good (Very high)</TableCell>
+                        <TableCell className="font-bold text-primary">Temperature capability</TableCell>
+                        <TableCell>Generally higher material temperature capability</TableCell>
+                        <TableCell>Generally lower than PFA</TableCell>
                       </TableRow>
                       <TableRow className="hover:bg-neutral-50/50">
-                        <TableCell className="font-bold text-primary">Flex Life</TableCell>
-                        <TableCell>High (Superior durability)</TableCell>
-                        <TableCell>Moderate</TableCell>
+                        <TableCell className="font-bold text-primary">Processing</TableCell>
+                        <TableCell>Melt-processable fluoropolymer</TableCell>
+                        <TableCell>Melt-processable fluoropolymer</TableCell>
                       </TableRow>
                       <TableRow className="hover:bg-neutral-50/50">
-                        <TableCell className="font-bold text-primary">Cost</TableCell>
-                        <TableCell>Higher (Premium material)</TableCell>
-                        <TableCell>Lower (Cost-effective)</TableCell>
+                        <TableCell className="font-bold text-primary">Common consideration</TableCell>
+                        <TableCell>More demanding temperature requirements</TableCell>
+                        <TableCell>Applications within FEP's operating limits</TableCell>
+                      </TableRow>
+                      <TableRow className="hover:bg-neutral-50/50">
+                        <TableCell className="font-bold text-primary">Final selection</TableCell>
+                        <TableCell>Depends on valve design and service conditions</TableCell>
+                        <TableCell>Depends on valve design and service conditions</TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
                 </div>
+
+                <p className="mb-[15px]">The important point is that the properties of the lining material do not automatically determine the allowable operating conditions of the complete valve.</p>
+                
+                <p className="mb-[15px]">The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.</p>
 
                 <h3 className="text-2xl md:text-3xl mt-16 mb-6">When should you choose PFA lined valves?</h3>
                 <p className="mb-[15px]">
@@ -179,7 +179,7 @@ export default function PfaVsFepBlogPage() {
 
                 <div className="relative aspect-video rounded-[2.5rem] overflow-hidden my-16 shadow-2xl">
                   <Image
-                    src="/blog/PFA-lined-valves.webp"
+                    src={midImg}
                     alt="PFA Lined Valve Detail"
                     fill
                     className="object-cover"
