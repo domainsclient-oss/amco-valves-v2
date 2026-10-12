@@ -84,7 +84,7 @@ export default function WaterTreatmentBlogPage() {
                   The right valve must suit the fluid, the operating conditions and the work it is expected to perform.
                 </p>
 
-                <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
+                <h2 className="text-2xl font-bold mt-16 mb-8">
                   Which valves are commonly used in water and wastewater treatment?
                 </h2>
                 <p className="mb-[15px]">
@@ -284,19 +284,40 @@ export default function WaterTreatmentBlogPage() {
                   ))}
                 </div>
 
-                <h2 className="text-2xl md:text-3xl mt-20 mb-6">Why valve selection affects maintenance costs</h2>
+                <h2 className="text-2xl font-bold mt-20 mb-6">Why valve selection affects maintenance costs</h2>
                 <p className="mb-[15px]">
-                  The purchase price of a valve is only one part of its overall cost. A poorly matched valve may lead to repeated seat damage, leakage, difficult operation or premature replacement.
+                  The purchase price of a valve is only one part of its overall cost.
                 </p>
                 <p className="mb-[15px]">
-                  In a treatment plant, maintenance may also require isolating sections of the process or temporarily stopping equipment. That is why selecting the right valve at the procurement stage can be more valuable than simply choosing the lowest-priced option.
+                  A poorly matched valve may lead to repeated seat damage, leakage, difficult operation or premature replacement.
+                </p>
+                <p className="mb-[15px]">
+                  In a treatment plant, maintenance may also require isolating sections of the process or temporarily stopping equipment.
+                </p>
+                <p className="mb-[15px]">
+                  That is why selecting the right valve at the procurement stage can be more valuable than simply choosing the lowest-priced option.
+                </p>
+
+                <h2 className="text-2xl font-bold mt-20 mb-6">Industrial valve solutions from AMCO</h2>
+                <p className="mb-[15px]">
+                  AMCO Industrial Valves manufactures a range of valves used across industrial applications, including sewage, effluent and water treatment.
+                </p>
+                <p className="mb-[15px]">
+                  Its product portfolio includes butterfly valves, knife edge gate valves, wafer check valves, dual plate check valves, non-slam check valves, diaphragm valves and other industrial flow-control products.
+                </p>
+                <p className="mb-[15px]">
+                  The appropriate configuration depends on the application and operating requirements.
+                </p>
+
+                <h2 className="text-2xl font-bold mt-20 mb-6">Planning a water or wastewater treatment project?</h2>
+                <p className="mb-[15px]">
+                  Share your fluid details, operating pressure, temperature, pipeline size and valve function with the AMCO team.
                 </p>
 
                 <div className="bg-primary text-white p-12 rounded-[3rem] my-20 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                  <h2 className="text-white text-3xl md:text-4xl mt-0 mb-8 font-bold relative z-10">Industrial valve solutions from AMCO</h2>
                   <p className="text-white/70 text-lg mb-10 leading-relaxed relative z-10">
-                    AMCO Industrial Valves manufactures a range of valves used across industrial applications, including sewage, effluent and water treatment. Its product portfolio includes butterfly valves, knife edge gate valves, wafer check valves, dual plate check valves, non-slam check valves, diaphragm valves and other flow-control products.
+                    Contact AMCO Industrial Valves to discuss a suitable valve configuration and request technical specifications or a quotation.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 relative z-10">
                     <Button variant="secondary" size="lg" className="rounded-2xl font-bold h-16 px-10 text-lg shadow-xl shadow-secondary/20" asChild>
