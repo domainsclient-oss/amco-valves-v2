@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Droplets, Info, HelpCircle, Settings, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -144,7 +144,7 @@ export default function WaterTreatmentBlogPage() {
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
                 <p className="mb-[15px]">
-                  <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines.
+                  Butterfly valves are commonly considered for medium- and large-diameter water pipelines.
                 </p>
                 <p className="mb-[15px]">
                   Their compact construction can make them practical where installation space matters.
@@ -169,7 +169,7 @@ export default function WaterTreatmentBlogPage() {
                     When should you consider a butterfly valve?
                   </h4>
                   <p className="text-lg m-0 text-foreground/80 leading-relaxed">
-                    a butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
+                    A butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
                   </p>
                 </div>
 
@@ -181,7 +181,7 @@ export default function WaterTreatmentBlogPage() {
                   When a pump stops, the pressure conditions in a pipeline can change. Without appropriate protection, fluid may flow backwards through the system.
                 </p>
                 <p className="mb-[15px]">
-                  A <Link href="/#products" className="text-secondary font-bold hover:underline">check valve</Link> is designed to permit flow in one direction and restrict reverse flow.
+                  A check valve is designed to permit flow in one direction and restrict reverse flow.
                 </p>
                 <p className="mb-[15px]">
                   Water treatment applications may use different check valve designs, including wafer, dual plate and non-slam check valves.
@@ -196,7 +196,7 @@ export default function WaterTreatmentBlogPage() {
                 <div className="bg-primary/5 border border-primary/10 p-8 rounded-3xl my-10">
                   <h4 className="text-xl font-bold text-primary mb-4">Does a non-slam check valve eliminate water hammer?</h4>
                   <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
-                    Not necessarily. A properly selected <Link href="/#products" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system.
+                    Not necessarily. A properly selected non-slam check valve can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system.
                   </p>
                   <p className="text-base text-foreground/70 leading-relaxed">
                     Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
@@ -211,11 +211,6 @@ export default function WaterTreatmentBlogPage() {
                     className="object-cover"
                     data-ai-hint="industrial valves"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Maintenance Perspective</p>
-                    <p className="text-xs italic opacity-80">Correct valve orientation is critical for check valve longevity.</p>
-                  </div>
                 </div>
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
@@ -226,7 +221,7 @@ export default function WaterTreatmentBlogPage() {
                   Suspended solids, fibrous material and variations in slurry concentration can affect how a valve opens, closes and seals.
                 </p>
                 <p className="mb-[15px]">
-                  <Link href="/#products" className="text-secondary font-bold hover:underline">Knife gate valves</Link> are often considered for these services because their design can be suited to certain fluids containing suspended solids.
+                  Knife gate valves are often considered for these services because their design can be suited to certain fluids containing suspended solids.
                 </p>
                 <p className="mb-[15px]">
                   However, not every knife gate valve is suitable for every sludge application.
@@ -249,7 +244,7 @@ export default function WaterTreatmentBlogPage() {
                   Treatment plants may handle chemicals for disinfection, pH adjustment, coagulation or other processes.
                 </p>
                 <p className="mb-[15px]">
-                  Depending on the chemical, concentration and operating temperature, a <Link href="/#products" className="text-secondary font-bold hover:underline">diaphragm valve</Link> may be an appropriate choice.
+                  Depending on the chemical, concentration and operating temperature, a diaphragm valve may be an appropriate choice.
                 </p>
                 <p className="mb-[15px]">
                   Its suitability depends heavily on the diaphragm and lining materials.
