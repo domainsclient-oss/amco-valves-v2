@@ -83,6 +83,18 @@
       "description": "Final quality inspection",
       "imageUrl": "/Gallery-image-8.jpg",
       "imageHint": "quality inspection"
+    },
+    {
+      "id": "blog-water-hero",
+      "description": "Industrial water treatment facility overview",
+      "imageUrl": "https://picsum.photos/seed/water1/1200/600",
+      "imageHint": "water treatment"
+    },
+    {
+      "id": "blog-water-valves",
+      "description": "Large industrial valves in a water processing line",
+      "imageUrl": "https://picsum.photos/seed/water2/800/600",
+      "imageHint": "industrial valves"
     }
   ]
 }
