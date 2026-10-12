@@ -274,27 +274,33 @@ export default function PfaVsFepBlogPage() {
                   </h2>
                   <Accordion type="single" collapsible className="w-full space-y-4">
                     <AccordionItem value="item-1" className="border-none bg-white rounded-2xl px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Which is more durable, PFA or FEP lined valves?</AccordionTrigger>
+                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">What is the main difference between PFA and FEP lined valves?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        PFA typically has a higher flex life and better thermal stability, making it more durable in extreme or cyclic conditions. However, FEP is excellent for many standard corrosive duties.
+                        <p className="mb-[15px]">Both use chemically resistant fluoropolymers. PFA generally offers higher material temperature capability, while FEP can be suitable for many chemical applications within its specified limits.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2" className="border-none bg-white rounded-2xl px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Can FEP lining handle all chemicals?</AccordionTrigger>
+                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Are PFA lined valves suitable for corrosive chemicals?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        FEP is resistant to most chemicals, but it has lower resistance to some aggressive organic solvents and high temperatures compared to PFA. Always check a compatibility chart for your specific fluid.
+                        <p className="mb-[15px]">PFA lined valves can be suitable for many corrosive chemical services, but compatibility depends on the specific chemical, concentration, temperature, pressure and complete valve construction.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3" className="border-none bg-white rounded-2xl px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Is PFA always worth the extra cost?</AccordionTrigger>
+                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Is PFA always better than FEP?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        If your process operates near or above 150°C, or if the fluid is exceptionally aggressive, PFA is essential. For standard corrosive service at lower temperatures, FEP provides the same safety at a lower cost.
+                        <p className="mb-[15px]">No. PFA and FEP have different properties, but the best choice depends on the operating conditions and the manufacturer's valve specifications.</p>
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4" className="border-none bg-white rounded-2xl px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">What info should I provide for a quote?</AccordionTrigger>
+                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">Can lined butterfly valves be used in chemical processing?</AccordionTrigger>
                       <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
-                        Provide the fluid name, concentration, operating temperature and pressure, pipe size, and connection standard.
+                        <p className="mb-[15px]">Yes, where the valve's materials, design, pressure rating and operating characteristics are suitable for the particular chemical service.</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-5" className="border-none bg-white rounded-2xl px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline">What details are needed to request a lined valve quotation?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-lg leading-relaxed pb-8">
+                        <p className="mb-[15px]">The manufacturer will typically need the chemical name, concentration, temperature, pressure, valve size, connection type, required function and any applicable project standards.</p>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
