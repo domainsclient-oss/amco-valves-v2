@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Droplets, Info, HelpCircle, Settings, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2, ShieldAlert } from "lucide-react";
+import { ChevronRight, Info, HelpCircle, Activity, ArrowRight, MessageSquare, ShieldAlert } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -78,7 +78,7 @@ export default function PfaVsFepBlogPage() {
                 
                 <p className="mb-[15px]">Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
 
-                <h2 className="text-2xl md:text-3xl mt-16 mb-8">
+                <h2 className="text-2xl font-bold mt-16 mb-8">
                   What are PFA and FEP lined valves?
                 </h2>
                 
@@ -90,7 +90,7 @@ export default function PfaVsFepBlogPage() {
                 
                 <p className="mb-[15px]">Both PFA and FEP can be suitable for a wide range of corrosive chemicals. However, their performance limits and suitability depend on the application.</p>
 
-                <h2 className="text-2xl md:text-3xl mt-16 mb-8">PFA vs FEP: What is the difference?</h2>
+                <h2 className="text-2xl font-bold mt-16 mb-8">PFA vs FEP: What is the difference?</h2>
                 
                 <div className="my-12 overflow-hidden border border-border rounded-[2rem] shadow-xl bg-white">
                   <div className="bg-primary p-6">
@@ -138,14 +138,14 @@ export default function PfaVsFepBlogPage() {
                 
                 <p className="mb-[15px]">The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.</p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When should you consider PFA lined valves?</h3>
+                <h2 className="text-2xl font-bold mt-16 mb-8">When should you consider PFA lined valves?</h2>
                 <p className="mb-[15px]">PFA lined valves are often evaluated for chemical applications where both corrosion resistance and elevated temperature capability are important.</p>
                 <p className="mb-[15px]">They may be considered for certain chemical transfer, process isolation and handling applications involving aggressive media.</p>
                 <p className="mb-[15px]">However, it would be incorrect to assume that a PFA lining is suitable for every chemical at every temperature.</p>
                 <p className="mb-[15px]">Chemical concentration, operating pressure, temperature, permeation behaviour and potential mechanical damage all influence suitability.</p>
                 <p className="mb-[15px]">For demanding service conditions, engineers should confirm the complete valve's rated operating limits with the manufacturer.</p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">When can FEP lined valves be a suitable option?</h3>
+                <h2 className="text-2xl font-bold mt-16 mb-8">When can FEP lined valves be a suitable option?</h2>
                 <p className="mb-[15px]">FEP lined valves can also provide strong chemical resistance in appropriately selected applications.</p>
                 <p className="mb-[15px]">They may be considered where the operating conditions remain within the lining and complete valve assembly's limits.</p>
                 <p className="mb-[15px]">For some projects, FEP may provide a practical alternative to PFA.</p>
@@ -159,28 +159,38 @@ export default function PfaVsFepBlogPage() {
                     alt="PFA Lined Valve Detail"
                     fill
                     className="object-cover"
-                    data-ai-hint="pfa lined valves"
                   />
                 </div>
 
-                <h2 className="text-2xl md:text-3xl mt-20 mb-8">What valve types are available with PFA or FEP lining?</h2>
-                <div className="grid md:grid-cols-2 gap-4 my-10">
-                  {[
-                    "Lined Ball Valves",
-                    "Lined Butterfly Valves",
-                    "Lined Plug Valves",
-                    "Lined Diaphragm Valves",
-                    "Lined Check Valves",
-                    "Lined Ball Check Valves"
-                  ].map((valve, i) => (
-                    <div key={i} className="flex items-center gap-4 p-5 bg-neutral-50 border border-border rounded-2xl">
-                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-secondary shadow-sm">
-                        <Activity className="size-5" />
-                      </div>
-                      <span className="font-bold text-primary">{valve}</span>
-                    </div>
-                  ))}
-                </div>
+                <h2 className="text-2xl font-bold mt-16 mb-8">
+                  Which valve types are available with chemical-resistant linings?
+                </h2>
+                
+                <p className="mb-[15px]">Several industrial valve designs can be manufactured with fluoropolymer linings.</p>
+                
+                <p className="mb-[15px]">The correct design depends on the function required in the pipeline.</p>
+
+                <h3 className="text-2xl font-bold mt-16 mb-6">Lined ball valves</h3>
+                <p className="mb-[15px]">Lined ball valves are commonly considered for on/off isolation duties.</p>
+                
+                <p className="mb-[15px]">Their quarter-turn operation can make them practical where relatively quick opening and closing is required.</p>
+                
+                <p className="mb-[15px]">Selection must account for the process fluid, operating conditions, sealing arrangement and compatibility of wetted components.</p>
+
+                <h3 className="text-2xl font-bold mt-16 mb-6">Lined butterfly valves</h3>
+                <p className="mb-[15px]">Lined butterfly valves may be considered for chemical service in suitable pipeline sizes and pressure conditions.</p>
+                
+                <p className="mb-[15px]">The valve's disc, liner and sealing arrangement require particular attention because these components can be exposed to the process fluid.</p>
+
+                <h3 className="text-2xl font-bold mt-16 mb-6">Lined plug valves</h3>
+                <p className="mb-[15px]">Lined plug valves are another option for chemical isolation applications.</p>
+                
+                <p className="mb-[15px]">Their suitability depends on the valve design, lining construction and service conditions.</p>
+
+                <h3 className="text-2xl font-bold mt-16 mb-6">Lined check valves</h3>
+                <p className="mb-[15px]">Where reverse-flow prevention is required, lined check valves may be considered.</p>
+                
+                <p className="mb-[15px]">However, their operating characteristics must also suit the process, including flow conditions and installation requirements.</p>
 
                 <h2 className="text-2xl md:text-3xl mt-20 mb-10 text-primary border-b border-border pb-4">
                   Five questions to ask before selecting a lined valve
