@@ -357,7 +357,7 @@ export default function WaterTreatmentBlogPage() {
                         Request a Technical Proposal <ArrowRight className="ml-3 size-6" />
                       </Link>
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-16 px-10 text-lg border-white/20 text-white hover:bg-white/10" asChild>
+                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-16 px-10 text-lg border-primary/20 text-primary hover:bg-primary/5" asChild>
                       <Link href="/#products">Explore Our Catalog</Link>
                     </Button>
                   </div>
