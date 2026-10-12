@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -26,9 +27,11 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
@@ -224,65 +227,67 @@ export function Navbar() {
         </div>
 
         <div className="flex flex-col py-4 bg-white flex-1 overflow-y-auto px-5">
-          <Accordion type="single" collapsible className="w-full">
-            {navLinks.map((link) => (
-              <div key={link.name}>
-                {link.hasMegaMenu ? (
-                  <AccordionItem value={link.name} className="border-b border-border">
-                    <AccordionTrigger className="py-5 text-lg font-bold text-primary uppercase hover:no-underline">
-                      {link.name}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="space-y-10 pt-2 pb-4">
-                        {productNavigationData.map((column, colIdx) => (
-                          <div key={colIdx} className="space-y-8">
-                            {column.map((category) => (
-                              <div key={category.title} className="space-y-4">
-                                <h4 className="text-secondary font-bold text-xs uppercase tracking-wider bg-secondary/5 px-3 py-1 rounded">
-                                  {category.title}
-                                </h4>
-                                <div className="space-y-5 pl-2">
-                                  {category.subCategories.map((sub) => (
-                                    <div key={sub.name} className="space-y-2">
-                                      <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
-                                        <ChevronRight className="size-3 text-secondary shrink-0" />
-                                        {sub.name}
-                                      </h5>
-                                      <ul className="space-y-2 pl-5">
-                                        {sub.products.map((product) => (
-                                          <li key={product.name}>
-                                            <Link 
-                                              href={product.href} 
-                                              className="text-foreground/60 text-sm block py-1 leading-tight"
-                                              onClick={() => setIsOpen(false)}
-                                            >
-                                              {product.name}
-                                            </Link>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  ))}
+          {mounted && (
+            <Accordion type="single" collapsible className="w-full">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  {link.hasMegaMenu ? (
+                    <AccordionItem value={link.name} className="border-b border-border">
+                      <AccordionTrigger className="py-5 text-lg font-bold text-primary uppercase hover:no-underline">
+                        {link.name}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-10 pt-2 pb-4">
+                          {productNavigationData.map((column, colIdx) => (
+                            <div key={colIdx} className="space-y-8">
+                              {column.map((category) => (
+                                <div key={category.title} className="space-y-4">
+                                  <h4 className="text-secondary font-bold text-xs uppercase tracking-wider bg-secondary/5 px-3 py-1 rounded">
+                                    {category.title}
+                                  </h4>
+                                  <div className="space-y-5 pl-2">
+                                    {category.subCategories.map((sub) => (
+                                      <div key={sub.name} className="space-y-2">
+                                        <h5 className="text-primary font-bold text-[13px] flex items-center gap-2">
+                                          <ChevronRight className="size-3 text-secondary shrink-0" />
+                                          {sub.name}
+                                        </h5>
+                                        <ul className="space-y-2 pl-5">
+                                          {sub.products.map((product) => (
+                                            <li key={product.name}>
+                                              <Link 
+                                                href={product.href} 
+                                                className="text-foreground/60 text-sm block py-1 leading-tight"
+                                                onClick={() => setIsOpen(false)}
+                                              >
+                                                {product.name}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ) : (
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex py-5 text-lg font-bold text-primary uppercase border-b border-border hover:bg-muted/30 transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </Accordion>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex py-5 text-lg font-bold text-primary uppercase border-b border-border hover:bg-muted/30 transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </Accordion>
+          )}
         </div>
 
         <div className="p-8 border-t border-border bg-white mt-auto shrink-0">
