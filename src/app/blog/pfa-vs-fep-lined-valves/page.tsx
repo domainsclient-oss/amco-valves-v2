@@ -69,13 +69,15 @@ export default function PfaVsFepBlogPage() {
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8">
               <article className="prose prose-neutral max-w-none prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-lg prose-p:leading-relaxed">
-                <p className="text-2xl text-primary font-semibold mb-10 leading-snug">
-                  PFA or FEP lining is often the solution for handling highly corrosive chemicals that would otherwise degrade standard metal valves.
-                </p>
-
-                <p>
-                  While both materials provide excellent chemical resistance, they are not identical. Choosing the wrong lining for your application can lead to premature valve failure, safety risks, or unnecessary expenditure. 
-                </p>
+                <p>When a valve is exposed to corrosive chemicals, the wrong material choice can become an expensive problem.</p>
+                
+                <p>Corrosion, damaged sealing surfaces and premature lining failure can lead to leakage, maintenance work and unplanned interruptions.</p>
+                
+                <p>This is why engineers working with aggressive chemical media often consider fluoropolymer-lined valves.</p>
+                
+                <p>Two materials commonly encountered in this category are PFA and FEP.</p>
+                
+                <p>Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
                   <Layout className="text-secondary size-8" />
