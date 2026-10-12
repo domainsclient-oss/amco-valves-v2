@@ -32,7 +32,7 @@ export default function WaterTreatmentBlogPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
+      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-4 sm:px-6 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <Image
             src={heroImg?.imageUrl || "/blog/hero-bg-blog1.webp"}
@@ -53,7 +53,7 @@ export default function WaterTreatmentBlogPage() {
           <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
             <Droplets className="size-3.5" /> Industry Selection Guide
           </div>
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8 break-words">
             How to Choose the Right Industrial Valve for Water and Wastewater Treatment Plants
           </h1>
           <p className="text-base md:text-xl text-foreground/70 max-w-3xl leading-relaxed mb-[15px]">
@@ -63,11 +63,11 @@ export default function WaterTreatmentBlogPage() {
       </div>
 
       {/* Article Content */}
-      <section className="py-12 md:py-24 px-5 md:px-[63px]">
+      <section className="py-12 md:py-24 px-4 sm:px-6 md:px-[63px]">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-8">
-              <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
+              <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
                 <p className="text-xl md:text-2xl text-primary font-semibold leading-snug mb-[15px]">
                   A valve that works perfectly in a clean water pipeline may not last long in a wastewater treatment plant.
                 </p>
@@ -84,7 +84,7 @@ export default function WaterTreatmentBlogPage() {
                   The right valve must suit the fluid, the operating conditions and the work it is expected to perform.
                 </p>
 
-                <h2 className="text-2xl font-bold mt-16 mb-8">
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8">
                   Which valves are commonly used in water and wastewater treatment?
                 </h2>
                 <p className="mb-[15px]">
@@ -96,7 +96,7 @@ export default function WaterTreatmentBlogPage() {
                 </p>
 
                 {/* Comparison Table */}
-                <div className="my-12 border border-border rounded-2xl md:rounded-[2rem] shadow-xl bg-white overflow-hidden max-w-full">
+                <div className="my-8 md:my-12 border border-border rounded-2xl md:rounded-[2rem] shadow-xl bg-white overflow-hidden max-w-full">
                   <div className="bg-primary p-5 md:p-6">
                     <h4 className="text-white font-bold m-0 text-lg md:text-xl">Valve Suitability Matrix</h4>
                   </div>
@@ -144,7 +144,7 @@ export default function WaterTreatmentBlogPage() {
                   There is no single valve design that is ideal for every stage of treatment.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
+                <h3 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
                 
                 <p className="mb-[15px]">
                   Butterfly valves are commonly considered for medium- and large-diameter water pipelines.
@@ -170,18 +170,18 @@ export default function WaterTreatmentBlogPage() {
                   For example, a butterfly valve installed on a clean water distribution line may face different service conditions from one handling treated industrial effluent.
                 </p>
 
-                <div className="bg-secondary/10 border-l-8 border-secondary p-6 md:p-8 rounded-r-2xl md:rounded-r-3xl my-10 relative overflow-hidden">
+                <div className="bg-secondary/10 border-l-8 border-secondary p-6 md:p-8 rounded-r-2xl md:rounded-r-3xl my-8 md:my-10 relative overflow-hidden">
                   <HelpCircle className="absolute -right-4 -bottom-4 size-24 md:size-32 text-secondary/10" />
                   <h4 className="text-lg md:text-xl font-bold text-primary mb-4 flex items-center gap-2">
                     <Info className="size-5 text-secondary" />
                     When should you consider a butterfly valve?
                   </h4>
-                  <p className="text-base md:text-lg m-0 text-foreground/80 leading-relaxed">
+                  <p className="text-sm md:text-lg m-0 text-foreground/80 leading-relaxed">
                     A butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
                   </p>
                 </div>
 
-                <h3 className="text-2xl font-bold mt-16 mb-6">2. Check valves for preventing reverse flow</h3>
+                <h3 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6">2. Check valves for preventing reverse flow</h3>
                 
                 <p className="mb-[15px]">
                   Reverse flow is an important concern in pumping systems.
@@ -207,7 +207,7 @@ export default function WaterTreatmentBlogPage() {
                   Valve closing characteristics, installation orientation, flow velocity and system dynamics all influence performance.
                 </p>
 
-                <div className="bg-primary/5 border border-primary/10 p-6 md:p-8 rounded-2xl md:rounded-3xl my-10">
+                <div className="bg-primary/5 border border-primary/10 p-6 md:p-8 rounded-2xl md:rounded-3xl my-8 md:my-10">
                   <h4 className="text-lg md:text-xl font-bold text-primary mb-4">Does a non-slam check valve eliminate water hammer?</h4>
                   <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-[15px]">
                     Not necessarily. A properly selected non-slam check valve can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system. 
@@ -217,7 +217,7 @@ export default function WaterTreatmentBlogPage() {
                   </p>
                 </div>
 
-                <div className="relative aspect-video rounded-2xl md:rounded-[2.5rem] overflow-hidden my-12 md:my-16 shadow-2xl">
+                <div className="relative aspect-video rounded-2xl md:rounded-[2.5rem] overflow-hidden my-8 md:my-16 shadow-2xl">
                   <Image
                     src={midImg?.imageUrl || "/blog/Water-treatment-Industrials-valve.webp"}
                     alt="Industrial Valve Pipeline"
@@ -227,7 +227,7 @@ export default function WaterTreatmentBlogPage() {
                   />
                 </div>
 
-                <h3 className="text-2xl font-bold mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
+                <h3 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
                 
                 <p className="mb-[15px]">
                   Sludge handling creates challenges that are not normally encountered in clean water pipelines.
@@ -257,7 +257,7 @@ export default function WaterTreatmentBlogPage() {
                   Before placing an order, confirm whether the valve is intended to isolate pressure from one direction or both.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-16 mb-6">4. Diaphragm valves for selected chemical treatment lines</h3>
+                <h3 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6">4. Diaphragm valves for selected chemical treatment lines</h3>
                 
                 <p className="mb-[15px]">
                   Chemical dosing is another area where valve selection requires care.
@@ -283,10 +283,10 @@ export default function WaterTreatmentBlogPage() {
                   For this reason, material compatibility should always be confirmed using the actual chemical concentration and operating conditions rather than the chemical name alone.
                 </p>
 
-                <h2 className="text-2xl md:text-3xl mt-20 mb-10 text-primary border-b border-border pb-4">
+                <h2 className="text-xl md:text-3xl mt-16 md:mt-20 mb-8 md:mb-10 text-primary border-b border-border pb-4">
                   Five details to confirm before ordering a water treatment valve
                 </h2>
-                <div className="grid md:grid-cols-1 gap-6 my-10">
+                <div className="grid grid-cols-1 gap-4 md:gap-6 my-8 md:my-10">
                   {[
                     { icon: Droplets, label: "Fluid", desc: "Is the pipeline carrying clean water, wastewater, sludge or a chemical solution?" },
                     { icon: Activity, label: "Operating Conditions", desc: "What are the normal and maximum pressure and temperature?" },
@@ -294,23 +294,23 @@ export default function WaterTreatmentBlogPage() {
                     { icon: Layout, label: "Installation", desc: "What are the pipe size, connection type, available space and orientation?" },
                     { icon: Wrench, label: "Operation", desc: "Will the valve be operated manually, pneumatically or electrically?" },
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4 md:gap-6 p-6 md:p-8 bg-neutral-50 border border-border rounded-2xl md:rounded-3xl transition-all hover:bg-white hover:shadow-lg group">
+                    <div key={i} className="flex flex-col sm:flex-row gap-4 md:gap-6 p-5 md:p-8 bg-neutral-50 border border-border rounded-2xl md:rounded-3xl transition-all hover:bg-white hover:shadow-lg group">
                       <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white flex items-center justify-center text-secondary shadow-sm group-hover:bg-secondary group-hover:text-white transition-colors shrink-0">
                         <item.icon className="size-6 md:size-7" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <span className="font-bold text-primary text-lg md:text-xl block mb-2">{item.label}</span>
-                        <p className="text-sm md:text-base text-foreground/60 m-0 leading-relaxed">{item.desc}</p>
+                        <p className="text-xs md:text-base text-foreground/60 m-0 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <p className="mb-[15px]">
+                <p className="mb-[15px] font-medium text-primary/80">
                   These details help narrow the selection and reduce the risk of specifying a valve that is unsuitable for the actual service.
                 </p>
 
-                <h2 className="text-2xl font-bold mt-20 mb-6">Why valve selection affects maintenance costs</h2>
+                <h2 className="text-xl md:text-2xl font-bold mt-16 md:mt-20 mb-6">Why valve selection affects maintenance costs</h2>
                 
                 <p className="mb-[15px]">
                   The purchase price of a valve is only one part of its overall cost.
@@ -328,7 +328,7 @@ export default function WaterTreatmentBlogPage() {
                   That is why selecting the right valve at the procurement stage can be more valuable than simply choosing the lowest-priced option.
                 </p>
 
-                <h2 className="text-2xl font-bold mt-20 mb-6">Industrial valve solutions from AMCO</h2>
+                <h2 className="text-xl md:text-2xl font-bold mt-16 md:mt-20 mb-6">Industrial valve solutions from AMCO</h2>
                 
                 <p className="mb-[15px]">
                   AMCO Industrial Valves manufactures a range of valves used across industrial applications, including sewage, effluent and water treatment.
@@ -342,15 +342,15 @@ export default function WaterTreatmentBlogPage() {
                   The appropriate configuration depends on the application and operating requirements.
                 </p>
 
-                <h2 className="text-2xl font-bold mt-20 mb-6">Planning a water or wastewater treatment project?</h2>
+                <h2 className="text-xl md:text-2xl font-bold mt-16 md:mt-20 mb-6">Planning a water or wastewater treatment project?</h2>
                 
                 <p className="mb-[15px]">
                   Share your fluid details, operating pressure, temperature, pipeline size and valve function with the AMCO team.
                 </p>
 
-                <div className="bg-primary text-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] my-12 md:my-20 shadow-2xl relative overflow-hidden">
+                <div className="bg-primary text-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] my-10 md:my-20 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                  <p className="text-white/70 text-base md:text-lg mb-10 leading-relaxed relative z-10">
+                  <p className="text-white/70 text-base md:text-lg mb-8 md:mb-10 leading-relaxed relative z-10">
                     Contact AMCO Industrial Valves to discuss a suitable valve configuration and request technical specifications or a quotation.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 md:gap-6 relative z-10">
@@ -359,45 +359,45 @@ export default function WaterTreatmentBlogPage() {
                         Request a Quote <ArrowRight className="ml-3 size-5 md:size-6" />
                       </Link>
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-white hover:bg-white/10 w-full sm:w-auto" asChild>
+                    <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-primary bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
                       <Link href="/#products">Explore Catalog</Link>
                     </Button>
                   </div>
                 </div>
 
-                <div className="bg-neutral-50 rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-12 md:mb-20 border border-border">
-                  <h2 className="text-xl md:text-3xl font-bold text-primary mb-8 md:mb-12 flex items-center gap-4">
-                    <HelpCircle className="text-secondary size-7 md:size-8" />
+                <div className="bg-neutral-50 rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-10 md:mb-20 border border-border">
+                  <h2 className="text-xl md:text-3xl font-bold text-primary mb-6 md:mb-12 flex items-center gap-4">
+                    <HelpCircle className="text-secondary size-6 md:size-8" />
                     Frequently Asked Questions
                   </h2>
                   <Accordion type="single" collapsible className="w-full space-y-4">
-                    <AccordionItem value="item-1" className="border-none bg-white rounded-2xl px-5 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline text-sm md:text-lg">Which valve is best for wastewater treatment?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-8">
+                    <AccordionItem value="item-1" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-xs md:text-lg">Which valve is best for wastewater treatment?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                         There is no single best valve for all wastewater treatment applications. Butterfly valves may suit certain water isolation duties, knife gate valves may be considered for sludge handling, and check valves help prevent reverse flow in pumping systems.
                       </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-2" className="border-none bg-white rounded-2xl px-5 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline text-sm md:text-lg">What is the difference between a butterfly valve and a knife gate valve?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-8">
+                    <AccordionItem value="item-2" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-xs md:text-lg">What is the difference between a butterfly valve and a knife gate valve?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                         <p className="mb-[15px]">A butterfly valve uses a rotating disc to control flow, while a knife gate valve uses a sliding gate. Their suitability depends on the fluid, solids content, pressure and sealing requirements.</p>
                       </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-3" className="border-none bg-white rounded-2xl px-5 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline text-sm md:text-lg">Why are check valves used in water treatment plants?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-8">
+                    <AccordionItem value="item-3" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-xs md:text-lg">Why are check valves used in water treatment plants?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                         <p className="mb-[15px]">Check valves help prevent reverse flow, particularly in pumping systems where flow direction may change after a pump stops.</p>
                       </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-4" className="border-none bg-white rounded-2xl px-5 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline text-sm md:text-lg">Can butterfly valves be automated?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-8">
+                    <AccordionItem value="item-4" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-xs md:text-lg">Can butterfly valves be automated?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                         <p className="mb-[15px]">Yes. Suitable butterfly valve configurations can be fitted with pneumatic or electric actuators, subject to valve design, torque requirements and operating conditions.</p>
                       </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-5" className="border-none bg-white rounded-2xl px-5 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-6 hover:no-underline text-sm md:text-lg">What information should I provide when requesting a valve quotation?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-8">
+                    <AccordionItem value="item-5" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-xs md:text-lg">What information should I provide when requesting a valve quotation?</AccordionTrigger>
+                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                         <p className="mb-[15px]">Provide the fluid type, pipe size, pressure, temperature, connection requirements, preferred material, operation method and applicable project specifications.</p>
                       </AccordionContent>
                     </AccordionItem>
@@ -406,28 +406,28 @@ export default function WaterTreatmentBlogPage() {
               </article>
             </div>
 
-            <div className="lg:col-span-4 lg:sticky lg:top-32 self-start space-y-8 mt-12 lg:mt-0">
-              <div className="bg-neutral-50 rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 border border-border shadow-xl">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/20 shrink-0">
-                    <MessageSquare className="size-6 md:size-7" />
+            <div className="lg:col-span-4 lg:sticky lg:top-32 self-start space-y-8 mt-10 lg:mt-0">
+              <div className="bg-neutral-50 rounded-2xl md:rounded-[2.5rem] p-6 md:p-10 border border-border shadow-xl">
+                <div className="flex items-center gap-4 mb-6 md:mb-8">
+                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/20 shrink-0">
+                    <MessageSquare className="size-5 md:size-7" />
                   </div>
                   <h3 className="font-bold text-lg md:text-2xl text-primary m-0">Expert Advice</h3>
                 </div>
-                <p className="text-foreground/60 text-sm md:text-base mb-10 leading-relaxed">
+                <p className="text-foreground/60 text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
                   Planning a water or wastewater treatment project? Share your pipeline details with the AMCO engineering team for a custom valve configuration.
                 </p>
                 <div className="space-y-4">
-                  <Button className="w-full h-14 rounded-2xl font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10" asChild>
+                  <Button className="w-full h-12 md:h-14 rounded-xl md:rounded-2xl font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10" asChild>
                     <Link href="/#contact">Contact Our Engineers</Link>
                   </Button>
-                  <Button variant="outline" className="w-full h-14 rounded-2xl font-bold border-secondary text-secondary hover:bg-secondary/5" asChild>
+                  <Button variant="outline" className="w-full h-12 md:h-14 rounded-xl md:rounded-2xl font-bold border-secondary text-secondary hover:bg-secondary/5" asChild>
                     <Link href="/#products">Browse Catalog</Link>
                   </Button>
                 </div>
               </div>
 
-              <Card className="bg-primary p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] text-white border-none shadow-2xl relative overflow-hidden">
+              <Card className="bg-primary p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] text-white border-none shadow-2xl relative overflow-hidden">
                 <div className="absolute -top-10 -left-10 size-40 bg-white/5 rounded-full" />
                 <CardContent className="p-0 relative z-10">
                   <Info className="size-8 md:size-10 text-secondary mb-6" />
