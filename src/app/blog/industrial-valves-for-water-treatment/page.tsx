@@ -196,7 +196,10 @@ export default function WaterTreatmentBlogPage() {
                 <div className="bg-primary/5 border border-primary/10 p-8 rounded-3xl my-10">
                   <h4 className="text-xl font-bold text-primary mb-4">Does a non-slam check valve eliminate water hammer?</h4>
                   <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
-                    Not necessarily. A properly selected <Link href="/#products" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system. Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
+                    Not necessarily. A properly selected <Link href="/#products" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system.
+                  </p>
+                  <p className="text-base text-foreground/70 leading-relaxed mb-[15px]">
+                    Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
                   </p>
                 </div>
 
