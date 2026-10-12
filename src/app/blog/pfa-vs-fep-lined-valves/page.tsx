@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,8 +32,8 @@ export default function PfaVsFepBlogPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-background overflow-hidden border-b border-border/50">
+        <div className="absolute inset-0 opacity-10">
           <Image
             src={heroImg?.imageUrl || "/blog/hero-bg-blog2.webp"}
             alt="Chemical Processing Plant"
@@ -44,20 +43,20 @@ export default function PfaVsFepBlogPage() {
           />
         </div>
         <div className="container mx-auto relative z-10">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-white/60 mb-6">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-6">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
-            <span className="text-white/40">Blog</span>
+            <span className="text-foreground/40">Blog</span>
             <ChevronRight className="size-4" />
             <span className="text-secondary font-bold">Material Comparison</span>
           </nav>
           <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
             <ShieldAlert className="size-3.5" /> Corrosive Chemical Solutions
           </div>
-          <h1 className="text-3xl md:text-6xl font-bold text-white max-w-5xl leading-tight mb-8">
+          <h1 className="text-3xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8">
             PFA vs FEP Lined Valves: What Should You Choose for Corrosive Chemical Applications?
           </h1>
-          <p className="text-xl text-white/70 max-w-3xl leading-relaxed mb-[15px]">
+          <p className="text-xl text-foreground/70 max-w-3xl leading-relaxed mb-[15px]">
             Selecting the right fluoropolymer lining is critical for the safety and longevity of your industrial valves in highly aggressive environments.
           </p>
         </div>

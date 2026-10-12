@@ -32,8 +32,8 @@ export default function WaterTreatmentBlogPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-background overflow-hidden border-b border-border/50">
+        <div className="absolute inset-0 opacity-10">
           <Image
             src={heroImg?.imageUrl || "/blog/hero-bg-blog1.webp"}
             alt="Water Treatment Header"
@@ -43,20 +43,20 @@ export default function WaterTreatmentBlogPage() {
           />
         </div>
         <div className="container mx-auto relative z-10">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-white/60 mb-6">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-6">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
-            <span className="text-white/40">Blog</span>
+            <span className="text-foreground/40">Blog</span>
             <ChevronRight className="size-4" />
             <span className="text-secondary font-bold">Industrial Valves Selection</span>
           </nav>
           <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
             <Droplets className="size-3.5" /> Industry Selection Guide
           </div>
-          <h1 className="text-3xl md:text-6xl font-bold text-white max-w-5xl leading-tight mb-8">
+          <h1 className="text-3xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8">
             How to Choose the Right Industrial Valve for Water and Wastewater Treatment Plants
           </h1>
-          <p className="text-xl text-white/70 max-w-3xl leading-relaxed mb-[15px]">
+          <p className="text-xl text-foreground/70 max-w-3xl leading-relaxed mb-[15px]">
             Selecting valves for treatment facilities requires understanding the fluid characteristics, operating conditions, and the specific role of each pipeline.
           </p>
         </div>
