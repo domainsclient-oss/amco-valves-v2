@@ -1,7 +1,8 @@
+
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Info, HelpCircle, Activity, ArrowRight, MessageSquare, ShieldAlert, X } from "lucide-react";
+import { ChevronRight, Info, HelpCircle, Activity, ArrowRight, MessageSquare, ShieldAlert } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function PfaVsFepBlogPage() {
   const heroImg = placeholderImages.find(img => img.id === "blog-pfa-hero");
-  const midImg = "/blog/PFA-lined-valves.webp";
+  const midImg = placeholderImages.find(img => img.id === "blog-pfa-detail");
 
   return (
     <main className="min-h-screen bg-white">
@@ -35,7 +36,7 @@ export default function PfaVsFepBlogPage() {
       <div className="relative pt-32 pb-16 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src={heroImg?.imageUrl || "https://picsum.photos/seed/chemical1/1200/600"}
+            src={heroImg?.imageUrl || "/blog/hero-bg-blog2.webp"}
             alt="Chemical Processing Plant"
             fill
             className="object-cover"
@@ -68,27 +69,20 @@ export default function PfaVsFepBlogPage() {
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8">
               <article className="prose prose-neutral max-w-none prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
-                <p className="mb-[15px]">When a valve is exposed to corrosive chemicals, the wrong material choice can become an expensive problem.</p>
                 
-                <p className="mb-[15px]">Corrosion, damaged sealing surfaces and premature lining failure can lead to leakage, maintenance work and unplanned interruptions.</p>
-                
-                <p className="mb-[15px]">This is why engineers working with aggressive chemical media often consider fluoropolymer-lined valves.</p>
-                
-                <p className="mb-[15px]">Two materials commonly encountered in this category are PFA and FEP.</p>
-                
-                <p className="mb-[15px]">Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
-
-                <h2 className="text-2xl font-bold mt-16 mb-8">
-                  What are PFA and FEP lined valves?
-                </h2>
-                
-                <p className="mb-[15px]">PFA (perfluoroalkoxy) and FEP (fluorinated ethylene propylene) are fluoropolymers used to provide chemical-resistant surfaces.</p>
-                
-                <p className="mb-[15px]">In a lined valve, the lining separates the process fluid from the underlying valve body, helping protect it from direct chemical exposure.</p>
-                
-                <p className="mb-[15px]">A lined valve is therefore different from an unlined metallic valve, where the process fluid comes into contact with the body material.</p>
-                
-                <p className="mb-[15px]">Both PFA and FEP can be suitable for a wide range of corrosive chemicals. However, their performance limits and suitability depend on the application.</p>
+                <h2 className="text-2xl font-bold mt-16 mb-8">What are PFA and FEP lined valves?</h2>
+                <p className="mb-[15px]">
+                  PFA (perfluoroalkoxy) and FEP (fluorinated ethylene propylene) are fluoropolymers used to provide chemical-resistant surfaces.
+                </p>
+                <p className="mb-[15px]">
+                  In a lined valve, the lining separates the process fluid from the underlying valve body, helping protect it from direct chemical exposure.
+                </p>
+                <p className="mb-[15px]">
+                  A lined valve is therefore different from an unlined metallic valve, where the process fluid comes into contact with the body material.
+                </p>
+                <p className="mb-[15px]">
+                  Both PFA and FEP can be suitable for a wide range of corrosive chemicals. However, their performance limits and suitability depend on the application.
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">PFA vs FEP: What is the difference?</h2>
                 
@@ -99,9 +93,9 @@ export default function PfaVsFepBlogPage() {
                   <Table>
                     <TableHeader className="bg-neutral-50">
                       <TableRow>
-                        <TableHead className="text-primary font-bold h-14">Factor</TableHead>
-                        <TableHead className="text-primary font-bold h-14">PFA lining</TableHead>
-                        <TableHead className="text-primary font-bold h-14">FEP lining</TableHead>
+                        <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">Factor</TableHead>
+                        <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">PFA lining</TableHead>
+                        <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">FEP lining</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -134,118 +128,172 @@ export default function PfaVsFepBlogPage() {
                   </Table>
                 </div>
 
-                <p className="mb-[15px]">The important point is that the properties of the lining material do not automatically determine the allowable operating conditions of the complete valve.</p>
-                
-                <p className="mb-[15px]">The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.</p>
+                <p className="mb-[15px]">
+                  The important point is that the properties of the lining material do not automatically determine the allowable operating conditions of the complete valve.
+                </p>
+                <p className="mb-[15px]">
+                  The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">When should you consider PFA lined valves?</h2>
-
-                <p className="mb-[15px]">PFA lined valves are often evaluated for chemical applications where both corrosion resistance and elevated temperature capability are important.</p>
-
-                <p className="mb-[15px]">They may be considered for certain chemical transfer, process isolation and handling applications involving aggressive media.</p>
-
-                <p className="mb-[15px]">However, it would be incorrect to assume that a PFA lining is suitable for every chemical at every temperature.</p>
-
-                <p className="mb-[15px]">Chemical concentration, operating pressure, temperature, permeation behaviour and potential mechanical damage all influence suitability.</p>
-
-                <p className="mb-[15px]">For demanding service conditions, engineers should confirm the complete valve's rated operating limits with the manufacturer.</p>
+                <p className="mb-[15px]">
+                  PFA lined valves are often evaluated for chemical applications where both corrosion resistance and elevated temperature capability are important.
+                </p>
+                <p className="mb-[15px]">
+                  They may be considered for certain chemical transfer, process isolation and handling applications involving aggressive media.
+                </p>
+                <p className="mb-[15px]">
+                  However, it would be incorrect to assume that a PFA lining is suitable for every chemical at every temperature.
+                </p>
+                <p className="mb-[15px]">
+                  Chemical concentration, operating pressure, temperature, permeation behaviour and potential mechanical damage all influence suitability.
+                </p>
+                <p className="mb-[15px]">
+                  For demanding service conditions, engineers should confirm the complete valve's rated operating limits with the manufacturer.
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">When can FEP lined valves be a suitable option?</h2>
-
-                <p className="mb-[15px]">FEP lined valves can also provide strong chemical resistance in appropriately selected applications.</p>
-
-                <p className="mb-[15px]">They may be considered where the operating conditions remain within the lining and complete valve assembly's limits.</p>
-
-                <p className="mb-[15px]">For some projects, FEP may provide a practical alternative to PFA.</p>
-
-                <p className="mb-[15px]">But the decision should not be based on lining material alone.</p>
-
-                <p className="mb-[15px]">Two valves with different designs, lining methods and sealing arrangements may perform differently even when both are described as FEP lined.</p>
-
-                <p className="mb-[15px]">This is why the technical datasheet matters more than a broad product label.</p>
+                <p className="mb-[15px]">
+                  FEP lined valves can also provide strong chemical resistance in appropriately selected applications.
+                </p>
+                <p className="mb-[15px]">
+                  They may be considered where the operating conditions remain within the lining and complete valve assembly's limits.
+                </p>
+                <p className="mb-[15px]">
+                  For some projects, FEP may provide a practical alternative to PFA.
+                </p>
+                <p className="mb-[15px]">
+                  But the decision should not be based on lining material alone.
+                </p>
+                <p className="mb-[15px]">
+                  Two valves with different designs, lining methods and sealing arrangements may perform differently even when both are described as FEP lined.
+                </p>
+                <p className="mb-[15px]">
+                  This is why the technical datasheet matters more than a broad product label.
+                </p>
 
                 <div className="relative aspect-video rounded-[2.5rem] overflow-hidden my-16 shadow-2xl">
                   <Image
-                    src={midImg}
-                    alt="PFA Lined Valve Detail"
+                    src={midImg?.imageUrl || "/blog/PFA-lined-valves.webp"}
+                    alt="Lined Valve Technology"
                     fill
                     className="object-cover"
+                    data-ai-hint="valve lining"
                   />
                 </div>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">Which valve types are available with chemical-resistant linings?</h2>
-
-                <p className="mb-[15px]">Several industrial valve designs can be manufactured with fluoropolymer linings.</p>
-
-                <p className="mb-[15px]">The correct design depends on the function required in the pipeline.</p>
+                <p className="mb-[15px]">
+                  Several industrial valve designs can be manufactured with fluoropolymer linings.
+                </p>
+                <p className="mb-[15px]">
+                  The correct design depends on the function required in the pipeline.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">Lined ball valves</h3>
-
-                <p className="mb-[15px]">Lined ball valves are commonly considered for on/off isolation duties.</p>
-
-                <p className="mb-[15px]">Their quarter-turn operation can make them practical where relatively quick opening and closing is required.</p>
-
-                <p className="mb-[15px]">Selection must account for the process fluid, operating conditions, sealing arrangement and compatibility of wetted components.</p>
+                <p className="mb-[15px]">
+                  Lined ball valves are commonly considered for on/off isolation duties.
+                </p>
+                <p className="mb-[15px]">
+                  Their quarter-turn operation can make them practical where relatively quick opening and closing is required.
+                </p>
+                <p className="mb-[15px]">
+                  Selection must account for the process fluid, operating conditions, sealing arrangement and compatibility of wetted components.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">Lined butterfly valves</h3>
-
-                <p className="mb-[15px]">Lined butterfly valves may be considered for chemical service in suitable pipeline sizes and pressure conditions.</p>
-
-                <p className="mb-[15px]">The valve's disc, liner and sealing arrangement require particular attention because these components can be exposed to the process fluid.</p>
+                <p className="mb-[15px]">
+                  Lined butterfly valves may be considered for chemical service in suitable pipeline sizes and pressure conditions.
+                </p>
+                <p className="mb-[15px]">
+                  The valve's disc, liner and sealing arrangement require particular attention because these components can be exposed to the process fluid.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">Lined plug valves</h3>
-
-                <p className="mb-[15px]">Lined plug valves are another option for chemical isolation applications.</p>
-
-                <p className="mb-[15px]">Their suitability depends on the valve design, lining construction and service conditions.</p>
+                <p className="mb-[15px]">
+                  Lined plug valves are another option for chemical isolation applications.
+                </p>
+                <p className="mb-[15px]">
+                  Their suitability depends on the valve design, lining construction and service conditions.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">Lined check valves</h3>
-
-                <p className="mb-[15px]">Where reverse-flow prevention is required, lined check valves may be considered.</p>
-
-                <p className="mb-[15px]">However, their operating characteristics must also suit the process, including flow conditions and installation requirements.</p>
+                <p className="mb-[15px]">
+                  Where reverse-flow prevention is required, lined check valves may be considered.
+                </p>
+                <p className="mb-[15px]">
+                  However, their operating characteristics must also suit the process, including flow conditions and installation requirements.
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">Five questions to ask before selecting a lined valve</h2>
-
+                
                 <h3 className="text-xl font-bold mt-8 mb-4">1. What chemical will the valve handle?</h3>
-                <p className="mb-[15px]">Identify the exact chemical rather than describing the fluid simply as acidic or corrosive.</p>
-                <p className="mb-[15px]">Where relevant, provide details of mixtures and contaminants.</p>
+                <p className="mb-[15px]">
+                  Identify the exact chemical rather than describing the fluid simply as acidic or corrosive.
+                </p>
+                <p className="mb-[15px]">
+                  Where relevant, provide details of mixtures and contaminants.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">2. What is the chemical concentration?</h3>
-                <p className="mb-[15px]">Chemical compatibility may change with concentration.</p>
-                <p className="mb-[15px]">A material suitable for a dilute solution may not necessarily be appropriate for a more concentrated process stream.</p>
+                <p className="mb-[15px]">
+                  Chemical compatibility may change with concentration.
+                </p>
+                <p className="mb-[15px]">
+                  A material suitable for a dilute solution may not necessarily be appropriate for a more concentrated process stream.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">3. What are the operating and maximum temperatures?</h3>
-                <p className="mb-[15px]">Normal temperature is important, but so are cleaning cycles, process fluctuations and occasional temperature excursions.</p>
-                <p className="mb-[15px]">The complete valve must be suitable for the specified conditions.</p>
+                <p className="mb-[15px]">
+                  Normal temperature is important, but so are cleaning cycles, process fluctuations and occasional temperature excursions.
+                </p>
+                <p className="mb-[15px]">
+                  The complete valve must be suitable for the specified conditions.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">4. What pressure conditions will the valve experience?</h3>
-                <p className="mb-[15px]">Pressure rating, temperature and valve construction must be evaluated together.</p>
-                <p className="mb-[15px]">Do not assume that every valve using the same lining material has the same pressure capability.</p>
+                <p className="mb-[15px]">
+                  Pressure rating, temperature and valve construction must be evaluated together.
+                </p>
+                <p className="mb-[15px]">
+                  Do not assume that every valve using the same lining material has the same pressure capability.
+                </p>
 
                 <h3 className="text-xl font-bold mt-8 mb-4">5. Is the valve required for isolation or flow control?</h3>
-                <p className="mb-[15px]">An isolation valve and a throttling valve may require different designs.</p>
-                <p className="mb-[15px]">Choosing a valve based only on chemical resistance can overlook the actual operating function.</p>
+                <p className="mb-[15px]">
+                  An isolation valve and a throttling valve may require different designs.
+                </p>
+                <p className="mb-[15px]">
+                  Choosing a valve based only on chemical resistance can overlook the actual operating function.
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">Why the complete valve construction matters</h2>
-
-                <p className="mb-[15px]">A chemical-resistant lining is important, but it is not the only factor affecting valve reliability.</p>
-
-                <p className="mb-[15px]">The lining must remain intact during installation and operation. Seals, interfaces and other wetted components must also be compatible with the process fluid.</p>
-
-                <p className="mb-[15px]">For example, a valve with a suitable lining may still be unsuitable if another component exposed to the fluid cannot tolerate the chemical or temperature.</p>
-
-                <p className="mb-[15px]">This is one reason why engineering teams should review the complete material specification rather than relying only on the term "chemical-resistant valve."</p>
+                <p className="mb-[15px]">
+                  A chemical-resistant lining is important, but it is not the only factor affecting valve reliability.
+                </p>
+                <p className="mb-[15px]">
+                  The lining must remain intact during installation and operation. Seals, interfaces and other wetted components must also be compatible with the process fluid.
+                </p>
+                <p className="mb-[15px]">
+                  For example, a valve with a suitable lining may still be unsuitable if another component exposed to the fluid cannot tolerate the chemical or temperature.
+                </p>
+                <p className="mb-[15px]">
+                  This is one reason why engineering teams should review the complete material specification rather than relying only on the term "chemical-resistant valve."
+                </p>
 
                 <h2 className="text-2xl font-bold mt-16 mb-8">PFA and FEP lined valve solutions from AMCO</h2>
-
-                <p className="mb-[15px]">AMCO Industrial Valves offers PFA/FEP lined valve configurations within its industrial product portfolio.</p>
-
-                <p className="mb-[15px]">These include lined ball valves, butterfly valves, diaphragm valves, plug valves and check valves.</p>
-
-                <p className="mb-[15px]">For example, AMCO's published PFA/FEP lined butterfly valve specifications include wafer-type configurations, with details on size range, body material, pressure rating and applicable manufacturing and testing standards.</p>
-
-                <p className="mb-[15px]">The suitability of each configuration should be confirmed against the specific chemical service.</p>
+                <p className="mb-[15px]">
+                  AMCO Industrial Valves offers PFA/FEP lined valve configurations within its industrial product portfolio.
+                </p>
+                <p className="mb-[15px]">
+                  These include lined ball valves, butterfly valves, diaphragm valves, plug valves and check valves.
+                </p>
+                <p className="mb-[15px]">
+                  For example, AMCO's published PFA/FEP lined butterfly valve specifications include wafer-type configurations, with details on size range, body material, pressure rating and applicable manufacturing and testing standards.
+                </p>
+                <p className="mb-[15px]">
+                  The suitability of each configuration should be confirmed against the specific chemical service.
+                </p>
 
                 <div className="bg-primary text-white p-12 rounded-[3rem] my-20 shadow-2xl relative overflow-hidden text-center">
                   <h2 className="text-white text-3xl md:text-4xl mt-0 mb-8 font-bold">Looking for a lined valve for your chemical process?</h2>
@@ -314,10 +362,10 @@ export default function PfaVsFepBlogPage() {
                   <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/20">
                     <MessageSquare className="size-7" />
                   </div>
-                  <h3 className="font-bold text-2xl text-primary m-0">Need Help?</h3>
+                  <h3 className="font-bold text-2xl text-primary m-0">Expert Assistance</h3>
                 </div>
-                <p className="text-foreground/60 text-base mb-10 leading-relaxed">
-                  Unsure which lining fits your process? Our engineers can analyze your media details and recommend the optimal PFA or FEP solution.
+                <p className="text-foreground/60 text-base mb-10 leading-relaxed mb-[15px]">
+                  Our engineering team can evaluate your process conditions and recommend the optimal PFA or FEP solution for maximum service life.
                 </p>
                 <div className="space-y-4">
                   <Button className="w-full h-14 rounded-2xl font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10" asChild>
@@ -330,9 +378,9 @@ export default function PfaVsFepBlogPage() {
                 <div className="absolute -top-10 -left-10 size-40 bg-white/5 rounded-full" />
                 <CardContent className="p-0 relative z-10">
                   <Info className="size-10 text-secondary mb-6" />
-                  <h4 className="font-bold text-xl mb-4">Precision Lining</h4>
+                  <h4 className="font-bold text-xl mb-4">Quality Assured</h4>
                   <p className="text-white/60 text-[15px] leading-relaxed mb-0">
-                    AMCO uses high-density fluoropolymer resins and advanced molding techniques to ensure uniform lining thickness and zero porosity.
+                    AMCO uses advanced fluoropolymer resins and strictly controlled manufacturing processes to ensure lining integrity and chemical resistance.
                   </p>
                 </CardContent>
               </Card>
@@ -340,13 +388,13 @@ export default function PfaVsFepBlogPage() {
               <div className="p-8 border border-border rounded-[2rem] bg-white">
                 <h4 className="font-bold text-primary mb-4 flex items-center gap-2">
                   <Activity className="size-4 text-secondary" />
-                  Related Products
+                  Lined Product Range
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
                   {[
                     { label: "Lined Ball Valves", href: "/products/ptfe-lined-ball-valve" },
                     { label: "Lined Butterfly Valves", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
-                    { label: "Lined Diaphragm Valves", href: "/products/ptfe-lined-diaphragm-valve" },
+                    { label: "Lined Plug Valves", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
                     { label: "Lined Check Valves", href: "/products/ptfe-lined-wafer-check-valve" },
                   ].map((link, i) => (
                     <Link key={i} href={link.href} className="flex items-center justify-between text-sm text-foreground/50 hover:text-secondary transition-colors py-2 group">

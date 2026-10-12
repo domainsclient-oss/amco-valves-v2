@@ -99,13 +99,13 @@
     {
       "id": "blog-pfa-hero",
       "description": "Lined valves in a chemical processing plant",
-      "imageUrl": "https://picsum.photos/seed/chemical1/1200/600",
+      "imageUrl": "/blog/hero-bg-blog2.webp",
       "imageHint": "chemical processing"
     },
     {
       "id": "blog-pfa-detail",
       "description": "Cross section of a fluoropolymer lined ball valve",
-      "imageUrl": "https://picsum.photos/seed/lining1/800/600",
+      "imageUrl": "/blog/PFA-lined-valves.webp",
       "imageHint": "valve lining"
     }
   ]
