@@ -147,7 +147,10 @@ export default function WaterTreatmentBlogPage() {
                   <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines.
                 </p>
                 <p className="mb-[15px]">
-                  Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
+                  Their compact construction can make them practical where installation space matters.
+                </p>
+                <p className="mb-[15px]">
+                  Depending on the design, they can be operated manually or with an actuator.
                 </p>
                 <p className="mb-[15px]">
                   However, the selection should not stop at the valve diameter.
@@ -172,13 +175,22 @@ export default function WaterTreatmentBlogPage() {
 
                 <h3 className="text-2xl font-bold mt-16 mb-6">2. Check valves for preventing reverse flow</h3>
                 <p className="mb-[15px]">
-                  Reverse flow is an important concern in pumping systems. When a pump stops, the pressure conditions in a pipeline can change. Without appropriate protection, fluid may flow backwards through the system.
+                  Reverse flow is an important concern in pumping systems.
                 </p>
                 <p className="mb-[15px]">
-                  A <Link href="/#products" className="text-secondary font-bold hover:underline">check valve</Link> is designed to permit flow in one direction and restrict reverse flow. Water treatment applications may use different check valve designs, including wafer, dual plate and non-slam check valves.
+                  When a pump stops, the pressure conditions in a pipeline can change. Without appropriate protection, fluid may flow backwards through the system.
                 </p>
                 <p className="mb-[15px]">
-                  The important distinction is that these designs do not necessarily behave the same way during pump shutdown. Valve closing characteristics, installation orientation, flow velocity and system dynamics all influence performance.
+                  A <Link href="/#products" className="text-secondary font-bold hover:underline">check valve</Link> is designed to permit flow in one direction and restrict reverse flow.
+                </p>
+                <p className="mb-[15px]">
+                  Water treatment applications may use different check valve designs, including wafer, dual plate and non-slam check valves.
+                </p>
+                <p className="mb-[15px]">
+                  The important distinction is that these designs do not necessarily behave the same way during pump shutdown.
+                </p>
+                <p className="mb-[15px]">
+                  Valve closing characteristics, installation orientation, flow velocity and system dynamics all influence performance.
                 </p>
 
                 <div className="bg-primary/5 border border-primary/10 p-8 rounded-3xl my-10">
@@ -197,9 +209,9 @@ export default function WaterTreatmentBlogPage() {
                     data-ai-hint="industrial valves"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <p className="text-white text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Maintenance Perspective</p>
-                    <p className="text-white/80 text-xs italic mb-[15px]">Correct valve orientation is critical for check valve longevity.</p>
+                  <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <p className="text-sm font-bold uppercase tracking-[0.2em] mb-[15px]">Maintenance Perspective</p>
+                    <p className="text-xs italic opacity-80 mb-[15px]">Correct valve orientation is critical for check valve longevity.</p>
                   </div>
                 </div>
 
@@ -235,7 +247,7 @@ export default function WaterTreatmentBlogPage() {
                   {[
                     { icon: Droplets, label: "Fluid", desc: "Is the pipeline carrying clean water, wastewater, sludge or a chemical solution?" },
                     { icon: Activity, label: "Operating Conditions", desc: "What are the normal and maximum pressure and temperature?" },
-                    { icon: Settings, label: "Valve Function", desc: "Is the valve required for isolation, throttling or reverse-flow prevention?" },
+                    { icon: Settings, label: "Valve Function", desc: "Is the valve required for isolation, thinning or reverse-flow prevention?" },
                     { icon: Layout, label: "Installation", desc: "What are the pipe size, connection type, available space and orientation?" },
                     { icon: Wrench, label: "Operation", desc: "Will the valve be operated manually, pneumatically or electrically?" },
                   ].map((item, i) => (
