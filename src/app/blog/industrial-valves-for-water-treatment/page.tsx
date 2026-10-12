@@ -1,15 +1,14 @@
-
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, CheckCircle2, MessageSquare, ArrowRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench } from "lucide-react";
+import { ChevronRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench, ArrowRight, MessageSquare } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import { placeholderImages } from "@/app/lib/placeholder-images.json";
+import { placeholderImages } from "@/lib/placeholder-images.json";
 
 export const metadata: Metadata = {
   title: "Industrial Valves for Water Treatment: Selection Guide | AMCO Valves",
@@ -138,7 +137,7 @@ export default function WaterTreatmentBlogPage() {
 
                 <h3 className="text-2xl md:text-3xl mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
                 <p>
-                  <Link href="/products/butterfly-valve/centric-disc-design/wafer-semi-lugged-pn10-pn16-pn20-pn25" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines. Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
+                  <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines. Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
                 </p>
                 <p>
                   However, the selection should not stop at the valve diameter. Engineers should also examine the operating pressure, seat material, water characteristics, required shut-off performance and frequency of operation.
@@ -163,7 +162,7 @@ export default function WaterTreatmentBlogPage() {
                   Reverse flow is an important concern in pumping systems. When a pump stops, the pressure conditions in a pipeline can change. Without appropriate protection, fluid may flow backwards through the system.
                 </p>
                 <p>
-                  A <Link href="/products/dual-plate-check-valve/wafer-type-resilient-seat-pn16" className="text-secondary font-bold hover:underline">check valve</Link> is designed to permit flow in one direction and restrict reverse flow. Water treatment applications may use different check valve designs, including wafer, dual plate and <Link href="/products/wafer-check-valve/resilient-seat" className="text-secondary font-bold hover:underline">non-slam check valves</Link>.
+                  A <Link href="/#products" className="text-secondary font-bold hover:underline">check valve</Link> is designed to permit flow in one direction and restrict reverse flow. Water treatment applications may use different check valve designs, including wafer, dual plate and non-slam check valves.
                 </p>
                 <p>
                   The important distinction is that these designs do not necessarily behave the same way during pump shutdown. Valve closing characteristics, installation orientation, flow velocity and system dynamics all influence performance.
@@ -172,7 +171,7 @@ export default function WaterTreatmentBlogPage() {
                 <div className="bg-primary/5 border border-primary/10 p-8 rounded-3xl my-10">
                   <h4 className="text-xl font-bold text-primary mb-4">Does a non-slam check valve eliminate water hammer?</h4>
                   <p className="text-base text-foreground/70 mb-0 leading-relaxed">
-                    Not necessarily. A properly selected <Link href="/products/wafer-check-valve/resilient-seat-spring-type" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system. Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
+                    Not necessarily. A properly selected <Link href="/#products" className="text-secondary font-medium hover:underline">non-slam check valve</Link> can help reduce the risk of valve-slam-related pressure surges, but water hammer depends on the entire piping system. Pump characteristics, pipeline length, flow velocity and transient pressure conditions must also be considered.
                   </p>
                 </div>
 
@@ -196,7 +195,7 @@ export default function WaterTreatmentBlogPage() {
                   Sludge handling creates challenges that are not normally encountered in clean water pipelines. Suspended solids, fibrous material and variations in slurry concentration can affect how a valve opens, closes and seals.
                 </p>
                 <p>
-                  <Link href="/products/knife-edge-gate-valve/uni-directional/wafer-lugged-resilient-seat-pn10" className="text-secondary font-bold hover:underline">Knife gate valves</Link> are often considered for these services because their design can be suited to certain fluids containing suspended solids.
+                  <Link href="/#products" className="text-secondary font-bold hover:underline">Knife gate valves</Link> are often considered for these services because their design can be suited to certain fluids containing suspended solids.
                 </p>
                 <p>
                   However, not every knife gate valve is suitable for every sludge application. The selection should account for solids concentration, particle characteristics, pressure differential, direction of flow and required sealing performance.
@@ -210,7 +209,7 @@ export default function WaterTreatmentBlogPage() {
                   Chemical dosing is another area where valve selection requires care. Treatment plants may handle chemicals for disinfection, pH adjustment, coagulation or other processes.
                 </p>
                 <p>
-                  Depending on the chemical, concentration and operating temperature, a <Link href="/products/diaphragm-valve/unlined-and-lined" className="text-secondary font-bold hover:underline">diaphragm valve</Link> may be an appropriate choice. Its suitability depends heavily on the diaphragm and lining materials.
+                  Depending on the chemical, concentration and operating temperature, a <Link href="/#products" className="text-secondary font-bold hover:underline">diaphragm valve</Link> may be an appropriate choice. Its suitability depends heavily on the diaphragm and lining materials.
                 </p>
                 <p>
                   A valve that is compatible with one treatment chemical may not be suitable for another. For this reason, material compatibility should always be confirmed using the actual chemical concentration and operating conditions rather than the chemical name alone.
