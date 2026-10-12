@@ -154,7 +154,7 @@ export default function WaterTreatmentBlogPage() {
                   There is no single valve design that is ideal for every stage of treatment.
                 </p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
+                <h3 className="text-2xl font-bold mt-16 mb-6">1. Butterfly valves for water distribution and isolation</h3>
                 <p>
                   <Link href="/#products" className="text-secondary font-bold hover:underline">Butterfly valves</Link> are commonly considered for medium- and large-diameter water pipelines. Their compact construction can make them practical where installation space matters. Depending on the design, they can be operated manually or with an actuator.
                 </p>
@@ -176,7 +176,7 @@ export default function WaterTreatmentBlogPage() {
                   </p>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">2. Check valves for preventing reverse flow</h3>
+                <h3 className="text-2xl font-bold mt-16 mb-6">2. Check valves for preventing reverse flow</h3>
                 <p>
                   Reverse flow is an important concern in pumping systems. When a pump stops, the pressure conditions in a pipeline can change. Without appropriate protection, fluid may flow backwards through the system.
                 </p>
@@ -209,7 +209,7 @@ export default function WaterTreatmentBlogPage() {
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
+                <h3 className="text-2xl font-bold mt-16 mb-6">3. Knife gate valves for sludge and slurry handling</h3>
                 <p>
                   Sludge handling creates challenges that are not normally encountered in clean water pipelines. Suspended solids, fibrous material and variations in slurry concentration can affect how a valve opens, closes and seals.
                 </p>
@@ -223,7 +223,7 @@ export default function WaterTreatmentBlogPage() {
                   Unidirectional and bidirectional knife gate valves also have different application considerations. Before placing an order, confirm whether the valve is intended to isolate pressure from one direction or both.
                 </p>
 
-                <h3 className="text-2xl md:text-3xl mt-16 mb-6">4. Diaphragm valves for selected chemical treatment lines</h3>
+                <h3 className="text-2xl font-bold mt-16 mb-6">4. Diaphragm valves for selected chemical treatment lines</h3>
                 <p>
                   Chemical dosing is another area where valve selection requires care. Treatment plants may handle chemicals for disinfection, pH adjustment, coagulation or other processes.
                 </p>
@@ -351,7 +351,7 @@ export default function WaterTreatmentBlogPage() {
                   <Info className="size-10 text-secondary mb-6" />
                   <h4 className="font-bold text-xl mb-4">India's Leading Manufacturer</h4>
                   <p className="text-white/60 text-[15px] leading-relaxed mb-0">
-                    AMCO Industrial Valves has been delivering precision solutions since 1986, specialized in IBR and Non-IBR valves for global utility and industrial sectors.
+                    AMCO Industrial Valves has been delivering precision solutions since 1986, specialized in IBR and Non IBR valves for global utility and industrial sectors.
                   </p>
                 </CardContent>
               </Card>
