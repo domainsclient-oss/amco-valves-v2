@@ -87,7 +87,7 @@
     {
       "id": "blog-water-hero",
       "description": "Industrial water treatment facility overview",
-      "imageUrl": "https://picsum.photos/seed/water1/1200/600",
+      "imageUrl": "/hero-bg-blog1.webp",
       "imageHint": "water treatment"
     },
     {
