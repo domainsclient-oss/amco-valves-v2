@@ -2,7 +2,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2, ShieldAlert } from "lucide-react";
+import { ChevronRight, Droplets, Info, HelpCircle, Settings, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2, ShieldAlert } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -80,7 +80,6 @@ export default function PfaVsFepBlogPage() {
                 <p className="mb-[15px]">Both offer broad chemical resistance, but they are not identical. Understanding the differences is important before selecting a valve for a chemical processing application.</p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
-                  <Layout className="text-secondary size-8" />
                   What are PFA and FEP lined valves?
                 </h2>
                 <p className="mb-[15px]">

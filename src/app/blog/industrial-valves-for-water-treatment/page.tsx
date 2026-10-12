@@ -82,7 +82,6 @@ export default function WaterTreatmentBlogPage() {
                 </p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
-                  <Layout className="text-secondary size-8" />
                   Which valves are commonly used in water and wastewater treatment?
                 </h2>
                 <p className="mb-[15px]">
