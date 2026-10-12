@@ -1,7 +1,8 @@
+
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench, ArrowRight, MessageSquare } from "lucide-react";
+import { ChevronRight, Droplets, Info, HelpCircle, Settings, Layout, Activity, Wrench, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -85,7 +86,25 @@ export default function WaterTreatmentBlogPage() {
                   Which valves are commonly used in water and wastewater treatment?
                 </h2>
                 <p>
-                  Butterfly valves, check valves, knife gate valves, diaphragm valves and gate valves are among the options used across water and wastewater treatment systems. Their suitability depends on the specific process.
+                  Various designs are utilized across treatment systems to handle specific process requirements. Common options include:
+                </p>
+                <ul className="space-y-4 list-none pl-0">
+                  {[
+                    "Butterfly valves for large-diameter distribution and isolation.",
+                    "Check valves to prevent reverse flow and protect pumping equipment.",
+                    "Knife gate valves for handling sludge and heavy solids.",
+                    "Diaphragm valves for precise chemical dosing and process control.",
+                    "Gate valves for reliable pipeline isolation."
+                  ].map((point, idx) => (
+                    <li key={idx} className="flex gap-3 text-lg text-foreground/80">
+                      <CheckCircle2 className="text-secondary shrink-0 mt-1 size-5" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-8">
+                  The suitability of these valves depends heavily on the specific stage of the process and the nature of the fluid being handled.
                 </p>
 
                 {/* Comparison Table */}
@@ -218,7 +237,7 @@ export default function WaterTreatmentBlogPage() {
                 <h2 className="text-2xl md:text-3xl mt-20 mb-10 text-primary border-b border-border pb-4">
                   Five details to confirm before ordering a water treatment valve
                 </h2>
-                <div className="grid md:grid-cols-1 gap-4 my-10">
+                <div className="grid md:grid-cols-1 gap-6 my-10">
                   {[
                     { icon: Droplets, label: "Fluid", desc: "Is the pipeline carrying clean water, wastewater, sludge or a chemical solution?" },
                     { icon: Activity, label: "Operating Conditions", desc: "What are the normal and maximum pressure and temperature?" },

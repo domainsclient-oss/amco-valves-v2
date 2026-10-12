@@ -95,6 +95,18 @@
       "description": "Large industrial valves in a water processing line",
       "imageUrl": "https://picsum.photos/seed/water2/800/600",
       "imageHint": "industrial valves"
+    },
+    {
+      "id": "blog-pfa-hero",
+      "description": "Lined valves in a chemical processing plant",
+      "imageUrl": "https://picsum.photos/seed/chemical1/1200/600",
+      "imageHint": "chemical processing"
+    },
+    {
+      "id": "blog-pfa-detail",
+      "description": "Cross section of a fluoropolymer lined ball valve",
+      "imageUrl": "https://picsum.photos/seed/lining1/800/600",
+      "imageHint": "valve lining"
     }
   ]
 }
