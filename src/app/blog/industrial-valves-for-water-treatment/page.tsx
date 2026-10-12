@@ -78,7 +78,11 @@ export default function WaterTreatmentBlogPage() {
                 </p>
 
                 <p className="mb-[15px]">
-                  For plant engineers and procurement teams, selecting industrial valves for water treatment is therefore not simply a matter of matching pipe size and pressure rating. The right valve must suit the fluid, the operating conditions and the work it is expected to perform.
+                  For plant engineers and procurement teams, selecting industrial valves for water treatment is therefore not simply a matter of matching pipe size and pressure rating.
+                </p>
+
+                <p className="mb-[15px]">
+                  The right valve must suit the fluid, the operating conditions and the work it is expected to perform.
                 </p>
 
                 <h2 className="text-2xl md:text-3xl mt-16 mb-8 flex items-center gap-3">
@@ -171,7 +175,7 @@ export default function WaterTreatmentBlogPage() {
                     When should you consider a butterfly valve?
                   </h4>
                   <p className="text-lg m-0 text-foreground/80 leading-relaxed mb-[15px]">
-                    A butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
+                    a butterfly valve is worth evaluating when the application calls for a compact isolation valve, particularly on larger pipelines. The final choice should be based on pressure, temperature, sealing and installation requirements.
                   </p>
                 </div>
 
