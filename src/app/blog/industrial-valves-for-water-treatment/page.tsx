@@ -35,7 +35,7 @@ export default function WaterTreatmentBlogPage() {
       <div className="relative pt-32 pb-12 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <Image
-            src={heroImg?.imageUrl || "/blog/hero-bg-blog1.webp"}
+            src={heroImg?.imageUrl || "/blog/blog-hero-1.webp"}
             alt="Water Treatment Header"
             fill
             className="object-cover"
@@ -46,7 +46,7 @@ export default function WaterTreatmentBlogPage() {
           <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-6">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
-            <span className="text-foreground/40">Blog</span>
+            <Link href="/blog" className="hover:text-secondary transition-colors">Blog</Link>
             <ChevronRight className="size-4" />
             <span className="text-secondary font-bold">Industrial Valves Selection</span>
           </nav>

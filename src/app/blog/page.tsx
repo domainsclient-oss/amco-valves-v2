@@ -15,7 +15,7 @@ const blogPosts = [
     id: "water-treatment",
     title: "How to Choose the Right Industrial Valve for Water and Wastewater Treatment Plants",
     description: "Selecting valves for treatment facilities requires understanding the fluid characteristics, operating conditions, and the specific role of each pipeline.",
-    image: "/blog/hero-bg-blog1.webp",
+    image: "/blog/blog-hero-1.webp",
     date: "October 12, 2023",
     href: "/blog/industrial-valves-for-water-treatment",
     category: "Industry Selection Guide",
