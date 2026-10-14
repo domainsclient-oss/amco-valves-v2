@@ -3,7 +3,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Calendar, ArrowRight, Droplets, ShieldAlert, Sparkles } from "lucide-react";
+import { ChevronRight, Calendar, ArrowRight, Droplets, ShieldAlert, Sparkles, BookOpen, Layers } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -38,65 +38,95 @@ export default function BlogIndexPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-16 md:pt-48 md:pb-24 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 border-b-4 border-secondary/10">
-        <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-6">
+      {/* Modern Enhanced Hero Section */}
+      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-5 md:px-[63px] overflow-hidden">
+        {/* Background Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-blue-50/20 to-white" />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a2c56' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent" />
+        
+        {/* Decorative Element */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="container mx-auto relative z-10">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/40 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
-            <ChevronRight className="size-4" />
-            <span className="text-secondary font-bold">Blog</span>
+            <ChevronRight className="size-4 opacity-30" />
+            <span className="text-primary/60 font-semibold">Technical Hub</span>
           </nav>
-          <div className="inline-flex items-center gap-2 bg-primary/5 text-primary px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-            <Sparkles className="size-3.5" /> AMCO Technical Insights
+
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2 rounded-2xl text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-8 animate-in fade-in zoom-in-95 duration-1000">
+              <BookOpen className="size-3.5" /> AMCO Knowledge Base
+            </div>
+            
+            <h1 className="text-4xl md:text-7xl font-bold text-primary leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+              Industrial Valve <span className="text-secondary">Engineering Insights</span>
+            </h1>
+            
+            <p className="text-lg md:text-2xl text-foreground/60 max-w-2xl leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+              Technical guides, material comparisons, and selection frameworks designed for global procurement and maintenance teams.
+            </p>
+
+            <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+              <div className="flex items-center gap-2 text-sm font-bold text-primary/80 bg-white shadow-sm border border-border/50 px-5 py-2.5 rounded-xl">
+                <Layers className="size-4 text-secondary" />
+                <span>Deep Material Analysis</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm font-bold text-primary/80 bg-white shadow-sm border border-border/50 px-5 py-2.5 rounded-xl">
+                <Droplets className="size-4 text-secondary" />
+                <span>Process Optimization</span>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary max-w-4xl leading-tight mb-6">
-            Industrial Valve Knowledge Hub
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl leading-relaxed">
-            Stay updated with the latest in valve engineering, material selection guides, and industry-specific flow control solutions.
-          </p>
         </div>
       </div>
 
       {/* Blog Cards Grid */}
-      <section className="py-16 md:py-24 px-5 md:px-[63px]">
+      <section className="py-20 md:py-32 px-5 md:px-[63px] bg-neutral-50/50">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary">Latest Technical Posts</h2>
+            <div className="h-px flex-1 bg-border/40 mx-8 hidden md:block" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
             {blogPosts.map((post) => (
-              <Card key={post.id} className="group overflow-hidden border border-border/50 bg-white rounded-[2.5rem] flex flex-col shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <Card key={post.id} className="group overflow-hidden border-none bg-white rounded-[3rem] flex flex-col shadow-xl shadow-primary/5 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 hover:-translate-y-3">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute top-6 left-6">
-                    <div className="bg-white/90 backdrop-blur-md text-primary px-4 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-lg flex items-center gap-2">
-                      <post.icon className="size-3.5 text-secondary" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute top-8 left-8">
+                    <div className="bg-white/95 backdrop-blur-md text-primary px-5 py-2.5 rounded-[1.25rem] text-[10px] font-bold uppercase tracking-widest shadow-xl flex items-center gap-2.5">
+                      <post.icon className="size-4 text-secondary" />
                       {post.category}
                     </div>
                   </div>
                 </div>
                 
-                <CardContent className="p-8 md:p-10 flex-grow">
-                  <div className="flex items-center gap-2 text-foreground/40 text-xs font-bold mb-4">
-                    <Calendar className="size-3.5 text-secondary" />
+                <CardContent className="p-10 md:p-14 flex-grow">
+                  <div className="flex items-center gap-3 text-foreground/40 text-xs font-bold mb-6">
+                    <Calendar className="size-4 text-secondary" />
                     {post.date}
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 leading-tight group-hover:text-secondary transition-colors">
+                  <h2 className="text-2xl md:text-4xl font-bold text-primary mb-6 leading-[1.2] group-hover:text-secondary transition-colors duration-500">
                     {post.title}
                   </h2>
-                  <p className="text-foreground/60 text-base md:text-lg leading-relaxed line-clamp-3">
+                  <p className="text-foreground/50 text-base md:text-lg leading-relaxed line-clamp-3">
                     {post.description}
                   </p>
                 </CardContent>
 
-                <CardFooter className="px-8 md:px-10 pb-10 pt-0">
-                  <Button variant="outline" className="rounded-xl border-primary text-primary hover:bg-primary hover:text-white transition-all font-bold h-12 px-6 group/btn" asChild>
+                <CardFooter className="px-10 md:px-14 pb-14 pt-0">
+                  <Button variant="outline" className="rounded-2xl border-2 border-primary/10 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 font-bold h-14 px-8 group/btn text-base" asChild>
                     <Link href={post.href}>
-                      Read More 
-                      <ArrowRight className="ml-2 size-4 transition-transform group-hover/btn:translate-x-1" />
+                      Continue Reading
+                      <ArrowRight className="ml-3 size-5 transition-transform group-hover/btn:translate-x-2" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -106,18 +136,29 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="pb-24 px-5 md:px-[63px]">
+      {/* Professional CTA Section */}
+      <section className="pb-32 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <div className="bg-primary p-8 md:p-16 rounded-[3rem] text-center relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 relative z-10">Need technical assistance with valve selection?</h3>
-            <p className="text-white/70 text-base md:text-lg mb-10 max-w-2xl mx-auto relative z-10">
-              Our engineering team can help you identify the optimal configuration for your specific application requirements.
+          <div className="bg-primary p-10 md:p-24 rounded-[4rem] text-center relative overflow-hidden shadow-3xl shadow-primary/30">
+            {/* Background Texture for CTA */}
+            <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 56c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-2-8c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm34-16c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40 2c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-4-14c.828 0 1.5-.672 1.5-1.5S103.828 7 103 7s-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm-84 7c.828 0 1.5-.672 1.5-1.5S18.828 15 18 15s-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm63 31c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm16-18c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm-58 33c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm-18-8c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm42-45c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-27 48c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-6-60c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM42 86c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm22-71c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm-35 8c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm18 40c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zm27-12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1zM25 52c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm12 27c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm55-37c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-54-10c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm57 26c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-58 10c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-36 48c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm19-70c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm33 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm22-7c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-33 7c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm-53 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm5-20c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm26 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zM11 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm74 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zM39 100c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm22 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zM33 33c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm67 0c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zM0 33c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5zm33-33c.276 0 .5-.224.5-.5s-.224-.5-.5-.5-.5.224-.5.5.224.5.5.5z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
+            
+            <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+            
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-8 relative z-10 leading-tight">
+              Looking for project-specific <br className="hidden md:block" /> <span className="text-secondary">valve specifications?</span>
+            </h3>
+            
+            <p className="text-white/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed">
+              Our engineering team is available for deep technical consultations to help identify the optimal configuration for your specific media and operating conditions.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-              <Button variant="secondary" size="lg" className="h-14 px-10 rounded-xl font-bold text-lg" asChild>
-                <Link href="/#contact">Contact an Engineer</Link>
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
+              <Button variant="secondary" size="lg" className="h-16 px-12 rounded-[1.25rem] font-bold text-lg shadow-2xl shadow-secondary/20 hover:scale-105 transition-transform" asChild>
+                <Link href="/#contact">Consult an Engineer</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="h-16 px-12 rounded-[1.25rem] font-bold text-lg border-white/20 text-white bg-white/5 hover:bg-white/10 transition-colors" asChild>
+                <Link href="/#products">Explore Catalog</Link>
               </Button>
             </div>
           </div>
