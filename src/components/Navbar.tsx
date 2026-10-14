@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -20,7 +19,7 @@ const navLinks = [
   { name: "Products", href: "/#products", hasMegaMenu: true },
   { name: "Certificates", href: "/#certificates" },
   { name: "Gallery", href: "/#gallery" },
-  { name: "Blog", href: "#", hasDropdown: true },
+  { name: "Blog", href: "/blog", hasDropdown: true },
   { name: "Contact", href: "/#contact" },
 ];
 
