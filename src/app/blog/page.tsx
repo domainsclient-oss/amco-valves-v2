@@ -39,7 +39,7 @@ export default function BlogIndexPage() {
       <Navbar />
 
       {/* Modern Enhanced Hero Section */}
-      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-5 md:px-[63px] overflow-hidden bg-neutral-50">
+      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-5 md:px-[63px] overflow-hidden bg-neutral-50 text-center">
         {/* Background Layers */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-neutral-200/40" />
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a2c56' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
@@ -49,26 +49,26 @@ export default function BlogIndexPage() {
         <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto relative z-10">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/40 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
+          <nav className="flex items-center justify-center gap-2 text-xs md:text-sm font-medium text-foreground/40 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4 opacity-30" />
             <span className="text-primary/60 font-semibold">Blog</span>
           </nav>
 
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2 rounded-2xl text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-8 animate-in fade-in zoom-in-95 duration-1000">
               <BookOpen className="size-3.5" /> AMCO Knowledge Base
             </div>
             
-            <h1 className="text-4xl md:text-7xl font-bold text-primary leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+            <h1 className="text-4xl md:text-6xl font-bold text-primary leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
               Industrial Valve <span className="text-secondary">Engineering Insights</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-foreground/60 max-w-2xl leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            <p className="text-lg md:text-2xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
               Technical guides, material comparisons, and selection frameworks designed for global procurement and maintenance teams.
             </p>
 
-            <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+            <div className="flex flex-wrap justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
               <div className="flex items-center gap-2 text-sm font-bold text-primary/80 bg-white shadow-sm border border-border/50 px-5 py-2.5 rounded-xl">
                 <Layers className="size-4 text-secondary" />
                 <span>Deep Material Analysis</span>
@@ -123,7 +123,7 @@ export default function BlogIndexPage() {
                 </CardContent>
 
                 <CardFooter className="px-10 md:px-14 pb-14 pt-0">
-                  <Button variant="outline" className="rounded-2xl border-2 border-primary/10 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 font-bold h-14 px-8 group/btn text-base" asChild>
+                  <Button variant="secondary" className="rounded-2xl font-bold h-14 px-8 group/btn text-base transition-all duration-500 shadow-lg shadow-secondary/10" asChild>
                     <Link href={post.href}>
                       Continue Reading
                       <ArrowRight className="ml-3 size-5 transition-transform group-hover/btn:translate-x-2" />
