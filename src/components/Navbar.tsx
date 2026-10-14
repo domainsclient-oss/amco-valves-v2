@@ -26,7 +26,7 @@ const navLinks = [
 
 const blogLinks = [
   { name: "Industrial Valves for Water Treatment", href: "/blog/industrial-valves-for-water-treatment" },
-  { name: "PFA vs FEP Lined Valves Comparison", href: "/blog/pfa-vs-fep-lined-valves" },
+  { name: "PFA vs FEP Lined Valves for Chemical Applications", href: "/blog/pfa-vs-fep-lined-valves" },
 ];
 
 export function Navbar() {
