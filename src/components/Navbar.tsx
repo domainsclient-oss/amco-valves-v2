@@ -18,15 +18,22 @@ import {
 const navLinks = [
   { name: "About", href: "/#about" },
   { name: "Products", href: "/#products", hasMegaMenu: true },
+  { name: "Blog", href: "#", hasDropdown: true },
   { name: "Certificates", href: "/#certificates" },
   { name: "Gallery", href: "/#gallery" },
   { name: "Contact", href: "/#contact" },
+];
+
+const blogLinks = [
+  { name: "Industrial Valves for Water Treatment", href: "/blog/industrial-valves-for-water-treatment" },
+  { name: "PFA vs FEP Lined Valves Comparison", href: "/blog/pfa-vs-fep-lined-valves" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -100,16 +107,43 @@ export function Navbar() {
               <div 
                 key={link.name} 
                 className="relative h-full flex items-center group/navitem"
-                onMouseEnter={() => link.hasMegaMenu && openMegaMenu()}
-                onMouseLeave={() => link.hasMegaMenu && closeMegaMenu()}
+                onMouseEnter={() => {
+                  if (link.hasMegaMenu) openMegaMenu();
+                  if (link.hasDropdown) setIsBlogOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (link.hasMegaMenu) closeMegaMenu();
+                  if (link.hasDropdown) setIsBlogOpen(false);
+                }}
               >
                 <Link
                   href={link.href}
                   className="text-[14px] lg:text-[16px] font-extrabold text-primary transition-colors hover:text-secondary whitespace-nowrap flex items-center gap-1 h-full py-2"
                 >
                   {link.name}
-                  {link.hasMegaMenu && <ChevronDown className={cn("size-4 transition-transform duration-300", isMegaMenuOpen && "rotate-180")} />}
+                  {(link.hasMegaMenu || link.hasDropdown) && <ChevronDown className={cn("size-4 transition-transform duration-300", (isMegaMenuOpen && link.hasMegaMenu) || (isBlogOpen && link.hasDropdown) ? "rotate-180" : "")} />}
                 </Link>
+
+                {/* Simple Dropdown for Blog */}
+                {link.hasDropdown && (
+                  <div className={cn(
+                    "absolute top-full left-0 w-72 bg-white shadow-2xl rounded-xl border border-border p-4 transition-all duration-300 origin-top z-[70]",
+                    isBlogOpen ? "opacity-100 scale-y-100 translate-y-0" : "opacity-0 scale-y-0 -translate-y-2 pointer-events-none"
+                  )}>
+                    <ul className="space-y-3">
+                      {blogLinks.map((blog) => (
+                        <li key={blog.href}>
+                          <Link 
+                            href={blog.href} 
+                            className="text-sm font-bold text-primary/70 hover:text-secondary block py-1 transition-colors leading-snug"
+                          >
+                            {blog.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
             <div className="flex items-center h-full">
@@ -273,6 +307,27 @@ export function Navbar() {
                             </div>
                           ))}
                         </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ) : link.hasDropdown ? (
+                    <AccordionItem value={link.name} className="border-b border-border">
+                      <AccordionTrigger className="py-5 text-lg font-bold text-primary uppercase hover:no-underline">
+                        {link.name}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="space-y-4 pt-2 pb-4 pl-4">
+                          {blogLinks.map((blog) => (
+                            <li key={blog.href}>
+                              <Link 
+                                href={blog.href}
+                                className="text-foreground/70 text-base font-bold block leading-snug"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {blog.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </AccordionContent>
                     </AccordionItem>
                   ) : (
