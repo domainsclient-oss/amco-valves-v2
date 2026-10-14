@@ -18,9 +18,9 @@ import {
 const navLinks = [
   { name: "About", href: "/#about" },
   { name: "Products", href: "/#products", hasMegaMenu: true },
-  { name: "Blog", href: "#", hasDropdown: true },
   { name: "Certificates", href: "/#certificates" },
   { name: "Gallery", href: "/#gallery" },
+  { name: "Blog", href: "#", hasDropdown: true },
   { name: "Contact", href: "/#contact" },
 ];
 
