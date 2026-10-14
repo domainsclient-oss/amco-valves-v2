@@ -52,7 +52,7 @@ export default function BlogIndexPage() {
           <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/40 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4 opacity-30" />
-            <span className="text-primary/60 font-semibold">Technical Hub</span>
+            <span className="text-primary/60 font-semibold">Blog</span>
           </nav>
 
           <div className="max-w-4xl">
