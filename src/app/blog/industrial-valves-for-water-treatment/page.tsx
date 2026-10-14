@@ -349,7 +349,6 @@ export default function WaterTreatmentBlogPage() {
                 </p>
 
                 <div className="bg-primary text-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] my-10 md:my-20 shadow-2xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                   <p className="text-white/70 text-base md:text-lg mb-8 md:mb-10 leading-relaxed relative z-10">
                     Contact AMCO Industrial Valves to discuss a suitable valve configuration and request technical specifications or a quotation.
                   </p>
