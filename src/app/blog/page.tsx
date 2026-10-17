@@ -26,7 +26,7 @@ const blogPosts = [
     title: "PFA vs FEP Lined Valves: What Should You Choose for Corrosive Chemical Applications?",
     description: "Selecting the right fluoropolymer lining is critical for the safety and longevity of your industrial valves in highly aggressive environments.",
     image: "/blog/hero-bg-blog2.webp",
-    date: "November 05, 2023",
+    date: "October 05, 2026",
     href: "/blog/pfa-vs-fep-lined-valves",
     category: "Material Comparison",
     icon: ShieldAlert,
