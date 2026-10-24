@@ -9,8 +9,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
+import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
 
-export function Gallery() {
+export function Gallery({ content = defaultHomeContent.gallery }: { content?: HomeContent["gallery"] }) {
   const [selectedImage, setSelectedImage] = useState<ImagePlaceholder | null>(null);
   
   // Filter for gallery images defined in placeholder-images.json
@@ -21,13 +22,13 @@ export function Gallery() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-4xl mx-auto mb-20">
           <h2 className="text-secondary font-bold text-xs uppercase tracking-[0.4em] mb-6">
-            Visual Showcase
+            {content.label}
           </h2>
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
-            Industrial Gallery
+            {content.title}
           </h3>
           <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            A glimpse into our manufacturing processes and the high-quality products we deliver to our global clientele.
+            {content.description}
           </p>
         </div>
 

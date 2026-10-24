@@ -1,0 +1,75 @@
+import type { ProductContent } from "@/lib/product-content";
+
+/** Original page data; edits from the admin dashboard replace it. */
+export const content: ProductContent = {
+  category: "Ball Valve",
+  title: "3 Piece Design Screwed / Socket weld 600# & 800# & 1500#",
+  specs: [
+    { label: "Size", subLabel: "", value: "DN6 - DN50" },
+    { label: "Material of construction", subLabel: "", value: "A105 / F304/L / F316/L / CF8 / CF8M / CF3 / CF3M" },
+    { label: "End connection", subLabel: "", value: "BSPF / NPTF / SW / BW" },
+    { label: "Pressure rating", subLabel: "", value: "600# / 800# / 1500#" },
+    { label: "Mode of operation", subLabel: "", value: "Lever, Actuator" },
+    { label: "Manufacturing Standard", subLabel: "", value: "ISO 17292 / API 6D / API 608" },
+    { label: "Testing Standard", subLabel: "", value: "ISO 5208 / ISO 10497 / API 607" },
+  ],
+  images: [
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-1.jpg", alt: "3PC High Pressure Valve View 1" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-2.jpg", alt: "3PC High Pressure Valve View 2" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-3.jpg", alt: "3PC High Pressure Valve View 3" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-4.jpg", alt: "3PC High Pressure Valve View 4" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-5.jpg", alt: "3PC High Pressure Valve View 5" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-6.jpg", alt: "3PC High Pressure Valve View 6" },
+    { src: "/products/3-piece-design-screwed-socket-weld-600-800-1500-7.jpg", alt: "3PC High Pressure Valve View 7" },
+  ],
+  tables: [
+    {
+      title: "3PC DESIGN SCREWED / SOCKETWELD 600#",
+      groups: [{ label: "REGULAR BORE", span: 3 }, { label: "FULL BORE", span: 3 }],
+      headers: ["SIZE", "FACE TO FACE", "LEVER LENGTH", "HEIGHT", "FACE TO FACE", "LEVER LENGTH", "HEIGHT"],
+      rows: [
+        { cells: ["DN8", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN10", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN15", "68", "128", "38", "68", "128", "38"], kind: "" },
+        { cells: ["DN20", "67", "128", "39", "85", "151", "53"], kind: "" },
+        { cells: ["DN25", "85", "151", "53", "95", "165", "56"], kind: "" },
+        { cells: ["DN32", "95", "165", "56", "110", "202", "70"], kind: "" },
+        { cells: ["DN40", "110", "202", "70", "120", "202", "74"], kind: "" },
+        { cells: ["DN50", "120", "202", "74", "158", "280", "84"], kind: "" },
+      ],
+      note: "All dimensions are in mm",
+    },
+    {
+      title: "3PC DESIGN SCREWED / SOCKETWELD 800#",
+      groups: [{ label: "REGULAR BORE", span: 3 }, { label: "FULL BORE", span: 3 }],
+      headers: ["SIZE", "FACE TO FACE", "LEVER LENGTH", "HEIGHT", "FACE TO FACE", "LEVER LENGTH", "HEIGHT"],
+      rows: [
+        { cells: ["DN8", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN10", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN15", "68", "128", "38", "68", "128", "38"], kind: "" },
+        { cells: ["DN20", "67", "128", "39", "85", "151", "53"], kind: "" },
+        { cells: ["DN25", "85", "151", "53", "95", "165", "56"], kind: "" },
+        { cells: ["DN32", "95", "165", "56", "110", "202", "70"], kind: "" },
+        { cells: ["DN40", "110", "202", "70", "120", "202", "74"], kind: "" },
+        { cells: ["DN50", "120", "202", "74", "158", "280", "84"], kind: "" },
+      ],
+      note: "All dimensions are in mm",
+    },
+    {
+      title: "3PC DESIGN SCREWED / SOCKETWELD 1500#",
+      groups: [{ label: "REGULAR BORE", span: 3 }, { label: "FULL BORE", span: 3 }],
+      headers: ["SIZE", "FACE TO FACE", "LEVER LENGTH", "HEIGHT", "FACE TO FACE", "LEVER LENGTH", "HEIGHT"],
+      rows: [
+        { cells: ["DN8", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN10", "-", "-", "-", "-", "-", "-"], kind: "" },
+        { cells: ["DN15", "68", "128", "38", "68", "128", "38"], kind: "" },
+        { cells: ["DN20", "67", "128", "39", "85", "151", "53"], kind: "" },
+        { cells: ["DN25", "85", "151", "53", "95", "165", "56"], kind: "" },
+        { cells: ["DN32", "95", "165", "56", "110", "202", "70"], kind: "" },
+        { cells: ["DN40", "110", "202", "70", "120", "202", "74"], kind: "" },
+        { cells: ["DN50", "120", "202", "74", "158", "280", "84"], kind: "" },
+      ],
+      note: "All dimensions are in mm",
+    },
+  ],
+};

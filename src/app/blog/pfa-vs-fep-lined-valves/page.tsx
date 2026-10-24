@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,24 +9,35 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import { placeholderImages } from "@/lib/placeholder-images.json";
+import { notFound } from "next/navigation";
+import { getArticleContent, isArticlePublished, pfaVsFepDefaults } from "@/lib/blog-articles";
+import { safeHref, safeId } from "@/lib/buttons";
 
-export const metadata: Metadata = {
-  title: "PFA vs FEP Lined Valves: Which is Better? | AMCO Valves",
-  description: "Choosing between PFA and FEP lining for your industrial valves? Learn the key differences in temperature, chemical resistance, and cost for corrosive applications.",
-  keywords: [
-    "PFA vs FEP lined valves",
-    "pfa lining vs fep lining",
-    "lined valve applications",
-    "corrosive chemical valves",
-    "teflon lined valves",
-    "industrial valves for chemicals"
-  ],
-};
+const SLUG = "pfa-vs-fep-lined-valves";
 
-export default function PfaVsFepBlogPage() {
-  const heroImg = placeholderImages.find(img => img.id === "blog-pfa-hero");
-  const midImg = placeholderImages.find(img => img.id === "blog-pfa-detail");
+// The text is editable from the admin dashboard (saving there refreshes this page immediately).
+export const revalidate = 60;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getArticleContent(SLUG, pfaVsFepDefaults);
+  return {
+    title: c.seo.title,
+    description: c.seo.description,
+    keywords: [
+      "PFA vs FEP lined valves",
+      "pfa lining vs fep lining",
+      "lined valve applications",
+      "corrosive chemical valves",
+      "teflon lined valves",
+      "industrial valves for chemicals"
+    ],
+  };
+}
+
+export default async function PfaVsFepBlogPage() {
+  // An admin can move this article to draft, which takes it off the website.
+  if (!(await isArticlePublished(SLUG))) notFound();
+  const c = await getArticleContent(SLUG, pfaVsFepDefaults);
 
   return (
     <main className="min-h-screen bg-white max-w-full overflow-x-hidden">
@@ -35,7 +47,7 @@ export default function PfaVsFepBlogPage() {
       <div className="relative pt-32 pb-12 md:pt-48 md:pb-32 px-5 md:px-[63px] bg-gradient-to-br from-white via-blue-50/30 to-neutral-100 overflow-hidden border-b-4 border-secondary/10">
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <Image
-            src={heroImg?.imageUrl || "/blog/hero-bg-blog2.webp"}
+            src={c.hero.image}
             alt="Chemical Processing Plant"
             fill
             className="object-cover"
@@ -48,16 +60,16 @@ export default function PfaVsFepBlogPage() {
             <ChevronRight className="size-4" />
             <span className="text-foreground/40">Blog</span>
             <ChevronRight className="size-4" />
-            <span className="text-secondary font-bold">Material Comparison</span>
+            <span className="text-secondary font-bold">{c.hero.breadcrumb}</span>
           </nav>
           <div className="inline-flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-            <ShieldAlert className="size-3.5" /> Corrosive Chemical Solutions
+            <ShieldAlert className="size-3.5" /> {c.hero.badge}
           </div>
           <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8 break-words hyphens-auto">
-            PFA vs FEP Lined Valves: What Should You Choose for Corrosive Chemical Applications?
+            {c.hero.title}
           </h1>
           <p className="text-base md:text-xl text-foreground/70 max-w-3xl leading-relaxed mb-4">
-            Selecting the right fluoropolymer lining is critical for the safety and longevity of your industrial valves in highly aggressive environments.
+            {c.hero.intro}
           </p>
         </div>
       </div>
@@ -69,113 +81,56 @@ export default function PfaVsFepBlogPage() {
             <div className="lg:col-span-8 min-w-0">
               <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
                 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">What are PFA and FEP lined valves?</h2>
-                <p className="mb-[15px]">
-                  PFA (perfluoroalkoxy) and FEP (fluorinated ethylene propylene) are fluoropolymers used to provide chemical-resistant surfaces.
-                </p>
-                <p className="mb-[15px]">
-                  In a lined valve, the lining separates the process fluid from the underlying valve body, helping protect it from direct chemical exposure.
-                </p>
-                <p className="mb-[15px]">
-                  A lined valve is therefore different from an unlined metallic valve, where the process fluid comes into contact with the body material.
-                </p>
-                <p className="mb-[15px]">
-                  Both PFA and FEP can be suitable for a wide range of corrosive chemicals. However, their performance limits and suitability depend on the application.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.whatAre.heading}</h2>
+                {c.whatAre.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">PFA vs FEP: What is the difference?</h2>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.difference.heading}</h2>
                 
                 <div className="my-8 md:my-12 border border-border rounded-2xl md:rounded-[2rem] shadow-xl bg-white overflow-hidden max-w-full">
                   <div className="bg-primary p-5 md:p-6">
-                    <h4 className="text-white font-bold m-0 text-lg md:text-xl">Material Comparison Matrix</h4>
+                    <h4 className="text-white font-bold m-0 text-lg md:text-xl">{c.difference.tableTitle}</h4>
                   </div>
                   <div className="w-full overflow-x-auto">
                     <Table className="min-w-[500px]">
                       <TableHeader className="bg-neutral-50">
                         <TableRow>
-                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">Factor</TableHead>
-                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">PFA lining</TableHead>
-                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">FEP lining</TableHead>
+                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">{c.difference.tableHeaders.col1}</TableHead>
+                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">{c.difference.tableHeaders.col2}</TableHead>
+                          <TableHead className="text-primary font-bold h-14 uppercase tracking-wider">{c.difference.tableHeaders.col3}</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        <TableRow className="hover:bg-neutral-50/50">
-                          <TableCell className="font-bold text-primary">Chemical resistance</TableCell>
-                          <TableCell>Broad resistance to many aggressive chemicals</TableCell>
-                          <TableCell>Broad resistance to many aggressive chemicals</TableCell>
-                        </TableRow>
-                        <TableRow className="hover:bg-neutral-50/50">
-                          <TableCell className="font-bold text-primary">Temperature capability</TableCell>
-                          <TableCell>Generally higher material temperature capability</TableCell>
-                          <TableCell>Generally lower than PFA</TableCell>
-                        </TableRow>
-                        <TableRow className="hover:bg-neutral-50/50">
-                          <TableCell className="font-bold text-primary">Processing</TableCell>
-                          <TableCell>Melt-processable fluoropolymer</TableCell>
-                          <TableCell>Melt-processable fluoropolymer</TableCell>
-                        </TableRow>
-                        <TableRow className="hover:bg-neutral-50/50">
-                          <TableCell className="font-bold text-primary">Common consideration</TableCell>
-                          <TableCell>More demanding temperature requirements</TableCell>
-                          <TableCell>Applications within FEP's operating limits</TableCell>
-                        </TableRow>
-                        <TableRow className="hover:bg-neutral-50/50">
-                          <TableCell className="font-bold text-primary">Final selection</TableCell>
-                          <TableCell>Depends on valve design and service conditions</TableCell>
-                          <TableCell>Depends on valve design and service conditions</TableCell>
-                        </TableRow>
+                        {c.difference.tableRows.map((row, i) => (
+                          <TableRow key={i} className="hover:bg-neutral-50/50">
+                            <TableCell className="font-bold text-primary">{row.col1}</TableCell>
+                            <TableCell>{row.col2}</TableCell>
+                            <TableCell>{row.col3}</TableCell>
+                          </TableRow>
+                        ))}
                       </TableBody>
                     </Table>
                   </div>
                 </div>
 
-                <p className="mb-[15px]">
-                  The important point is that the properties of the lining material do not automatically determine the allowable operating conditions of the complete valve.
-                </p>
-                <p className="mb-[15px]">
-                  The valve body, lining thickness, sealing components, pressure rating and manufacturing design must also be considered.
-                </p>
+                {c.difference.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">When should you consider PFA lined valves?</h2>
-                <p className="mb-[15px]">
-                  PFA lined valves are often evaluated for chemical applications where both corrosion resistance and elevated temperature capability are important.
-                </p>
-                <p className="mb-[15px]">
-                  They may be considered for certain chemical transfer, process isolation and handling applications involving aggressive media.
-                </p>
-                <p className="mb-[15px]">
-                  However, it would be incorrect to assume that a PFA lining is suitable for every chemical at every temperature.
-                </p>
-                <p className="mb-[15px]">
-                  Chemical concentration, operating pressure, temperature, permeation behaviour and potential mechanical damage all influence suitability.
-                </p>
-                <p className="mb-[15px]">
-                  For demanding service conditions, engineers should confirm the complete valve's rated operating limits with the manufacturer.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.whenPfa.heading}</h2>
+                {c.whenPfa.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">When can FEP lined valves be a suitable option?</h2>
-                <p className="mb-[15px]">
-                  FEP lined valves can also provide strong chemical resistance in appropriately selected applications.
-                </p>
-                <p className="mb-[15px]">
-                  They may be considered where the operating conditions remain within the lining and complete valve assembly's limits.
-                </p>
-                <p className="mb-[15px]">
-                  For some projects, FEP may provide a practical alternative to PFA.
-                </p>
-                <p className="mb-[15px]">
-                  But the decision should not be based on lining material alone.
-                </p>
-                <p className="mb-[15px]">
-                  Two valves with different designs, lining methods and sealing arrangements may perform differently even when both are described as FEP lined.
-                </p>
-                <p className="mb-[15px]">
-                  This is why the technical datasheet matters more than a broad product label.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.whenFep.heading}</h2>
+                {c.whenFep.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
                 <div className="relative aspect-video rounded-2xl md:rounded-[2.5rem] overflow-hidden my-8 md:my-16 shadow-2xl">
                   <Image
-                    src={midImg?.imageUrl || "/blog/PFA-lined-valves.webp"}
+                    src={c.whenFep.image}
                     alt="Lined Valve Technology"
                     fill
                     className="object-cover"
@@ -183,135 +138,57 @@ export default function PfaVsFepBlogPage() {
                   />
                 </div>
 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">Which valve types are available with chemical-resistant linings?</h2>
-                <p className="mb-[15px]">
-                  Several industrial valve designs can be manufactured with fluoropolymer linings.
-                </p>
-                <p className="mb-[15px]">
-                  The correct design depends on the function required in the pipeline.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.valveTypes.heading}</h2>
+                {c.valveTypes.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">Lined ball valves</h3>
-                <p className="mb-[15px]">
-                  Lined ball valves are commonly considered for on/off isolation duties.
-                </p>
-                <p className="mb-[15px]">
-                  Their quarter-turn operation can make them practical where relatively quick opening and closing is required.
-                </p>
-                <p className="mb-[15px]">
-                  Selection must account for the process fluid, operating conditions, sealing arrangement and compatibility of wetted components.
-                </p>
+                {c.valveTypes.types.map((type, i) => (
+                  <Fragment key={i}>
+                    <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">{type.heading}</h3>
+                    {type.paragraphs.map((text, j) => (
+                      <p key={j} className="mb-[15px]">{text}</p>
+                    ))}
+                  </Fragment>
+                ))}
 
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">Lined butterfly valves</h3>
-                <p className="mb-[15px]">
-                  Lined butterfly valves may be considered for chemical service in suitable pipeline sizes and pressure conditions.
-                </p>
-                <p className="mb-[15px]">
-                  The valve's disc, liner and sealing arrangement require particular attention because these components can be exposed to the process fluid.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.questions.heading}</h2>
 
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">Lined plug valves</h3>
-                <p className="mb-[15px]">
-                  Lined plug valves are another option for chemical isolation applications.
-                </p>
-                <p className="mb-[15px]">
-                  Their suitability depends on the valve design, lining construction and service conditions.
-                </p>
+                {c.questions.items.map((question, i) => (
+                  <Fragment key={i}>
+                    <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">{question.heading}</h3>
+                    {question.paragraphs.map((text, j) => (
+                      <p key={j} className="mb-[15px]">{text}</p>
+                    ))}
+                  </Fragment>
+                ))}
 
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">Lined check valves</h3>
-                <p className="mb-[15px]">
-                  Where reverse-flow prevention is required, lined check valves may be considered.
-                </p>
-                <p className="mb-[15px]">
-                  However, their operating characteristics must also suit the process, including flow conditions and installation requirements.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.construction.heading}</h2>
+                {c.construction.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">Five questions to ask before selecting a lined valve</h2>
-                
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">1. What chemical will the valve handle?</h3>
-                <p className="mb-[15px]">
-                  Identify the exact chemical rather than describing the fluid simply as acidic or corrosive.
-                </p>
-                <p className="mb-[15px]">
-                  Where relevant, provide details of mixtures and contaminants.
-                </p>
-
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">2. What is the chemical concentration?</h3>
-                <p className="mb-[15px]">
-                  Chemical compatibility may change with concentration.
-                </p>
-                <p className="mb-[15px]">
-                  A material suitable for a dilute solution may not necessarily be appropriate for a more concentrated process stream.
-                </p>
-
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">3. What are the operating and maximum temperatures?</h3>
-                <p className="mb-[15px]">
-                  Normal temperature is important, but so are cleaning cycles, process fluctuations and occasional temperature excursions.
-                </p>
-                <p className="mb-[15px]">
-                  The complete valve must be suitable for the specified conditions.
-                </p>
-
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">4. What pressure conditions will the valve experience?</h3>
-                <p className="mb-[15px]">
-                  Pressure rating, temperature and valve construction must be evaluated together.
-                </p>
-                <p className="mb-[15px]">
-                  Do not assume that every valve using the same lining material has the same pressure capability.
-                </p>
-
-                <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 break-words">5. Is the valve required for isolation or flow control?</h3>
-                <p className="mb-[15px]">
-                  An isolation valve and a throttling valve may require different designs.
-                </p>
-                <p className="mb-[15px]">
-                  Choosing a valve based only on chemical resistance can overlook the actual operating function.
-                </p>
-
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">Why the complete valve construction matters</h2>
-                <p className="mb-[15px]">
-                  A chemical-resistant lining is important, but it is not the only factor affecting valve reliability.
-                </p>
-                <p className="mb-[15px]">
-                  The lining must remain intact during installation and operation. Seals, interfaces and other wetted components must also be compatible with the process fluid.
-                </p>
-                <p className="mb-[15px]">
-                  For example, a valve with a suitable lining may still be unsuitable if another component exposed to the fluid cannot tolerate the chemical or temperature.
-                </p>
-                <p className="mb-[15px]">
-                  This is one reason why engineering teams should review the complete material specification rather than relying only on the term "chemical-resistant valve."
-                </p>
-
-                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">PFA and FEP lined valve solutions from AMCO</h2>
-                <p className="mb-[15px]">
-                  AMCO Industrial Valves offers PFA/FEP lined valve configurations within its industrial product portfolio.
-                </p>
-                <p className="mb-[15px]">
-                  These include lined ball valves, butterfly valves, diaphragm valves, plug valves and check valves.
-                </p>
-                <p className="mb-[15px]">
-                  For example, AMCO's published PFA/FEP lined butterfly valve specifications include wafer-type configurations, with details on size range, body material, pressure rating and applicable manufacturing and testing standards.
-                </p>
-                <p className="mb-[15px]">
-                  The suitability of each configuration should be confirmed against the specific chemical service.
-                </p>
+                <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.solutions.heading}</h2>
+                {c.solutions.paragraphs.map((text, i) => (
+                  <p key={i} className="mb-[15px]">{text}</p>
+                ))}
 
                 <div className="bg-primary text-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] my-10 md:my-20 shadow-2xl relative overflow-hidden text-center">
-                  <h2 className="text-white text-xl md:text-4xl mt-0 mb-6 md:mb-8 font-bold break-words">Looking for a lined valve for your chemical process?</h2>
-                  <p className="text-white/70 text-sm md:text-lg mb-[15px] leading-relaxed max-w-2xl mx-auto">
-                    Choosing between PFA and FEP starts with understanding the chemical, concentration, temperature, pressure and operating requirements.
-                  </p>
-                  <p className="text-white/70 text-sm md:text-lg mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto">
-                    Share your application details with AMCO Industrial Valves to discuss available lined valve configurations and request the relevant technical datasheet or quotation.
-                  </p>
+                  <h2 className="text-white text-xl md:text-4xl mt-0 mb-6 md:mb-8 font-bold break-words">{c.cta.heading}</h2>
+                  {c.cta.paragraphs.map((text, i) => (
+                    // The last paragraph has extra space before the buttons, as in the original design.
+                    <p key={i} className={i === c.cta.paragraphs.length - 1 ? "text-white/70 text-sm md:text-lg mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto" : "text-white/70 text-sm md:text-lg mb-[15px] leading-relaxed max-w-2xl mx-auto"}>
+                      {text}
+                    </p>
+                  ))}
                   <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
                     <Button variant="secondary" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg shadow-xl shadow-secondary/20 w-full sm:w-auto" asChild>
-                      <Link href="/#contact">
-                        Get a Technical Consultation <ArrowRight className="ml-3 size-5 md:size-6" />
+                      <Link href={safeHref(c.cta.primaryButton.href, "/#contact")} id={safeId(c.cta.primaryButton.id)}>
+                        {c.cta.primaryButton.label} <ArrowRight className="ml-3 size-5 md:size-6" />
                       </Link>
                     </Button>
                     <Button variant="outline" size="lg" className="rounded-2xl font-bold h-14 md:h-16 px-8 md:px-10 text-base md:text-lg border-white/20 text-white bg-white/10 hover:bg-white/20 w-full sm:w-auto" asChild>
-                      <Link href="/#products">Explore Lined Catalog</Link>
+                      <Link href={safeHref(c.cta.secondaryButton.href, "/#products")} id={safeId(c.cta.secondaryButton.id)}>{c.cta.secondaryButton.label}</Link>
                     </Button>
                   </div>
                 </div>
@@ -319,39 +196,17 @@ export default function PfaVsFepBlogPage() {
                 <div className="bg-neutral-50 rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-10 md:mb-20 border border-border">
                   <h2 className="text-xl md:text-3xl font-bold text-primary mb-6 md:mb-12 flex items-center gap-4 break-words">
                     <HelpCircle className="text-secondary size-6 md:size-8 shrink-0" />
-                    Frequently Asked Questions
+                    {c.faq.heading}
                   </h2>
                   <Accordion type="single" collapsible className="w-full space-y-4">
-                    <AccordionItem value="item-1" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">What is the main difference between PFA and FEP lined valves?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
-                        <p className="mb-[15px]">Both use chemically resistant fluoropolymers. PFA generally offers higher material temperature capability, while FEP can be suitable for many chemical applications within its specified limits.</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">Are PFA lined valves suitable for corrosive chemicals?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
-                        <p className="mb-[15px]">PFA lined valves can be suitable for many corrosive chemical services, but compatibility depends on the specific chemical, concentration, temperature, pressure and complete valve construction.</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">Is PFA always better than FEP?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
-                        <p className="mb-[15px]">No. PFA and FEP have different properties, but the best choice depends on the operating conditions and the manufacturer's valve specifications.</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">Can lined butterfly valves be used in chemical processing?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
-                        <p className="mb-[15px]">Yes, where the valve's materials, design, pressure rating and operating characteristics are suitable for the particular chemical service.</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-5" className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
-                      <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">What details are needed to request a lined valve quotation?</AccordionTrigger>
-                      <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
-                        <p className="mb-[15px]">The manufacturer will typically need the chemical name, concentration, temperature, pressure, valve size, connection type, required function and any applicable project standards.</p>
-                      </AccordionContent>
-                    </AccordionItem>
+                    {c.faq.items.map((item, i) => (
+                      <AccordionItem key={i} value={`item-${i + 1}`} className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
+                        <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">{item.question}</AccordionTrigger>
+                        <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
+                          <p className="mb-[15px]">{item.answer}</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
                   </Accordion>
                 </div>
               </article>
@@ -363,14 +218,14 @@ export default function PfaVsFepBlogPage() {
                   <div className="w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/20 shrink-0">
                     <MessageSquare className="size-5 md:size-7" />
                   </div>
-                  <h3 className="font-bold text-lg md:text-2xl text-primary m-0 break-words">Expert Assistance</h3>
+                  <h3 className="font-bold text-lg md:text-2xl text-primary m-0 break-words">{c.sidebar.expertTitle}</h3>
                 </div>
                 <p className="text-foreground/60 text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
-                  Our engineering team can evaluate your process conditions and recommend the optimal PFA or FEP solution for maximum service life.
+                  {c.sidebar.expertText}
                 </p>
                 <div className="space-y-4">
                   <Button className="w-full h-12 md:h-14 rounded-xl md:rounded-2xl font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10" asChild>
-                    <Link href="/#contact">Consult an Engineer</Link>
+                    <Link href={safeHref(c.sidebar.expertButton.href, "/#contact")} id={safeId(c.sidebar.expertButton.id)}>{c.sidebar.expertButton.label}</Link>
                   </Button>
                 </div>
               </div>
@@ -379,9 +234,9 @@ export default function PfaVsFepBlogPage() {
                 <div className="absolute -top-10 -left-10 size-40 bg-white/5 rounded-full" />
                 <CardContent className="p-0 relative z-10">
                   <Info className="size-8 md:size-10 text-secondary mb-6" />
-                  <h4 className="font-bold text-lg md:text-xl mb-4 break-words">Quality Assured</h4>
+                  <h4 className="font-bold text-lg md:text-xl mb-4 break-words">{c.sidebar.infoTitle}</h4>
                   <p className="text-white/60 text-sm md:text-[15px] leading-relaxed mb-0">
-                    AMCO uses advanced fluoropolymer resins and strictly controlled manufacturing processes to ensure lining integrity and chemical resistance.
+                    {c.sidebar.infoText}
                   </p>
                 </CardContent>
               </Card>
@@ -389,15 +244,10 @@ export default function PfaVsFepBlogPage() {
               <div className="p-6 md:p-8 border border-border rounded-2xl md:rounded-[2rem] bg-white overflow-hidden">
                 <h4 className="font-bold text-primary mb-4 flex items-center gap-2 break-words">
                   <Activity className="size-4 text-secondary shrink-0" />
-                  Lined Product Range
+                  {c.sidebar.linksTitle}
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
-                  {[
-                    { label: "Lined Ball Valves", href: "/products/ptfe-lined-ball-valve" },
-                    { label: "Lined Butterfly Valves", href: "/products/ptfe-lined-butterfly-valve/wafer-centric-disc-design" },
-                    { label: "Lined Plug Valves", href: "/products/ptfe-lined-plug-valve/pfa-fep-lined" },
-                    { label: "Lined Check Valves", href: "/products/ptfe-lined-wafer-check-valve" },
-                  ].map((link, i) => (
+                  {c.sidebar.links.map((link, i) => (
                     <Link key={i} href={link.href} className="flex items-center justify-between text-xs md:text-sm text-foreground/50 hover:text-secondary transition-colors py-2 group min-w-0">
                       <span className="truncate">{link.label}</span>
                       <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform shrink-0" />

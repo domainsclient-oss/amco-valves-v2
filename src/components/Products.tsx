@@ -3,158 +3,27 @@
 import { Settings, Maximize, Layers, Gauge, Download } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
+import { safeHref, safeId } from "@/lib/buttons";
 
-const productData = [
-  { 
-    id: "1", 
-    title: "Ball Valves", 
-    specs: "1 Pc | 2 Pc | 3 Pc", 
-    features: [
-      "Screwed | Socket Weld | Butt Weld | Flanged", 
-      "Soft & Metal Seat", 
-      "Floating & Trunnion Mounted (Fire Safe Design)"
-    ] 
-  },
-  { 
-    id: "2", 
-    title: "Knife Edge Gate Valves", 
-    specs: "Uni Directional | Bi Directional", 
-    features: ["Wafer, Lugged & Flanged", "Soft & Metal Seat"] 
-  },
-  { 
-    id: "3", 
-    title: "Damper Valve", 
-    specs: "Fabricated Damper Valve", 
-    features: ["Wafer, Lugged & Flanged", "Metal Seat"] 
-  },
-  { 
-    id: "4", 
-    title: "Wafer Check Valves", 
-    specs: "Wafer Type", 
-    features: ["With & Without Spring", "Soft Seat"] 
-  },
-  { 
-    id: "5", 
-    title: "Butterfly Valves", 
-    specs: "Concentric | Double Offset | Triple Offset", 
-    features: ["Wafer, Lugged & Flanged", "Soft & Metal Seat"] 
-  },
-  { 
-    id: "6", 
-    title: "Diaphragm Valve", 
-    specs: "Weir & KB Type", 
-    features: ["Flanged Only", "Unlined & Rubber Lined"] 
-  },
-  { 
-    id: "7", 
-    title: "Piston Valve", 
-    specs: "Screwed | Socket Weld | Flanged", 
-    features: [
-      "Metal Seat, Glandless",
-      "OS & Y Type, Bolted Bonnet, Rising Spindle",
-      "IBR & NON IBR"
-    ] 
-  },
-  { 
-    id: "11", 
-    title: "IBR & Non IBR Gate/Globe/Check Valve", 
-    specs: "", 
-    features: [
-      "IBR & Non IBR Gate Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld",
-      "IBR & Non IBR Globe Valve 800#, 1500#, 2500# Screwed / Socket weld / Butt weld",
-      "IBR & Non IBR Lift check Valve 800#, 1500#, 2500#Screwed / Socket weld / Butt weld",
-      "IBR & Non IBR Gate Valve 150#, 300#, 600# Flanged / Butt weld",
-      "IBR & Non IBR Globe Valve 150#, 300#, 600# Flanged / Butt weld",
-      "IBR & Non IBR Swing check Valve 150#, 300#, 600# Flanged / Butt weld"
-    ] 
-  },
-  { 
-    id: "8", 
-    title: "Dual Plate Check Valve", 
-    specs: "Wafer | Lugged | Flanged", 
-    features: ["Soft & Metal Seat"] 
-  },
-  { 
-    id: "9", 
-    title: "Non Slam Check Valve (DCV)", 
-    specs: "Wafer", 
-    features: ["Soft & Metal Seat"] 
-  },
-  { 
-    id: "10", 
-    title: "FEP & PFA Lined Valves", 
-    specs: "Flanged | Wafer", 
-    features: [
-      "Plug Valve (Sleeved, Lined & Jacketed)",
-      "Ball valve (Lined)",
-      "Butterfly valve (Sleeved and Lined)",
-      "Diaphragm valve (Lined)",
-      "Wafer Check valve (Lined)",
-      "Ball type check valve (Lined)"
-    ] 
-  },
-  { 
-    id: "12", 
-    title: "High Pressure Valves", 
-    specs: "Ball | Check | Needle", 
-    features: ["Soft Seat", "Screwed", "1500 psi, 3000 psi, 6000 psi"] 
-  },
-  { 
-    id: "13", 
-    title: "Strainers", 
-    specs: "Y, T, Pot, Duplex, Self Cleaning Type", 
-    features: [
-      "Y Type - Screwed & Flanged", 
-      "T Type, Pot Type, Duplex, Self Cleaning - Flanged", 
-      "Mesh Size To Customer Requirement"
-    ] 
-  },
-  { 
-    id: "14", 
-    title: "Sliding Gate Valve", 
-    specs: "Fabricated Penstock | Sliding Gate Valve", 
-    features: [
-      "For Hydro, Sewage, Rainwater",
-      "Soft & Metal Seat",
-      "Manual Wheel, Gear Operated, Cylinder Operated",
-      "Large Size Available"
-    ] 
-  },
-  {
-    id: "15",
-    title: "Actuator & Accessories",
-    specs: "",
-    features: [
-      "Pneumatic & Electrical Actuators (Double acting, Single acting, 1 phase & 3 phase)",
-      "Solenoid valve, Limit switch and AFR (IP67 and Ex-proof)",
-      "Gear box with locking arrangement",
-      "Limit switch arrangement for On/off feedback for manual valves",
-      "Linear Cylinders (Double acting and single acting)",
-      "Hydraulic Cylinders (Linear)"
-    ]
-  },
-  {
-    id: "16",
-    title: "Safety Relief Valve",
-    specs: "Screwed | Flanged",
-    features: ["Angle type"]
-  }
-];
+const tileIcons = [Maximize, Layers, Settings, Gauge];
 
-export function Products() {
+export function Products({ content = defaultHomeContent.products }: { content?: HomeContent["products"] }) {
+  const brochureHref = safeHref(content.brochureButton.href, "/brochure.pdf");
+
   return (
     <section id="products" className="py-12 md:py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-secondary font-bold text-sm uppercase tracking-widest mb-3">Product Portfolio</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6">Our Valve Solutions</h3>
+          <h2 className="text-secondary font-bold text-sm uppercase tracking-widest mb-3">{content.label}</h2>
+          <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6">{content.title}</h3>
           <p className="text-foreground/70 text-sm md:text-base mb-8">
-            Discover comprehensive range of our precision engineered valves designed for the world's most demanding environments.
+            {content.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 md:mb-20">
-          {productData.map((product) => (
+          {content.items.map((product) => (
             <Card 
               key={product.id} 
               className="overflow-hidden border border-border/40 bg-white rounded-[1.5rem] flex flex-col group shadow-sm hover:shadow-xl hover:shadow-secondary/5 hover:border-secondary/30 transition-all duration-300 h-full"
@@ -195,18 +64,20 @@ export function Products() {
               
               <div className="relative z-10 w-full text-center">
                 <h4 className="text-xl md:text-2xl font-bold leading-tight">
-                  Get our complete product catalog with technical specifications
+                  {content.brochureHeading}
                 </h4>
               </div>
               
               <div className="relative z-10 shrink-0">
                 <a 
-                  href="/brochure.pdf" 
-                  download="AMCO_Valves_Brochure.pdf"
+                  href={brochureHref} 
+                  // Only file links (like the PDF brochure) should download; other links open normally.
+                  download={/\.[a-z0-9]+$/i.test(brochureHref) ? "AMCO_Valves_Brochure.pdf" : undefined}
+                  id={safeId(content.brochureButton.id)}
                   className="inline-flex items-center gap-3 bg-secondary px-6 md:px-10 py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-xl shadow-secondary/20 hover:bg-secondary/90 transition-all hover:translate-y-[-2px] animate-glow"
                 >
                   <Download className="size-6" />
-                  Download Brochure
+                  {content.brochureButton.label}
                 </a>
               </div>
             </div>
@@ -214,17 +85,12 @@ export function Products() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {[
-            { icon: Maximize, title: "Configurations", desc: "Standard & Custom Designs" },
-            { icon: Layers, title: "Connections", desc: "Threaded, Weld, Flanged" },
-            { icon: Settings, title: "Seat Types", desc: "Soft & Metal Seat Options" },
-            { icon: Gauge, title: "Mounting", desc: "Versatile Installation" }
-          ].map((item, idx) => (
-            <div 
-              key={idx} 
+          {content.tiles.map((tile, i) => ({ ...tile, icon: tileIcons[i % tileIcons.length] })).map((item, idx) => (
+            <div
+              key={idx}
               className={cn(
                 "p-6 md:p-8 rounded-[2rem] border border-border flex flex-col gap-4 shadow-sm transition-all duration-300 group",
-                item.title === "Configurations" 
+                idx === 0
                   ? "bg-primary text-white hover:bg-secondary" 
                   : "bg-white text-primary hover:bg-secondary hover:text-white"
               )}
@@ -233,7 +99,7 @@ export function Products() {
               <h4 className="text-base md:text-lg font-bold">{item.title}</h4>
               <p className={cn(
                 "text-xs md:text-sm group-hover:text-white/90",
-                item.title === "Configurations" ? "text-white/70" : "text-foreground/60"
+                idx === 0 ? "text-white/70" : "text-foreground/60"
               )}>{item.desc}</p>
             </div>
           ))}

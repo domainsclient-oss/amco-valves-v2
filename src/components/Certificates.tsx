@@ -1,36 +1,14 @@
 import Image from "next/image";
 import { ShieldCheck, Search, CheckCircle2 } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
 
-export function Certificates() {
-  const certLogos = [
-    PlaceHolderImages.find(img => img.id === "cert-iso"),
-    PlaceHolderImages.find(img => img.id === "cert-iso-2015"),
-    PlaceHolderImages.find(img => img.id === "cert-iso-alt"),
-    PlaceHolderImages.find(img => img.id === "cert-tuv"),
-    PlaceHolderImages.find(img => img.id === "cert-tata"),
-    PlaceHolderImages.find(img => img.id === "cert-sgs"),
-  ].filter(Boolean);
+export function Certificates({ content = defaultHomeContent.certificates }: { content?: HomeContent["certificates"] }) {
+  // Only site paths are rendered; anything else would break next/image.
+  const certLogos = content.logos
+    .filter((logo) => logo.src.startsWith("/"))
+    .map((logo) => ({ id: logo.id, imageUrl: logo.src, description: logo.alt, imageHint: logo.hint }));
 
-  const approvals = [
-    "ISO 9001:2015",
-    "IBR",
-    "CE PED 2014/68/EU ANNEX III MODULE H (ON REQUEST)",
-    "SIL-2 (ON REQUEST)",
-    "FUGITIVE EMISSION TEST ISO 15848-1:2015 (ON REQUEST)",
-    "FIRE TEST FOR BALL VALVES – API 607-2016, 7TH EDITION (ON REQUEST)",
-    "EAC TR CU 032/2013 (ON REQUEST)",
-    "ATEX 2014/34/EU (ON REQUEST)",
-    "NDT (VT, LPT, MPT, UT, RT & IGC FOR SS (ON REQUEST)",
-  ];
-
-  const thirdParty = [
-    "DNV",
-    "TUV",
-    "BV",
-    "SGS",
-    "TATA Projects",
-  ];
+  const { approvals, thirdParty } = content;
 
   return (
     <section id="certificates" className="py-12 md:py-24 bg-white overflow-hidden">
@@ -39,19 +17,19 @@ export function Certificates() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
               <ShieldCheck className="size-5 md:size-3.5" />
-              Quality Standards
+              {content.badge}
             </div>
             <h3 className="text-4xl md:text-5xl font-bold text-primary mb-8 leading-tight">
-              Certified for Excellence
+              {content.title}
             </h3>
             <p className="text-foreground/60 text-lg mb-12 leading-relaxed max-w-xl">
-              AMCO Valves is committed to the highest standards of safety and quality. Our manufacturing processes are audited and certified by leading global certification bodies.
+              {content.description}
             </p>
 
             <div className="space-y-12">
               <div>
                 <h4 className="text-xl font-bold text-primary mb-6 flex items-center gap-2">
-                  Approvals & Certificates
+                  {content.approvalsHeading}
                 </h4>
                 <ul className="grid gap-4 sm:grid-cols-1">
                   {approvals.map((item, idx) => (
@@ -87,7 +65,7 @@ export function Certificates() {
               <div className="col-span-2 lg:col-span-3 p-6 md:p-8 rounded-[2rem] bg-primary/5 border border-primary/10">
                 <h4 className="text-base md:text-lg font-bold text-primary mb-4 flex items-center gap-2">
                   <Search className="text-secondary size-8 md:size-5" />
-                  Third Party Inspection
+                  {content.thirdPartyHeading}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {thirdParty.map((item, idx) => (
@@ -102,9 +80,9 @@ export function Certificates() {
               </div>
 
               <div className="col-span-2 lg:col-span-3 bg-primary p-6 md:p-8 rounded-[2rem] text-white shadow-xl shadow-primary/20 flex flex-col justify-center items-center text-center">
-                <h5 className="text-lg md:text-xl font-bold mb-2">Global Quality Standards</h5>
+                <h5 className="text-lg md:text-xl font-bold mb-2">{content.boxTitle}</h5>
                 <p className="text-white text-[11px] md:text-xs max-w-xs">
-                  Meeting and exceeding international requirements for industrial safety and engineering performance.
+                  {content.boxText}
                 </p>
               </div>
             </div>

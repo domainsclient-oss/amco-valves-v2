@@ -98,6 +98,46 @@ service cloud.firestore {
     }
 
     /**
+     * @description Editable website content managed from the /admin dashboard.
+     * @path /siteContent/{docId}
+     * @allow (get, list) Public access, the site renders from it.
+     * @allow (create, update, delete) Administrative users only.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /siteContent/{docId} {
+      allow get, list: if true;
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin() && isExisting(resource);
+    }
+
+    /**
+     * @description Blog posts written in the /admin/blog dashboard.
+     * @path /blogPosts/{postId}
+     * @allow (get, list) Anyone for published posts (queries must filter on status == 'published'); admins for drafts.
+     * @allow (create, update, delete) Administrative users only.
+     * @principle Public Read of published content with Admin-Only Writes.
+     */
+    match /blogPosts/{postId} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin() && isExisting(resource);
+    }
+
+    /**
+     * @description Compressed blog photos (base64), served via /api/blog-images/{imageId}.
+     * @path /blogImages/{imageId}
+     * @allow (get) Public access so the site can display them.
+     * @allow (list, create, update, delete) Administrative users only.
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /blogImages/{imageId} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin() && isExisting(resource);
+    }
+
+    /**
      * @description Form submissions for customer inquiries.
      * @path /contactSubmissions/{submissionId}
      * @allow (create) Any signed-in (including anonymous) user submitting the form.

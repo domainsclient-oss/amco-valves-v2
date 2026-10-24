@@ -1,8 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Linkedin, Twitter, Facebook, MapPin, Phone, Mail } from "lucide-react";
+import { phoneHref, type HomeContent } from "@/lib/home-content";
+import { useHomeContent } from "@/hooks/use-home-content";
 
-export function Footer() {
+type FooterContent = Pick<HomeContent, "contact" | "footer">;
+
+export function Footer({ content }: { content?: FooterContent }) {
+  return content ? <FooterView content={content} /> : <FooterWithLoadedContent />;
+}
+
+function FooterWithLoadedContent() {
+  return <FooterView content={useHomeContent()} />;
+}
+
+function FooterView({ content: { contact, footer } }: { content: FooterContent }) {
   return (
     <footer className="bg-primary text-white py-16">
       <div className="container mx-auto px-6">
@@ -20,7 +34,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Precision engineered valve solutions for the global energy and industrial sectors. Quality and reliability at the core of everything we do.
+              {footer.about}
             </p>
             <div className="flex gap-4">
               {[Linkedin, Twitter, Facebook].map((Icon, idx) => (
@@ -61,26 +75,26 @@ export function Footer() {
                 <MapPin className="text-secondary shrink-0 size-5" />
                 <span>
                   <strong>Factory:</strong><br />
-                  638/A Tiruvottriyur high road, Ajax, Chennai, 600019
+                  {contact.factoryAddress}
                 </span>
               </li>
               <li className="flex gap-3">
                 <MapPin className="text-secondary shrink-0 size-5" />
                 <span>
                   <strong>Warehouse:</strong><br />
-                  104-A East Mada church street, Royapuram, Chennai, 600013
+                  {contact.warehouseAddress}
                 </span>
               </li>
               <li className="flex gap-3">
                 <Phone className="text-secondary shrink-0 size-5" />
-                <Link href="tel:+919841114671" className="hover:text-secondary transition-colors">
-                  91-9841114671
+                <Link href={phoneHref(contact.phone)} className="hover:text-secondary transition-colors">
+                  {contact.phone}
                 </Link>
               </li>
               <li className="flex gap-3">
                 <Mail className="text-secondary shrink-0 size-5" />
-                <Link href="mailto:contact@amcovalves.com" className="hover:text-secondary transition-colors">
-                  contact@amcovalves.com
+                <Link href={`mailto:${contact.email}`} className="hover:text-secondary transition-colors">
+                  {contact.email}
                 </Link>
               </li>
             </ul>

@@ -6,6 +6,10 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Factory, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
+import { safeHref, safeId } from "@/lib/buttons";
+
+const statIcons = [Zap, Users, Factory];
 
 function Counter({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -26,7 +30,7 @@ function Counter({ end, duration = 2000 }: { end: number; duration?: number }) {
   return <>{count}</>;
 }
 
-export function Hero() {
+export function Hero({ content = defaultHomeContent.hero }: { content?: HomeContent["hero"] }) {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-bg");
 
   return (
@@ -49,34 +53,30 @@ export function Hero() {
         <div className="max-w-3xl animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 text-secondary px-4 py-2 rounded-full mb-6 md:mb-8">
             <ShieldCheck className="size-5 md:size-[18px]" />
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.1em] uppercase">Precision Engineered Solutions</span>
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.1em] uppercase">{content.badge}</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-[65px] font-bold text-primary leading-[1.1] md:leading-[1.05] mb-6 md:mb-8">
-            Pioneering the <br className="hidden md:block" /> Future of <br className="hidden md:block" /> <span className="text-secondary">Industrial Flow</span>
+            {content.titleLine1} <br className="hidden md:block" /> {content.titleLine2} <br className="hidden md:block" /> <span className="text-secondary">{content.titleHighlight}</span>
           </h1>
           
           <div className="text-base md:text-xl text-foreground/70 mb-4 md:text-lg lg:text-xl md:mb-8 max-w-2xl leading-relaxed whitespace-pre-line">
-            AIV delivers world class Industrial Valves.{"\n"}Reliability, durability, and engineering excellence.
+            {content.subtitle}
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-4 md:mb-4">
             <Button variant="secondary" size="lg" className="h-12 md:h-14 px-8 md:px-10 text-base md:text-lg rounded-xl font-bold" asChild>
-              <Link href="#products">
-                Explore Catalog <ArrowRight className="size-6 ml-2" />
+              <Link href={safeHref(content.primaryButton.href, "#products")} id={safeId(content.primaryButton.id)}>
+                {content.primaryButton.label} <ArrowRight className="size-6 ml-2" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="h-12 md:h-14 px-8 md:px-10 text-base md:text-lg bg-white border-none text-primary hover:bg-white hover:text-secondary hover:shadow-lg transition-all rounded-xl font-bold shadow-sm" asChild>
-              <Link href="#about">Learn More</Link>
+              <Link href={safeHref(content.secondaryButton.href, "#about")} id={safeId(content.secondaryButton.id)}>{content.secondaryButton.label}</Link>
             </Button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 pt-8 md:pt-12 pb-12 md:pb-0 border-t border-black/5">
-            {[
-              { icon: Zap, end: 500, label: "Projects Completed" },
-              { icon: Users, end: 1000, label: "Happy Customers" },
-              { icon: Factory, end: 5, label: "Work Facilities" }
-            ].map((stat, i) => (
+            {content.stats.map((item, i) => ({ ...item, icon: statIcons[i % statIcons.length] })).map((stat, i) => (
               <div key={i} className="flex items-center gap-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-secondary">
                   <stat.icon className="size-11 md:size-9" />

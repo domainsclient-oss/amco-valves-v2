@@ -13,8 +13,9 @@ import { signInAnonymously } from "firebase/auth";
 import { appendToGoogleSheet } from "@/app/actions/google-sheets";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { format } from "date-fns";
+import { defaultHomeContent, phoneHref, type HomeContent } from "@/lib/home-content";
 
-export function ContactUs() {
+export function ContactUs({ content = defaultHomeContent.contact }: { content?: HomeContent["contact"] }) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [lastError, setLastError] = useState<string | null>(null);
@@ -97,10 +98,10 @@ export function ContactUs() {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <h2 className="text-primary font-bold text-sm uppercase tracking-widest mb-3">Get In Touch</h2>
-            <h3 className="text-3xl md:text-[52px] font-bold text-primary mb-6">Contact</h3>
+            <h2 className="text-primary font-bold text-sm uppercase tracking-widest mb-3">{content.label}</h2>
+            <h3 className="text-3xl md:text-[52px] font-bold text-primary mb-6">{content.title}</h3>
             <p className="text-lg text-foreground/70 mb-12">
-              Have questions about our products or need a custom quote? Our technical support team is ready to assist you.
+              {content.description}
             </p>
 
             <div className="space-y-8">
@@ -110,7 +111,7 @@ export function ContactUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Factory</h4>
-                  <p className="text-foreground/60 text-sm">638/A Tiruvottriyur high road, Ajax, Chennai, 600019</p>
+                  <p className="text-foreground/60 text-sm">{content.factoryAddress}</p>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -119,8 +120,8 @@ export function ContactUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Mobile</h4>
-                  <Link href="tel:+919841114671" className="text-foreground/60 text-sm hover:text-secondary transition-colors">
-                    91-9841114671
+                  <Link href={phoneHref(content.phone)} className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                    {content.phone}
                   </Link>
                 </div>
               </div>
@@ -130,8 +131,8 @@ export function ContactUs() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Email</h4>
-                  <Link href="mailto:contact@amcovalves.com" className="text-foreground/60 text-sm hover:text-secondary transition-colors">
-                    contact@amcovalves.com
+                  <Link href={`mailto:${content.email}`} className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                    {content.email}
                   </Link>
                 </div>
               </div>

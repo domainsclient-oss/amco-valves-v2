@@ -1,8 +1,9 @@
 export const firebaseConfig = {
-  "projectId": "studio-8323916940-728ca",
-  "appId": "1:137623415972:web:13aa6cf8b9d2f3498e8a31",
-  "apiKey": "AIzaSyBWXfi4Fg6_ivI_uM7mb6GOTGTsW88gPDw",
-  "authDomain": "studio-8323916940-728ca.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "137623415972"
+  "projectId": "amco-website-8139f",
+  "appId": "1:554289526121:web:f2c1851665e27d65aeb9f8",
+  "apiKey": "AIzaSyBac4C4l6s-QxsgtlU_-xMISFJh1tZRA34",
+  "authDomain": "amco-website-8139f.firebaseapp.com",
+  "storageBucket": "amco-website-8139f.firebasestorage.app",
+  "measurementId": "G-TCQ15BLBP3",
+  "messagingSenderId": "554289526121"
 };

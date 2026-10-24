@@ -1,5 +1,3 @@
-"use client";
-
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,31 +7,64 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { placeholderImages } from "@/lib/placeholder-images.json";
+import { blogImageUrl, formatBlogDate, getPublishedBlogPosts } from "@/lib/blog";
+import { BLOG_INDEX_SLUG, blogIndexDefaults, getArticleContent, isArticlePublished, pfaVsFepDefaults, waterTreatmentDefaults } from "@/lib/blog-articles";
+import { safeHref, safeId } from "@/lib/buttons";
 
-const blogPosts = [
-  {
-    id: "water-treatment",
-    title: "How to Choose the Right Industrial Valve for Water and Wastewater Treatment Plants",
-    description: "Selecting valves for treatment facilities requires understanding the fluid characteristics, operating conditions, and the specific role of each pipeline.",
-    image: "/blog/blog-hero-1.webp",
-    date: "October 12, 2026",
-    href: "/blog/industrial-valves-for-water-treatment",
-    category: "Industry Selection Guide",
-    icon: Droplets,
-  },
-  {
-    id: "pfa-vs-fep",
-    title: "PFA vs FEP Lined Valves: What Should You Choose for Corrosive Chemical Applications?",
-    description: "Selecting the right fluoropolymer lining is critical for the safety and longevity of your industrial valves in highly aggressive environments.",
-    image: "/blog/hero-bg-blog2.webp",
-    date: "October 05, 2026",
-    href: "/blog/pfa-vs-fep-lined-valves",
-    category: "Material Comparison",
-    icon: ShieldAlert,
-  }
-];
+// Pick up posts published from the admin dashboard (saving there refreshes this immediately).
+export const revalidate = 60;
 
-export default function BlogIndexPage() {
+/** The two original articles; their card text is editable from the admin dashboard. */
+async function getOriginalPosts() {
+  const [water, pfa, waterLive, pfaLive] = await Promise.all([
+    getArticleContent("industrial-valves-for-water-treatment", waterTreatmentDefaults),
+    getArticleContent("pfa-vs-fep-lined-valves", pfaVsFepDefaults),
+    isArticlePublished("industrial-valves-for-water-treatment"),
+    isArticlePublished("pfa-vs-fep-lined-valves"),
+  ]);
+  const posts = [
+    {
+      id: "water-treatment",
+      title: water.card.heading,
+      description: water.card.description,
+      image: water.card.image,
+      date: water.card.date,
+      href: "/blog/industrial-valves-for-water-treatment",
+      category: water.card.category,
+      icon: Droplets,
+    },
+    {
+      id: "pfa-vs-fep",
+      title: pfa.card.heading,
+      description: pfa.card.description,
+      image: pfa.card.image,
+      date: pfa.card.date,
+      href: "/blog/pfa-vs-fep-lined-valves",
+      category: pfa.card.category,
+      icon: ShieldAlert,
+    },
+  ];
+  // Articles moved to draft in the admin dashboard are hidden.
+  return posts.filter((_, i) => [waterLive, pfaLive][i]);
+}
+
+export default async function BlogIndexPage() {
+  const blogPosts = await getOriginalPosts();
+  const c = await getArticleContent(BLOG_INDEX_SLUG, blogIndexDefaults);
+  const adminPosts = (await getPublishedBlogPosts()).map((post) => ({
+    id: post.id,
+    title: post.cardTitle || post.title,
+    description: post.cardDescription || post.excerpt,
+    image: post.coverImageId ? blogImageUrl(post.coverImageId) : "/blog/blog-hero-1.webp",
+    date: formatBlogDate(post.date),
+    href: `/blog/${post.slug}`,
+    category: post.category || "AMCO Updates",
+    icon: BookOpen,
+  }));
+  const allPosts = [...adminPosts, ...blogPosts].sort(
+    (a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0),
+  );
+
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
@@ -57,25 +88,25 @@ export default function BlogIndexPage() {
 
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2 rounded-2xl text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-8 animate-in fade-in zoom-in-95 duration-1000">
-              <BookOpen className="size-3.5" /> AMCO Knowledge Base
+              <BookOpen className="size-3.5" /> {c.hero.badge}
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-primary leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-              Industrial Valve <span className="text-secondary">Engineering Insights</span>
+              {c.hero.title} <span className="text-secondary">{c.hero.titleHighlight}</span>
             </h1>
             
             <p className="text-lg md:text-2xl text-foreground/60 max-w-2xl leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-              Technical guides, material comparisons, and selection frameworks designed for global procurement and maintenance teams.
+              {c.hero.description}
             </p>
 
             <div className="flex flex-wrap justify-start gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
               <div className="flex items-center gap-2 text-sm font-bold text-primary/80 bg-white shadow-sm border border-border/50 px-5 py-2.5 rounded-xl">
                 <Layers className="size-4 text-secondary" />
-                <span>Deep Material Analysis</span>
+                <span>{c.hero.tag1}</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-bold text-primary/80 bg-white shadow-sm border border-border/50 px-5 py-2.5 rounded-xl">
                 <Droplets className="size-4 text-secondary" />
-                <span>Process Optimization</span>
+                <span>{c.hero.tag2}</span>
               </div>
             </div>
           </div>
@@ -86,12 +117,12 @@ export default function BlogIndexPage() {
       <section className="py-20 md:py-32 px-5 md:px-[63px] bg-neutral-50/50">
         <div className="container mx-auto">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary">Latest Technical Posts</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-primary">{c.posts.heading}</h2>
             <div className="h-px flex-1 bg-border/40 mx-8 hidden md:block" />
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
-            {blogPosts.map((post) => (
+            {allPosts.map((post) => (
               <Card key={post.id} className="group overflow-hidden border-none bg-white rounded-[3rem] flex flex-col shadow-xl shadow-primary/5 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-700 hover:-translate-y-3">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -125,7 +156,7 @@ export default function BlogIndexPage() {
                 <CardFooter className="px-10 md:px-14 pb-14 pt-0">
                   <Button variant="secondary" className="rounded-2xl font-bold h-14 px-8 group/btn text-base transition-all duration-500 shadow-lg shadow-secondary/10" asChild>
                     <Link href={post.href}>
-                      Continue Reading
+                      {c.posts.readMoreLabel}
                       <ArrowRight className="ml-3 size-5 transition-transform group-hover/btn:translate-x-2" />
                     </Link>
                   </Button>
@@ -141,19 +172,19 @@ export default function BlogIndexPage() {
         <div className="container mx-auto">
           <div className="bg-primary p-10 md:p-24 rounded-[4rem] text-center relative overflow-hidden shadow-3xl shadow-primary/30">
             <h3 className="text-3xl md:text-5xl font-bold text-white mb-8 relative z-10 leading-tight">
-              Looking for project-specific <br className="hidden md:block" /> <span className="text-secondary">valve specifications?</span>
+              {c.cta.heading} <br className="hidden md:block" /> <span className="text-secondary">{c.cta.headingHighlight}</span>
             </h3>
             
             <p className="text-white/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed">
-              Our engineering team is available for deep technical consultations to help identify the optimal configuration for your specific media and operating conditions.
+              {c.cta.text}
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
               <Button variant="secondary" size="lg" className="h-16 px-12 rounded-[1.25rem] font-bold text-lg shadow-2xl shadow-secondary/20 hover:scale-105 transition-transform" asChild>
-                <Link href="/#contact">Consult an Engineer</Link>
+                <Link href={safeHref(c.cta.primaryButton.href, "/#contact")} id={safeId(c.cta.primaryButton.id)}>{c.cta.primaryButton.label}</Link>
               </Button>
               <Button variant="outline" size="lg" className="h-16 px-12 rounded-[1.25rem] font-bold text-lg border-white/20 text-white bg-white/10 hover:bg-white/20 transition-colors" asChild>
-                <Link href="/#products">Explore Catalog</Link>
+                <Link href={safeHref(c.cta.secondaryButton.href, "/#products")} id={safeId(c.cta.secondaryButton.id)}>{c.cta.secondaryButton.label}</Link>
               </Button>
             </div>
           </div>
