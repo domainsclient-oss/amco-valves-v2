@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { QuotePopup } from "@/components/QuotePopup";
 import type { ProductContent } from "@/lib/product-content";
+import { DataSheetDownload } from "@/components/products/DataSheetDownload";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function WaferDesignBallValveView({ content }: { content: ProductContent }) {
@@ -48,7 +49,7 @@ export default function WaferDesignBallValveView({ content }: { content: Product
       {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
@@ -83,7 +84,7 @@ export default function WaferDesignBallValveView({ content }: { content: Product
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
                       {spec.label} :
                     </span>
-                    <span className="text-foreground/70 text-sm md:text-base leading-relaxed">
+                    <span className="text-[#000000] text-sm md:text-base leading-relaxed">
                       {spec.value}
                     </span>
                   </div>
@@ -98,13 +99,16 @@ export default function WaferDesignBallValveView({ content }: { content: Product
                 >
                   Request a Quote
                 </Button>
-                <Button 
-                  variant="outline" 
-                  className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors"
-                  onClick={handleDownloadCSV}
-                >
-                  <Download className="mr-2 size-5" /> Download Data Sheet
-                </Button>
+                {/* With several data-sheet tables this button opens a menu to download all or one. */}
+                <DataSheetDownload content={content}>
+                  <Button 
+                    variant="outline" 
+                    className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors"
+                    onClick={handleDownloadCSV}
+                  >
+                    <Download className="mr-2 size-5" /> Download Data Sheet
+                  </Button>
+                </DataSheetDownload>
               </div>
             </div>
           </div>

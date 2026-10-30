@@ -1,11 +1,14 @@
 'use client';
 
-import { ArrowDown, ArrowUp, Plus, Trash2, X } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { ArrowDown, ArrowUp, FileUp, Loader2, Plus, Trash2, X } from 'lucide-react';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { Field } from '@/components/admin/fields';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useUser } from '@/firebase';
+import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import type { ProductTable, ProductTableRow } from '@/lib/product-content';
 
@@ -23,7 +26,7 @@ function RemoveButton({ what, onConfirm }: { what: string; onConfirm: () => void
       confirmLabel="Remove"
       onConfirm={onConfirm}
       trigger={
-        <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive shrink-0" aria-label={`Remove ${what}`}>
+        <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive hover:bg-destructive/10 shrink-0" aria-label={`Remove ${what}`}>
           <X className="size-4" />
         </Button>
       }
@@ -100,7 +103,7 @@ function TableCard({
             confirmLabel="Remove table"
             onConfirm={onRemove}
             trigger={
-              <Button type="button" size="icon" variant="ghost" className="size-9 text-destructive hover:text-destructive" aria-label="Remove table">
+              <Button type="button" size="icon" variant="ghost" className="size-9 text-destructive hover:text-destructive hover:bg-destructive/10" aria-label="Remove table">
                 <Trash2 className="size-4" />
               </Button>
             }
@@ -119,7 +122,8 @@ function TableCard({
             {table.groups.length > 0 && ` Spans should add up to ${Math.max(0, columns - 1)} (all columns except the first); now ${groupSpan}.`}
           </p>
           {table.groups.map((group, g) => (
-            <div key={g} className="flex items-center gap-2">
+            // On phones the label takes its own line; no effect from 640px up.
+            <div key={g} className="flex items-center gap-2 max-sm:flex-wrap">
               <Input
                 value={group.label}
                 onChange={(e) => onChange({ ...table, groups: table.groups.map((x, j) => (j === g ? { ...x, label: e.target.value } : x)) })}
@@ -242,6 +246,36 @@ export function ProductTablesEditor({ tables, onChange }: { tables: ProductTable
     onChange([...tables, { title: '', groups: [], headers, rows: [{ cells: headers.map(() => ''), kind: '' }], note: last?.note ?? '' }]);
   };
 
+  // Reads the tables from a data-sheet PDF and adds them below, to be checked before saving.
+  const { user } = useUser();
+  const { toast } = useToast();
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [reading, setReading] = useState(false);
+  const uploadPdf = async (file: File) => {
+    if (!user) return;
+    setReading(true);
+    try {
+      const body = new FormData();
+      body.append('file', file);
+      const res = await fetch('/api/admin/extract-pdf-tables', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${await user.getIdToken()}` },
+        body,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !Array.isArray(data.tables)) throw new Error(data.error || "Couldn't read tables from this PDF.");
+      onChange([...tables, ...(data.tables as ProductTable[])]);
+      toast({
+        title: `Added ${data.tables.length} table${data.tables.length === 1 ? '' : 's'} from the PDF`,
+        description: 'Please check the values, then click "Save changes".',
+      });
+    } catch (error) {
+      toast({ variant: 'destructive', title: 'PDF upload failed', description: error instanceof Error ? error.message : String(error) });
+    } finally {
+      setReading(false);
+    }
+  };
+
   return (
     <div className="space-y-4">
       {tables.length === 0 && (
@@ -258,9 +292,29 @@ export function ProductTablesEditor({ tables, onChange }: { tables: ProductTable
           onRemove={() => onChange(tables.filter((_, j) => j !== i))}
         />
       ))}
-      <Button type="button" variant="outline" onClick={addTable}>
-        <Plus className="size-4 mr-1" /> Add table
-      </Button>
+      <div className="flex flex-wrap gap-2">
+        <Button type="button" variant="outline" onClick={addTable}>
+          <Plus className="size-4 mr-1" /> Add table
+        </Button>
+        <Button type="button" variant="outline" onClick={() => fileInput.current?.click()} disabled={reading || !user}>
+          {reading ? <Loader2 className="size-4 mr-1 animate-spin" /> : <FileUp className="size-4 mr-1" />}
+          {reading ? 'Reading PDF…' : 'Upload PDF'}
+        </Button>
+        <input
+          ref={fileInput}
+          type="file"
+          accept="application/pdf,.pdf"
+          className="hidden"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            e.target.value = '';
+            if (file) uploadPdf(file);
+          }}
+        />
+      </div>
+      <p className="text-xs text-foreground/50">
+        Add a table and type the values, or upload a data-sheet PDF (under 4 MB) to add its tables automatically. Uploaded tables are added at the end for you to check before saving.
+      </p>
     </div>
   );
 }

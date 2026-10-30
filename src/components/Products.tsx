@@ -17,7 +17,7 @@ export function Products({ content = defaultHomeContent.products }: { content?: 
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-secondary font-bold text-sm uppercase tracking-widest mb-3">{content.label}</h2>
           <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6">{content.title}</h3>
-          <p className="text-foreground/70 text-sm md:text-base mb-8">
+          <p className="text-[#000000] text-sm md:text-base mb-8">
             {content.description}
           </p>
         </div>
@@ -99,7 +99,7 @@ export function Products({ content = defaultHomeContent.products }: { content?: 
               <h4 className="text-base md:text-lg font-bold">{item.title}</h4>
               <p className={cn(
                 "text-xs md:text-sm group-hover:text-white/90",
-                idx === 0 ? "text-white/70" : "text-foreground/60"
+                idx === 0 ? "text-white/70" : "text-[#000000]"
               )}>{item.desc}</p>
             </div>
           ))}

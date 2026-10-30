@@ -28,7 +28,7 @@ export function AboutUs({ content = defaultHomeContent.about }: { content?: Home
             </h3>
           </div>
           <div className="lg:text-right">
-            <p className="text-lg md:text-xl text-foreground/50 leading-relaxed max-w-xl ml-auto">
+            <p className="text-lg md:text-xl text-[#000000] leading-relaxed max-w-xl ml-auto">
               {withLineBreaks(content.intro)}
             </p>
           </div>
@@ -38,13 +38,13 @@ export function AboutUs({ content = defaultHomeContent.about }: { content?: Home
         <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-start mb-12 md:mb-20">
           <div className="space-y-6 md:space-y-8">
             <div className="p-8 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-primary/5 border border-primary/10">
-              <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <p className="text-[#000000] text-sm md:text-base leading-relaxed">
                 {withLineBreaks(content.industries)}
               </p>
             </div>
             
             <div className="p-8 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-border shadow-sm">
-              <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <p className="text-[#000000] text-sm md:text-base leading-relaxed">
                 {withLineBreaks(content.team)}
               </p>
             </div>
@@ -52,13 +52,13 @@ export function AboutUs({ content = defaultHomeContent.about }: { content?: Home
 
           <div className="space-y-6 md:space-y-8">
             <div className="p-8 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white border border-border shadow-sm">
-              <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <p className="text-[#000000] text-sm md:text-base leading-relaxed">
                 {withLineBreaks(content.supply)}
               </p>
             </div>
 
             <div className="p-8 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-secondary/5 border border-secondary/10">
-              <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <p className="text-[#000000] text-sm md:text-base leading-relaxed">
                 {withLineBreaks(content.quality)}
               </p>
             </div>

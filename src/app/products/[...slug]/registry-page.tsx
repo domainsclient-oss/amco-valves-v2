@@ -14,7 +14,8 @@ import { productSpecsRegistry } from "@/lib/product-specs";
 import { QuotePopup } from "@/components/QuotePopup";
 import { cn } from "@/lib/utils";
 
-export default function DynamicProductDetailPage() {
+/** Products from the static registry (and the "Product Not Found" page). */
+export function RegistryProductPage() {
   const params = useParams();
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function DynamicProductDetailPage() {
         <Navbar />
         <div className="pt-40 pb-20 container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold text-primary">Product Not Found</h1>
-          <p className="text-foreground/60 mt-4">The product specification you are looking for is not available.</p>
+          <p className="text-[#000000] mt-4">The product specification you are looking for is not available.</p>
           <Button className="mt-8" asChild>
             <Link href="/#products">Back to Products</Link>
           </Button>
@@ -107,7 +108,7 @@ export default function DynamicProductDetailPage() {
       {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
@@ -143,7 +144,7 @@ export default function DynamicProductDetailPage() {
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">
                       {spec.label} :
                     </span>
-                    <span className="text-foreground/70 text-sm md:text-base leading-relaxed">
+                    <span className="text-[#000000] text-sm md:text-base leading-relaxed">
                       {spec.value}
                     </span>
                   </div>
@@ -231,7 +232,7 @@ export default function DynamicProductDetailPage() {
                     {table.rows.map((row, rIdx) => (
                       <TableRow key={rIdx} className={cn("border-b border-neutral-100 hover:bg-neutral-50 transition-colors text-xs md:text-sm", row.isHeader && "bg-primary/5")}>
                         {row.data.map((cell, cIdx) => (
-                          <TableCell key={cIdx} className={cn("text-center text-foreground/80 py-3", cIdx === 0 && "font-bold text-primary bg-neutral-50/20", cIdx < row.data.length - 1 && "border-r border-neutral-100")}>
+                          <TableCell key={cIdx} className={cn("text-center text-[#000000] py-3", cIdx === 0 && "font-bold text-primary bg-neutral-50/20", cIdx < row.data.length - 1 && "border-r border-neutral-100")}>
                             {cell}
                           </TableCell>
                         ))}
@@ -241,7 +242,7 @@ export default function DynamicProductDetailPage() {
                 </Table>
               </div>
               <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50 text-right">
-                <p className="text-[10px] md:text-sm text-foreground/50 font-medium italic">
+                <p className="text-[10px] md:text-sm text-[#000000] font-medium italic">
                   All dimensions are in mm
                 </p>
               </div>

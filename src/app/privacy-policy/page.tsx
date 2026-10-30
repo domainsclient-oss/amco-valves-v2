@@ -24,19 +24,19 @@ export default function PrivacyPolicyPage() {
       {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <span className="text-primary">Privacy Policy</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Privacy Policy</h1>
-          <p className="text-foreground/50 mt-2">Date: {effectiveDate}</p>
+          <p className="text-[#000000] mt-2">Date: {effectiveDate}</p>
         </div>
       </div>
 
       <section className="py-12 md:py-20 px-5 md:px-[63px]">
         <div className="container mx-auto max-w-4xl">
-          <div className="prose prose-blue max-w-none text-foreground/80 space-y-8">
+          <div className="prose prose-blue max-w-none text-[#000000] space-y-8">
             <p>
               At AMCO Valves, we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, store, and protect information when you visit our website, communicate with us, or use our services.
             </p>

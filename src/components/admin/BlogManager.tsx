@@ -84,7 +84,7 @@ function RowMenu({
         {onDelete && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={onDelete} className="cursor-pointer text-destructive focus:text-destructive">
+            <DropdownMenuItem onSelect={onDelete} className="cursor-pointer text-destructive focus:text-destructive focus:bg-destructive/10">
               <Trash2 className="size-4 mr-2" /> Delete
             </DropdownMenuItem>
           </>

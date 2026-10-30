@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation";
 import { getRestDoc } from "@/lib/firestore-rest";
 import { HOME_CONTENT_COLLECTION } from "@/lib/home-content";
+import { isBuiltInProductVisible } from "@/lib/product-taxonomy";
 
 /**
  * Editable content of the product detail pages (/products/...).
@@ -114,8 +116,12 @@ export function resolveProductContent(defaults: ProductContent, saved: unknown):
   };
 }
 
-/** Fetches a product's saved content merged onto its defaults. Never throws. */
+/**
+ * Fetches a product's saved content merged onto its defaults. Shows "not found" when the
+ * product (or its category / sub-category) was put to draft or deleted in the admin.
+ */
 export async function getProductContent(slug: string, defaults: ProductContent): Promise<ProductContent> {
+  if (!(await isBuiltInProductVisible(slug))) notFound();
   const doc = await getRestDoc(`${HOME_CONTENT_COLLECTION}/${productContentDocId(slug)}`, {
     revalidate: 60,
     tags: [`product:${slug}`],

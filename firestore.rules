@@ -138,6 +138,19 @@ service cloud.firestore {
     }
 
     /**
+     * @description Products added from the /admin/products dashboard (rendered by /products/[...slug]).
+     * @path /customProducts/{productId}
+     * @allow (get, list) Anyone for published products (queries must filter on status == 'published'); admins for drafts.
+     * @allow (create, update, delete) Administrative users only.
+     * @principle Public Read of published content with Admin-Only Writes.
+     */
+    match /customProducts/{productId} {
+      allow get, list: if resource.data.status == 'published' || isAdmin();
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin() && isExisting(resource);
+    }
+
+    /**
      * @description Form submissions for customer inquiries.
      * @path /contactSubmissions/{submissionId}
      * @allow (create) Any signed-in (including anonymous) user submitting the form.

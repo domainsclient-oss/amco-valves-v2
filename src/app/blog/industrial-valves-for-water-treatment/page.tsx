@@ -55,7 +55,7 @@ export default async function WaterTreatmentBlogPage() {
           />
         </div>
         <div className="container mx-auto relative z-10">
-          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-6">
+          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-6">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <Link href="/blog" className="hover:text-secondary transition-colors">Blog</Link>
@@ -68,7 +68,7 @@ export default async function WaterTreatmentBlogPage() {
           <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8 break-words hyphens-auto">
             {c.hero.title}
           </h1>
-          <p className="text-base md:text-xl text-foreground/70 max-w-3xl leading-relaxed mb-4">
+          <p className="text-base md:text-xl text-[#000000] max-w-3xl leading-relaxed mb-4">
             {c.hero.intro}
           </p>
         </div>
@@ -79,7 +79,7 @@ export default async function WaterTreatmentBlogPage() {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-8 min-w-0">
-              <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
+              <article className="prose prose-neutral text-[#000000] max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-[#000000] prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
                 <p className="text-xl md:text-2xl text-primary font-semibold leading-snug mb-[15px]">
                   {c.intro.lead}
                 </p>
@@ -122,7 +122,7 @@ export default async function WaterTreatmentBlogPage() {
                   </div>
                 </div>
 
-                <p className="italic text-foreground/60 border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl mb-[15px]">
+                <p className="italic text-[#000000] border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl mb-[15px]">
                   {c.valveTypes.note}
                 </p>
 
@@ -138,7 +138,7 @@ export default async function WaterTreatmentBlogPage() {
                     <Info className="size-5 text-secondary shrink-0" />
                     {c.butterfly.calloutTitle}
                   </h4>
-                  <p className="text-sm md:text-lg m-0 text-foreground/80 leading-relaxed">
+                  <p className="text-sm md:text-lg m-0 text-[#000000] leading-relaxed">
                     {c.butterfly.calloutText}
                   </p>
                 </div>
@@ -152,7 +152,7 @@ export default async function WaterTreatmentBlogPage() {
                 <div className="bg-primary/5 border border-primary/10 p-6 md:p-8 rounded-2xl md:rounded-3xl my-8 md:my-10">
                   <h4 className="text-lg md:text-xl font-bold text-primary mb-4 break-words">{c.checkValves.boxTitle}</h4>
                   {c.checkValves.boxParagraphs.map((text, i) => (
-                    <p key={i} className="text-sm md:text-base text-foreground/70 leading-relaxed mb-[15px]">{text}</p>
+                    <p key={i} className="text-sm md:text-base text-[#000000] leading-relaxed mb-[15px]">{text}</p>
                   ))}
                 </div>
 
@@ -189,7 +189,7 @@ export default async function WaterTreatmentBlogPage() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <span className="font-bold text-primary text-lg md:text-xl block mb-2 break-words">{item.label}</span>
-                        <p className="text-sm md:text-base text-foreground/60 m-0 leading-relaxed">{item.desc}</p>
+                        <p className="text-sm md:text-base text-[#000000] m-0 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -242,7 +242,7 @@ export default async function WaterTreatmentBlogPage() {
                     {c.faq.items.map((item, i) => (
                       <AccordionItem key={i} value={`item-${i + 1}`} className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
                         <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">{item.question}</AccordionTrigger>
-                        <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
+                        <AccordionContent className="text-[#000000] text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                           {/* The first answer is not wrapped in a paragraph in the original design. */}
                           {i === 0 ? item.answer : <p className="mb-[15px]">{item.answer}</p>}
                         </AccordionContent>
@@ -261,7 +261,7 @@ export default async function WaterTreatmentBlogPage() {
                   </div>
                   <h3 className="font-bold text-lg md:text-2xl text-primary m-0 break-words">{c.sidebar.expertTitle}</h3>
                 </div>
-                <p className="text-foreground/60 text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
+                <p className="text-[#000000] text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
                   {c.sidebar.expertText}
                 </p>
                 <div className="space-y-4">
@@ -292,7 +292,7 @@ export default async function WaterTreatmentBlogPage() {
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
                   {c.sidebar.links.map((link, i) => (
-                    <Link key={i} href={link.href} className="flex items-center justify-between text-xs md:text-sm text-foreground/50 hover:text-secondary transition-colors py-2 group min-w-0">
+                    <Link key={i} href={link.href} className="flex items-center justify-between text-xs md:text-sm text-[#000000] hover:text-secondary transition-colors py-2 group min-w-0">
                       <span className="truncate">{link.label}</span>
                       <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform shrink-0" />
                     </Link>

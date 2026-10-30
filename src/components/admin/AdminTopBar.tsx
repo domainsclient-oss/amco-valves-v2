@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { collection, doc, onSnapshot, query, updateDoc, where, writeBatch, type Timestamp } from 'firebase/firestore';
 import { formatDistanceToNow } from 'date-fns';
-import { Bell, ExternalLink, LogOut, Mail, Phone } from 'lucide-react';
+import { Bell, ExternalLink, LogOut, Mail, Phone, UserRound } from 'lucide-react';
 import { useFirestore, useUser } from '@/firebase';
 import { SignOutDialog } from '@/components/admin/ConfirmDialog';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -167,11 +167,16 @@ function ProfileMenu() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
+            <Link href="/admin/users#profile" className="cursor-pointer">
+              <UserRound className="size-4 mr-2" /> View profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
             <Link href="/" target="_blank" className="cursor-pointer">
               <ExternalLink className="size-4 mr-2" /> View website
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => setConfirmSignOut(true)} className="cursor-pointer text-destructive focus:text-destructive">
+          <DropdownMenuItem onSelect={() => setConfirmSignOut(true)} className="cursor-pointer text-destructive focus:text-destructive focus:bg-destructive/10">
             <LogOut className="size-4 mr-2" /> Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>

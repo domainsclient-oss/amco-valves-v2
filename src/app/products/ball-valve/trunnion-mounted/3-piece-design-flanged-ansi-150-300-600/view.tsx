@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import type { ProductContent } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
+import { DataSheetDownload } from "@/components/products/DataSheetDownload";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function Trunnion3PieceView({ content }: { content: ProductContent }) {
@@ -56,7 +57,7 @@ export default function Trunnion3PieceView({ content }: { content: ProductConten
       
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <Link href="/#products" className="hover:text-secondary transition-colors">Products</Link>
@@ -80,7 +81,7 @@ export default function Trunnion3PieceView({ content }: { content: ProductConten
                 {specs.map((spec, i) => (
                   <div key={i} className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 border-b border-border pb-4 last:border-none">
                     <span className="text-primary font-bold text-sm md:text-base md:min-w-[220px] uppercase tracking-wide">{spec.label} :</span>
-                    <span className="text-foreground/70 text-sm md:text-base leading-relaxed">{spec.value}</span>
+                    <span className="text-[#000000] text-sm md:text-base leading-relaxed">{spec.value}</span>
                   </div>
                 ))}
               </div>
@@ -94,9 +95,12 @@ export default function Trunnion3PieceView({ content }: { content: ProductConten
                 >
                   Request a Quote
                 </Button>
-                <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors" onClick={handleDownloadCSV}>
-                  <Download className="mr-2 size-5" /> Download Data Sheet
-                </Button>
+                {/* With several data-sheet tables this button opens a menu to download all or one. */}
+                <DataSheetDownload content={content}>
+                  <Button variant="outline" className="h-12 px-8 rounded-xl font-bold border-primary text-primary hover:bg-neutral-100 hover:text-primary transition-colors" onClick={handleDownloadCSV}>
+                    <Download className="mr-2 size-5" /> Download Data Sheet
+                  </Button>
+                </DataSheetDownload>
               </div>
             </div>
           </div>
@@ -175,7 +179,7 @@ export default function Trunnion3PieceView({ content }: { content: ProductConten
                               ? `font-medium text-primary/80 text-center${border} py-4 text-[11px] md:text-xs`
                               : starts.has(i)
                                 ? `font-bold text-primary text-center${border} py-4`
-                                : `text-center text-foreground/80${border}`;
+                                : `text-center text-[#000000]${border}`;
                             return <TableCell key={i} className={cls}>{cell}</TableCell>;
                           })}
                         </TableRow>
@@ -185,7 +189,7 @@ export default function Trunnion3PieceView({ content }: { content: ProductConten
                 </div>
                 {table.note && (
                 <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50/50">
-                  <p className="text-sm text-foreground/50 font-medium italic text-right">
+                  <p className="text-sm text-[#000000] font-medium italic text-right">
                     {table.note}
                   </p>
                 </div>

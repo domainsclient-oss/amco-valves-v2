@@ -348,7 +348,7 @@ export function BlogPostEditor({ initialPost, isNew, onBack }: { initialPost: Bl
                       confirmLabel="Remove link"
                       onConfirm={() => updateSidebar('links', { items: links.items.filter((_, j) => j !== i) })}
                       trigger={
-                        <Button type="button" size="sm" variant="ghost" className="text-destructive hover:text-destructive shrink-0">
+                        <Button type="button" size="sm" variant="ghost" className="text-destructive hover:text-destructive hover:bg-destructive/10 shrink-0">
                           Remove
                         </Button>
                       }

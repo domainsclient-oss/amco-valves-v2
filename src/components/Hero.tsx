@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Factory, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
 import { safeHref, safeId } from "@/lib/buttons";
 
@@ -31,7 +30,9 @@ function Counter({ end, duration = 2000 }: { end: number; duration?: number }) {
 }
 
 export function Hero({ content = defaultHomeContent.hero }: { content?: HomeContent["hero"] }) {
-  const heroImage = PlaceHolderImages.find((img) => img.id === "hero-bg");
+  // Background photo (editable in the admin). Only site paths are rendered; anything else would break next/image.
+  const background = content.background.src.startsWith("/") ? content.background : defaultHomeContent.hero.background;
+  const heroImage = background.src ? { imageUrl: background.src, description: background.alt, imageHint: background.hint } : null;
 
   return (
     <section className="relative min-h-[100svh] md:h-[850px] flex items-center pt-24 md:pt-20 overflow-hidden">
@@ -60,7 +61,7 @@ export function Hero({ content = defaultHomeContent.hero }: { content?: HomeCont
             {content.titleLine1} <br className="hidden md:block" /> {content.titleLine2} <br className="hidden md:block" /> <span className="text-secondary">{content.titleHighlight}</span>
           </h1>
           
-          <div className="text-base md:text-xl text-foreground/70 mb-4 md:text-lg lg:text-xl md:mb-8 max-w-2xl leading-relaxed whitespace-pre-line">
+          <div className="text-base md:text-xl text-[#000000] mb-4 md:text-lg lg:text-xl md:mb-8 max-w-2xl leading-relaxed whitespace-pre-line">
             {content.subtitle}
           </div>
 
@@ -85,7 +86,7 @@ export function Hero({ content = defaultHomeContent.hero }: { content?: HomeCont
                   <span className="text-primary font-bold text-2xl md:text-3xl leading-none mb-1">
                     <Counter end={stat.end} />+
                   </span>
-                  <p className="text-foreground/50 text-xs md:text-sm font-medium">{stat.label}</p>
+                  <p className="text-[#000000] text-xs md:text-sm font-medium">{stat.label}</p>
                 </div>
               </div>
             ))}

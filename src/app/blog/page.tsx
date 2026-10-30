@@ -80,7 +80,7 @@ export default async function BlogIndexPage() {
         <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container mx-auto relative z-10">
-          <nav className="flex items-center justify-start gap-2 text-xs md:text-sm font-medium text-foreground/40 mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
+          <nav className="flex items-center justify-start gap-2 text-xs md:text-sm font-medium text-[#000000] mb-8 animate-in fade-in slide-in-from-left-4 duration-700">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4 opacity-30" />
             <span className="text-primary/60 font-semibold">Blog</span>
@@ -95,7 +95,7 @@ export default async function BlogIndexPage() {
               {c.hero.title} <span className="text-secondary">{c.hero.titleHighlight}</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-foreground/60 max-w-2xl leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            <p className="text-lg md:text-2xl text-[#000000] max-w-2xl leading-relaxed mb-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
               {c.hero.description}
             </p>
 
@@ -141,14 +141,14 @@ export default async function BlogIndexPage() {
                 </div>
                 
                 <CardContent className="p-10 md:p-14 flex-grow">
-                  <div className="flex items-center gap-3 text-foreground/40 text-xs font-bold mb-6">
+                  <div className="flex items-center gap-3 text-[#000000] text-xs font-bold mb-6">
                     <Calendar className="size-4 text-secondary" />
                     {post.date}
                   </div>
                   <h2 className="text-2xl md:text-4xl font-bold text-primary mb-6 leading-[1.2] group-hover:text-secondary transition-colors duration-500">
                     {post.title}
                   </h2>
-                  <p className="text-foreground/50 text-base md:text-lg leading-relaxed line-clamp-3">
+                  <p className="text-[#000000] text-base md:text-lg leading-relaxed line-clamp-3">
                     {post.description}
                   </p>
                 </CardContent>

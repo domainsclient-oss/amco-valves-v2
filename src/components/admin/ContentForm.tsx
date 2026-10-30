@@ -110,7 +110,7 @@ export function cleanContent<T>(value: T): T {
 }
 
 /** Replaces an image in place: the page keeps the same spot and size, only the picture changes. */
-function ImageField({ label, value, original, onChange }: { label: string; value: string; original: string; onChange: (value: string) => void }) {
+export function ImageField({ label, value, original, onChange }: { label: string; value: string; original: string; onChange: (value: string) => void }) {
   const { upload, isUploading } = useImageUploader();
   const inputRef = useRef<HTMLInputElement>(null);
   // Shows a just-uploaded image instantly instead of waiting for the server copy.
@@ -147,7 +147,7 @@ function ImageField({ label, value, original, onChange }: { label: string; value
             {!isOriginal && (
               <ConfirmDialog
                 title="Use the original photo?"
-                description="The uploaded photo will be replaced with the article's original photo. It changes on the website after you click &quot;Save changes&quot;."
+                description="The uploaded photo will be replaced with the original photo. It changes on the website after you click &quot;Save changes&quot;."
                 confirmLabel="Use original"
                 icon={RotateCcw}
                 onConfirm={() => onChange(original)}
@@ -230,7 +230,7 @@ function ValueEditor({ name, value, template, onChange }: { name: string; value:
                   confirmLabel="Remove"
                   onConfirm={() => onChange(value.filter((_, j) => j !== i))}
                   trigger={
-                    <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive" aria-label={`Remove ${singular.toLowerCase()}`}>
+                    <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive hover:bg-destructive/10" aria-label={`Remove ${singular.toLowerCase()}`}>
                       <Trash2 className="size-4" />
                     </Button>
                   }
@@ -359,11 +359,12 @@ export function ContentForm<T extends Record<string, unknown>>({
       </Section>
 
       <div className="flex items-center justify-between gap-3">
-        <Button type="button" variant="outline" onClick={() => goTo(activeIndex - 1)} disabled={activeIndex === 0}>
-          <ArrowLeft className="size-4 mr-1" /> <span className="truncate max-w-[10rem] sm:max-w-xs">{activeIndex > 0 ? titleOf(keys[activeIndex - 1]) : 'Previous'}</span>
+        {/* max-sm: lets both buttons shrink on phones; no effect from 640px up. */}
+        <Button type="button" variant="outline" className="max-sm:min-w-0" onClick={() => goTo(activeIndex - 1)} disabled={activeIndex === 0}>
+          <ArrowLeft className="size-4 mr-1" /> <span className="truncate max-w-[10rem] sm:max-w-xs max-sm:min-w-0">{activeIndex > 0 ? titleOf(keys[activeIndex - 1]) : 'Previous'}</span>
         </Button>
-        <Button type="button" variant="outline" onClick={() => goTo(activeIndex + 1)} disabled={activeIndex === keys.length - 1}>
-          <span className="truncate max-w-[10rem] sm:max-w-xs">{activeIndex < keys.length - 1 ? titleOf(keys[activeIndex + 1]) : 'Next'}</span> <ArrowRight className="size-4 ml-1" />
+        <Button type="button" variant="outline" className="max-sm:min-w-0" onClick={() => goTo(activeIndex + 1)} disabled={activeIndex === keys.length - 1}>
+          <span className="truncate max-w-[10rem] sm:max-w-xs max-sm:min-w-0">{activeIndex < keys.length - 1 ? titleOf(keys[activeIndex + 1]) : 'Next'}</span> <ArrowRight className="size-4 ml-1" />
         </Button>
       </div>
     </div>

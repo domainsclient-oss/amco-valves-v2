@@ -2,14 +2,19 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { TrackingCodes } from '@/components/TrackingCodes';
+import { defaultHomeContent, getHomeContent, siteImage } from '@/lib/home-content';
 
-export const metadata: Metadata = {
-  title: 'AMCO Valves | High-Quality Industrial Valves',
-  description: 'Specializing in 1 Pc, 2 Pc, and 3 Pc Ball Valves. Screwed, Socket Weld, Butt Weld, and Flanged connections available.',
-  icons: {
-    icon: '/fav.png',
-  },
-};
+// The favicon is editable in the admin (Header).
+export async function generateMetadata(): Promise<Metadata> {
+  const { header } = await getHomeContent();
+  return {
+    title: 'AMCO Valves | High-Quality Industrial Valves',
+    description: 'Specializing in 1 Pc, 2 Pc, and 3 Pc Ball Valves. Screwed, Socket Weld, Butt Weld, and Flanged connections available.',
+    icons: {
+      icon: siteImage(header.favicon, defaultHomeContent.header.favicon),
+    },
+  };
+}
 
 export default function RootLayout({
   children,

@@ -11,7 +11,8 @@ import { BLOG_TAG } from '@/lib/blog';
  */
 export async function revalidateHomeContent() {
   revalidateTag(HOME_CONTENT_TAG);
-  revalidatePath('/');
+  // The header, footer and favicon appear on every page.
+  revalidatePath('/', 'layout');
 }
 
 /** Same as above for the blog list and the given post pages. */
@@ -27,4 +28,11 @@ export async function revalidateBlog(slugs: string[] = []) {
 export async function revalidateProduct(slug: string) {
   revalidateTag(`product:${slug}`);
   revalidatePath(`/products/${slug}`);
+}
+
+/** Refreshes the site menu (on every page) and the given custom product page. */
+export async function revalidateCustomProducts(slug?: string) {
+  revalidateTag('custom-products');
+  revalidatePath('/', 'layout');
+  if (slug) revalidatePath(`/products/${slug}`);
 }

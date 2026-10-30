@@ -22,7 +22,7 @@ export function Certificates({ content = defaultHomeContent.certificates }: { co
             <h3 className="text-4xl md:text-5xl font-bold text-primary mb-8 leading-tight">
               {content.title}
             </h3>
-            <p className="text-foreground/60 text-lg mb-12 leading-relaxed max-w-xl">
+            <p className="text-[#000000] text-lg mb-12 leading-relaxed max-w-xl">
               {content.description}
             </p>
 
@@ -33,7 +33,7 @@ export function Certificates({ content = defaultHomeContent.certificates }: { co
                 </h4>
                 <ul className="grid gap-4 sm:grid-cols-1">
                   {approvals.map((item, idx) => (
-                    <li key={idx} className="flex gap-3 text-foreground/70 text-sm">
+                    <li key={idx} className="flex gap-3 text-[#000000] text-sm">
                       <CheckCircle2 className="text-secondary shrink-0 mt-0.5 size-7 md:size-[18px]" />
                       <span className="leading-tight font-medium">{item}</span>
                     </li>

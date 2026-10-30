@@ -24,7 +24,7 @@ function PostBody({ text }: { text: string }) {
         const lines = block.split("\n");
         if (lines.every((line) => line.trim().startsWith("- "))) {
           return (
-            <ul key={i} className="mb-[15px] space-y-2 list-disc pl-6 marker:text-secondary text-foreground/80 text-base md:text-lg leading-relaxed">
+            <ul key={i} className="mb-[15px] space-y-2 list-disc pl-6 marker:text-secondary text-[#000000] text-base md:text-lg leading-relaxed">
               {lines.map((line, j) => (
                 <li key={j}>{line.trim().slice(2)}</li>
               ))}
@@ -91,7 +91,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
               className="object-cover"
             />
           </div>
-          {block.caption && <figcaption className="text-sm text-foreground/50 mt-3 text-center">{block.caption}</figcaption>}
+          {block.caption && <figcaption className="text-sm text-[#000000] mt-3 text-center">{block.caption}</figcaption>}
         </figure>
       );
 
@@ -143,7 +143,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
               {block.title}
             </h4>
           )}
-          <p className="text-sm md:text-lg m-0 text-foreground/80 leading-relaxed">{block.text}</p>
+          <p className="text-sm md:text-lg m-0 text-[#000000] leading-relaxed">{block.text}</p>
         </div>
       );
 
@@ -153,7 +153,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
         <div className="bg-primary/5 border border-primary/10 p-6 md:p-8 rounded-2xl md:rounded-3xl my-8 md:my-10">
           {block.title && <h4 className="text-lg md:text-xl font-bold text-primary mb-4 break-words">{block.title}</h4>}
           {paragraphs(block.body).map((text, i) => (
-            <p key={i} className="text-sm md:text-base text-foreground/70 leading-relaxed mb-[15px]">{text}</p>
+            <p key={i} className="text-sm md:text-base text-[#000000] leading-relaxed mb-[15px]">{text}</p>
           ))}
         </div>
       );
@@ -161,7 +161,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
     case "note":
       if (!block.text) return null;
       return (
-        <p className="italic text-foreground/60 border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl mb-[15px]">{block.text}</p>
+        <p className="italic text-[#000000] border-l-4 border-secondary pl-6 py-2 bg-secondary/5 rounded-r-xl mb-[15px]">{block.text}</p>
       );
 
     case "checklist": {
@@ -176,7 +176,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
               </div>
               <div className="min-w-0 flex-1">
                 <span className="font-bold text-primary text-lg md:text-xl block mb-2 break-words">{item.label}</span>
-                <p className="text-sm md:text-base text-foreground/60 m-0 leading-relaxed">{item.desc}</p>
+                <p className="text-sm md:text-base text-[#000000] m-0 leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -222,7 +222,7 @@ function Block({ block, postTitle }: { block: BlogBlock; postTitle: string }) {
             {items.map((item, i) => (
               <AccordionItem key={i} value={`item-${i + 1}`} className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
                 <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">{item.question}</AccordionTrigger>
-                <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
+                <AccordionContent className="text-[#000000] text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                   <p className="mb-[15px]">{item.answer}</p>
                 </AccordionContent>
               </AccordionItem>
@@ -259,7 +259,7 @@ export function BlogSidebarView({ sidebar }: { sidebar: BlogSidebar }) {
             </div>
             <h3 className="font-bold text-lg md:text-2xl text-primary m-0 break-words">{expert.title}</h3>
           </div>
-          {expert.text && <p className="text-foreground/60 text-sm md:text-base mb-8 md:mb-10 leading-relaxed">{expert.text}</p>}
+          {expert.text && <p className="text-[#000000] text-sm md:text-base mb-8 md:mb-10 leading-relaxed">{expert.text}</p>}
           {expert.button.label && (
             <Button className="w-full h-12 md:h-14 rounded-xl md:rounded-2xl font-bold bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/10" asChild>
               <Link href={safeHref(expert.button.href, "/#contact")} id={safeId(expert.button.id)}>{expert.button.label}</Link>
@@ -287,7 +287,7 @@ export function BlogSidebarView({ sidebar }: { sidebar: BlogSidebar }) {
           </h4>
           <div className="grid grid-cols-1 gap-2">
             {linkItems.map((link, i) => (
-              <Link key={i} href={safeHref(link.href, "/#products")} className="flex items-center justify-between text-xs md:text-sm text-foreground/50 hover:text-secondary transition-colors py-2 group min-w-0">
+              <Link key={i} href={safeHref(link.href, "/#products")} className="flex items-center justify-between text-xs md:text-sm text-[#000000] hover:text-secondary transition-colors py-2 group min-w-0">
                 <span className="truncate">{link.label}</span>
                 <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform shrink-0" />
               </Link>

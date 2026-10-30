@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { AdminTopBar } from '@/components/admin/AdminTopBar';
 import { SignOutDialog } from '@/components/admin/ConfirmDialog';
 import { cn } from '@/lib/utils';
-import { BLOG_NAV, HOME_SECTIONS, PRODUCTS_NAV, getHomeSection } from '@/components/admin/admin-nav';
+import { BLOG_NAV, HOME_SECTIONS, PRODUCTS_NAV, USERS_NAV, getHomeSection } from '@/components/admin/admin-nav';
 
 /** Admin layout: fixed sidebar on desktop, slide-out menu on smaller screens. */
 export function AdminShell({ children }: { children: React.ReactNode }) {
@@ -73,7 +73,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         <Logo />
       </div>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-6 space-y-8">
+      <nav className="flex-1 overflow-y-auto px-3 py-6 space-y-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <Suspense fallback={null}>
           <NavLinks onNavigate={onNavigate} />
         </Suspense>
@@ -134,6 +134,15 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
           icon={PRODUCTS_NAV.icon}
           label={PRODUCTS_NAV.label}
           active={pathname.startsWith(PRODUCTS_NAV.href)}
+          onNavigate={onNavigate}
+        />
+      </NavGroup>
+      <NavGroup title="Settings">
+        <NavItem
+          href={USERS_NAV.href}
+          icon={USERS_NAV.icon}
+          label={USERS_NAV.label}
+          active={pathname.startsWith(USERS_NAV.href)}
           onNavigate={onNavigate}
         />
       </NavGroup>

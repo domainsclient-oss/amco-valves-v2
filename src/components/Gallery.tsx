@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
+import type { ImagePlaceholder } from "@/lib/placeholder-images";
 import {
   Dialog,
   DialogContent,
@@ -14,8 +14,10 @@ import { defaultHomeContent, type HomeContent } from "@/lib/home-content";
 export function Gallery({ content = defaultHomeContent.gallery }: { content?: HomeContent["gallery"] }) {
   const [selectedImage, setSelectedImage] = useState<ImagePlaceholder | null>(null);
   
-  // Filter for gallery images defined in placeholder-images.json
-  const galleryImages = PlaceHolderImages.filter(img => img.id.startsWith("gallery-"));
+  // Gallery photos (editable in the admin). Only site paths are rendered; anything else would break next/image.
+  const galleryImages: ImagePlaceholder[] = content.images
+    .filter((img) => img.src.startsWith("/"))
+    .map((img) => ({ id: img.id, imageUrl: img.src, description: img.alt, imageHint: img.hint }));
 
   return (
     <section id="gallery" className="py-12 md:py-24 bg-primary overflow-hidden">

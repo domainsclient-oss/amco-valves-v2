@@ -17,14 +17,14 @@ export default async function Home() {
 
   return (
     <main className="relative">
-      <Navbar />
+      <Navbar content={content.header} />
       <Hero content={content.hero} />
       <AboutUs content={content.about} />
       <Products content={content.products} />
       <Certificates content={content.certificates} />
       <Gallery content={content.gallery} />
       <ContactUs content={content.contact} />
-      <Footer content={{ contact: content.contact, footer: content.footer }} />
+      <Footer content={content.footer} />
       <Toaster />
     </main>
   );

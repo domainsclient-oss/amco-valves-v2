@@ -14,7 +14,8 @@ import { ProductTablesEditor } from '@/components/admin/ProductTableEditor';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { revalidateProduct } from '@/app/actions/revalidate-content';
+import { revalidateCustomProducts, revalidateProduct } from '@/app/actions/revalidate-content';
+import { CUSTOM_PRODUCTS_COLLECTION } from '@/lib/custom-products';
 import { HOME_CONTENT_COLLECTION } from '@/lib/home-content';
 import { blogImageUrl } from '@/lib/blog';
 import { productContentDocId, resolveProductContent, type ProductContent, type ProductImage, type ProductSpec } from '@/lib/product-content';
@@ -79,7 +80,7 @@ function SpecsEditor({ specs, showSubLabels, onChange }: { specs: ProductSpec[];
               confirmLabel="Remove"
               onConfirm={() => onChange(specs.filter((_, j) => j !== i))}
               trigger={
-                <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive" aria-label="Remove specification">
+                <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive hover:bg-destructive/10" aria-label="Remove specification">
                   <X className="size-4" />
                 </Button>
               }
@@ -180,7 +181,7 @@ function ImagesEditor({ images, onChange }: { images: ProductImage[]; onChange: 
                   confirmLabel="Remove photo"
                   onConfirm={() => onChange(images.filter((_, j) => j !== i))}
                   trigger={
-                    <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive" disabled={images.length === 1} aria-label="Remove photo">
+                    <Button type="button" size="icon" variant="ghost" className="size-8 text-destructive hover:text-destructive hover:bg-destructive/10" disabled={images.length === 1} aria-label="Remove photo">
                       <Trash2 className="size-4" />
                     </Button>
                   }
@@ -208,11 +209,24 @@ function ImagesEditor({ images, onChange }: { images: ProductImage[]; onChange: 
 }
 
 /** Edits one product page's data: details, specifications, photos and data-sheet tables. */
-export function ProductEditor({ slug, defaults, onBack }: { slug: string; defaults: ProductContent; onBack: () => void }) {
+export function ProductEditor({
+  slug,
+  defaults,
+  onBack,
+  customProductId,
+}: {
+  slug: string;
+  defaults: ProductContent;
+  onBack: () => void;
+  /** Set for products added from the admin: their data lives in `customProducts/<id>.content`. */
+  customProductId?: string;
+}) {
   const db = useFirestore();
   const { user } = useUser();
   const { toast } = useToast();
-  const contentRef = doc(db, HOME_CONTENT_COLLECTION, productContentDocId(slug));
+  const contentRef = customProductId
+    ? doc(db, CUSTOM_PRODUCTS_COLLECTION, customProductId)
+    : doc(db, HOME_CONTENT_COLLECTION, productContentDocId(slug));
 
   const [content, setContent] = useState<ProductContent | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -223,7 +237,10 @@ export function ProductEditor({ slug, defaults, onBack }: { slug: string; defaul
 
   useEffect(() => {
     getDoc(contentRef)
-      .then((snap) => setContent(resolveProductContent(defaults, snap.exists() ? snap.data() : null)))
+      .then((snap) => {
+        const data = snap.exists() ? snap.data() : null;
+        setContent(resolveProductContent(defaults, customProductId ? data?.content : data));
+      })
       .catch((err) => setLoadError(err?.message ?? 'Could not load the product.'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [db, slug]);
@@ -245,10 +262,13 @@ export function ProductEditor({ slug, defaults, onBack }: { slug: string; defaul
     setIsSaving(true);
     try {
       const cleaned = cleanForSave(content);
-      await setDoc(contentRef, { ...cleaned, updatedAt: serverTimestamp(), updatedBy: user?.email ?? user?.uid ?? null });
+      const meta = { updatedAt: serverTimestamp(), updatedBy: user?.email ?? user?.uid ?? null };
+      // Custom products keep their classification and status next to the content, so merge.
+      if (customProductId) await setDoc(contentRef, { content: cleaned, ...meta }, { merge: true });
+      else await setDoc(contentRef, { ...cleaned, ...meta });
       setContent(cleaned);
       setIsDirty(false);
-      await revalidateProduct(slug).catch(() => {});
+      await (customProductId ? revalidateCustomProducts(slug) : revalidateProduct(slug)).catch(() => {});
       toast({ title: 'Saved', description: 'The product page has been updated.' });
     } catch (err: any) {
       toast({

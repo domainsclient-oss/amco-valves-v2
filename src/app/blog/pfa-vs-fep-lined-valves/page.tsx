@@ -55,10 +55,10 @@ export default async function PfaVsFepBlogPage() {
           />
         </div>
         <div className="container mx-auto relative z-10">
-          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
-            <span className="text-foreground/40">Blog</span>
+            <span className="text-[#000000]">Blog</span>
             <ChevronRight className="size-4" />
             <span className="text-secondary font-bold">{c.hero.breadcrumb}</span>
           </nav>
@@ -68,7 +68,7 @@ export default async function PfaVsFepBlogPage() {
           <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary max-w-5xl leading-tight mb-8 break-words hyphens-auto">
             {c.hero.title}
           </h1>
-          <p className="text-base md:text-xl text-foreground/70 max-w-3xl leading-relaxed mb-4">
+          <p className="text-base md:text-xl text-[#000000] max-w-3xl leading-relaxed mb-4">
             {c.hero.intro}
           </p>
         </div>
@@ -79,7 +79,7 @@ export default async function PfaVsFepBlogPage() {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-8 min-w-0">
-              <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
+              <article className="prose prose-neutral text-[#000000] max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-[#000000] prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
                 
                 <h2 className="text-xl md:text-2xl font-bold mt-12 md:mt-16 mb-6 md:mb-8 break-words">{c.whatAre.heading}</h2>
                 {c.whatAre.paragraphs.map((text, i) => (
@@ -202,7 +202,7 @@ export default async function PfaVsFepBlogPage() {
                     {c.faq.items.map((item, i) => (
                       <AccordionItem key={i} value={`item-${i + 1}`} className="border-none bg-white rounded-2xl px-4 md:px-8 shadow-sm">
                         <AccordionTrigger className="text-left font-bold text-primary py-4 md:py-6 hover:no-underline text-sm md:text-lg">{item.question}</AccordionTrigger>
-                        <AccordionContent className="text-foreground/70 text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
+                        <AccordionContent className="text-[#000000] text-sm md:text-lg leading-relaxed pb-6 md:pb-8">
                           <p className="mb-[15px]">{item.answer}</p>
                         </AccordionContent>
                       </AccordionItem>
@@ -220,7 +220,7 @@ export default async function PfaVsFepBlogPage() {
                   </div>
                   <h3 className="font-bold text-lg md:text-2xl text-primary m-0 break-words">{c.sidebar.expertTitle}</h3>
                 </div>
-                <p className="text-foreground/60 text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
+                <p className="text-[#000000] text-sm md:text-base mb-8 md:mb-10 leading-relaxed">
                   {c.sidebar.expertText}
                 </p>
                 <div className="space-y-4">
@@ -248,7 +248,7 @@ export default async function PfaVsFepBlogPage() {
                 </h4>
                 <div className="grid grid-cols-1 gap-2">
                   {c.sidebar.links.map((link, i) => (
-                    <Link key={i} href={link.href} className="flex items-center justify-between text-xs md:text-sm text-foreground/50 hover:text-secondary transition-colors py-2 group min-w-0">
+                    <Link key={i} href={link.href} className="flex items-center justify-between text-xs md:text-sm text-[#000000] hover:text-secondary transition-colors py-2 group min-w-0">
                       <span className="truncate">{link.label}</span>
                       <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform shrink-0" />
                     </Link>

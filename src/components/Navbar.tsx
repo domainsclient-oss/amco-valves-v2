@@ -6,7 +6,10 @@ import Image from "next/image";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { productNavigationData } from "@/lib/navigation-data";
+import { useProductNavigation } from "@/hooks/use-product-navigation";
+import { useHomeContent } from "@/hooks/use-home-content";
+import { defaultHomeContent, siteImage, type HomeContent } from "@/lib/home-content";
+import { safeHref, safeId } from "@/lib/buttons";
 import {
   Accordion,
   AccordionContent,
@@ -14,16 +17,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const navLinks = [
-  { name: "About", href: "/#about" },
-  { name: "Products", href: "/#products", hasMegaMenu: true },
-  { name: "Certificates", href: "/#certificates" },
-  { name: "Gallery", href: "/#gallery" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/#contact" },
-];
-
-export function Navbar() {
+/** Site menu. The logo, links and button are editable in the admin (Header); pages without `content` load it in the browser. */
+export function Navbar({ content }: { content?: HomeContent["header"] }) {
+  const productNavigationData = useProductNavigation();
+  const loaded = useHomeContent();
+  const header = content ?? loaded.header;
+  const navLinks = header.links.map((link) => ({ name: link.label, href: safeHref(link.href, "/"), hasMegaMenu: link.megaMenu }));
+  const logoSrc = siteImage(header.logo.src, defaultHomeContent.header.logo.src);
+  const quoteHref = safeHref(header.button.href, "/#contact");
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -82,8 +83,8 @@ export function Navbar() {
             <Link href="/" className="flex items-center group">
               <div className="relative w-24 h-12 md:w-36 md:h-18 transition-transform group-hover:scale-105">
                 <Image
-                  src="/Logo-Asset.png"
-                  alt="AMCO Valves Logo"
+                  src={logoSrc}
+                  alt={header.logo.alt}
                   fill
                   className="object-contain"
                   priority
@@ -118,7 +119,7 @@ export function Navbar() {
             ))}
             <div className="flex items-center h-full">
               <Button variant="secondary" size="sm" className="rounded-xl font-extrabold px-6 h-10 text-[14px] lg:text-[16px]" asChild>
-                <Link href="/#contact">Get a Quote</Link>
+                <Link href={quoteHref} id={safeId(header.button.id)}>{header.button.label}</Link>
               </Button>
             </div>
           </div>
@@ -171,7 +172,7 @@ export function Navbar() {
                                     <li key={product.name}>
                                       <Link 
                                         href={product.href} 
-                                        className="text-foreground/60 hover:text-secondary text-[13px] lg:text-[14px] transition-all hover:translate-x-1 block leading-snug"
+                                        className="text-[#000000] hover:text-secondary text-[13px] lg:text-[14px] transition-all hover:translate-x-1 block leading-snug"
                                         onClick={() => setIsMegaMenuOpen(false)}
                                       >
                                         {product.name}
@@ -219,8 +220,8 @@ export function Navbar() {
         <div className="p-5 flex items-center justify-between border-b border-border bg-white shrink-0">
           <div className="relative w-32 h-16">
             <Image
-              src="/Logo-Asset.png"
-              alt="AMCO Valves Logo"
+              src={logoSrc}
+              alt={header.logo.alt}
               fill
               className="object-contain"
             />
@@ -261,7 +262,7 @@ export function Navbar() {
                                             <li key={product.name}>
                                               <Link 
                                                 href={product.href} 
-                                                className="text-foreground/60 text-sm block py-1 leading-tight"
+                                                className="text-[#000000] text-sm block py-1 leading-tight"
                                                 onClick={() => setIsOpen(false)}
                                               >
                                                 {product.name}
@@ -296,7 +297,7 @@ export function Navbar() {
 
         <div className="p-8 border-t border-border bg-white mt-auto shrink-0">
           <Button variant="secondary" size="lg" className="w-full rounded-xl font-bold uppercase tracking-wider h-14" asChild onClick={() => setIsOpen(false)}>
-            <Link href="/#contact">Get a Quote</Link>
+            <Link href={quoteHref} id={safeId(header.button.id)}>{header.button.label}</Link>
           </Button>
         </div>
       </div>

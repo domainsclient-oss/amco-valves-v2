@@ -94,7 +94,7 @@ export function QuotePopup({ isOpen, onOpenChange, productName }: QuotePopupProp
       <DialogContent className="sm:max-w-[500px] rounded-2xl md:rounded-3xl border-none shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-primary">Request a Quote</DialogTitle>
-          <DialogDescription className="text-foreground/60">
+          <DialogDescription className="text-[#000000]">
             Submit your details for <span className="font-bold text-secondary">{productName}</span> and our team will prepare a custom proposal.
           </DialogDescription>
         </DialogHeader>

@@ -43,7 +43,7 @@ function PostImage({ imageId, alt, caption, priority }: { imageId: string; alt: 
           priority={priority}
         />
       </div>
-      {caption && <figcaption className="text-sm text-foreground/50 mt-3 text-center">{caption}</figcaption>}
+      {caption && <figcaption className="text-sm text-[#000000] mt-3 text-center">{caption}</figcaption>}
     </figure>
   );
 }
@@ -65,10 +65,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         )}
         <div className="container mx-auto relative z-10">
-          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex flex-wrap items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
-            <Link href="/blog" className="text-foreground/40 hover:text-secondary transition-colors">Blog</Link>
+            <Link href="/blog" className="text-[#000000] hover:text-secondary transition-colors">Blog</Link>
             {post.category && (
               <>
                 <ChevronRight className="size-4" />
@@ -83,9 +83,9 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.title}
           </h1>
           {post.excerpt && (
-            <p className="text-base md:text-xl text-foreground/70 max-w-3xl leading-relaxed mb-4">{post.excerpt}</p>
+            <p className="text-base md:text-xl text-[#000000] max-w-3xl leading-relaxed mb-4">{post.excerpt}</p>
           )}
-          <div className="flex items-center gap-3 text-foreground/40 text-xs font-bold mt-6">
+          <div className="flex items-center gap-3 text-[#000000] text-xs font-bold mt-6">
             <Calendar className="size-4 text-secondary" />
             {formatBlogDate(post.date)}
           </div>
@@ -97,7 +97,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-8 min-w-0">
-              <article className="prose prose-neutral max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-foreground/80 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
+              <article className="prose prose-neutral text-[#000000] max-w-none break-words prose-headings:text-primary prose-headings:font-bold prose-p:text-[#000000] prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:mb-[15px]">
                 {post.coverImageId && <PostImage imageId={post.coverImageId} alt={post.title} priority />}
 
                 <BlogBlocks blocks={post.blocks} postTitle={post.title} />

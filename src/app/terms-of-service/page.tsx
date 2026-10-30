@@ -24,19 +24,19 @@ export default function TermsOfServicePage() {
       {/* Breadcrumbs */}
       <div className="bg-neutral-50 pt-32 pb-8 px-5 md:px-[63px]">
         <div className="container mx-auto">
-          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground/60 mb-4">
+          <nav className="flex items-center gap-2 text-xs md:text-sm font-medium text-[#000000] mb-4">
             <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
             <ChevronRight className="size-4" />
             <span className="text-primary">Terms of Service</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-primary">Terms of Service</h1>
-          <p className="text-foreground/50 mt-2">Date: {currentDate || "[Insert Date]"}</p>
+          <p className="text-[#000000] mt-2">Date: {currentDate || "[Insert Date]"}</p>
         </div>
       </div>
 
       <section className="py-12 md:py-20 px-5 md:px-[63px]">
         <div className="container mx-auto max-w-4xl">
-          <div className="prose prose-blue max-w-none text-foreground/80 space-y-8">
+          <div className="prose prose-blue max-w-none text-[#000000] space-y-8">
             <p>
               Welcome to the AMCO Valves website. By accessing or using this website, you agree to comply with these Terms of Service. If you do not agree with these terms, please discontinue use of the website.
             </p>

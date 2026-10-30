@@ -13,11 +13,14 @@ import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { getHomeSection } from '@/components/admin/admin-nav';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { CertificateLogosEditor } from '@/components/admin/CertificateLogosEditor';
+import { ImageField } from '@/components/admin/ContentForm';
+import { LinkListEditor } from '@/components/admin/LinkListEditor';
 import { revalidateHomeContent } from '@/app/actions/revalidate-content';
 import {
   HOME_CONTENT_COLLECTION,
   HOME_CONTENT_DOC,
   defaultHomeContent,
+  phoneHref,
   resolveHomeContent,
   type HomeContent,
   type ProductItem,
@@ -94,7 +97,7 @@ export function ContentEditor() {
     setIsDirty(true);
   };
 
-  const { hero, about, products, certificates, gallery, contact, footer } = content;
+  const { hero, about, products, certificates, gallery, contact, header, footer } = content;
 
   const updateProduct = (index: number, patch: Partial<ProductItem>) =>
     update('products', { items: products.items.map((p, i) => (i === index ? { ...p, ...patch } : p)) });
@@ -165,6 +168,20 @@ export function ContentEditor() {
                 <ButtonField label="Main button" value={hero.primaryButton} onChange={(primaryButton) => update('hero', { primaryButton })} />
                 <ButtonField label="Second button" value={hero.secondaryButton} onChange={(secondaryButton) => update('hero', { secondaryButton })} />
               </div>
+            </Section>
+            <Section title="Background photo" description="The large photo behind the hero text. A light fade over its left side keeps the text readable.">
+              <ImageField
+                label="Photo"
+                value={hero.background.src}
+                original={defaultHomeContent.hero.background.src}
+                onChange={(src) => update('hero', { background: { ...hero.background, src } })}
+              />
+              <Field
+                label="Photo description"
+                value={hero.background.alt}
+                onChange={(alt) => update('hero', { background: { ...hero.background, alt } })}
+                hint="Describes the photo for search engines and screen readers."
+              />
             </Section>
             <Section title="Counters" description="Numbers shown under the buttons (a + is added automatically).">
               <div className="grid md:grid-cols-3 gap-5">
@@ -240,7 +257,7 @@ export function ContentEditor() {
                         confirmLabel="Remove product"
                         onConfirm={() => update('products', { items: products.items.filter((_, j) => j !== i) })}
                         trigger={
-                          <Button type="button" size="icon" variant="ghost" className="text-destructive hover:text-destructive" aria-label="Remove product">
+                          <Button type="button" size="icon" variant="ghost" className="text-destructive hover:text-destructive hover:bg-destructive/10" aria-label="Remove product">
                             <Trash2 className="size-4" />
                           </Button>
                         }
@@ -318,12 +335,15 @@ export function ContentEditor() {
           </TabsContent>
 
           <TabsContent value="gallery" className="space-y-6 mt-0">
-            <Section title="Gallery heading" description="Gallery photos are not editable here yet.">
+            <Section title="Gallery heading">
               <div className="grid md:grid-cols-2 gap-5">
                 <Field label="Small label" value={gallery.label} onChange={(label) => update('gallery', { label })} />
                 <Field label="Title" value={gallery.title} onChange={(title) => update('gallery', { title })} />
               </div>
               <Field label="Description" value={gallery.description} onChange={(description) => update('gallery', { description })} multiline />
+            </Section>
+            <Section title={`Gallery photos (${gallery.images.length})`} description="The photo tiles in the gallery section, in this order.">
+              <CertificateLogosEditor kind="photo" logos={gallery.images} onChange={(images) => update('gallery', { images })} />
             </Section>
           </TabsContent>
 
@@ -335,16 +355,82 @@ export function ContentEditor() {
               </div>
               <Field label="Description" value={contact.description} onChange={(description) => update('contact', { description })} multiline />
             </Section>
-            <Section title="Contact details" description="Used in the contact section and in the footer on every page.">
-              <Field label="Factory address" value={contact.factoryAddress} onChange={(factoryAddress) => update('contact', { factoryAddress })} />
-              <Field label="Warehouse address (footer)" value={contact.warehouseAddress} onChange={(warehouseAddress) => update('contact', { warehouseAddress })} />
+            <Section title="Contact details" description="Shown in the contact section. The footer has its own details (Footer section).">
               <div className="grid md:grid-cols-2 gap-5">
+                <Field label="Factory address" value={contact.factoryAddress} onChange={(factoryAddress) => update('contact', { factoryAddress })} />
+                <Field label="Address link (optional)" value={contact.factoryLink} onChange={(factoryLink) => update('contact', { factoryLink })} hint="e.g. a Google Maps link. Empty: the address is plain text." />
                 <Field label="Mobile number" value={contact.phone} onChange={(phone) => update('contact', { phone })} hint="Include the country code, e.g. 91-9841114671." />
+                <Field label="Phone link (optional)" value={contact.phoneLink} onChange={(phoneLink) => update('contact', { phoneLink })} hint={`Empty: calls the number automatically (${phoneHref(contact.phone)}).`} />
                 <Field label="Email" value={contact.email} onChange={(email) => update('contact', { email })} />
+                <Field label="Email link (optional)" value={contact.emailLink} onChange={(emailLink) => update('contact', { emailLink })} hint={`Empty: opens an email to the address (mailto:${contact.email}).`} />
               </div>
             </Section>
-            <Section title="Footer">
+          </TabsContent>
+
+          <TabsContent value="header" className="space-y-6 mt-0">
+            <Section title="Logo" description="Shown at the top left of every page and in the mobile menu.">
+              <ImageField label="Logo" value={header.logo.src} original={defaultHomeContent.header.logo.src} onChange={(src) => update('header', { logo: { ...header.logo, src } })} />
+              <Field label="Logo description" value={header.logo.alt} onChange={(alt) => update('header', { logo: { ...header.logo, alt } })} hint="For search engines and screen readers." />
+            </Section>
+            <Section title="Favicon" description="The small icon in the browser tab. Square images (e.g. 512 × 512) work best.">
+              <ImageField label="Favicon" value={header.favicon} original={defaultHomeContent.header.favicon} onChange={(favicon) => update('header', { favicon })} />
+            </Section>
+            <Section title="Menu links" description="The links in the top menu, in this order.">
+              <LinkListEditor
+                links={header.links}
+                onChange={(links) => update('header', { links })}
+                newLink={() => ({ label: '', href: '/', megaMenu: false })}
+                isLocked={(link) => link.megaMenu}
+                lockedNote="This link opens the products menu, so it can be renamed and moved but not removed."
+              />
+            </Section>
+            <Section title="Menu button">
+              <div className="md:max-w-xl">
+                <ButtonField label="Button" value={header.button} onChange={(button) => update('header', { button })} />
+              </div>
+            </Section>
+          </TabsContent>
+
+          <TabsContent value="footer" className="space-y-6 mt-0">
+            <Section title="Logo and about">
+              <ImageField label="Footer logo" value={footer.logo.src} original={defaultHomeContent.footer.logo.src} onChange={(src) => update('footer', { logo: { ...footer.logo, src } })} />
+              <Field label="Logo description" value={footer.logo.alt} onChange={(alt) => update('footer', { logo: { ...footer.logo, alt } })} />
               <Field label="About text" value={footer.about} onChange={(about) => update('footer', { about })} multiline />
+            </Section>
+            <Section title="Social links" description="The three round icons under the about text. &quot;#&quot; means no link yet.">
+              <div className="grid md:grid-cols-3 gap-5">
+                <Field label="LinkedIn" value={footer.social.linkedin} onChange={(linkedin) => update('footer', { social: { ...footer.social, linkedin } })} />
+                <Field label="Twitter / X" value={footer.social.twitter} onChange={(twitter) => update('footer', { social: { ...footer.social, twitter } })} />
+                <Field label="Facebook" value={footer.social.facebook} onChange={(facebook) => update('footer', { social: { ...footer.social, facebook } })} />
+              </div>
+            </Section>
+            <Section title="Quick links">
+              <Field label="Column title" value={footer.quickLinksTitle} onChange={(quickLinksTitle) => update('footer', { quickLinksTitle })} />
+              <LinkListEditor links={footer.quickLinks} onChange={(quickLinks) => update('footer', { quickLinks })} newLink={() => ({ label: '', href: '/' })} />
+            </Section>
+            <Section title="Legal links">
+              <Field label="Column title" value={footer.legalTitle} onChange={(legalTitle) => update('footer', { legalTitle })} />
+              <LinkListEditor links={footer.legalLinks} onChange={(legalLinks) => update('footer', { legalLinks })} newLink={() => ({ label: '', href: '/' })} />
+            </Section>
+            <Section title="Contact column">
+              <Field label="Column title" value={footer.contactTitle} onChange={(contactTitle) => update('footer', { contactTitle })} />
+              <div className="grid md:grid-cols-[12rem_1fr_1fr] gap-5">
+                <Field label="Label" value={footer.factoryLabel} onChange={(factoryLabel) => update('footer', { factoryLabel })} />
+                <Field label="Address" value={footer.factoryAddress} onChange={(factoryAddress) => update('footer', { factoryAddress })} />
+                <Field label="Address link (optional)" value={footer.factoryLink} onChange={(factoryLink) => update('footer', { factoryLink })} hint="e.g. Google Maps" />
+                <Field label="Label" value={footer.warehouseLabel} onChange={(warehouseLabel) => update('footer', { warehouseLabel })} />
+                <Field label="Address" value={footer.warehouseAddress} onChange={(warehouseAddress) => update('footer', { warehouseAddress })} />
+                <Field label="Address link (optional)" value={footer.warehouseLink} onChange={(warehouseLink) => update('footer', { warehouseLink })} hint="e.g. Google Maps" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                <Field label="Phone" value={footer.phone} onChange={(phone) => update('footer', { phone })} />
+                <Field label="Phone link (optional)" value={footer.phoneLink} onChange={(phoneLink) => update('footer', { phoneLink })} hint={`Empty: ${phoneHref(footer.phone)}`} />
+                <Field label="Email" value={footer.email} onChange={(email) => update('footer', { email })} />
+                <Field label="Email link (optional)" value={footer.emailLink} onChange={(emailLink) => update('footer', { emailLink })} hint={`Empty: mailto:${footer.email}`} />
+              </div>
+            </Section>
+            <Section title="Copyright line">
+              <Field label="Text" value={footer.copyright} onChange={(copyright) => update('footer', { copyright })} hint={`Shown as "© ${new Date().getFullYear()} ${footer.copyright}" (the year updates automatically).`} />
             </Section>
           </TabsContent>
         </Tabs>

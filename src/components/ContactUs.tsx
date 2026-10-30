@@ -13,7 +13,8 @@ import { signInAnonymously } from "firebase/auth";
 import { appendToGoogleSheet } from "@/app/actions/google-sheets";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { format } from "date-fns";
-import { defaultHomeContent, phoneHref, type HomeContent } from "@/lib/home-content";
+import { contactHref, defaultHomeContent, phoneHref, type HomeContent } from "@/lib/home-content";
+import { safeHref } from "@/lib/buttons";
 
 export function ContactUs({ content = defaultHomeContent.contact }: { content?: HomeContent["contact"] }) {
   const { toast } = useToast();
@@ -100,7 +101,7 @@ export function ContactUs({ content = defaultHomeContent.contact }: { content?: 
           <div>
             <h2 className="text-primary font-bold text-sm uppercase tracking-widest mb-3">{content.label}</h2>
             <h3 className="text-3xl md:text-[52px] font-bold text-primary mb-6">{content.title}</h3>
-            <p className="text-lg text-foreground/70 mb-12">
+            <p className="text-lg text-[#000000] mb-12">
               {content.description}
             </p>
 
@@ -111,7 +112,14 @@ export function ContactUs({ content = defaultHomeContent.contact }: { content?: 
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Factory</h4>
-                  <p className="text-foreground/60 text-sm">{content.factoryAddress}</p>
+                  <p className="text-[#000000] text-sm">
+                    {/* Plain text unless an address link (e.g. Google Maps) is set in the admin. */}
+                    {content.factoryLink.trim() ? (
+                      <Link href={safeHref(content.factoryLink, "#")} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                        {content.factoryAddress}
+                      </Link>
+                    ) : content.factoryAddress}
+                  </p>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -120,7 +128,7 @@ export function ContactUs({ content = defaultHomeContent.contact }: { content?: 
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Mobile</h4>
-                  <Link href={phoneHref(content.phone)} className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                  <Link href={contactHref(content.phoneLink, phoneHref(content.phone))} className="text-[#000000] text-sm hover:text-secondary transition-colors">
                     {content.phone}
                   </Link>
                 </div>
@@ -131,7 +139,7 @@ export function ContactUs({ content = defaultHomeContent.contact }: { content?: 
                 </div>
                 <div>
                   <h4 className="font-bold text-primary mb-1">Email</h4>
-                  <Link href={`mailto:${content.email}`} className="text-foreground/60 text-sm hover:text-secondary transition-colors">
+                  <Link href={contactHref(content.emailLink, `mailto:${content.email}`)} className="text-[#000000] text-sm hover:text-secondary transition-colors">
                     {content.email}
                   </Link>
                 </div>

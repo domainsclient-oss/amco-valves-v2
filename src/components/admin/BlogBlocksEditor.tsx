@@ -76,7 +76,7 @@ function RemoveButton({ what, onConfirm, small }: { what: string; onConfirm: () 
       confirmLabel="Remove"
       onConfirm={onConfirm}
       trigger={
-        <Button type="button" size="icon" variant="ghost" className={cn('text-destructive hover:text-destructive shrink-0', small ? 'size-8' : 'size-9')} aria-label={`Remove ${what}`}>
+        <Button type="button" size="icon" variant="ghost" className={cn('text-destructive hover:text-destructive hover:bg-destructive/10 shrink-0', small ? 'size-8' : 'size-9')} aria-label={`Remove ${what}`}>
           {small ? <X className="size-4" /> : <Trash2 className="size-4" />}
         </Button>
       }

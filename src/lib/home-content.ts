@@ -1,7 +1,7 @@
 import { getRestDoc } from "@/lib/firestore-rest";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { mergeWithDefaults } from "@/lib/content-merge";
-import { button, type ButtonContent } from "@/lib/buttons";
+import { button, safeHref, type ButtonContent } from "@/lib/buttons";
 
 /**
  * Editable content for the home page.
@@ -32,6 +32,7 @@ export interface FeatureTile {
   desc: string;
 }
 
+/** An editable site image (certificate logo, gallery photo). */
 export interface CertificateLogo {
   id: string;
   /** A site path: a file in /public (original logos) or /api/blog-images/<id> (uploaded). */
@@ -39,6 +40,22 @@ export interface CertificateLogo {
   alt: string;
   hint: string;
 }
+
+/** The original hero banner. */
+const heroPlaceholder = PlaceHolderImages.find((img) => img.id === "hero-bg");
+const defaultHeroBackground = {
+  src: heroPlaceholder?.imageUrl ?? "",
+  alt: heroPlaceholder?.description ?? "",
+  hint: heroPlaceholder?.imageHint ?? "",
+};
+
+/** The original gallery photos, in their original order. */
+const defaultGalleryImages: CertificateLogo[] = PlaceHolderImages.filter((img) => img.id.startsWith("gallery-")).map((img) => ({
+  id: img.id,
+  src: img.imageUrl,
+  alt: img.description,
+  hint: img.imageHint,
+}));
 
 /** The original certificate logos, in their original order. */
 const defaultCertificateLogos: CertificateLogo[] = [
@@ -63,6 +80,8 @@ export interface HomeContent {
     primaryButton: ButtonContent;
     secondaryButton: ButtonContent;
     stats: HeroStat[];
+    /** Background photo behind the hero text. */
+    background: { src: string; alt: string; hint: string };
   };
   about: {
     badge: string;
@@ -100,19 +119,59 @@ export interface HomeContent {
     label: string;
     title: string;
     description: string;
+    images: CertificateLogo[];
   };
   contact: {
     label: string;
     title: string;
     description: string;
     factoryAddress: string;
-    warehouseAddress: string;
+    /** Optional link for the address (e.g. Google Maps); empty shows plain text. */
+    factoryLink: string;
     phone: string;
+    /** Optional; empty links to the phone number automatically. */
+    phoneLink: string;
     email: string;
+    /** Optional; empty links to the email address automatically. */
+    emailLink: string;
   };
+  /** Site header (menu) shown on every page. */
+  header: {
+    logo: { src: string; alt: string };
+    /** Browser tab icon. */
+    favicon: string;
+    /** Menu links; the item with `megaMenu` opens the products menu. */
+    links: { label: string; href: string; megaMenu: boolean }[];
+    button: ButtonContent;
+  };
+  /** Site footer shown on every page (separate from the Contact section). */
   footer: {
+    logo: { src: string; alt: string };
     about: string;
+    social: { linkedin: string; twitter: string; facebook: string };
+    quickLinksTitle: string;
+    quickLinks: FooterLink[];
+    legalTitle: string;
+    legalLinks: FooterLink[];
+    contactTitle: string;
+    factoryLabel: string;
+    factoryAddress: string;
+    factoryLink: string;
+    warehouseLabel: string;
+    warehouseAddress: string;
+    warehouseLink: string;
+    phone: string;
+    phoneLink: string;
+    email: string;
+    emailLink: string;
+    /** Shown after "© <current year> ". */
+    copyright: string;
   };
+}
+
+export interface FooterLink {
+  label: string;
+  href: string;
 }
 
 export const defaultHomeContent: HomeContent = {
@@ -124,6 +183,7 @@ export const defaultHomeContent: HomeContent = {
     subtitle: "AIV delivers world class Industrial Valves.\nReliability, durability, and engineering excellence.",
     primaryButton: button("Explore Catalog", "#products"),
     secondaryButton: button("Learn More", "#about"),
+    background: defaultHeroBackground,
     stats: [
       { end: 500, label: "Projects Completed" },
       { end: 1000, label: "Happy Customers" },
@@ -316,24 +376,78 @@ export const defaultHomeContent: HomeContent = {
     label: "Visual Showcase",
     title: "Industrial Gallery",
     description: "A glimpse into our manufacturing processes and the high-quality products we deliver to our global clientele.",
+    images: defaultGalleryImages,
   },
   contact: {
     label: "Get In Touch",
     title: "Contact",
     description: "Have questions about our products or need a custom quote? Our technical support team is ready to assist you.",
     factoryAddress: "638/A Tiruvottriyur high road, Ajax, Chennai, 600019",
-    warehouseAddress: "104-A East Mada church street, Royapuram, Chennai, 600013",
+    factoryLink: "",
     phone: "91-9841114671",
+    phoneLink: "",
     email: "contact@amcovalves.com",
+    emailLink: "",
+  },
+  header: {
+    logo: { src: "/Logo-Asset.png", alt: "AMCO Valves Logo" },
+    favicon: "/fav.png",
+    links: [
+      { label: "About", href: "/#about", megaMenu: false },
+      { label: "Products", href: "/#products", megaMenu: true },
+      { label: "Certificates", href: "/#certificates", megaMenu: false },
+      { label: "Gallery", href: "/#gallery", megaMenu: false },
+      { label: "Blog", href: "/blog", megaMenu: false },
+      { label: "Contact", href: "/#contact", megaMenu: false },
+    ],
+    button: button("Get a Quote", "/#contact"),
   },
   footer: {
+    logo: { src: "/Logo-Asset.png", alt: "AMCO Valves Logo" },
     about: "Precision engineered valve solutions for the global energy and industrial sectors. Quality and reliability at the core of everything we do.",
+    social: { linkedin: "#", twitter: "#", facebook: "#" },
+    quickLinksTitle: "Quick Links",
+    quickLinks: [
+      { label: "About Us", href: "/#about" },
+      { label: "Products", href: "/#products" },
+      { label: "Certifications", href: "/#certificates" },
+      { label: "Gallery", href: "/#gallery" },
+    ],
+    legalTitle: "Legal",
+    legalLinks: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Compliance", href: "/compliance" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
+    ],
+    contactTitle: "Contact Us",
+    factoryLabel: "Factory:",
+    factoryAddress: "638/A Tiruvottriyur high road, Ajax, Chennai, 600019",
+    factoryLink: "",
+    warehouseLabel: "Warehouse:",
+    warehouseAddress: "104-A East Mada church street, Royapuram, Chennai, 600013",
+    warehouseLink: "",
+    phone: "91-9841114671",
+    phoneLink: "",
+    email: "contact@amcovalves.com",
+    emailLink: "",
+    copyright: "AMCO Valves. All Rights Reserved. Engineered for excellence.",
   },
 };
 
 /** Builds a `tel:` link from a display number, e.g. "91-9841114671" -> "tel:+919841114671". */
 export function phoneHref(phone: string) {
   return `tel:+${phone.replace(/\D/g, "")}`;
+}
+
+/** Link for a phone number or email: the custom link if set (and safe), else the automatic one. */
+export function contactHref(custom: string, automatic: string) {
+  return custom.trim() ? safeHref(custom, automatic) : automatic;
+}
+
+/** Site images must be site paths (files in /public or uploaded images); otherwise use the fallback. */
+export function siteImage(src: string, fallback: string) {
+  return src.startsWith("/") ? src : fallback;
 }
 
 export function resolveHomeContent(saved: unknown): HomeContent {
