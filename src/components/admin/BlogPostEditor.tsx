@@ -17,12 +17,14 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
 import { revalidateBlog } from '@/app/actions/revalidate-content';
-import { BLOG_POSTS_COLLECTION, RESERVED_BLOG_SLUGS, slugify, type BlogPost, type BlogSidebar } from '@/lib/blog';
+import { BLOG_POSTS_COLLECTION, RESERVED_BLOG_SLUGS, blogImageUrl, slugify, type BlogPost, type BlogSidebar } from '@/lib/blog';
+import { SeoFields } from '@/components/admin/SeoFields';
 
 const TABS = [
   { key: 'details', label: 'Post details' },
   { key: 'content', label: 'Content' },
   { key: 'sidebar', label: 'Sidebar' },
+  { key: 'seo', label: 'SEO' },
 ] as const;
 
 type TabKey = (typeof TABS)[number]['key'];
@@ -361,6 +363,18 @@ export function BlogPostEditor({ initialPost, isNew, onBack }: { initialPost: Bl
               </div>
             </SidebarBox>
           </div>
+        )}
+
+        {tab === 'seo' && (
+          <SeoFields
+            value={post.seo}
+            onChange={(seo) => update({ seo })}
+            defaults={{
+              title: post.title.trim() ? `${post.title.trim()} | AMCO Valves` : undefined,
+              description: post.excerpt.trim() || undefined,
+              image: post.coverImageId ? blogImageUrl(post.coverImageId) : undefined,
+            }}
+          />
         )}
       </main>
     </div>

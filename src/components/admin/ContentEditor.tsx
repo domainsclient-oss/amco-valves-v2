@@ -15,6 +15,8 @@ import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { CertificateLogosEditor } from '@/components/admin/CertificateLogosEditor';
 import { ImageField } from '@/components/admin/ContentForm';
 import { LinkListEditor } from '@/components/admin/LinkListEditor';
+import { SeoFields } from '@/components/admin/SeoFields';
+import { SITE_SEO } from '@/lib/seo';
 import { revalidateHomeContent } from '@/app/actions/revalidate-content';
 import {
   HOME_CONTENT_COLLECTION,
@@ -432,6 +434,10 @@ export function ContentEditor() {
             <Section title="Copyright line">
               <Field label="Text" value={footer.copyright} onChange={(copyright) => update('footer', { copyright })} hint={`Shown as "© ${new Date().getFullYear()} ${footer.copyright}" (the year updates automatically).`} />
             </Section>
+          </TabsContent>
+
+          <TabsContent value="seo" className="space-y-6 mt-0">
+            <SeoFields value={content.seo} onChange={(seo) => update('seo', seo)} defaults={SITE_SEO} />
           </TabsContent>
         </Tabs>
 

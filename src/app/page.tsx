@@ -8,9 +8,15 @@ import { ContactUs } from "@/components/ContactUs";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { getHomeContent } from "@/lib/home-content";
+import { seoMetadata } from "@/lib/seo";
 
 // Re-check the admin-edited content at most once a minute (saving from /admin refreshes it immediately).
 export const revalidate = 60;
+
+// Title, description, keywords and share image from the admin (SEO); empty fields keep the site defaults.
+export async function generateMetadata() {
+  return seoMetadata((await getHomeContent()).seo);
+}
 
 export default async function Home() {
   const content = await getHomeContent();

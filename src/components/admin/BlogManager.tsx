@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
-import { ExternalLink, Eye, EyeOff, FileText, LayoutTemplate, Loader2, MoreHorizontal, Pencil, Plus, Trash2 } from 'lucide-react';
+import { ExternalLink, Eye, EyeOff, FileText, LayoutTemplate, Loader2, MoreHorizontal, Pencil, Plus, Search, Trash2, X } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,6 +20,7 @@ import { HOME_CONTENT_COLLECTION } from '@/lib/home-content';
 import { BLOG_INDEX_SLUG, ORIGINAL_ARTICLES, blogIndexDefaults, articleContentDocId, resolveArticleContent, type OriginalArticleSlug } from '@/lib/blog-articles';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { revalidateBlog } from '@/app/actions/revalidate-content';
 import {
   BLOG_IMAGES_COLLECTION,
@@ -109,6 +110,7 @@ export function BlogManager() {
       slug: a.slug,
       image: a.defaults.card.image as string,
       title: a.defaults.card.heading,
+      description: a.defaults.card.description,
       date: a.defaults.card.date,
       category: a.defaults.card.category,
       status: 'published' as Status,
@@ -117,6 +119,7 @@ export function BlogManager() {
   // Confirmation popups opened from the row menus (they outlive the menu).
   const [confirmDraft, setConfirmDraft] = useState<{ title: string; run: () => Promise<void> } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<BlogPost | null>(null);
+  const [search, setSearch] = useState('');
 
   const load = useCallback(async () => {
     try {
@@ -132,7 +135,7 @@ export function BlogManager() {
         const snap = await getDoc(doc(db, HOME_CONTENT_COLLECTION, articleContentDocId(a.slug))).catch(() => null);
         const c = resolveArticleContent(a.defaults, snap?.exists() ? snap.data() : null);
         const status: Status = snap?.exists() && snap.data().status === 'draft' ? 'draft' : 'published';
-        return { slug: a.slug, image: c.card.image as string, title: c.card.heading, date: c.card.date, category: c.card.category, status };
+        return { slug: a.slug, image: c.card.image as string, title: c.card.heading, description: c.card.description, date: c.card.date, category: c.card.category, status };
       }),
     );
     setOriginals(loaded);
@@ -225,6 +228,23 @@ export function BlogManager() {
     }
   };
 
+  // Search matches the description, title and category; every word must appear (any order, any case).
+  const words = search.toLowerCase().split(/\s+/).filter(Boolean);
+  const matches = (...fields: string[]) => {
+    const text = fields.join(' ').toLowerCase();
+    return words.every((w) => text.includes(w));
+  };
+  const time = (date: string) => Date.parse(date) || 0;
+  const shownItems = [
+    ...originals
+      .filter((a) => matches(a.description, a.title, a.category))
+      .map((article) => ({ kind: 'original' as const, article, time: time(article.date) })),
+    ...(posts ?? [])
+      .filter((p) => matches(p.cardDescription, p.excerpt, p.title, p.cardTitle, p.category))
+      .map((post) => ({ kind: 'post' as const, post, time: time(post.date) })),
+  ].sort((a, b) => b.time - a.time);
+  const noMatches = words.length > 0 && shownItems.length === 0 && posts !== null;
+
   return (
     <div className="pb-24">
       <AdminHeader
@@ -267,98 +287,120 @@ export function BlogManager() {
           </div>
         </div>
 
-        <h2 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground/50 mb-3">Original articles</h2>
-        <div className="space-y-4 mb-10">
-          {originals.map((article) => (
-            <div key={article.slug} className="p-4 rounded-3xl bg-white border border-border shadow-sm flex flex-wrap items-center gap-4">
-              <div className="w-28 aspect-[16/10] rounded-2xl overflow-hidden bg-background shrink-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={article.image} alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 min-w-[12rem]">
-                <p className="font-bold text-primary leading-snug">{article.title}</p>
-                <p className="text-xs text-foreground/50 mt-1">
-                  <StatusLabel status={article.status} />
-                  {' · '}
-                  {article.date}
-                  {article.category && ` · ${article.category}`}
-                </p>
-              </div>
-              <div className="flex flex-wrap items-center gap-1">
-                <Button size="sm" variant="outline" onClick={() => setEditingArticle(article.slug)}>
-                  <Pencil className="size-4 mr-1" /> Edit
-                </Button>
-                <RowMenu
-                  status={article.status}
-                  viewHref={`/blog/${article.slug}`}
-                  onToggleStatus={() =>
-                    article.status === 'published'
-                      ? setConfirmDraft({ title: article.title, run: () => setArticleStatus(article.slug, 'draft') })
-                      : setArticleStatus(article.slug, 'published')
-                  }
-                />
-              </div>
-            </div>
-          ))}
+        <div className="relative mb-8">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-foreground/40 pointer-events-none" />
+          <Input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search blogs by description, title or category…"
+            aria-label="Search blogs"
+            className="h-12 pl-11 pr-11 rounded-2xl bg-white border-border shadow-sm [&::-webkit-search-cancel-button]:hidden"
+          />
+          {search && (
+            <button
+              type="button"
+              onClick={() => setSearch('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-foreground/50 hover:text-primary hover:bg-background"
+              aria-label="Clear search"
+            >
+              <X className="size-4" />
+            </button>
+          )}
         </div>
+        {noMatches && (
+          <div className="p-8 mb-10 rounded-3xl bg-white border border-dashed border-border text-center">
+            <Search className="size-8 text-secondary mx-auto mb-3" />
+            <p className="font-semibold text-primary">No blogs match "{search.trim()}"</p>
+            <p className="text-sm text-foreground/60 mt-1">Try other words from the description or title.</p>
+          </div>
+        )}
 
-        <h2 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground/50 mb-3">Your posts</h2>
-        {loadError ? (
-          <div className="p-8 rounded-3xl bg-white border border-border text-center">
-            <p className="text-destructive font-semibold">Could not load the blog posts.</p>
-            <p className="text-sm text-foreground/60 mt-2">{loadError}</p>
-            <p className="text-sm text-foreground/60 mt-1">Check that the latest Firestore rules are published.</p>
-          </div>
-        ) : !posts ? (
-          <div className="py-24 flex justify-center">
-            <Loader2 className="size-8 animate-spin text-secondary" />
-          </div>
-        ) : posts.length === 0 ? (
-          <div className="p-12 rounded-3xl bg-white border border-dashed border-border text-center">
-            <FileText className="size-10 text-secondary mx-auto mb-4" />
-            <p className="font-semibold text-primary">No posts yet</p>
-            <p className="text-sm text-foreground/60 mt-1">Click "New post" to write your first one.</p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {posts.map((post) => (
-              <div key={post.id} className="p-4 rounded-3xl bg-white border border-border shadow-sm flex flex-wrap items-center gap-4">
+        {!noMatches && (
+          <h2 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground/50 mb-3">Blog posts</h2>
+        )}
+        {/* Original articles and posts written here, in one list, newest first. */}
+        <div className="space-y-4">
+          {shownItems.map((item) =>
+            item.kind === 'original' ? (
+              <div key={`original-${item.article.slug}`} className="p-4 rounded-3xl bg-white border border-border shadow-sm flex flex-wrap items-center gap-4">
+                <div className="w-28 aspect-[16/10] rounded-2xl overflow-hidden bg-background shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.article.image} alt="" className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1 min-w-[12rem]">
+                  <p className="font-bold text-primary leading-snug">{item.article.title}</p>
+                  <p className="text-xs text-foreground/50 mt-1">
+                    <StatusLabel status={item.article.status} />
+                    {' · '}
+                    {item.article.date}
+                    {item.article.category && ` · ${item.article.category}`}
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-1">
+                  <Button size="sm" variant="outline" onClick={() => setEditingArticle(item.article.slug)}>
+                    <Pencil className="size-4 mr-1" /> Edit
+                  </Button>
+                  <RowMenu
+                    status={item.article.status}
+                    viewHref={`/blog/${item.article.slug}`}
+                    onToggleStatus={() =>
+                      item.article.status === 'published'
+                        ? setConfirmDraft({ title: item.article.title, run: () => setArticleStatus(item.article.slug, 'draft') })
+                        : setArticleStatus(item.article.slug, 'published')
+                    }
+                  />
+                </div>
+              </div>
+            ) : (
+              <div key={item.post.id} className="p-4 rounded-3xl bg-white border border-border shadow-sm flex flex-wrap items-center gap-4">
                 <div className="w-28 aspect-[16/10] rounded-2xl overflow-hidden bg-background shrink-0 flex items-center justify-center">
-                  {post.coverImageId ? (
+                  {item.post.coverImageId ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={blogImageUrl(post.coverImageId)} alt="" className="w-full h-full object-cover" />
+                    <img src={blogImageUrl(item.post.coverImageId)} alt="" className="w-full h-full object-cover" />
                   ) : (
                     <FileText className="size-6 text-foreground/30" />
                   )}
                 </div>
                 <div className="flex-1 min-w-[12rem]">
-                  <p className="font-bold text-primary leading-snug">{post.title || 'Untitled post'}</p>
+                  <p className="font-bold text-primary leading-snug">{item.post.title || 'Untitled post'}</p>
                   <p className="text-xs text-foreground/50 mt-1">
-                    <StatusLabel status={post.status} />
+                    <StatusLabel status={item.post.status} />
                     {' · '}
-                    {formatBlogDate(post.date)}
-                    {post.category && ` · ${post.category}`}
+                    {formatBlogDate(item.post.date)}
+                    {item.post.category && ` · ${item.post.category}`}
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-1">
-                  <Button size="sm" variant="outline" onClick={() => setEditing({ post, isNew: false })}>
+                  <Button size="sm" variant="outline" onClick={() => setEditing({ post: item.post, isNew: false })}>
                     <Pencil className="size-4 mr-1" /> Edit
                   </Button>
                   <RowMenu
-                    status={post.status}
-                    viewHref={`/blog/${post.slug}`}
+                    status={item.post.status}
+                    viewHref={`/blog/${item.post.slug}`}
                     onToggleStatus={() =>
-                      post.status === 'published'
-                        ? setConfirmDraft({ title: post.title || 'Untitled post', run: () => setPostStatus(post, 'draft') })
-                        : setPostStatus(post, 'published')
+                      item.post.status === 'published'
+                        ? setConfirmDraft({ title: item.post.title || 'Untitled post', run: () => setPostStatus(item.post, 'draft') })
+                        : setPostStatus(item.post, 'published')
                     }
-                    onDelete={() => setConfirmDelete(post)}
+                    onDelete={() => setConfirmDelete(item.post)}
                   />
                 </div>
               </div>
-            ))}
+            ),
+          )}
+        </div>
+        {loadError ? (
+          <div className="p-8 mt-4 rounded-3xl bg-white border border-border text-center">
+            <p className="text-destructive font-semibold">Could not load the blog posts.</p>
+            <p className="text-sm text-foreground/60 mt-2">{loadError}</p>
+            <p className="text-sm text-foreground/60 mt-1">Check that the latest Firestore rules are published.</p>
           </div>
-        )}
+        ) : !posts ? (
+          <div className="py-12 flex justify-center">
+            <Loader2 className="size-8 animate-spin text-secondary" />
+          </div>
+        ) : null}
 
         <ConfirmDialog
           open={!!confirmDraft}

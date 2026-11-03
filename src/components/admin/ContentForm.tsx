@@ -10,6 +10,8 @@ import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { blogImageUrl } from '@/lib/blog';
 import { isImageField } from '@/lib/blog-articles';
+import { toSeo } from '@/lib/seo';
+import { SeoFields } from '@/components/admin/SeoFields';
 
 /**
  * Builds an edit form from a content object: each top-level key becomes a card,
@@ -348,6 +350,14 @@ export function ContentForm<T extends Record<string, unknown>>({
         </div>
       </div>
 
+      {key === 'seo' ? (
+        // Search-engine settings use the shared SEO panel (title, description, keywords, share image).
+        <SeoFields
+          value={toSeo(value[key])}
+          onChange={(next) => onChange({ ...value, [key]: next })}
+          defaults={toSeo(defaults[key])}
+        />
+      ) : (
       <Section title={`${activeIndex + 1}. ${titleOf(key)}`} description={`Section ${activeIndex + 1} of ${keys.length}`}>
         <ValueEditor
           key={key}
@@ -357,6 +367,7 @@ export function ContentForm<T extends Record<string, unknown>>({
           onChange={(next) => onChange({ ...value, [key]: next })}
         />
       </Section>
+      )}
 
       <div className="flex items-center justify-between gap-3">
         {/* max-sm: lets both buttons shrink on phones; no effect from 640px up. */}

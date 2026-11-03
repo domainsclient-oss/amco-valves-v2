@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getRestDoc } from "@/lib/firestore-rest";
 import { HOME_CONTENT_COLLECTION } from "@/lib/home-content";
 import { isBuiltInProductVisible } from "@/lib/product-taxonomy";
+import { seoMetadata, toSeo, type SeoContent } from "@/lib/seo";
 
 /**
  * Editable content of the product detail pages (/products/...).
@@ -65,6 +66,8 @@ export interface ProductContent {
   /** Showcase photos; the first one is the main product photo. */
   images: ProductImage[];
   tables: ProductTable[];
+  /** Search-engine settings (admin "SEO" tab); missing or empty fields keep the site defaults. */
+  seo?: SeoContent;
 }
 
 export function productContentDocId(slug: string) {
@@ -113,6 +116,7 @@ export function resolveProductContent(defaults: ProductContent, saved: unknown):
           note: str(t.note),
         }))
       : defaults.tables,
+    seo: toSeo(raw.seo ?? defaults.seo),
   };
 }
 
@@ -132,4 +136,9 @@ export async function getProductContent(slug: string, defaults: ProductContent):
 /** Cells of a table row padded/trimmed to the table's column count. */
 export function rowCells(table: ProductTable, row: ProductTableRow) {
   return Array.from({ length: table.headers.length }, (_, i) => row.cells[i] ?? "");
+}
+
+/** Page metadata from the product's SEO tab; empty fields keep the site defaults. */
+export async function productMetadata(slug: string, defaults: ProductContent) {
+  return seoMetadata((await getProductContent(slug, defaults)).seo);
 }

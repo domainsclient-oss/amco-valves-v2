@@ -54,7 +54,8 @@ service cloud.firestore {
       allow get: if isSignedIn();
       allow list: if isAdmin();
       allow create: if isAdmin() && request.resource.data.id == userId;
-      allow update: if isAdmin() && isExisting(resource) && request.resource.data.id == resource.data.id;
+      // The record keeps (or gets) an id matching the user ID; profile fields (name, phone, …) are free.
+      allow update: if isAdmin() && isExisting(resource) && request.resource.data.id == userId;
       allow delete: if isAdmin() && isExisting(resource);
     }
 

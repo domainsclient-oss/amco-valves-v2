@@ -11,6 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Card, CardContent } from "@/components/ui/card";
 import { notFound } from "next/navigation";
 import { getArticleContent, isArticlePublished, pfaVsFepDefaults } from "@/lib/blog-articles";
+import { keywordList, seoMetadata } from "@/lib/seo";
 import { safeHref, safeId } from "@/lib/buttons";
 
 const SLUG = "pfa-vs-fep-lined-valves";
@@ -20,18 +21,8 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getArticleContent(SLUG, pfaVsFepDefaults);
-  return {
-    title: c.seo.title,
-    description: c.seo.description,
-    keywords: [
-      "PFA vs FEP lined valves",
-      "pfa lining vs fep lining",
-      "lined valve applications",
-      "corrosive chemical valves",
-      "teflon lined valves",
-      "industrial valves for chemicals"
-    ],
-  };
+  // Edited in the admin (SEO tab); empty fields keep the original title, description and keywords.
+  return seoMetadata(c.seo, { title: pfaVsFepDefaults.seo.title, description: pfaVsFepDefaults.seo.description, keywords: keywordList(pfaVsFepDefaults.seo.keywords) });
 }
 
 export default async function PfaVsFepBlogPage() {

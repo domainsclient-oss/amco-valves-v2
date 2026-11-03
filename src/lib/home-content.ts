@@ -2,6 +2,7 @@ import { getRestDoc } from "@/lib/firestore-rest";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { mergeWithDefaults } from "@/lib/content-merge";
 import { button, safeHref, type ButtonContent } from "@/lib/buttons";
+import { emptySeo, type SeoContent } from "@/lib/seo";
 
 /**
  * Editable content for the home page.
@@ -144,6 +145,8 @@ export interface HomeContent {
     links: { label: string; href: string; megaMenu: boolean }[];
     button: ButtonContent;
   };
+  /** Search-engine settings of the home page (admin "SEO" section). */
+  seo: SeoContent;
   /** Site footer shown on every page (separate from the Contact section). */
   footer: {
     logo: { src: string; alt: string };
@@ -402,6 +405,7 @@ export const defaultHomeContent: HomeContent = {
     ],
     button: button("Get a Quote", "/#contact"),
   },
+  seo: { ...emptySeo },
   footer: {
     logo: { src: "/Logo-Asset.png", alt: "AMCO Valves Logo" },
     about: "Precision engineered valve solutions for the global energy and industrial sectors. Quality and reliability at the core of everything we do.",

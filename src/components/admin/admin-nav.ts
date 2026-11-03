@@ -1,4 +1,4 @@
-import { Award, Boxes, Images, Info, Newspaper, Package, PanelBottom, PanelTop, Phone, Sparkles, Users, type LucideIcon } from 'lucide-react';
+import { Award, Boxes, Images, Info, Newspaper, Package, PanelBottom, PanelTop, Phone, Search, Sparkles, Users, type LucideIcon } from 'lucide-react';
 
 /** Home page sections editable in /admin, selected with ?section=<key>. */
 export const HOME_SECTIONS = [
@@ -10,6 +10,7 @@ export const HOME_SECTIONS = [
   { key: 'gallery', label: 'Gallery', icon: Images, description: 'Gallery heading and photos.' },
   { key: 'contact', label: 'Contact', icon: Phone, description: 'Contact section: heading, address, phone and email with links.' },
   { key: 'footer', label: 'Footer', icon: PanelBottom, description: 'Logo, about text, social links, link columns and contact details, shown on every page.' },
+  { key: 'seo', label: 'SEO', icon: Search, description: 'Home page title, description, keywords and share image for Google and link previews.' },
 ] as const satisfies readonly { key: string; label: string; icon: LucideIcon; description: string }[];
 
 export type HomeSectionKey = (typeof HOME_SECTIONS)[number]['key'];

@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BlogBlocks, BlogSidebarView } from "@/components/blog/BlogBlocks";
 import { blogImageUrl, formatBlogDate, getPublishedBlogPost } from "@/lib/blog";
+import { seoMetadata } from "@/lib/seo";
 
 // Posts are written in the admin dashboard; saving there refreshes the page immediately.
 export const revalidate = 60;
@@ -17,6 +18,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = await getPublishedBlogPost(slug);
   if (!post) return { title: "Post not found | AMCO Valves" };
+
+  // SEO tab in the admin; fields left empty use the title, summary and cover photo as before.
+  const { seo } = post;
+  if (seo.title.trim() || seo.description.trim() || seo.keywords.trim() || seo.image.trim()) {
+    return seoMetadata(seo, {
+      title: `${post.title} | AMCO Valves`,
+      description: post.excerpt,
+      image: post.coverImageId ? blogImageUrl(post.coverImageId) : undefined,
+    });
+  }
 
   return {
     title: `${post.title} | AMCO Valves`,

@@ -10,9 +10,15 @@ import { placeholderImages } from "@/lib/placeholder-images.json";
 import { blogImageUrl, formatBlogDate, getPublishedBlogPosts } from "@/lib/blog";
 import { BLOG_INDEX_SLUG, blogIndexDefaults, getArticleContent, isArticlePublished, pfaVsFepDefaults, waterTreatmentDefaults } from "@/lib/blog-articles";
 import { safeHref, safeId } from "@/lib/buttons";
+import { seoMetadata } from "@/lib/seo";
 
 // Pick up posts published from the admin dashboard (saving there refreshes this immediately).
 export const revalidate = 60;
+
+// Title, description, keywords and share image from the admin (Edit blog page → SEO); empty fields keep the site defaults.
+export async function generateMetadata(): Promise<Metadata> {
+  return seoMetadata((await getArticleContent(BLOG_INDEX_SLUG, blogIndexDefaults)).seo);
+}
 
 /** The two original articles; their card text is editable from the admin dashboard. */
 async function getOriginalPosts() {

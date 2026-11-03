@@ -1,6 +1,7 @@
 import { format, isValid, parseISO } from "date-fns";
 import { getRestDoc, queryRestDocs } from "@/lib/firestore-rest";
 import { button, type ButtonContent } from "@/lib/buttons";
+import { emptySeo, toSeo, type SeoContent } from "@/lib/seo";
 
 /**
  * Blog posts written in the admin dashboard (/admin/blog).
@@ -117,6 +118,8 @@ export interface BlogPost {
   date: string;
   blocks: BlogBlock[];
   sidebar: BlogSidebar;
+  /** Search-engine settings (admin "SEO" tab); empty fields use the title, summary and cover photo. */
+  seo: SeoContent;
   status: "draft" | "published";
 }
 
@@ -133,6 +136,7 @@ export function newBlogPost(id: string): BlogPost {
     date: format(new Date(), "yyyy-MM-dd"),
     blocks: [newBlogBlock("heading"), newBlogBlock("text"), newBlogBlock("cta")],
     sidebar: defaultBlogSidebar(),
+    seo: { ...emptySeo },
     status: "draft",
   };
 }
@@ -284,6 +288,7 @@ export function toBlogPost(id: string, data: Raw): BlogPost {
     date: str(data.date),
     blocks,
     sidebar: toSidebar(data.sidebar),
+    seo: toSeo(data.seo),
     status: data.status === "published" ? "published" : "draft",
   };
 }

@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Card, CardContent } from "@/components/ui/card";
 import { notFound } from "next/navigation";
 import { getArticleContent, isArticlePublished, waterTreatmentDefaults } from "@/lib/blog-articles";
+import { keywordList, seoMetadata } from "@/lib/seo";
 import { safeHref, safeId } from "@/lib/buttons";
 
 const SLUG = "industrial-valves-for-water-treatment";
@@ -20,18 +21,8 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getArticleContent(SLUG, waterTreatmentDefaults);
-  return {
-    title: c.seo.title,
-    description: c.seo.description,
-    keywords: [
-      "industrial valves for water treatment",
-      "wastewater treatment valves",
-      "butterfly valves for water treatment",
-      "knife gate valves for slurry",
-      "check valves for water pipelines",
-      "industrial valve manufacturer in India"
-    ],
-  };
+  // Edited in the admin (SEO tab); empty fields keep the original title, description and keywords.
+  return seoMetadata(c.seo, { title: waterTreatmentDefaults.seo.title, description: waterTreatmentDefaults.seo.description, keywords: keywordList(waterTreatmentDefaults.seo.keywords) });
 }
 
 export default async function WaterTreatmentBlogPage() {

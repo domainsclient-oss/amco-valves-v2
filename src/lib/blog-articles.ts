@@ -3,6 +3,7 @@ import { mergeWithDefaults } from "@/lib/content-merge";
 import { HOME_CONTENT_COLLECTION } from "@/lib/home-content";
 import { BLOG_TAG } from "@/lib/blog";
 import { button } from "@/lib/buttons";
+import { emptySeo } from "@/lib/seo";
 
 /**
  * Editable text for the two original, hand-designed blog articles.
@@ -45,6 +46,8 @@ export const waterTreatmentDefaults = {
   seo: {
     title: "Industrial Valves for Water Treatment: Selection Guide | AMCO Valves",
     description: "Choosing valves for water and wastewater treatment? Learn how to select butterfly, check, knife gate and diaphragm valves for reliable operation.",
+    keywords: "industrial valves for water treatment, wastewater treatment valves, butterfly valves for water treatment, knife gate valves for slurry, check valves for water pipelines, industrial valve manufacturer in India",
+    image: "",
   },
   hero: {
     image: "/blog/blog-hero-1.webp",
@@ -206,6 +209,8 @@ export const pfaVsFepDefaults = {
   seo: {
     title: "PFA vs FEP Lined Valves: Which is Better? | AMCO Valves",
     description: "Choosing between PFA and FEP lining for your industrial valves? Learn the key differences in temperature, chemical resistance, and cost for corrosive applications.",
+    keywords: "PFA vs FEP lined valves, pfa lining vs fep lining, lined valve applications, corrosive chemical valves, teflon lined valves, industrial valves for chemicals",
+    image: "",
   },
   hero: {
     image: "/blog/hero-bg-blog2.webp",
@@ -415,6 +420,7 @@ export const blogIndexDefaults = {
     primaryButton: button("Consult an Engineer", "/#contact"),
     secondaryButton: button("Explore Catalog", "/#products"),
   },
+  seo: { ...emptySeo },
 };
 
 export type BlogIndexContent = typeof blogIndexDefaults;

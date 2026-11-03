@@ -17,7 +17,7 @@ import { articleContentDocId, resolveArticleContent } from '@/lib/blog-articles'
 /** Card titles for each part of the original articles, in page order. */
 const SECTION_TITLES: Record<string, string> = {
   card: 'Blog card',
-  seo: 'Search engines (page title & description)',
+  seo: 'SEO (title, description, keywords and share image)',
   hero: 'Article header',
   intro: 'Introduction',
   valveTypes: 'Valve types',

@@ -12,7 +12,10 @@ import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import type { ProductTable, ProductTableRow } from '@/lib/product-content';
 
-const ROW_KINDS: { value: ProductTableRow['kind']; label: string }[] = [
+/** "Upload PDF" for data-sheet tables, hidden for now; set to true to show it again. */
+const SHOW_PDF_UPLOAD = false;
+
+const ROW_KINDS:{ value: ProductTableRow['kind']; label: string }[] = [
   { value: '', label: 'Row' },
   { value: 'section', label: 'Section' },
   { value: 'child', label: 'Sub-row' },
@@ -296,25 +299,31 @@ export function ProductTablesEditor({ tables, onChange }: { tables: ProductTable
         <Button type="button" variant="outline" onClick={addTable}>
           <Plus className="size-4 mr-1" /> Add table
         </Button>
-        <Button type="button" variant="outline" onClick={() => fileInput.current?.click()} disabled={reading || !user}>
-          {reading ? <Loader2 className="size-4 mr-1 animate-spin" /> : <FileUp className="size-4 mr-1" />}
-          {reading ? 'Reading PDF…' : 'Upload PDF'}
-        </Button>
-        <input
-          ref={fileInput}
-          type="file"
-          accept="application/pdf,.pdf"
-          className="hidden"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            e.target.value = '';
-            if (file) uploadPdf(file);
-          }}
-        />
+        {SHOW_PDF_UPLOAD && (
+          <>
+            <Button type="button" variant="outline" onClick={() => fileInput.current?.click()} disabled={reading || !user}>
+              {reading ? <Loader2 className="size-4 mr-1 animate-spin" /> : <FileUp className="size-4 mr-1" />}
+              {reading ? 'Reading PDF…' : 'Upload PDF'}
+            </Button>
+            <input
+              ref={fileInput}
+              type="file"
+              accept="application/pdf,.pdf"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (file) uploadPdf(file);
+              }}
+            />
+          </>
+        )}
       </div>
-      <p className="text-xs text-foreground/50">
-        Add a table and type the values, or upload a data-sheet PDF (under 4 MB) to add its tables automatically. Uploaded tables are added at the end for you to check before saving.
-      </p>
+      {SHOW_PDF_UPLOAD && (
+        <p className="text-xs text-foreground/50">
+          Add a table and type the values, or upload a data-sheet PDF (under 4 MB) to add its tables automatically. Uploaded tables are added at the end for you to check before saving.
+        </p>
+      )}
     </div>
   );
 }

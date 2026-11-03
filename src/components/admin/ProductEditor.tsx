@@ -19,12 +19,15 @@ import { CUSTOM_PRODUCTS_COLLECTION } from '@/lib/custom-products';
 import { HOME_CONTENT_COLLECTION } from '@/lib/home-content';
 import { blogImageUrl } from '@/lib/blog';
 import { productContentDocId, resolveProductContent, type ProductContent, type ProductImage, type ProductSpec } from '@/lib/product-content';
+import { SITE_SEO, toSeo } from '@/lib/seo';
+import { SeoFields } from '@/components/admin/SeoFields';
 
 const TABS = [
   { key: 'details', label: 'Details' },
   { key: 'specs', label: 'Specifications' },
   { key: 'images', label: 'Images' },
   { key: 'tables', label: 'Data sheets' },
+  { key: 'seo', label: 'SEO' },
 ] as const;
 
 type TabKey = (typeof TABS)[number]['key'];
@@ -47,6 +50,7 @@ function cleanForSave(content: ProductContent): ProductContent {
       .map((s) => ({ label: s.label.trim(), subLabel: s.subLabel, value: s.value.trim() }))
       .filter((s) => s.label || s.value),
     images: content.images.map((i) => ({ src: i.src, alt: i.alt.trim() })),
+    seo: toSeo(content.seo),
   };
 }
 
@@ -378,6 +382,8 @@ export function ProductEditor({
                 <ProductTablesEditor tables={content.tables} onChange={(tables) => update({ tables })} />
               </>
             )}
+
+            {tab === 'seo' && <SeoFields value={toSeo(content.seo)} onChange={(seo) => update({ seo })} defaults={SITE_SEO} />}
 
             <div className="mt-12 p-6 rounded-3xl border border-dashed border-border bg-white flex flex-wrap items-center justify-between gap-4">
               <div>
