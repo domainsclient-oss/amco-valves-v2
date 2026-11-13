@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { getRestDoc } from "@/lib/firestore-rest";
 import { HOME_CONTENT_COLLECTION } from "@/lib/home-content";
 import { isBuiltInProductVisible } from "@/lib/product-taxonomy";
-import { seoMetadata, toSeo, type SeoContent } from "@/lib/seo";
+import { mergeSeo, seoMetadata, type SeoContent } from "@/lib/seo";
+import { isProductFileUrl } from "@/lib/product-files";
 
 /**
  * Editable content of the product detail pages (/products/...).
@@ -24,6 +25,16 @@ export interface ProductImage {
   /** A site path: a file in /public or an uploaded image (/api/blog-images/<id>). */
   src: string;
   alt: string;
+}
+
+/** An uploaded catalog / data-sheet PDF (see src/lib/product-files.ts). */
+export interface ProductPdf {
+  /** /api/product-files/<id> */
+  src: string;
+  /** Original file name, e.g. "KGV-catalog.pdf". */
+  name: string;
+  /** Size in bytes (shown in the admin). */
+  size: number;
 }
 
 /** A heading cell spanning several columns in the optional group-heading row. */
@@ -66,6 +77,8 @@ export interface ProductContent {
   /** Showcase photos; the first one is the main product photo. */
   images: ProductImage[];
   tables: ProductTable[];
+  /** Catalog PDF downloaded by the "Download Data Sheet" button; without it the button downloads the tables as CSV. */
+  dataSheetPdf?: ProductPdf | null;
   /** Search-engine settings (admin "SEO" tab); missing or empty fields keep the site defaults. */
   seo?: SeoContent;
 }
@@ -85,6 +98,14 @@ const strList = (value: unknown) => (Array.isArray(value) ? value : []).map((v) 
 
 /** Only site paths can be shown with next/image; anything else is dropped. */
 const isSitePath = (src: string) => src.startsWith("/");
+
+function toProductPdf(value: unknown): ProductPdf | null {
+  if (typeof value !== "object" || value === null) return null;
+  const raw = value as Raw;
+  const src = str(raw.src);
+  if (!isProductFileUrl(src)) return null;
+  return { src, name: str(raw.name) || "data-sheet.pdf", size: Math.max(0, Number(raw.size) || 0) };
+}
 
 export function resolveProductContent(defaults: ProductContent, saved: unknown): ProductContent {
   if (typeof saved !== "object" || saved === null) return defaults;
@@ -116,7 +137,9 @@ export function resolveProductContent(defaults: ProductContent, saved: unknown):
           note: str(t.note),
         }))
       : defaults.tables,
-    seo: toSeo(raw.seo ?? defaults.seo),
+    dataSheetPdf: "dataSheetPdf" in raw ? toProductPdf(raw.dataSheetPdf) : (defaults.dataSheetPdf ?? null),
+    // Empty SEO fields saved from the admin keep the page's defaults (content.ts).
+    seo: mergeSeo(raw.seo, defaults.seo),
   };
 }
 

@@ -12,6 +12,7 @@ import type { ProductContent } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function PfaFepLinedPlugValveView({ content }: { content: ProductContent }) {
@@ -114,6 +115,9 @@ export default function PfaFepLinedPlugValveView({ content }: { content: Product
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
 
           {/* Dimension Tables */}
           {content.tables.map((table, t) => (

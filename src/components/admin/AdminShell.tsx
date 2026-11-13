@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { AdminTopBar } from '@/components/admin/AdminTopBar';
 import { SignOutDialog } from '@/components/admin/ConfirmDialog';
 import { cn } from '@/lib/utils';
-import { BLOG_NAV, HOME_SECTIONS, PRODUCTS_NAV, USERS_NAV, getHomeSection } from '@/components/admin/admin-nav';
+import { BLOG_NAV, HOME_SECTIONS, PARENT_PAGES_NAV, PRODUCTS_NAV, USERS_NAV, getHomeSection } from '@/components/admin/admin-nav';
 
 /** Admin layout: fixed sidebar on desktop, slide-out menu on smaller screens. */
 export function AdminShell({ children }: { children: React.ReactNode }) {
@@ -134,6 +134,13 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
           icon={PRODUCTS_NAV.icon}
           label={PRODUCTS_NAV.label}
           active={pathname.startsWith(PRODUCTS_NAV.href)}
+          onNavigate={onNavigate}
+        />
+        <NavItem
+          href={PARENT_PAGES_NAV.href}
+          icon={PARENT_PAGES_NAV.icon}
+          label={PARENT_PAGES_NAV.label}
+          active={pathname.startsWith(PARENT_PAGES_NAV.href)}
           onNavigate={onNavigate}
         />
       </NavGroup>

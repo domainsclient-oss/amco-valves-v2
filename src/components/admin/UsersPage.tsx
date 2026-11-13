@@ -100,7 +100,6 @@ function ViewDialog({ account, isYou, onClose, onEdit }: { account: AdminAccount
               <Detail label="Notes" value={account.notes || '—'} />
               <Detail label="Last visit" value={formatDate(account.lastSignInAt)} />
               <Detail label="Added" value={formatDate(account.addedAt)} />
-              <Detail label="User ID" value={account.uid} mono />
             </div>
             <DialogFooter className="gap-2">
               <Button variant="outline" onClick={onClose}>Close</Button>
@@ -166,7 +165,8 @@ function EditDialog({
               : 'These details are shown in the Users list. The login email and password are managed in Firebase Authentication.'}
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4">
+        {/* Light borders so the fields stand out on the white popup. */}
+        <div className="space-y-4 [&_input]:border [&_input]:border-neutral-200 [&_textarea]:border [&_textarea]:border-neutral-200 [&_input:focus-visible]:border-secondary [&_textarea:focus-visible]:border-secondary">
           {isNew && (
             <Field
               label="User UID"
@@ -274,7 +274,6 @@ export function UsersPage() {
   };
 
   const you = admins?.find((a) => a.uid === user?.uid) ?? null;
-  const provider = user?.providerData[0]?.providerId === 'password' ? 'Email and password' : user?.providerData[0]?.providerId ?? '—';
 
   return (
     <div className="pb-24">
@@ -309,8 +308,6 @@ export function UsersPage() {
               {you?.name && <Detail label="Name" value={you.name} />}
               <Detail label="Email" value={user?.email ?? '—'} />
               {you?.phone && <Detail label="Phone" value={you.phone} />}
-              <Detail label="User ID" value={user?.uid ?? '—'} mono />
-              <Detail label="Sign-in method" value={provider} />
               <Detail label="Account created" value={formatDate(user?.metadata.creationTime)} />
               <Detail label="Last sign-in" value={formatDate(user?.metadata.lastSignInTime)} />
             </div>
@@ -347,8 +344,7 @@ export function UsersPage() {
                           {isYou && <span className="ml-2 text-xs font-semibold text-secondary">You</span>}
                         </p>
                         <p className="text-xs text-foreground/50 truncate">
-                          {[admin.name && email, admin.jobTitle, admin.lastSignInAt && `Last visit ${formatDate(admin.lastSignInAt)}`].filter(Boolean).join(' · ') ||
-                            admin.uid}
+                          {[admin.name && email, admin.jobTitle, admin.lastSignInAt && `Last visit ${formatDate(admin.lastSignInAt)}`].filter(Boolean).join(' · ') || 'Admin'}
                         </p>
                       </div>
                     </button>
@@ -386,10 +382,6 @@ export function UsersPage() {
               })}
             </div>
           )}
-          <p className="text-xs text-foreground/50">
-            To add someone: create their login in Firebase Console → Authentication → Add user, then click <strong>Add admin</strong> and paste their User UID.
-            Emails and last visits fill in automatically when each admin signs in.
-          </p>
         </Section>
       </main>
 

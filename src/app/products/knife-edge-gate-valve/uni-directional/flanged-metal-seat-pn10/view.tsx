@@ -13,6 +13,7 @@ import type { ProductContent, ProductTable } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Header indexes of the last column under each group heading. */
 const groupEnds = (table: ProductTable) => {
@@ -26,7 +27,6 @@ const tableWidths = ["max-w-6xl", "max-w-[1400px]", "max-w-4xl"];
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function FlangedMetalSeatKnifeEdgeGateValveView({ content }: { content: ProductContent }) {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const specs = content.specs;
   const tables = content.tables;
 
@@ -136,6 +136,9 @@ export default function FlangedMetalSeatKnifeEdgeGateValveView({ content }: { co
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
 
           <div className="space-y-16">
             {/* Dimension Tables */}

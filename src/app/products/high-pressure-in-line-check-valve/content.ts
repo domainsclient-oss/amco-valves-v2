@@ -32,4 +32,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "High Pressure In-Line Check Valve | AMCO",
+    description:
+      "AMCO high pressure in-line check valve for high-pressure non-return service. Check specifications and request a technical quote.",
+    keywords: "high pressure in-line check valve",
+    image: "",
+  },
 };

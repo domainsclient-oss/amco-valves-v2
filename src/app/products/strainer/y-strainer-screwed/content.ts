@@ -33,4 +33,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Y Strainer – Screwed | AMCO",
+    description:
+      "AMCO y strainer in screwed configuration for pipeline debris removal and equipment protection. Check specifications and request a technical quote.",
+    keywords: "screwed y strainer",
+    image: "",
+  },
 };

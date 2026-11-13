@@ -96,4 +96,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Dual Plate Check Valve – Retainerless Flanged 150/300 | AMCO",
+    description:
+      "AMCO dual plate check valve in retainerless, flanged, metal seated, 150/300 configuration for backflow prevention in industrial piping. Check specifications and.",
+    keywords: "retainerless flanged dual plate check valve",
+    image: "",
+  },
 };

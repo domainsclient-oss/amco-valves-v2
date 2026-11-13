@@ -63,4 +63,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Sleeved Plug Valve – Flanged | AMCO",
+    description:
+      "AMCO ptfe sleeved plug valve in flanged configuration for industrial flow isolation. Check specifications and request a technical quote.",
+    keywords: "flanged ptfe sleeved plug valve",
+    image: "",
+  },
 };

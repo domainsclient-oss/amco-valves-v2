@@ -48,4 +48,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Wafer Check Valve – Metal Seat | AMCO",
+    description:
+      "AMCO wafer check valve in metal seated configuration for compact non-return service. Check specifications and request a technical quote.",
+    keywords: "metal seated wafer check valve",
+    image: "",
+  },
 };

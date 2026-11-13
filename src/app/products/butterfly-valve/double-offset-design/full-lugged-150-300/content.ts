@@ -118,4 +118,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly Valve – Double Offset Full Lugged 150/300 | AMCO",
+    description:
+      "AMCO butterfly valve in double-offset, full lug, 150/300 configuration for industrial flow isolation and control. Check specifications and request a technical quote.",
+    keywords: "double-offset full lug butterfly valve",
+    image: "",
+  },
 };

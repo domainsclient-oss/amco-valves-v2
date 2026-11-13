@@ -34,4 +34,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "High Pressure Needle Valve | AMCO",
+    description:
+      "AMCO high pressure needle valve for precision flow regulation. Compare pressure rating, end connection and materials; request drawings, datasheets or a quotation.",
+    keywords: "high pressure needle valve",
+    image: "",
+  },
 };

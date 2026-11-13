@@ -63,4 +63,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Sleeved Plug Valve – Jacketed | AMCO",
+    description:
+      "AMCO ptfe sleeved plug valve in jacketed configuration for industrial flow isolation. Check specifications and request a technical quote.",
+    keywords: "jacketed ptfe sleeved plug valve",
+    image: "",
+  },
 };

@@ -93,4 +93,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Dual Plate Check Valve – Flanged Resilient Seat PN16 | AMCO",
+    description:
+      "AMCO dual plate check valve in flanged, resilient seated, PN16 configuration for backflow prevention in industrial piping. Check specifications and request a.",
+    keywords: "flanged resilient seated dual plate check valve",
+    image: "",
+  },
 };

@@ -67,4 +67,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Knife Edge Gate Valve – Bi-Directional 2-Piece Wafer PN10 | AMCO",
+    description:
+      "AMCO knife edge gate valve in 2-piece, bi-directional, wafer / lugged, resilient seated configuration for slurry and process-line isolation. Check specifications.",
+    keywords: "2-piece bi-directional knife edge gate valve",
+    image: "",
+  },
 };

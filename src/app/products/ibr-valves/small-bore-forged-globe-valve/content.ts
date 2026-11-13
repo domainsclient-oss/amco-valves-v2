@@ -103,4 +103,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Forged Globe IBR Valve | AMCO",
+    description:
+      "AMCO forged globe valve in small bore, forged, globe configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "small bore forged forged globe valve",
+    image: "",
+  },
 };

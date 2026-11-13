@@ -12,6 +12,7 @@ import type { ProductContent } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function PtfeLinedBallCheckValveView({ content }: { content: ProductContent }) {
@@ -95,6 +96,9 @@ export default function PtfeLinedBallCheckValveView({ content }: { content: Prod
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
 
           {content.tables.map((table, t) => (
           <div key={t} className={`bg-white rounded-[2rem] border border-border shadow-xl overflow-hidden max-w-6xl mx-auto${t > 0 ? " mt-12" : ""}`}>

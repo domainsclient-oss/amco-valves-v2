@@ -50,4 +50,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Large Bore Piston Valve – IBR/Non-IBR | AMCO",
+    description:
+      "AMCO large bore piston valve for industrial process and steam-line isolation. Check specifications and request a technical quote.",
+    keywords: "large bore piston valve",
+    image: "",
+  },
 };

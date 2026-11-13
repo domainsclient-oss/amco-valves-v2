@@ -1,4 +1,4 @@
-import { Award, Boxes, Images, Info, Newspaper, Package, PanelBottom, PanelTop, Phone, Search, Sparkles, Users, type LucideIcon } from 'lucide-react';
+import { Award, Boxes, LayoutGrid, Images, Info, Newspaper, Package, PanelBottom, PanelTop, Phone, Search, Sparkles, Users, type LucideIcon } from 'lucide-react';
 
 /** Home page sections editable in /admin, selected with ?section=<key>. */
 export const HOME_SECTIONS = [
@@ -22,5 +22,7 @@ export function getHomeSection(key: string | null) {
 export const BLOG_NAV = { href: '/admin/blog', label: 'Blog Posts', icon: Newspaper };
 
 export const PRODUCTS_NAV = { href: '/admin/products', label: 'Product Pages', icon: Boxes };
+
+export const PARENT_PAGES_NAV = { href: '/admin/parent-products', label: 'Parent Pages', icon: LayoutGrid };
 
 export const USERS_NAV = { href: '/admin/users', label: 'Users', icon: Users };

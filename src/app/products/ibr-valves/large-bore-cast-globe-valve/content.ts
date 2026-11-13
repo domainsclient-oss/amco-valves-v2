@@ -79,4 +79,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Cast Globe IBR Valve | AMCO",
+    description:
+      "AMCO cast globe valve in large bore, cast, globe configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "large bore cast cast globe valve",
+    image: "",
+  },
 };

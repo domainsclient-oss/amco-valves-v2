@@ -49,4 +49,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Wafer Check Valve – Resilient Seat | AMCO",
+    description:
+      "AMCO wafer check valve in resilient seated configuration for compact non-return service. Check specifications and request a technical quote.",
+    keywords: "resilient seated wafer check valve",
+    image: "",
+  },
 };

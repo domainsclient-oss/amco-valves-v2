@@ -23,4 +23,11 @@ export const content: ProductContent = {
     { src: "/products/basket-strainer-flanged-6.jpg", alt: "Basket Strainer View 6" },
   ],
   tables: [],
+  seo: {
+    title: "Basket Strainer – Flanged | AMCO",
+    description:
+      "AMCO basket strainer in flanged configuration for pipeline debris removal and equipment protection. Check specifications and request a technical quote.",
+    keywords: "flanged basket strainer",
+    image: "",
+  },
 };

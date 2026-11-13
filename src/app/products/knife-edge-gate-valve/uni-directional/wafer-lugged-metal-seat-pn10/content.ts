@@ -75,4 +75,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Knife Edge Gate Valve – Uni-Directional Wafer/Lugged Metal Seat | AMCO",
+    description:
+      "AMCO knife edge gate valve in uni-directional, wafer / lugged, metal seated, PN10 configuration for slurry and process-line isolation. Check specifications and.",
+    keywords: "uni-directional wafer / lugged knife edge gate valve",
+    image: "",
+  },
 };

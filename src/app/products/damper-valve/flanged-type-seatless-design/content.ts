@@ -111,4 +111,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Flanged Damper Valve – Flanged | AMCO",
+    description:
+      "AMCO flanged seatless damper valve in flanged configuration for air and gas flow management. Check specifications and request a technical quote.",
+    keywords: "flanged flanged seatless damper valve",
+    image: "",
+  },
 };

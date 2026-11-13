@@ -13,6 +13,7 @@ import { QuotePopup } from "@/components/QuotePopup";
 import type { ProductContent } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function PtfeLinedWaferButterflyValveView({ content }: { content: ProductContent }) {
@@ -122,6 +123,9 @@ export default function PtfeLinedWaferButterflyValveView({ content }: { content:
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
 
           <div className="space-y-16">
             {content.tables.map((table, t) => {

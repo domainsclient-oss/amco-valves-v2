@@ -72,4 +72,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Floating Ball Valve – 2-Piece Flanged Class 150/300/600 | AMCO",
+    description:
+      "AMCO floating ball valve in 2-piece, floating, flanged, 2, ANSI/150/300/600 configuration for industrial quarter-turn isolation. Check specifications and request.",
+    keywords: "2-piece floating floating ball valve",
+    image: "",
+  },
 };

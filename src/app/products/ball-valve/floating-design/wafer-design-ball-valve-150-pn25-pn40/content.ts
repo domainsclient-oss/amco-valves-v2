@@ -15,4 +15,11 @@ export const content: ProductContent = {
   ],
   images: [{ src: "/dummy-image.png", alt: "Wafer Design Ball Valve" }],
   tables: [],
+  seo: {
+    title: "Floating Ball Valve – Wafer 150/PN25/PN40 | AMCO",
+    description:
+      "AMCO floating ball valve in floating, wafer, 150, PN25, PN40 configuration for industrial quarter-turn isolation. Check specifications and request a technical quote.",
+    keywords: "floating wafer floating ball valve",
+    image: "",
+  },
 };

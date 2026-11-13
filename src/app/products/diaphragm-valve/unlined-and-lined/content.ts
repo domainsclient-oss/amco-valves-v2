@@ -41,4 +41,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Diaphragm Valve – Lined/Unlined | AMCO",
+    description:
+      "AMCO diaphragm valve for process-fluid isolation. Compare lining options, diaphragm and body materials; request drawings, datasheets or a quotation.",
+    keywords: "diaphragm valve",
+    image: "",
+  },
 };

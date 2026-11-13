@@ -96,12 +96,18 @@ export default {
           '0%, 100%': { boxShadow: '0 0 10px hsla(17, 88%, 54%, 0.4)' },
           '50%': { boxShadow: '0 0 25px hsla(17, 88%, 54%, 0.8), 0 0 15px hsla(17, 88%, 54%, 0.5)' },
         },
+        // The track holds the items twice, so shifting by half lands exactly on the start of the copy.
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'glow': 'glow 2s ease-in-out infinite',
+        'marquee': 'marquee 30s linear infinite',
       },
     },
   },

@@ -18,4 +18,11 @@ export const content: ProductContent = {
     { src: "/dummy-image.png", alt: "Screwed / Socket / Butt" },
   ],
   tables: [],
+  seo: {
+    title: "PTFE Sleeved Plug Valve – Screwed/Socket/Butt Weld | AMCO",
+    description:
+      "AMCO ptfe sleeved plug valve in screwed / socket weld configuration for industrial flow isolation. Check specifications and request a technical quote.",
+    keywords: "screwed / socket weld ptfe sleeved plug valve",
+    image: "",
+  },
 };

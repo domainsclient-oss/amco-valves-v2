@@ -96,4 +96,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Dual Plate Check Valve – Lugged Resilient Seat PN16 | AMCO",
+    description:
+      "AMCO dual plate check valve in resilient seated, PN16 configuration for backflow prevention in industrial piping. Check specifications and request a technical quote.",
+    keywords: "resilient seated pn16 dual plate check valve",
+    image: "",
+  },
 };

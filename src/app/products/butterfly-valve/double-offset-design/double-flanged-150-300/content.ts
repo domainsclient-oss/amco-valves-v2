@@ -106,4 +106,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly Valve – Double Offset Double Flanged 150/300 | AMCO",
+    description:
+      "AMCO butterfly valve in double-offset, double flanged, 150/300 configuration for industrial flow isolation and control. Check specifications and request a.",
+    keywords: "double-offset double flanged butterfly valve",
+    image: "",
+  },
 };

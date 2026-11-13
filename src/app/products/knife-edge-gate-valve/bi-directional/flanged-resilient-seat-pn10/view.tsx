@@ -13,10 +13,10 @@ import type { ProductContent } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Product page layout; the data comes from ./content.ts or the admin dashboard. */
 export default function BiDirectionalFlangedResilientSeatView({ content }: { content: ProductContent }) {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const productImage = {
@@ -124,6 +124,9 @@ export default function BiDirectionalFlangedResilientSeatView({ content }: { con
             </div>
           </div>
 
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
+
           <div className="space-y-16">
             {content.tables.map((table, t) => {
               const grouped = table.groups.length > 0;
@@ -203,31 +206,6 @@ export default function BiDirectionalFlangedResilientSeatView({ content }: { con
           </div>
         </div>
       </section>
-
-      {/* Lightbox Dialog */}
-      <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
-        <DialogContent className="max-w-[95vw] max-h-[70vh] p-0 border-none bg-transparent shadow-none flex items-center justify-center overflow-visible z-[100]">
-          <DialogTitle className="sr-only">Product Showcase Image</DialogTitle>
-          <div className="relative w-full h-full flex items-center justify-center p-4 md:p-16">
-            <button 
-              onClick={() => setIsLightboxOpen(false)}
-              className="absolute top-12 right-4 md:top-24 md:right-12 p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all border border-white/10 z-[105]"
-            >
-              <X className="size-8" />
-            </button>
-
-            <div className="relative w-full max-w-5xl aspect-video md:aspect-[1.6/1] rounded-3xl overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-300">
-              <Image
-                src={productImage.imageUrl}
-                alt={productImage.description}
-                fill
-                className="object-contain bg-black/20"
-                priority
-              />
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
 
       <QuotePopup 
         isOpen={isQuoteOpen} 

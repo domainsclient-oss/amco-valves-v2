@@ -10,6 +10,8 @@ export interface SubCategory {
 
 export interface MegaMenuCategory {
   title: string;
+  /** Parent page listing the category's products (src/lib/product-families.ts). */
+  href?: string;
   subCategories: SubCategory[];
 }
 
@@ -21,6 +23,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
   [
     {
       title: "Knife Edge Gate Valve",
+      href: "/products/knife-edge-gate-valve",
       subCategories: [
         {
           name: "Uni Directional",
@@ -44,6 +47,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Dual Plate Check Valve",
+      href: "/products/dual-plate-check-valve",
       subCategories: [
         {
           name: "Check Valve Range",
@@ -62,6 +66,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
   [
     {
       title: "Butterfly Valve",
+      href: "/products/butterfly-valve",
       subCategories: [
         {
           name: "Centric Disc Design",
@@ -84,6 +89,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Wafer Check Valve",
+      href: "/products/wafer-check-valve",
       subCategories: [
         {
           name: "Wafer Check Range",
@@ -97,6 +103,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "High Pressure Valve",
+      href: "/products/high-pressure-valve",
       subCategories: [
         {
           name: "High Pressure Range",
@@ -112,6 +119,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
   [
     {
       title: "Ball Valve",
+      href: "/products/ball-valve",
       subCategories: [
         {
           name: "Floating Design",
@@ -135,6 +143,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Gate Valve for Fire Fighting",
+      href: "/products/gate-valve-for-fire-fighting",
       subCategories: [
         {
           name: "Fire Fighting Range",
@@ -146,6 +155,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Strainer",
+      href: "/products/strainer",
       subCategories: [
         {
           name: "Strainer Range",
@@ -161,6 +171,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
   [
     {
       title: "Piston Valve - Seatless & Glandless",
+      href: "/products/piston-valve",
       subCategories: [
         {
           name: "Piston Valve Range",
@@ -173,6 +184,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Diaphragm Valve",
+      href: "/products/diaphragm-valve",
       subCategories: [
         {
           name: "Unlined and Lined",
@@ -184,6 +196,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "FEP & PFA Lined Valves",
+      href: "/products/fep-pfa-lined-valves",
       subCategories: [
         {
           name: "Lined Valve Range",
@@ -202,6 +215,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "Damper Valve",
+      href: "/products/damper-valve",
       subCategories: [
         {
           name: "Seatless Design",
@@ -216,6 +230,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
   [
     {
       title: "IBR & Non IBR Small & Large Bore",
+      href: "/products/ibr-valves",
       subCategories: [
         {
           name: "Valve Range",
@@ -232,6 +247,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "PTFE Sleeved Plug Valve",
+      href: "/products/ptfe-sleeved-plug-valve",
       subCategories: [
         {
           name: "Plug Valve Range",
@@ -245,6 +261,7 @@ export const productNavigationData: MegaMenuCategory[][] = [
     },
     {
       title: "PTFE Seated Butterfly Valve",
+      href: "/products/ptfe-seated-butterfly-valve",
       subCategories: [
         {
           name: "Centric Disc Design",

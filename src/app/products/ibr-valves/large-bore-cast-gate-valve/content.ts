@@ -79,4 +79,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Cast Gate IBR Valve | AMCO",
+    description:
+      "AMCO cast gate valve in large bore, cast, gate configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "large bore cast cast gate valve",
+    image: "",
+  },
 };

@@ -63,12 +63,34 @@ function downloadCsv(content: ProductContent, tables: { table: ProductTable; ind
   URL.revokeObjectURL(url);
 }
 
+/** Downloads the catalog PDF uploaded in the admin. */
+function downloadPdf(src: string, name: string) {
+  const link = document.createElement("a");
+  link.href = src;
+  link.download = name;
+  link.style.visibility = "hidden";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 /**
  * Wraps a product page's "Download Data Sheet" button. With one table or none the button works
  * exactly as before (the page's own download). With several tables, the same button opens a menu
- * to download all data sheets or a single one.
+ * to download all data sheets or a single one. When a catalog PDF was uploaded in the admin,
+ * the button downloads that PDF instead.
  */
 export function DataSheetDownload({ content, children }: { content: ProductContent; children: ReactElement<{ onClick?: unknown }> }) {
+  const pdf = content.dataSheetPdf;
+  if (pdf?.src) {
+    return cloneElement(children, {
+      onClick: (e: { preventDefault?: () => void }) => {
+        e?.preventDefault?.();
+        downloadPdf(pdf.src, pdf.name);
+      },
+    });
+  }
+
   const tables = content.tables;
   if (tables.length <= 1) return children;
 

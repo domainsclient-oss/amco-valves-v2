@@ -35,4 +35,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Lined Ball Valve | AMCO",
+    description:
+      "AMCO ptfe lined ball valve for corrosive-fluid isolation. Compare lining material, end connections and size range; request drawings, datasheets or a quotation.",
+    keywords: "ptfe lined ball valve",
+    image: "",
+  },
 };

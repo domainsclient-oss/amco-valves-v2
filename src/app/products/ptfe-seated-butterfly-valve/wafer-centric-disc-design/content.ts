@@ -53,4 +53,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Seated Butterfly Valve – Centric Disc Wafer | AMCO",
+    description:
+      "AMCO ptfe seated butterfly valve in centric disc, wafer, PTFE seated configuration for process-flow isolation. Check specifications and request a technical quote.",
+    keywords: "centric disc wafer ptfe seated butterfly valve",
+    image: "",
+  },
 };

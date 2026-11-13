@@ -60,4 +60,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Trunnion Ball Valve – 2-Piece Flanged Class 150/300/600 | AMCO",
+    description:
+      "AMCO trunnion mounted ball valve in 2-piece, flanged, 2, ANSI/150/300/600 configuration for industrial quarter-turn isolation. Check specifications and request a.",
+    keywords: "2-piece flanged trunnion mounted ball valve",
+    image: "",
+  },
 };

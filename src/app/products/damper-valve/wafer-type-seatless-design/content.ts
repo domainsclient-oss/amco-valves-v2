@@ -48,4 +48,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Wafer Damper Valve – Wafer | AMCO",
+    description:
+      "AMCO wafer seatless damper valve in wafer configuration for air and gas flow management. Check specifications and request a technical quote.",
+    keywords: "wafer wafer seatless damper valve",
+    image: "",
+  },
 };

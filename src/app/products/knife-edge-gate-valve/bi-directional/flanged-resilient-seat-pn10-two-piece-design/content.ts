@@ -77,4 +77,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Knife Edge Gate Valve – Bi-Directional 2-Piece Flanged PN10 | AMCO",
+    description:
+      "AMCO knife edge gate valve in 2-piece, bi-directional, flanged, resilient seated configuration for slurry and process-line isolation. Check specifications and.",
+    keywords: "2-piece bi-directional knife edge gate valve",
+    image: "",
+  },
 };

@@ -40,4 +40,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Lined Ball Check Valve | AMCO",
+    description:
+      "AMCO ptfe lined ball check valve for lined-system backflow prevention. Compare lining material and connection details; request drawings, datasheets or a quotation.",
+    keywords: "ptfe lined ball check valve",
+    image: "",
+  },
 };

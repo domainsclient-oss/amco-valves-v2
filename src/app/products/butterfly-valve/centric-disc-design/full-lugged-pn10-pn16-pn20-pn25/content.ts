@@ -131,4 +131,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly Valve – Centric Disc Full Lugged PN10/PN16/PN20/PN25 | AMCO",
+    description:
+      "AMCO butterfly valve in centric disc, full lug, PN10, PN16, PN20, PN25 configuration for industrial flow isolation and control. Check specifications and request.",
+    keywords: "centric disc full lug butterfly valve",
+    image: "",
+  },
 };

@@ -12,6 +12,7 @@ import type { ProductContent, ProductTable } from "@/lib/product-content";
 import { rowCells } from "@/lib/product-content";
 import { QuotePopup } from "@/components/QuotePopup";
 import { DataSheetDownload } from "@/components/products/DataSheetDownload";
+import { ProductShowcase } from "@/components/products/ProductShowcase";
 
 /** Header indexes of the last column under each group heading. */
 const groupEnds = (table: ProductTable) => {
@@ -131,6 +132,9 @@ export default function FlangedRetainerlessMetalSeatCheckValveView({ content }: 
               </div>
             </div>
           </div>
+
+          {/* Visual Showcase: every image saved in the admin */}
+          <ProductShowcase images={content.images} />
 
           <div className="space-y-16">
             {/* Dimension Tables */}

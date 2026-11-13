@@ -46,4 +46,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Trunnion Ball Valve – 3-Piece Flanged Class 150/300/600 | AMCO",
+    description:
+      "AMCO trunnion mounted ball valve in 3-piece, flanged, 3, ANSI/150/300/600 configuration for industrial quarter-turn isolation. Check specifications and request a.",
+    keywords: "3-piece flanged trunnion mounted ball valve",
+    image: "",
+  },
 };

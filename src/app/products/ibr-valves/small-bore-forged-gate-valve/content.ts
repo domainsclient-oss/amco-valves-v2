@@ -103,4 +103,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Forged Gate IBR Valve | AMCO",
+    description:
+      "AMCO forged gate valve in small bore, forged, gate configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "small bore forged forged gate valve",
+    image: "",
+  },
 };

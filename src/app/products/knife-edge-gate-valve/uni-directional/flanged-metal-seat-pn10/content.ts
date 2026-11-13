@@ -103,4 +103,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Knife Edge Gate Valve – Uni-Directional Flanged Metal Seat PN10 | AMCO",
+    description:
+      "AMCO knife edge gate valve in uni-directional, flanged, metal seated, PN10 configuration for slurry and process-line isolation. Check specifications and request.",
+    keywords: "uni-directional flanged knife edge gate valve",
+    image: "",
+  },
 };

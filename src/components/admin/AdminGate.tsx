@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { Eye, EyeOff, Loader2, LockKeyhole, Mail, ShieldAlert } from 'lucide-react';
+import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { ArrowLeft, Eye, EyeOff, Loader2, LockKeyhole, Mail, MailCheck, ShieldAlert } from 'lucide-react';
 import { useAuth, useFirestore, useUser } from '@/firebase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -80,6 +80,8 @@ function AdminLogin() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [mode, setMode] = useState<'login' | 'reset'>('login');
+  const [resetSent, setResetSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,6 +96,57 @@ function AdminLogin() {
     }
   };
 
+  // Forgot password: Firebase emails a secure link to set a new password.
+  const handleReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      await sendPasswordResetEmail(auth, email.trim());
+      setResetSent(true);
+    } catch (err: any) {
+      // Don't reveal whether an account exists for this email.
+      if (err?.code === 'auth/user-not-found') setResetSent(true);
+      else if (err?.code === 'auth/invalid-email') setError('Please enter a valid email address.');
+      else if (err?.code === 'auth/too-many-requests') setError('Too many attempts. Please wait a few minutes and try again.');
+      else setError("Couldn't send the email. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const switchMode = (next: 'login' | 'reset') => {
+    setMode(next);
+    setError(null);
+    setResetSent(false);
+  };
+
+  const emailField = (
+    <div className="space-y-2">
+      <Label htmlFor="email" className="text-primary font-semibold">Email</Label>
+      <div className="relative">
+        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-foreground/40 pointer-events-none" />
+        <Input
+          id="email"
+          type="email"
+          required
+          autoComplete="username"
+          placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="h-12 pl-11 rounded-xl bg-background border-border focus-visible:ring-secondary"
+        />
+      </div>
+    </div>
+  );
+
+  const errorBox = error && (
+    <div role="alert" className="flex items-center gap-2 rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
+      <ShieldAlert className="size-4 shrink-0" />
+      {error}
+    </div>
+  );
+
   return (
     <CenteredCard>
       <div className="text-center mb-8">
@@ -101,62 +154,81 @@ function AdminLogin() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logoSrc} alt={header.logo.alt} className="h-16 w-auto max-w-[12rem] object-contain mx-auto" />
         <div className="h-px bg-border my-6" />
-        <h1 className="text-2xl font-bold text-primary">Admin Login</h1>
-        <p className="text-sm text-foreground/60 mt-1">Sign in to manage the website content.</p>
+        <h1 className="text-2xl font-bold text-primary">{mode === 'login' ? 'Admin Login' : 'Reset password'}</h1>
+        <p className="text-sm text-foreground/60 mt-1">
+          {mode === 'login' ? 'Sign in to manage the website content.' : "Enter your admin email and we'll send you a link to set a new password."}
+        </p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="space-y-2">
-          <Label htmlFor="email" className="text-primary font-semibold">Email</Label>
-          <div className="relative">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-foreground/40 pointer-events-none" />
-            <Input
-              id="email"
-              type="email"
-              required
-              autoComplete="username"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 pl-11 rounded-xl bg-background border-border focus-visible:ring-secondary"
-            />
+
+      {mode === 'login' ? (
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {emailField}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <Label htmlFor="password" className="text-primary font-semibold">Password</Label>
+              <button type="button" onClick={() => switchMode('reset')} className="text-xs font-semibold text-secondary hover:underline focus:outline-none focus-visible:underline">
+                Forgot password?
+              </button>
+            </div>
+            <div className="relative">
+              <LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-foreground/40 pointer-events-none" />
+              <Input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                autoComplete="current-password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="h-12 pl-11 pr-12 rounded-xl bg-background border-border focus-visible:ring-secondary"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 size-9 rounded-lg flex items-center justify-center text-foreground/50 hover:text-primary hover:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-pressed={showPassword}
+              >
+                {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+              </button>
+            </div>
           </div>
+          {errorBox}
+          <Button type="submit" variant="secondary" className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-secondary/20" disabled={isSubmitting}>
+            {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}
+            {isSubmitting ? 'Signing in…' : 'Sign In'}
+          </Button>
+        </form>
+      ) : resetSent ? (
+        <div className="space-y-5">
+          <div role="status" className="flex items-start gap-3 rounded-xl bg-green-50 border border-green-200 px-4 py-4 text-sm text-green-800">
+            <MailCheck className="size-5 shrink-0 mt-0.5" />
+            <p>
+              If an admin account exists for <strong className="break-all">{email.trim()}</strong>, a password reset link is on its way. Check your inbox (and spam
+              folder), open the link, choose a new password, then sign in here.
+            </p>
+          </div>
+          <Button type="button" variant="secondary" className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-secondary/20" onClick={() => switchMode('login')}>
+            <ArrowLeft className="mr-2 size-4" /> Back to sign in
+          </Button>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="password" className="text-primary font-semibold">Password</Label>
-          <div className="relative">
-            <LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-foreground/40 pointer-events-none" />
-            <Input
-              id="password"
-              type={showPassword ? 'text' : 'password'}
-              required
-              autoComplete="current-password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="h-12 pl-11 pr-12 rounded-xl bg-background border-border focus-visible:ring-secondary"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 size-9 rounded-lg flex items-center justify-center text-foreground/50 hover:text-primary hover:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
-              aria-label={showPassword ? 'Hide password' : 'Show password'}
-              aria-pressed={showPassword}
-            >
-              {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-            </button>
-          </div>
-        </div>
-        {error && (
-          <div role="alert" className="flex items-center gap-2 rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
-            <ShieldAlert className="size-4 shrink-0" />
-            {error}
-          </div>
-        )}
-        <Button type="submit" variant="secondary" className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-secondary/20" disabled={isSubmitting}>
-          {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}
-          {isSubmitting ? 'Signing in…' : 'Sign In'}
-        </Button>
-      </form>
+      ) : (
+        <form onSubmit={handleReset} className="space-y-5">
+          {emailField}
+          {errorBox}
+          <Button type="submit" variant="secondary" className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-secondary/20" disabled={isSubmitting}>
+            {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}
+            {isSubmitting ? 'Sending…' : 'Send reset link'}
+          </Button>
+          <button
+            type="button"
+            onClick={() => switchMode('login')}
+            className="w-full inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-primary/70 hover:text-primary focus:outline-none focus-visible:underline"
+          >
+            <ArrowLeft className="size-4" /> Back to sign in
+          </button>
+        </form>
+      )}
     </CenteredCard>
   );
 }

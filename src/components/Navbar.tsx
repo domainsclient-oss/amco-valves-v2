@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { SiteSearch } from "@/components/SiteSearch";
 import { useProductNavigation } from "@/hooks/use-product-navigation";
 import { useHomeContent } from "@/hooks/use-home-content";
 import { defaultHomeContent, siteImage, type HomeContent } from "@/lib/home-content";
@@ -117,14 +118,16 @@ export function Navbar({ content }: { content?: HomeContent["header"] }) {
                 </Link>
               </div>
             ))}
-            <div className="flex items-center h-full">
+            <div className="flex items-center gap-3 h-full">
               <Button variant="secondary" size="sm" className="rounded-xl font-extrabold px-6 h-10 text-[14px] lg:text-[16px]" asChild>
                 <Link href={quoteHref} id={safeId(header.button.id)}>{header.button.label}</Link>
               </Button>
+              <SiteSearch triggerClassName="size-10" />
             </div>
           </div>
 
-          <div className="md:hidden flex items-center h-full">
+          <div className="md:hidden flex items-center gap-2 h-full">
+            <SiteSearch iconClassName="size-7" triggerClassName="p-3" />
             <button
               className={cn(
                 "p-2 rounded-xl transition-all duration-500 ease-in-out text-primary",
@@ -158,7 +161,17 @@ export function Navbar({ content }: { content?: HomeContent["header"] }) {
                       {column.map((category) => (
                         <div key={category.title} className="space-y-5">
                           <h4 className="text-secondary font-bold text-[13px] uppercase tracking-[0.15em] border-b border-secondary/10 pb-3 leading-tight flex items-end">
-                            {category.title}
+                            {category.href ? (
+                              <Link
+                                href={category.href}
+                                className="hover:text-primary transition-colors"
+                                onClick={() => setIsMegaMenuOpen(false)}
+                              >
+                                {category.title}
+                              </Link>
+                            ) : (
+                              category.title
+                            )}
                           </h4>
                           <div className="space-y-8">
                             {category.subCategories.map((sub) => (
@@ -248,7 +261,13 @@ export function Navbar({ content }: { content?: HomeContent["header"] }) {
                               {column.map((category) => (
                                 <div key={category.title} className="space-y-4">
                                   <h4 className="text-secondary font-bold text-xs uppercase tracking-wider bg-secondary/5 px-3 py-1 rounded">
-                                    {category.title}
+                                    {category.href ? (
+                                      <Link href={category.href} className="block" onClick={() => setIsOpen(false)}>
+                                        {category.title}
+                                      </Link>
+                                    ) : (
+                                      category.title
+                                    )}
                                   </h4>
                                   <div className="space-y-5 pl-2">
                                     {category.subCategories.map((sub) => (

@@ -72,4 +72,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Floating Ball Valve – 3-Piece Screwed/Socket Weld 600/800/1500 | AMCO",
+    description:
+      "AMCO floating ball valve in 3-piece, floating, screwed / socket weld, 3, 600/800/1500 configuration for industrial quarter-turn isolation. Check specifications.",
+    keywords: "3-piece floating floating ball valve",
+    image: "",
+  },
 };

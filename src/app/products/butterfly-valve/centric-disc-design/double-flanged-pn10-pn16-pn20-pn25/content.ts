@@ -140,4 +140,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly – Centric Disc Double Flanged PN10/PN16/PN20/PN25 | AMCO",
+    description:
+      "AMCO butterfly valve in centric disc, double flanged, PN10, PN16, PN20, PN25 configuration for industrial flow isolation and control. Check specifications and.",
+    keywords: "centric disc double flanged butterfly valve",
+    image: "",
+  },
 };

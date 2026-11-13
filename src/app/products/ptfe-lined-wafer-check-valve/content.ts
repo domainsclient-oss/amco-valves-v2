@@ -52,4 +52,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Lined Wafer Check Valve | AMCO",
+    description:
+      "AMCO ptfe lined wafer check valve for corrosive-service backflow prevention. Compare lining, seat and connection design; request drawings, datasheets or a quotation.",
+    keywords: "ptfe lined wafer check valve",
+    image: "",
+  },
 };

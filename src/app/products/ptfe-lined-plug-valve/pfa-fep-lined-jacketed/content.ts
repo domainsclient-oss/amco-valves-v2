@@ -39,4 +39,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PFA/FEP Lined Plug Valve – Jacketed PFA/FEP Lined | AMCO",
+    description:
+      "AMCO jacketed pfa/fep lined plug valve for corrosive-process flow isolation. Compare lining and jacket configuration; request drawings, datasheets or a quotation.",
+    keywords: "jacketed pfa/fep lined plug valve",
+    image: "",
+  },
 };

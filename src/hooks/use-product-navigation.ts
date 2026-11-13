@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { productNavigationData, type MegaMenuCategory } from "@/lib/navigation-data";
 import { getProductTaxonomy, getPublishedCustomProducts, mergeProductNavigation } from "@/lib/custom-products";
+import { getSavedParentPages, parentPageLinks, resolveParentPages } from "@/lib/parent-pages";
 
 let cached: Promise<MegaMenuCategory[][]> | null = null;
 
@@ -16,8 +17,8 @@ export function useProductNavigation(): MegaMenuCategory[][] {
 
   useEffect(() => {
     let active = true;
-    cached ??= Promise.all([getPublishedCustomProducts(), getProductTaxonomy()]).then(([customs, taxonomy]) =>
-      mergeProductNavigation(customs, taxonomy),
+    cached ??= Promise.all([getPublishedCustomProducts(), getProductTaxonomy(), getSavedParentPages()]).then(([customs, taxonomy, parents]) =>
+      mergeProductNavigation(customs, taxonomy, parentPageLinks(resolveParentPages(parents))),
     );
     cached.then((loaded) => {
       if (active) setNavigation(loaded);

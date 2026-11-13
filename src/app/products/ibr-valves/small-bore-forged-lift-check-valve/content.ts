@@ -103,4 +103,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Forged Lift Check IBR Valve | AMCO",
+    description:
+      "AMCO forged lift check valve in small bore, forged, check configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "small bore forged forged lift check valve",
+    image: "",
+  },
 };

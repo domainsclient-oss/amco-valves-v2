@@ -10,6 +10,7 @@ import { AdminHeader } from '@/components/admin/AdminHeader';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { Field, Section } from '@/components/admin/fields';
 import { useImageUploader } from '@/components/admin/ImageUpload';
+import { PdfUpload } from '@/components/admin/PdfUpload';
 import { ProductTablesEditor } from '@/components/admin/ProductTableEditor';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -50,6 +51,8 @@ function cleanForSave(content: ProductContent): ProductContent {
       .map((s) => ({ label: s.label.trim(), subLabel: s.subLabel, value: s.value.trim() }))
       .filter((s) => s.label || s.value),
     images: content.images.map((i) => ({ src: i.src, alt: i.alt.trim() })),
+    // Firestore rejects undefined, so "no PDF" is stored as null.
+    dataSheetPdf: content.dataSheetPdf ?? null,
     seo: toSeo(content.seo),
   };
 }
@@ -350,7 +353,7 @@ export function ProductEditor({
                     {t.label}
                     {t.key === 'specs' && <span className="ml-1.5 text-xs text-foreground/40">{content.specs.length}</span>}
                     {t.key === 'images' && <span className="ml-1.5 text-xs text-foreground/40">{content.images.length}</span>}
-                    {t.key === 'tables' && <span className="ml-1.5 text-xs text-foreground/40">{content.tables.length}</span>}
+                    {t.key === 'tables' && <span className="ml-1.5 text-xs text-foreground/40">{content.tables.length}{content.dataSheetPdf ? ' + PDF' : ''}</span>}
                     <span className={cn('absolute left-3 right-3 bottom-0 h-[3px] rounded-t-full', tab === t.key ? 'bg-secondary' : 'bg-transparent')} />
                   </button>
                 ))}
@@ -378,6 +381,9 @@ export function ProductEditor({
 
             {tab === 'tables' && (
               <>
+                <Section title="Catalog PDF" description="The file downloaded by the &quot;Download Data Sheet&quot; button on the product page.">
+                  <PdfUpload value={content.dataSheetPdf} onChange={(dataSheetPdf) => update({ dataSheetPdf })} />
+                </Section>
                 <p className="text-sm text-foreground/60">The dimension and data tables at the bottom of the product page. Add or remove tables, columns and rows; the page keeps its design.</p>
                 <ProductTablesEditor tables={content.tables} onChange={(tables) => update({ tables })} />
               </>

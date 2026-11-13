@@ -66,4 +66,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Floating Ball Valve – 2-Piece Screwed 1000/WOG | AMCO",
+    description:
+      "AMCO floating ball valve in 2-piece, floating, screwed, 2, 1000/WOG configuration for industrial quarter-turn isolation. Check specifications and request a.",
+    keywords: "2-piece floating floating ball valve",
+    image: "",
+  },
 };

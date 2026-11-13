@@ -32,4 +32,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Small Bore Piston Valve – IBR/Non-IBR | AMCO",
+    description:
+      "AMCO small bore piston valve for industrial process and steam-line isolation. Check specifications and request a technical quote.",
+    keywords: "small bore piston valve",
+    image: "",
+  },
 };

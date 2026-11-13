@@ -139,4 +139,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly Valve – Double Offset Wafer/Semi-Lugged 150/300 | AMCO",
+    description:
+      "AMCO butterfly valve in double-offset, wafer / semi-lugged, 150/300 configuration for industrial flow isolation and control. Check specifications and request a.",
+    keywords: "double-offset wafer / semi-lugged butterfly valve",
+    image: "",
+  },
 };

@@ -44,4 +44,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Y Strainer – Flanged | AMCO",
+    description:
+      "AMCO y strainer in flanged configuration for pipeline debris removal and equipment protection. Check specifications and request a technical quote.",
+    keywords: "flanged y strainer",
+    image: "",
+  },
 };

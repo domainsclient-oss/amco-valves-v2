@@ -95,8 +95,10 @@ export function toCustomProduct(id: string, data: Raw): CustomProduct {
 export function mergeProductNavigation(
   customs: Pick<CustomProduct, "slug" | "category" | "subCategory" | "menuName">[],
   taxonomy: ProductTaxonomy = emptyTaxonomy,
+  /** Category title → parent page link (from the admin Parent Pages); without it the built-in links are used. */
+  parentLinks?: Map<string, string>,
 ): MegaMenuCategory[][] {
-  if (!customs.length && !taxonomyAffectsSite(taxonomy)) return productNavigationData;
+  if (!customs.length && !taxonomyAffectsSite(taxonomy) && !parentLinks) return productNavigationData;
 
   const builtInCategories = productNavigationData.flat();
   const hidden = (key: string) => !!statusOf(taxonomy, key);
@@ -128,7 +130,10 @@ export function mergeProductNavigation(
       })
       .filter((s) => s.products.length);
 
-    return subCategories.length ? { title: labelOf(taxonomy, categoryKey(title), title), subCategories } : null;
+    const href = parentLinks ? parentLinks.get(title) : builtIn?.href;
+    return subCategories.length
+      ? { title: labelOf(taxonomy, categoryKey(title), title), ...(href && { href }), subCategories }
+      : null;
   };
 
   return categoryColumns(taxonomy).map((titles) => titles.map(menuCategory).filter((c): c is MegaMenuCategory => c !== null));

@@ -97,4 +97,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Dual Plate Check Valve – Wafer Resilient Seat PN16 | AMCO",
+    description:
+      "AMCO dual plate check valve in wafer, resilient seated, PN16 configuration for backflow prevention in industrial piping. Check specifications and request a.",
+    keywords: "wafer resilient seated dual plate check valve",
+    image: "",
+  },
 };

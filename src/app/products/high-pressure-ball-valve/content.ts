@@ -37,4 +37,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "High Pressure Ball Valve | AMCO",
+    description:
+      "AMCO high pressure ball valve for high-pressure line shutoff. Compare pressure rating, port design and end connections; request drawings, datasheets or a quotation.",
+    keywords: "high pressure ball valve",
+    image: "",
+  },
 };

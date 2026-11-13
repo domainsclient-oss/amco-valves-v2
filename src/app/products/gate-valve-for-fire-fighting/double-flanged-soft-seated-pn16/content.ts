@@ -39,4 +39,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Fire Fighting Gate Valve – Double Flanged Soft Seat PN16 | AMCO",
+    description:
+      "AMCO fire fighting gate valve in double flanged, soft seated, PN16 configuration for fire protection water piping. Check specifications and request a technical.",
+    keywords: "double flanged soft seated fire fighting gate valve",
+    image: "",
+  },
 };

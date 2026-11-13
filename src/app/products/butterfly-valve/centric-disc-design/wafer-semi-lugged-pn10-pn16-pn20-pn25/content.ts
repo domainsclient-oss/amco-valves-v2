@@ -97,4 +97,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Butterfly – Centric Disc Wafer/Semi-Lugg PN10/PN16/PN20/PN25 | AMCO",
+    description:
+      "AMCO butterfly valve in centric disc, wafer / semi-lugged, PN10, PN16, PN20, PN25 configuration for industrial flow isolation and control. Check specifications.",
+    keywords: "centric disc wafer / semi-lugged butterfly valve",
+    image: "",
+  },
 };

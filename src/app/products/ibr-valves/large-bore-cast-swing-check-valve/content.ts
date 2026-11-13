@@ -50,4 +50,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "Cast Swing Check IBR Valve | AMCO",
+    description:
+      "AMCO cast swing check valve in large bore, cast, check configuration for boiler and steam piping applications. Check specifications and request a technical quote.",
+    keywords: "large bore cast cast swing check valve",
+    image: "",
+  },
 };

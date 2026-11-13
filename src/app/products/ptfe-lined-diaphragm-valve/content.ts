@@ -34,4 +34,11 @@ export const content: ProductContent = {
       note: "All dimensions are in mm",
     },
   ],
+  seo: {
+    title: "PTFE Lined Diaphragm Valve | AMCO",
+    description:
+      "AMCO ptfe lined diaphragm valve for corrosive-process isolation. Compare lining and diaphragm construction; request drawings, datasheets or a quotation.",
+    keywords: "ptfe lined diaphragm valve",
+    image: "",
+  },
 };

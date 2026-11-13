@@ -30,6 +30,17 @@ export function toSeo(raw: unknown): SeoContent {
   return { title: str(r.title), description: str(r.description), keywords: str(r.keywords), image: str(r.image) };
 }
 
+/**
+ * Saved SEO settings over the page's own SEO defaults, field by field: a field left empty
+ * in the admin keeps the default from the code.
+ */
+export function mergeSeo(saved: unknown, defaults: Partial<SeoContent> | undefined): SeoContent {
+  const s = toSeo(saved);
+  const d = toSeo(defaults);
+  const pick = (k: keyof SeoContent) => (s[k].trim() ? s[k] : d[k]);
+  return { title: pick("title"), description: pick("description"), keywords: pick("keywords"), image: pick("image") };
+}
+
 export const keywordList = (keywords: string) =>
   keywords
     .split(/[,\n]/)

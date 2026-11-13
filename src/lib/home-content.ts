@@ -2,7 +2,7 @@ import { getRestDoc } from "@/lib/firestore-rest";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { mergeWithDefaults } from "@/lib/content-merge";
 import { button, safeHref, type ButtonContent } from "@/lib/buttons";
-import { emptySeo, type SeoContent } from "@/lib/seo";
+import { mergeSeo, type SeoContent } from "@/lib/seo";
 
 /**
  * Editable content for the home page.
@@ -405,7 +405,13 @@ export const defaultHomeContent: HomeContent = {
     ],
     button: button("Get a Quote", "/#contact"),
   },
-  seo: { ...emptySeo },
+  seo: {
+    title: "Industrial Valve Manufacturer in India | AMCO Valves",
+    description:
+      "AMCO manufactures ball, butterfly, knife edge gate, check, IBR and lined valves for industrial piping. Compare product designs and request a technical quotation.",
+    keywords: "Industrial valve manufacturer India",
+    image: "",
+  },
   footer: {
     logo: { src: "/Logo-Asset.png", alt: "AMCO Valves Logo" },
     about: "Precision engineered valve solutions for the global energy and industrial sectors. Quality and reliability at the core of everything we do.",
@@ -455,7 +461,10 @@ export function siteImage(src: string, fallback: string) {
 }
 
 export function resolveHomeContent(saved: unknown): HomeContent {
-  return mergeWithDefaults(defaultHomeContent, saved);
+  const content = mergeWithDefaults(defaultHomeContent, saved);
+  // Empty SEO fields saved from the admin keep the defaults above.
+  const savedSeo = saved && typeof saved === "object" ? (saved as Record<string, unknown>).seo : undefined;
+  return { ...content, seo: mergeSeo(savedSeo, defaultHomeContent.seo) };
 }
 
 // --- Reading the saved content (works on the server and in the browser) ---
