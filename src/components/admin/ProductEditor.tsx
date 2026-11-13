@@ -381,7 +381,7 @@ export function ProductEditor({
 
             {tab === 'tables' && (
               <>
-                <Section title="Catalog PDF" description="The file downloaded by the &quot;Download Data Sheet&quot; button on the product page.">
+                <Section title="Catalog PDF" description="The file downloaded by the &quot;Download PDF&quot; button on the product page. The button only appears when a PDF is uploaded.">
                   <PdfUpload value={content.dataSheetPdf} onChange={(dataSheetPdf) => update({ dataSheetPdf })} />
                 </Section>
                 <p className="text-sm text-foreground/60">The dimension and data tables at the bottom of the product page. Add or remove tables, columns and rows; the page keeps its design.</p>

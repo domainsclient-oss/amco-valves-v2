@@ -1,7 +1,7 @@
 "use client";
 
-import { cloneElement, type ReactElement } from "react";
-import { Download, FileSpreadsheet } from "lucide-react";
+import { cloneElement, type ReactElement, type ReactNode } from "react";
+import { Download, FileSpreadsheet, FileText } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -77,20 +77,36 @@ function downloadPdf(src: string, name: string) {
 /**
  * Wraps a product page's "Download Data Sheet" button. With one table or none the button works
  * exactly as before (the page's own download). With several tables, the same button opens a menu
- * to download all data sheets or a single one. When a catalog PDF was uploaded in the admin,
- * the button downloads that PDF instead.
+ * to download all data sheets or a single one. When a catalog PDF was uploaded in the admin, a
+ * separate "Download PDF" button (same styling) is shown next to it and downloads that PDF.
  */
-export function DataSheetDownload({ content, children }: { content: ProductContent; children: ReactElement<{ onClick?: unknown }> }) {
+export function DataSheetDownload({ content, children }: { content: ProductContent; children: ReactElement<{ onClick?: unknown; children?: ReactNode }> }) {
+  const dataSheetButton = <DataSheetButton content={content}>{children}</DataSheetButton>;
   const pdf = content.dataSheetPdf;
-  if (pdf?.src) {
-    return cloneElement(children, {
-      onClick: (e: { preventDefault?: () => void }) => {
-        e?.preventDefault?.();
-        downloadPdf(pdf.src, pdf.name);
-      },
-    });
-  }
+  if (!pdf?.src) return dataSheetButton;
 
+  const catalogButton = cloneElement(children, {
+    onClick: (e: { preventDefault?: () => void }) => {
+      e?.preventDefault?.();
+      downloadPdf(pdf.src, pdf.name);
+    },
+    children: (
+      <>
+        <FileText className="mr-2 size-5" /> Download PDF
+      </>
+    ),
+  });
+
+  return (
+    <>
+      {dataSheetButton}
+      {catalogButton}
+    </>
+  );
+}
+
+/** The data-sheet button: the page's own download, or a menu of tables when there are several. */
+function DataSheetButton({ content, children }: { content: ProductContent; children: ReactElement<{ onClick?: unknown }> }) {
   const tables = content.tables;
   if (tables.length <= 1) return children;
 

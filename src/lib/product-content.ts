@@ -77,7 +77,7 @@ export interface ProductContent {
   /** Showcase photos; the first one is the main product photo. */
   images: ProductImage[];
   tables: ProductTable[];
-  /** Catalog PDF downloaded by the "Download Data Sheet" button; without it the button downloads the tables as CSV. */
+  /** Catalog PDF downloaded by the separate "Download PDF" button, which is hidden when none is uploaded. */
   dataSheetPdf?: ProductPdf | null;
   /** Search-engine settings (admin "SEO" tab); missing or empty fields keep the site defaults. */
   seo?: SeoContent;
