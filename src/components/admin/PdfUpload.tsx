@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { Download, FileText, FileUp, Loader2, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Download, FileText, FileUp, Loader2, Plus, Trash2 } from 'lucide-react';
 import { useFirestore, useUser } from '@/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
@@ -77,45 +77,116 @@ function usePdfUploader() {
   return { upload, progress };
 }
 
-/** Upload, replace, open and remove the product's catalog PDF. */
-export function PdfUpload({ value, onChange }: { value: ProductPdf | null | undefined; onChange: (pdf: ProductPdf | null) => void }) {
+/** Upload several catalog PDFs, and replace, reorder, open or remove each one. */
+export function PdfUpload({ value, onChange }: { value: ProductPdf[]; onChange: (pdfs: ProductPdf[]) => void }) {
   const { upload, progress } = usePdfUploader();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const isUploading = progress !== null;
+  const addRef = useRef<HTMLInputElement>(null);
+  const replaceRef = useRef<HTMLInputElement>(null);
+  const [replaceIndex, setReplaceIndex] = useState<number | null>(null);
+  // Which upload is running: "add" (new files) or the index of the PDF being replaced.
+  const [busy, setBusy] = useState<'add' | number | null>(null);
+  const [current, setCurrent] = useState<{ done: number; total: number } | null>(null);
+  const isUploading = progress !== null || busy !== null;
 
-  const handleFile = async (file: File | undefined) => {
-    if (inputRef.current) inputRef.current.value = '';
-    if (!file) return;
-    const pdf = await upload(file);
-    if (pdf) onChange(pdf);
+  const handleAdd = async (files: FileList | null) => {
+    const list = Array.from(files ?? []);
+    if (addRef.current) addRef.current.value = '';
+    if (!list.length) return;
+    setBusy('add');
+    const added: ProductPdf[] = [];
+    try {
+      // One at a time, so progress is clear and Firestore isn't flooded with chunk writes.
+      for (let i = 0; i < list.length; i++) {
+        setCurrent({ done: i + 1, total: list.length });
+        const pdf = await upload(list[i]);
+        if (pdf) added.push(pdf);
+      }
+    } finally {
+      setBusy(null);
+      setCurrent(null);
+    }
+    if (added.length) onChange([...value, ...added]);
   };
+
+  const handleReplace = async (file: File | undefined) => {
+    if (replaceRef.current) replaceRef.current.value = '';
+    const index = replaceIndex;
+    setReplaceIndex(null);
+    if (!file || index === null) return;
+    setBusy(index);
+    try {
+      const pdf = await upload(file);
+      if (pdf) onChange(value.map((p, j) => (j === index ? pdf : p)));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const move = (index: number, direction: -1 | 1) => {
+    const target = index + direction;
+    if (target < 0 || target >= value.length) return;
+    const next = [...value];
+    [next[index], next[target]] = [next[target], next[index]];
+    onChange(next);
+  };
+
+  const uploadLabel = current && current.total > 1 ? `Uploading ${current.done} of ${current.total}… ${progress ?? 0}%` : `Uploading… ${progress ?? 0}%`;
 
   return (
     <div className="space-y-3">
-      <input ref={inputRef} type="file" accept="application/pdf,.pdf" className="hidden" onChange={(e) => handleFile(e.target.files?.[0])} />
-      {value ? (
-        <div className="flex flex-wrap items-center gap-4 p-4 rounded-2xl border border-border bg-background">
+      <input ref={addRef} type="file" accept="application/pdf,.pdf" multiple className="hidden" onChange={(e) => handleAdd(e.target.files)} />
+      <input ref={replaceRef} type="file" accept="application/pdf,.pdf" className="hidden" onChange={(e) => handleReplace(e.target.files?.[0])} />
+
+      {value.map((pdf, i) => (
+        <div key={`${pdf.src}-${i}`} className="flex flex-wrap items-center gap-4 p-4 rounded-2xl border border-border bg-background">
           <div className="size-12 shrink-0 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
             <FileText className="size-6" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="font-semibold text-primary truncate">{value.name}</p>
-            <p className="text-xs text-foreground/50">{value.size ? `${formatFileSize(value.size)} · ` : ''}PDF</p>
+            <p className="font-semibold text-primary truncate">{pdf.name}</p>
+            <p className="text-xs text-foreground/50">{pdf.size ? `${formatFileSize(pdf.size)} · ` : ''}PDF</p>
           </div>
           <div className="flex flex-wrap gap-2">
+            {value.length > 1 && (
+              <>
+                <Button type="button" size="icon" variant="ghost" className="size-9" onClick={() => move(i, -1)} disabled={i === 0 || isUploading} aria-label="Move up">
+                  <ArrowUp className="size-4" />
+                </Button>
+                <Button type="button" size="icon" variant="ghost" className="size-9" onClick={() => move(i, 1)} disabled={i === value.length - 1 || isUploading} aria-label="Move down">
+                  <ArrowDown className="size-4" />
+                </Button>
+              </>
+            )}
             <Button type="button" size="sm" variant="ghost" asChild>
-              <a href={value.src} download={value.name}>
+              <a href={pdf.src} download={pdf.name}>
                 <Download className="size-4 mr-1" /> Download
               </a>
             </Button>
-            <Button type="button" size="sm" variant="outline" onClick={() => inputRef.current?.click()} disabled={isUploading}>
-              {isUploading ? <><Loader2 className="size-4 mr-1 animate-spin" /> {progress}%</> : 'Replace'}
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                setReplaceIndex(i);
+                replaceRef.current?.click();
+              }}
+              disabled={isUploading}
+            >
+              {busy === i ? <><Loader2 className="size-4 mr-1 animate-spin" /> {progress ?? 0}%</> : 'Replace'}
             </Button>
             <ConfirmDialog
               title="Remove this PDF?"
-              description='After you click "Save changes", the Download Data Sheet button downloads the data-sheet tables as a spreadsheet (CSV) again.'
+              description={
+                value.length > 1 ? (
+                  <>
+                    <strong className="text-primary">{pdf.name}</strong> will be removed from the &quot;Download PDF&quot; menu on the product page after you click &quot;Save changes&quot;.
+                  </>
+                ) : (
+                  'After you click "Save changes", the "Download PDF" button is no longer shown on the product page.'
+                )
+              }
               confirmLabel="Remove PDF"
-              onConfirm={() => onChange(null)}
+              onConfirm={() => onChange(value.filter((_, j) => j !== i))}
               trigger={
                 <Button type="button" size="sm" variant="ghost" className="text-destructive hover:text-destructive hover:bg-destructive/10" disabled={isUploading}>
                   <Trash2 className="size-4 mr-1" /> Remove
@@ -124,19 +195,25 @@ export function PdfUpload({ value, onChange }: { value: ProductPdf | null | unde
             />
           </div>
         </div>
-      ) : (
+      ))}
+
+      {value.length === 0 ? (
         <button
           type="button"
-          onClick={() => inputRef.current?.click()}
+          onClick={() => addRef.current?.click()}
           disabled={isUploading}
           className="w-full max-w-md h-32 rounded-2xl border-2 border-dashed border-border bg-background flex flex-col items-center justify-center gap-2 text-foreground/50 hover:border-secondary hover:text-secondary transition-colors"
         >
           {isUploading ? <Loader2 className="size-6 animate-spin" /> : <FileUp className="size-6" />}
-          <span className="text-sm font-semibold">{isUploading ? `Uploading… ${progress}%` : 'Upload catalog PDF'}</span>
+          <span className="text-sm font-semibold">{isUploading ? uploadLabel : 'Upload catalog PDFs'}</span>
         </button>
+      ) : (
+        <Button type="button" variant="outline" size="sm" onClick={() => addRef.current?.click()} disabled={isUploading}>
+          {busy === 'add' ? <><Loader2 className="size-4 mr-1 animate-spin" /> {uploadLabel}</> : <><Plus className="size-4 mr-1" /> Add PDF</>}
+        </Button>
       )}
       <p className="text-xs text-foreground/50">
-        PDF only, up to {formatFileSize(MAX_PRODUCT_FILE_BYTES)}. When a PDF is uploaded, the &quot;Download Data Sheet&quot; button on the product page downloads it; otherwise it downloads the data-sheet tables as a spreadsheet (CSV).
+        PDF only, up to {formatFileSize(MAX_PRODUCT_FILE_BYTES)} each. You can select several files at once. With one PDF, the &quot;Download PDF&quot; button on the product page downloads it; with several, the button opens a menu with one option per PDF, in the order shown here.
       </p>
     </div>
   );

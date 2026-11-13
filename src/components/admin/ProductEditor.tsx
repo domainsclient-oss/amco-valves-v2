@@ -51,8 +51,8 @@ function cleanForSave(content: ProductContent): ProductContent {
       .map((s) => ({ label: s.label.trim(), subLabel: s.subLabel, value: s.value.trim() }))
       .filter((s) => s.label || s.value),
     images: content.images.map((i) => ({ src: i.src, alt: i.alt.trim() })),
-    // Firestore rejects undefined, so "no PDF" is stored as null.
-    dataSheetPdf: content.dataSheetPdf ?? null,
+    // Firestore rejects undefined, so "no PDFs" is stored as an empty list.
+    dataSheetPdfs: content.dataSheetPdfs ?? [],
     seo: toSeo(content.seo),
   };
 }
@@ -270,9 +270,11 @@ export function ProductEditor({
     try {
       const cleaned = cleanForSave(content);
       const meta = { updatedAt: serverTimestamp(), updatedBy: user?.email ?? user?.uid ?? null };
+      // Clears the old single-PDF field (now `dataSheetPdfs`), which a merge would otherwise keep.
+      const stored = { ...cleaned, dataSheetPdf: null };
       // Custom products keep their classification and status next to the content, so merge.
-      if (customProductId) await setDoc(contentRef, { content: cleaned, ...meta }, { merge: true });
-      else await setDoc(contentRef, { ...cleaned, ...meta });
+      if (customProductId) await setDoc(contentRef, { content: stored, ...meta }, { merge: true });
+      else await setDoc(contentRef, { ...stored, ...meta });
       setContent(cleaned);
       setIsDirty(false);
       await (customProductId ? revalidateCustomProducts(slug) : revalidateProduct(slug)).catch(() => {});
@@ -353,7 +355,7 @@ export function ProductEditor({
                     {t.label}
                     {t.key === 'specs' && <span className="ml-1.5 text-xs text-foreground/40">{content.specs.length}</span>}
                     {t.key === 'images' && <span className="ml-1.5 text-xs text-foreground/40">{content.images.length}</span>}
-                    {t.key === 'tables' && <span className="ml-1.5 text-xs text-foreground/40">{content.tables.length}{content.dataSheetPdf ? ' + PDF' : ''}</span>}
+                    {t.key === 'tables' && <span className="ml-1.5 text-xs text-foreground/40">{content.tables.length}{content.dataSheetPdfs?.length ? ` + ${content.dataSheetPdfs.length} PDF${content.dataSheetPdfs.length > 1 ? 's' : ''}` : ''}</span>}
                     <span className={cn('absolute left-3 right-3 bottom-0 h-[3px] rounded-t-full', tab === t.key ? 'bg-secondary' : 'bg-transparent')} />
                   </button>
                 ))}
@@ -381,8 +383,8 @@ export function ProductEditor({
 
             {tab === 'tables' && (
               <>
-                <Section title="Catalog PDF" description="The file downloaded by the &quot;Download PDF&quot; button on the product page. The button only appears when a PDF is uploaded.">
-                  <PdfUpload value={content.dataSheetPdf} onChange={(dataSheetPdf) => update({ dataSheetPdf })} />
+                <Section title="Catalog PDFs" description="The files downloaded by the &quot;Download PDF&quot; button on the product page. The button only appears when a PDF is uploaded; with several PDFs it opens a menu to pick one.">
+                  <PdfUpload value={content.dataSheetPdfs ?? []} onChange={(dataSheetPdfs) => update({ dataSheetPdfs })} />
                 </Section>
                 <p className="text-sm text-foreground/60">The dimension and data tables at the bottom of the product page. Add or remove tables, columns and rows; the page keeps its design.</p>
                 <ProductTablesEditor tables={content.tables} onChange={(tables) => update({ tables })} />

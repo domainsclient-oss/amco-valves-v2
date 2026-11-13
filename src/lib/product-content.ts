@@ -77,8 +77,11 @@ export interface ProductContent {
   /** Showcase photos; the first one is the main product photo. */
   images: ProductImage[];
   tables: ProductTable[];
-  /** Catalog PDF downloaded by the separate "Download PDF" button, which is hidden when none is uploaded. */
-  dataSheetPdf?: ProductPdf | null;
+  /**
+   * Catalog PDFs downloaded by the separate "Download PDF" button, which is hidden when none is
+   * uploaded. With one PDF the button downloads it; with several it opens a menu with one item per PDF.
+   */
+  dataSheetPdfs?: ProductPdf[];
   /** Search-engine settings (admin "SEO" tab); missing or empty fields keep the site defaults. */
   seo?: SeoContent;
 }
@@ -105,6 +108,21 @@ function toProductPdf(value: unknown): ProductPdf | null {
   const src = str(raw.src);
   if (!isProductFileUrl(src)) return null;
   return { src, name: str(raw.name) || "data-sheet.pdf", size: Math.max(0, Number(raw.size) || 0) };
+}
+
+/**
+ * The saved PDF list. Content saved before multiple PDFs were supported has a single
+ * `dataSheetPdf` instead; it is read as a one-item list.
+ */
+function toProductPdfs(raw: Raw, defaults: ProductContent): ProductPdf[] {
+  if (Array.isArray(raw.dataSheetPdfs)) {
+    return raw.dataSheetPdfs.map(toProductPdf).filter((pdf): pdf is ProductPdf => pdf !== null);
+  }
+  if ("dataSheetPdf" in raw) {
+    const pdf = toProductPdf(raw.dataSheetPdf);
+    return pdf ? [pdf] : [];
+  }
+  return defaults.dataSheetPdfs ?? [];
 }
 
 export function resolveProductContent(defaults: ProductContent, saved: unknown): ProductContent {
@@ -137,7 +155,7 @@ export function resolveProductContent(defaults: ProductContent, saved: unknown):
           note: str(t.note),
         }))
       : defaults.tables,
-    dataSheetPdf: "dataSheetPdf" in raw ? toProductPdf(raw.dataSheetPdf) : (defaults.dataSheetPdf ?? null),
+    dataSheetPdfs: toProductPdfs(raw, defaults),
     // Empty SEO fields saved from the admin keep the page's defaults (content.ts).
     seo: mergeSeo(raw.seo, defaults.seo),
   };
